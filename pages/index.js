@@ -1,5 +1,6 @@
 import Head from "next/head";
 import Header from "@components/Header";
+import Page from "@components/Page";
 
 export default function Home() {
   return (
@@ -13,8 +14,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main className="container mx-auto">
-        <Header title="Boyos Collective" />
+      <main>
+        <Page className="center-xs middle-xs">
+          <Header title="Boyos Collective" />
+        </Page>
       </main>
     </div>
   );
