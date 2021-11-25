@@ -2,8 +2,8 @@ import { DefaultSeo } from "next-seo";
 
 import defaultSEOConfig from "../next-seo.config";
 import Layout from "components/layout";
-
-import "styles/globals.css";
+import "../styles/globals.css";
+import "tailwindcss/tailwind.css";
 
 const MyApp = ({ Component, pageProps }) => {
   return (

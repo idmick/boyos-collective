@@ -1,6 +1,6 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
 @layer base {
   h1 {
@@ -21,10 +21,5 @@
 
   h5 {
     @apply text-lg font-bold;
-  }
-
-  .wrapper {
-    @apply mx-auto p-6 sm:p-8;
-    max-width: 48rem;
   }
 }

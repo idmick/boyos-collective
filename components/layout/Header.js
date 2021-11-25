@@ -1,13 +1,14 @@
-import Link from "next/link";
+import Image from "next/image";
+import BoyosLogo from "../../public/images/Boyos_logo_boxed.png";
 
 const Header = () => {
   return (
-    <header className="z-10 bg-base-100 w-full sticky top-0">
-      <section className="flex items-center justify-between wrapper mx-auto">
-        Boyos
-      </section>
-
-      <div className="h-1 bg-gradient-to-br from-primary to-accent" />
+    <header className="container px-4 mx-auto">
+      <div className="flex flex-wrap justify-center py-20">
+        <div className="w-full  sm:w-4/12 px-4">
+          <Image src={BoyosLogo} layout="responsive" objectFit="contain" />
+        </div>
+      </div>
     </header>
   );
 };
