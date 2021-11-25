@@ -10,15 +10,22 @@
   "dependencies": {
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.5",
+    "clsx": "^1.1.1",
+    "daisyui": "^1.16.2",
     "flexboxgrid": "^6.3.1",
     "next": "^12.0.1",
+    "next-pwa": "^5.4.0",
+    "next-seo": "^4.28.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-icons": "^4.3.1",
     "sass": "^1.43.4"
   },
   "devDependencies": {
     "@netlify/plugin-nextjs": "^4.0.0-beta.4",
     "autoprefixer": "^10.4.0",
-    "postcss": "^8.3.11"
+    "postcss": "^8.4.1",
+    "tailwindcss": "^2.2.19",
+    "critters": "^0.0.14"
   }
 }

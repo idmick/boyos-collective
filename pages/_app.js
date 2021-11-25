@@ -1,7 +1,17 @@
-import "@styles/globals.css";
+import { DefaultSeo } from "next-seo";
 
-function Application({ Component, pageProps }) {
-  return <Component {...pageProps} />;
-}
+import defaultSEOConfig from "../next-seo.config";
+import Layout from "components/layout";
 
-export default Application;
+import "styles/globals.css";
+
+const MyApp = ({ Component, pageProps }) => {
+  return (
+    <Layout>
+      <DefaultSeo {...defaultSEOConfig} />
+      <Component {...pageProps} />
+    </Layout>
+  );
+};
+
+export default MyApp;
