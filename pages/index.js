@@ -1,9 +1,13 @@
+import { useRouter } from "next/router";
+
 import Image from "next/image";
 import BoyosMerch from "../public/images/boyos_merch.jpeg";
 import BoyosVinyl from "../public/images/boyos_vinyl.png";
 import ByMickey from "../public/images/artworks/Greg.png";
 
 const Home = () => {
+  const router = useRouter();
+
   return (
     <div className="container px-4 mx-auto">
       <div className="flex flex-wrap">
@@ -48,7 +52,12 @@ const Home = () => {
                 incidunt iure sapiente.
               </p>
               <div className="justify-end card-actions">
-                <button className="btn btn-secondary">More info</button>
+                <button
+                  className="btn btn-secondary"
+                  onClick={() => router.push("/soundsystem")}
+                >
+                  More info
+                </button>
               </div>
             </div>
           </div>
