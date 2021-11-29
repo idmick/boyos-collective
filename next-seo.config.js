@@ -1,7 +1,7 @@
 /** @type {import('next-seo').DefaultSeoProps} */
 const defaultSEOConfig = {
   title: "Boyos Collective",
-  titleTemplate: "%s | nextarter-daisy",
+  titleTemplate: "%s |",
   defaultTitle: "Boyos Collective",
   description:
     "An Amsterdam based creative collective (Music, Art and Merch) that stems from a close group of friends. Hence boyos, which is an old Irish term for good friend / brother",
