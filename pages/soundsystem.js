@@ -19,7 +19,7 @@ const linkTree = [
   },
   {
     id: idGen(),
-    title: "Twitch Live Steams",
+    title: "Twitch Live Streams",
     url: "https://www.twitch.tv/boyos_soundsystem",
   },
   {
