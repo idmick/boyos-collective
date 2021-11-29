@@ -2,7 +2,7 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-@layer base {
+/* @layer base {
   h1 {
     @apply text-4xl font-bold md:text-5xl;
   }
@@ -22,4 +22,4 @@
   h5 {
     @apply text-lg font-bold;
   }
-}
+} */
