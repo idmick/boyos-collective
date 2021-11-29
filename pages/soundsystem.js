@@ -19,6 +19,11 @@ const linkTree = [
   },
   {
     id: idGen(),
+    title: "Twitch Live Steams",
+    url: "https://www.twitch.tv/boyos_soundsystem",
+  },
+  {
+    id: idGen(),
     title: "Spotify Playlist",
     url: "https://open.spotify.com/playlist/4x9nUqSbxBrwtTQ52iQ5lW?si=0a982c62d80e46b7",
   },
