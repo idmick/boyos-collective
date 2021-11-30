@@ -10,7 +10,7 @@ const Home = () => {
   const router = useRouter();
 
   return (
-    <div className="container px-4 mx-auto h-screen">
+    <div className="container px-4 mx-auto">
       <div className="flex flex-wrap justify-center py-10 mb-10">
         <div className="w-full px-4 sm:w-4/12">
           <Image
