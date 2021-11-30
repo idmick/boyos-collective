@@ -3,7 +3,7 @@ import Link from "next/link";
 const Page404 = () => {
   return (
     <>
-      <div className="grid gap-2 text-center">
+      <div className="grid gap-2 text-center h-screen">
         <h3>Page not Found</h3>
         <p>It&apos;s Okay!</p>
 

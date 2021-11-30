@@ -4,12 +4,26 @@ import Image from "next/image";
 import BoyosMerch from "../public/images/boyos_merch.jpeg";
 import BoyosVinyl from "../public/images/boyos_vinyl.png";
 import ByMickey from "../public/images/artworks/Greg.png";
+import BoyosBoxed from "../public/images/Boyos_logo_boxed.png";
 
 const Home = () => {
   const router = useRouter();
 
   return (
-    <div className="container px-4 mx-auto">
+    <div className="container px-4 mx-auto h-screen">
+      <div className="flex flex-wrap justify-center py-10 mb-10">
+        <div className="w-full px-4 sm:w-4/12">
+          <Image
+            src={BoyosBoxed}
+            layout="responsive"
+            objectFit="contain"
+            height={1000}
+          />
+          <p className="text-xl  text-center font-black font-limelight">
+            a creative collective
+          </p>
+        </div>
+      </div>
       <div className="flex flex-wrap">
         <div className="w-full px-4 sm:w-4/12">
           <div className="card">
@@ -22,21 +36,27 @@ const Home = () => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">Merch</h2>
+              <h2 className="card-title text-center">Boyos Merch</h2>
               <p>
-                Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.
-                Sit sit necessitatibus veritatis sed molestiae voluptates
-                incidunt iure sapiente.
+                Boyos is an Amsterdam based fashion brand. Boyo is an old Irish
+                term meaning good friend or brother. That is what Boyos is born
+                from, a band of brothers. Join our band, buy our apparel
+                designed by Mickey Anthony.
               </p>
               <div className="justify-end card-actions">
-                <button className="btn btn-secondary">More info</button>
+                <a
+                  href="https://merch.boyoscollective.nl"
+                  className="btn btn-secondary btn-outline btn-block"
+                >
+                  Checkout more
+                </a>
               </div>
             </div>
           </div>
         </div>
         <div className="w-full px-4 sm:w-4/12">
           <div className="card">
-            <figure className="animate-spin-slow">
+            <figure>
               <Image
                 src={BoyosVinyl}
                 layout="responsive"
@@ -45,18 +65,21 @@ const Home = () => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">Boyos Soundsytem</h2>
+              <h2 className="card-title text-center">Boyos Soundsytem</h2>
               <p>
-                Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.
-                Sit sit necessitatibus veritatis sed molestiae voluptates
-                incidunt iure sapiente.
+                Boyos Soundsystem is a group of three DJs (NMN, DiTomasso,
+                Mickey) from Amsterdam, playing funky sets strictly on vinyl.
+                Music ranges from Brazilian Boogie, Funky SOCA, to powerful
+                Disco, House, and sometimes beyond. Key to our live sets is the
+                energy we bring from behind the decks, which is loved and
+                praised by the audience.
               </p>
               <div className="justify-end card-actions">
                 <button
-                  className="btn btn-secondary"
+                  className="btn btn-secondary btn-outline btn-block"
                   onClick={() => router.push("/soundsystem")}
                 >
-                  More info
+                  Checkout more
                 </button>
               </div>
             </div>
@@ -73,17 +96,19 @@ const Home = () => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title">
-                Artworks
-                <span className="text-xs text-gray-500"> by Mickey</span>
-              </h2>
+              <h2 className="card-title text-center">By Mickey</h2>
               <p>
-                Rerum reiciendis beatae tenetur excepturi aut pariatur est eos.
-                Sit sit necessitatibus veritatis sed molestiae voluptates
-                incidunt iure sapiente.
+                Baseball, Sports and Custom Artworks made by Mickey Anthony.
+                Available in different sizes and materials (poster, aluminium /
+                dibond en canvas).
               </p>
               <div className="justify-end card-actions">
-                <button className="btn btn-secondary">More info</button>
+                <a
+                  href="https://www.bymickey.nl"
+                  className="btn btn-secondary btn-outline btn-block"
+                >
+                  Checkout more
+                </a>
               </div>
             </div>
           </div>
