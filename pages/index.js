@@ -106,7 +106,7 @@ const Home = () => {
               <p>
                 Baseball, Sports and Custom Artworks made by Mickey Anthony.
                 Available in different sizes and materials (poster, aluminium /
-                dibond en canvas).
+                dibond and canvas).
               </p>
               <div className="justify-end card-actions">
                 <a
