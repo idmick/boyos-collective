@@ -36,7 +36,9 @@ const Home = () => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title text-center">Boyos Merch</h2>
+              <h2 className="card-title font-limelight text-center">
+                Boyos Merch
+              </h2>
               <p>
                 Boyos is an Amsterdam based fashion brand. Boyo is an old Irish
                 term meaning good friend or brother. That is what Boyos is born
@@ -65,7 +67,9 @@ const Home = () => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title text-center">Boyos Soundsytem</h2>
+              <h2 className="card-title font-limelight text-center">
+                Boyos Soundsytem
+              </h2>
               <p>
                 Boyos Soundsystem is a group of three DJs (NMN, DiTomasso,
                 Mickey) from Amsterdam, playing funky sets strictly on vinyl.
@@ -96,7 +100,9 @@ const Home = () => {
               />
             </figure>
             <div className="card-body">
-              <h2 className="card-title text-center">By Mickey</h2>
+              <h2 className="card-title font-limelight text-center">
+                By Mickey
+              </h2>
               <p>
                 Baseball, Sports and Custom Artworks made by Mickey Anthony.
                 Available in different sizes and materials (poster, aluminium /
