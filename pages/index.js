@@ -90,13 +90,13 @@ const Home = () => {
           </div>
         </div>
         <div className="w-full px-4 sm:w-4/12">
-          <div className="card ">
+          <div className="card">
             <figure className="rounded-full">
               <Image
                 src={ByMickey}
                 layout="responsive"
                 objectFit="contain"
-                height={4500}
+                height={460}
               />
             </figure>
             <div className="card-body">
