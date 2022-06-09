@@ -1,6 +1,7 @@
 const path = require("path");
 
 module.exports = {
+  swcMinify: true,
   reactStrictMode: true,
   images: {
     domains: ["www.netlify.com"],

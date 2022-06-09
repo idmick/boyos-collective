@@ -14,6 +14,21 @@ const idGen = () => {
 const linkTree = [
   {
     id: idGen(),
+    title: "Tickets Night Cafe @ Club Atelier",
+    url: "https://eventix.shop/4z3gak4w",
+  },
+  {
+    id: idGen(),
+    title: "Night Cafe @ Club Atelier (Link to event on Facebook)",
+    url: "https://eventix.shop/4z3gak4w",
+  },
+  {
+    id: idGen(),
+    title: "Instagram",
+    url: "https://www.instagram.com/boyos.collective/",
+  },
+  {
+    id: idGen(),
     title: "Bookings",
     url: "mailto:soundsystem@boyoscollective.nl?subject=Booking: ...",
   },
@@ -31,11 +46,6 @@ const linkTree = [
     id: idGen(),
     title: "Merch",
     url: "https://merch.boyoscollective.nl/",
-  },
-  {
-    id: idGen(),
-    title: "Instagram",
-    url: "https://www.instagram.com/boyos.collective/",
   },
 ];
 
