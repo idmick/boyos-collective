@@ -20,7 +20,7 @@ const linkTree = [
   {
     id: idGen(),
     title: "Night Cafe @ Club Atelier (Link to event on Facebook)",
-    url: "https://eventix.shop/4z3gak4w",
+    url: "https://fb.me/e/1MXv4FMrS",
   },
   {
     id: idGen(),
