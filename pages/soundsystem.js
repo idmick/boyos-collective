@@ -14,13 +14,8 @@ const idGen = () => {
 const linkTree = [
   {
     id: idGen(),
-    title: "Tickets Night Cafe @ Club Atelier",
-    url: "https://eventix.shop/4z3gak4w",
-  },
-  {
-    id: idGen(),
-    title: "Night Cafe @ Club Atelier (Link to event on Facebook)",
-    url: "https://fb.me/e/1MXv4FMrS",
+    title: "Like what you heard? Support us",
+    url: "https://bunq.me/BoyosSoundsystem",
   },
   {
     id: idGen(),
