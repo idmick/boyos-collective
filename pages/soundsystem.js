@@ -29,6 +29,11 @@ const linkTree = [
   },
   {
     id: idGen(),
+    title: "Resident Advisor",
+    url: "https://ra.co/dj/boyossoundsystem",
+  },
+  {
+    id: idGen(),
     title: "Twitch Live Streams",
     url: "https://www.twitch.tv/boyos_soundsystem",
   },
