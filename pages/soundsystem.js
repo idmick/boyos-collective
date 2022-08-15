@@ -61,17 +61,12 @@ const pastGigs = [
     monthYear: 'Jun 2022'
   },
   {
-    title: 'Night Café w// Boyos Soundsystem',
-    venue: 'Club Atelier',
-    monthYear: 'Jun 2022'
-  },
-  {
     title: 'Chez Miné',
     venue: 'Chez Miné',
     monthYear: 'Jun 2022'
   },
   {
-    title: 'Festival de Zon',
+    title: 'De Zon Festival',
     venue: 'NDSM Werf',
     monthYear: 'Jun 2022'
   },
@@ -98,11 +93,6 @@ const pastGigs = [
   {
     title: 'Barca',
     venue: 'Bar Barca',
-    monthYear: 'Mar 2022'
-  },
-  {
-    title: 'Mama Gaia Talks',
-    venue: 'Mama Gaia',
     monthYear: 'Mar 2022'
   },
   {
@@ -172,7 +162,7 @@ export default function Soundsystem() {
       <div className="flex flex-wrap justify-center">
         <div className="w-full sm:w-8/12 px-4">
           <h2 className="text-xl font-semibold mb-2 text-primary-content underline  ">
-            Our DJ sets
+            Our sets
           </h2>
           <ReactPlayer
             onPlay={startVinyl}
@@ -197,19 +187,21 @@ export default function Soundsystem() {
           <h2 className="text-xl font-semibold mb-2 text-primary-content mt-8 underline">
             Past Gigs
           </h2>
-          <ol class="relative border-l border-gray-200">
+          <div className="bg-black px-8 py-4 rounded">
+          <ol className="relative border-l border-primary back bg-black">
             {pastGigs.map((gig) => {
               return (
-                <li class="mb-10 ml-4">
-                  <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white"></div>
-                  <time class="mb-1 text-sm font-normal leading-none text-white">{gig.monthYear}</time>
-                  <h3 class="text-lg font-bold">{gig.title || gig.venue}</h3>
-                  <p class="mb-4 text-semibold text-white">{gig.venue}</p>
+                <li className="mb-10 ml-4">
+                  <div className="absolute w-3 h-3 bg-primary rounded-full mt-1.5 -left-1.5 border border-primary" />
+                  <time className="mb-1 text-sm font-normal leading-none text-white">{gig.monthYear}</time>
+                  <h3 className="text-lg font-bold text-primary">{gig.title || gig.venue}</h3>
+                  <p className="mb-4 text-semibold text-white" style={{ color: "#EC90B0" }}>{gig.venue}</p>
                 </li>
               );
             })}
 
           </ol>
+          </div>
         </div>
       </div>
     </div>
