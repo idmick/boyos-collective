@@ -83,7 +83,7 @@ const Home = () => {
                   className="btn btn-secondary btn-outline btn-block"
                   onClick={() => router.push("/soundsystem")}
                 >
-                  Checkout more
+                  Checkout the Groove
                 </button>
               </div>
             </div>

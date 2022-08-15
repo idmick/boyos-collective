@@ -49,6 +49,79 @@ const linkTree = [
   },
 ];
 
+const pastGigs = [
+  {
+    title: 'De Binnenstad',
+    venue: 'Club Atelier',
+    monthYear: 'Aug 2022'
+  },
+  {
+    title: 'Night Café w// Boyos Soundsystem',
+    venue: 'Club Atelier',
+    monthYear: 'Jun 2022'
+  },
+  {
+    title: 'Night Café w// Boyos Soundsystem',
+    venue: 'Club Atelier',
+    monthYear: 'Jun 2022'
+  },
+  {
+    title: 'Chez Miné',
+    venue: 'Chez Miné',
+    monthYear: 'Jun 2022'
+  },
+  {
+    title: 'Festival de Zon',
+    venue: 'NDSM Werf',
+    monthYear: 'Jun 2022'
+  },
+  {
+    title: 'Chez Miné',
+    venue: 'Chez Miné',
+    monthYear: 'May 2022'
+  },
+  {
+    title: 'Pizza Club',
+    venue: 'Pizza Club @ Scheveningen strand',
+    monthYear: 'May 2022'
+  },
+  {
+    title: 'Chez Miné',
+    venue: 'Chez Miné',
+    monthYear: 'Apr 2022'
+  },
+  {
+    title: 'Chez Miné',
+    venue: 'Chez Miné',
+    monthYear: 'Mar 2022'
+  },
+  {
+    title: 'Barca',
+    venue: 'Bar Barca',
+    monthYear: 'Mar 2022'
+  },
+  {
+    title: 'Mama Gaia Talks',
+    venue: 'Mama Gaia',
+    monthYear: 'Mar 2022'
+  },
+  {
+    title: 'Mama Gaia Talks',
+    venue: 'Mama Gaia',
+    monthYear: 'Mar 2022'
+  },
+  {
+    title: 'Burning Down The House',
+    venue: 'Kano, Brussels',
+    monthYear: 'Feb 2022'
+  },
+  {
+    title: 'Mama Gaia Talks',
+    venue: 'Mama Gaia',
+    monthYear: 'Nov 2021'
+  },
+]
+
 export default function Soundsystem() {
   const [isPlaying, setIsPlaying] = useState(false);
 
@@ -98,8 +171,8 @@ export default function Soundsystem() {
       </div>
       <div className="flex flex-wrap justify-center">
         <div className="w-full sm:w-8/12 px-4">
-          <h2 className="text-xl font-semibold mb-2 text-primary-content">
-            DJ Mixes
+          <h2 className="text-xl font-semibold mb-2 text-primary-content underline  ">
+            Our DJ sets
           </h2>
           <ReactPlayer
             onPlay={startVinyl}
@@ -121,6 +194,22 @@ export default function Soundsystem() {
               </div>
             );
           })}
+          <h2 className="text-xl font-semibold mb-2 text-primary-content mt-8 underline">
+            Past Gigs
+          </h2>
+          <ol class="relative border-l border-gray-200">
+            {pastGigs.map((gig) => {
+              return (
+                <li class="mb-10 ml-4">
+                  <div class="absolute w-3 h-3 bg-gray-200 rounded-full mt-1.5 -left-1.5 border border-white"></div>
+                  <time class="mb-1 text-sm font-normal leading-none text-white">{gig.monthYear}</time>
+                  <h3 class="text-lg font-bold">{gig.title || gig.venue}</h3>
+                  <p class="mb-4 text-semibold text-white">{gig.venue}</p>
+                </li>
+              );
+            })}
+
+          </ol>
         </div>
       </div>
     </div>
