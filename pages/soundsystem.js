@@ -20,7 +20,7 @@ const linkTree = [
   {
     id: idGen(),
     title: "Instagram",
-    url: "https://www.instagram.com/boyos.collective/",
+    url: "https://www.instagram.com/boyos.soundsystem/",
   },
   {
     id: idGen(),

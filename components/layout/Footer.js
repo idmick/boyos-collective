@@ -25,7 +25,7 @@ const Footer = () => {
       </div>
       <div>
         <div className="grid grid-flow-col gap-4">
-          <a href="https://www.instagram.com/boyos.collective/" target="_blank">
+          <a href="https://www.instagram.com/boyos.soundsystem/" target="_blank">
             <svg
               width="24"
               height="24"
