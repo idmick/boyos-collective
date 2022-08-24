@@ -167,9 +167,18 @@ export default function Soundsystem() {
           <ReactPlayer
             onPlay={startVinyl}
             onPause={pauseVinyl}
+            playing={true}
             url="https://soundcloud.com/boyos_soundsystem/"
             width="100%"
             height="225px"
+            config={{
+              soundcloud: {
+                options: {
+                  color: '#EC90B0',
+                  sharing: true
+                }
+              }
+            }}
           />
           {linkTree.map((link) => {
             return (
