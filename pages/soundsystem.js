@@ -2,6 +2,7 @@ import { useState } from "react";
 import ReactPlayer from "react-player";
 import Image from "next/image";
 import BoyosVinyl from "../public/images/boyos_vinyl.png";
+import PastGigs from "../data/PastGigs.json";
 
 const idGen = () => {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
@@ -49,68 +50,7 @@ const linkTree = [
   },
 ];
 
-const pastGigs = [
-  {
-    title: 'De Binnenstad',
-    venue: 'Club Atelier',
-    monthYear: 'Aug 2022'
-  },
-  {
-    title: 'Night Café w// Boyos Soundsystem',
-    venue: 'Club Atelier',
-    monthYear: 'Jun 2022'
-  },
-  {
-    title: 'Chez Miné',
-    venue: 'Chez Miné',
-    monthYear: 'Jun 2022'
-  },
-  {
-    title: 'De Zon Festival',
-    venue: 'NDSM Werf',
-    monthYear: 'Jun 2022'
-  },
-  {
-    title: 'Chez Miné',
-    venue: 'Chez Miné',
-    monthYear: 'May 2022'
-  },
-  {
-    title: 'Pizza Club',
-    venue: 'Pizza Club @ Scheveningen strand',
-    monthYear: 'May 2022'
-  },
-  {
-    title: 'Chez Miné',
-    venue: 'Chez Miné',
-    monthYear: 'Apr 2022'
-  },
-  {
-    title: 'Chez Miné',
-    venue: 'Chez Miné',
-    monthYear: 'Mar 2022'
-  },
-  {
-    title: 'Barca',
-    venue: 'Bar Barca',
-    monthYear: 'Mar 2022'
-  },
-  {
-    title: 'Mama Gaia Talks',
-    venue: 'Mama Gaia',
-    monthYear: 'Mar 2022'
-  },
-  {
-    title: 'Burning Down The House',
-    venue: 'Kano, Brussels',
-    monthYear: 'Feb 2022'
-  },
-  {
-    title: 'Mama Gaia Talks',
-    venue: 'Mama Gaia',
-    monthYear: 'Nov 2021'
-  },
-]
+const pastGigs = PastGigs.pastGigs
 
 export default function Soundsystem() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -167,7 +107,7 @@ export default function Soundsystem() {
           <ReactPlayer
             onPlay={startVinyl}
             onPause={pauseVinyl}
-            playing={true}
+            // playing={true}
             url="https://soundcloud.com/boyos_soundsystem/"
             width="100%"
             height="225px"
@@ -175,7 +115,8 @@ export default function Soundsystem() {
               soundcloud: {
                 options: {
                   color: '#EC90B0',
-                  sharing: true
+                  sharing: true,
+                  auto_play: true,
                 }
               }
             }}
