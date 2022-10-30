@@ -1,6 +1,16 @@
 {
     "pastGigs": [
     {
+      "title": "Open Source Radio",
+      "venue": "Open Source Radio, Nijmegen",
+      "monthYear": "Oct 2022"
+    },
+    {
+      "title": "Club3",
+      "venue": "Club3, Haarlem",
+      "monthYear": "Oct 2022"
+    },
+    {
       "title": "Il Cafe 7,5 year Birthday",
       "venue": "Il Cafe, Amstelveen",
       "monthYear": "Sept 2022"
