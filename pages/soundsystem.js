@@ -20,6 +20,11 @@ const linkTree = [
   },
   {
     id: idGen(),
+    title: "Open Source Radio 30/10/22 - Boyos Soundsysystem DJ Set (Youtube)",
+    url: "https://www.youtube.com/watch?v=ANB1UNfqitE&t=3359s",
+  },
+  {
+    id: idGen(),
     title: "Instagram",
     url: "https://www.instagram.com/boyos.soundsystem/",
   },
