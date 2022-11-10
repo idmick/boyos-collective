@@ -1,6 +1,11 @@
 {
     "pastGigs": [
     {
+      "title": "Sissi's Expo",
+      "venue": "Sissi's Expo, Amsterdam",
+      "monthYear": "Nov 2022"
+    },
+    {
       "title": "Open Source Radio",
       "venue": "Open Source Radio, Nijmegen",
       "monthYear": "Oct 2022"
