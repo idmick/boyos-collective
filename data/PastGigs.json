@@ -1,6 +1,11 @@
 {
     "pastGigs": [
     {
+      "title": "Hotel Credible",
+      "venue": "Hotel Credible, Nijmegen",
+      "monthYear": "Dec 2022"
+    },
+    {
       "title": "Lovelee Ambassador Drinks",
       "venue": "Lovelee, Amsterdam",
       "monthYear": "Nov 2022"
