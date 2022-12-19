@@ -13,11 +13,11 @@ const idGen = () => {
 };
 
 const linkTree = [
-  {
-    id: idGen(),
-    title: "Like what you heard? Support us",
-    url: "https://bunq.me/BoyosSoundsystem",
-  },
+  // {
+  //   id: idGen(),
+  //   title: "Like what you heard? Support us",
+  //   url: "https://bunq.me/BoyosSoundsystem",
+  // },
   {
     id: idGen(),
     title: "Open Source Radio 30/10/22 - Boyos Soundsysystem DJ Set (Youtube)",
