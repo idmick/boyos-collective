@@ -1,6 +1,11 @@
 {
     "pastGigs": [
     {
+      "title": "Nightclubbing",
+      "venue": "Pllek, Amsterdam",
+      "monthYear": "Dec 2022"
+    },
+    {
       "title": "Hotel Credible",
       "venue": "Hotel Credible, Nijmegen",
       "monthYear": "Dec 2022"
