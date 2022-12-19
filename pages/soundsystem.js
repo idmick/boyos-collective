@@ -139,7 +139,7 @@ export default function Soundsystem() {
               </div>
             );
           })}
-          <h2 className="text-xl font-semibold mb-2 text-primary-content mt-8 underline">
+          <h2 id="past-gigs" className="text-xl font-semibold mb-2 text-primary-content mt-8 underline">
             Past Gigs
           </h2>
           <div className="bg-black px-8 py-4 rounded">
