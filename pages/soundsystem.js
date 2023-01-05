@@ -79,7 +79,7 @@ export default function Soundsystem() {
         description: 'Boyos Soundsystem is a dynamic trio of DJs who bring a blend of vinyl and digital music to the dance floor. Their sets are filled with funky, high-energy beats across a variety of genres including Brazilian Boogie, Soca, Zouk, Italo, Disco, and (Afro) House. With their signature style and energy behind the decks, Boyos Soundsystem always knows how to get a crowd moving. Catch them at a venue near you and join in on the fun on the dance floor.',
         images: [
           {
-            url: "https://www.boyoscollective.nl/images/boyos_we_got_the_funk.png",
+            url: "https://www.boyoscollective.nl/images/Boyos_we_got_the_funk - square.png",
             alt: "Boyos Soundsytem og-image",
           },
         ],
