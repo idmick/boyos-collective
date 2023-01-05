@@ -8,7 +8,7 @@ import "tailwindcss/tailwind.css";
 const MyApp = ({ Component, pageProps }) => {
   return (
     <Layout>
-      <DefaultSeo {...defaultSEOConfig} />
+      {/* <DefaultSeo {...defaultSEOConfig} /> */}
       <Component {...pageProps} />
     </Layout>
   );

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import ReactPlayer from "react-player";
 import Image from "next/image";
-import BoyosVinyl from "../public/images/boyos_vinyl.png";
+import BoyosSoundsystem from "../public/images/boyos_we_got_the_funk.png";
 import PastGigs from "../data/PastGigs.json";
 import { NextSeo } from 'next-seo';
 
@@ -84,19 +84,20 @@ export default function Soundsystem() {
       <div className="flex flex-wrap justify-center items-center pt-5 mb-5">
         <div className="w-full sm:w-4/12 px-4 flex flex-col">
           <div
-            className={`${isPlaying ? "animate-spin-slow" : "animate-none"}`}
+            // className={`${isPlaying ? "animate-spin-slow" : "animate-none"}`}
           >
             <Image
-              src={BoyosVinyl}
+              src={BoyosSoundsystem}
               layout="responsive"
               objectFit="contain"
               height={450}
+              alt="Boyos Soundsytem Logo"
             />
           </div>
-          <h1 className="text-3xl font-bold text-center mt-5 font-limelight text-primary-content">
+          {/* <h1 className="text-3xl font-bold text-center mt-5 font-limelight text-primary-content">
             Boyos Soundsystem
-          </h1>
-          <div className="flex justify-center relative mb-6">
+          </h1> */}
+          {/* <div className="flex justify-center relative mb-6">
             <span
               className="absolute bg-primary"
               style={{
@@ -113,7 +114,7 @@ export default function Soundsystem() {
             >
               We Got The Funk
             </span>
-          </div>
+          </div> */}
         </div>
       </div>
       <div className="flex flex-wrap justify-center">
