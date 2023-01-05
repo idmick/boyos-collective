@@ -3,6 +3,7 @@ import ReactPlayer from "react-player";
 import Image from "next/image";
 import BoyosVinyl from "../public/images/boyos_vinyl.png";
 import PastGigs from "../data/PastGigs.json";
+import { NextSeo } from 'next-seo';
 
 const idGen = () => {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
@@ -68,6 +69,17 @@ export default function Soundsystem() {
   };
 
   return (
+    <>
+    <NextSeo
+      title="Boyos Soundsystem"
+      description="Boyos Soundsystem is a dynamic trio of DJs who bring a blend of vinyl and digital music to the dance floor. Their sets are filled with funky, high-energy beats across a variety of genres including Brazilian Boogie, Soca, Zouk, Italo, Disco, and (Afro) House. With their signature style and energy behind the decks, Boyos Soundsystem always knows how to get a crowd moving. Catch them at a venue near you and join in on the fun on the dance floor."
+      openGraph={{
+        url: 'https://www.boyoscollective.nl/soundsystem',
+        title: 'Boyos Soundsystem',
+        description: 'Boyos Soundsystem is a dynamic trio of DJs who bring a blend of vinyl and digital music to the dance floor. Their sets are filled with funky, high-energy beats across a variety of genres including Brazilian Boogie, Soca, Zouk, Italo, Disco, and (Afro) House. With their signature style and energy behind the decks, Boyos Soundsystem always knows how to get a crowd moving. Catch them at a venue near you and join in on the fun on the dance floor.',
+        siteName: 'Boyos Collective',
+      }}
+    />
     <div className="container-fluid px-4 pb-10 mx-auto bg-secondary">
       <div className="flex flex-wrap justify-center items-center pt-5 mb-5">
         <div className="w-full sm:w-4/12 px-4 flex flex-col">
@@ -160,5 +172,6 @@ export default function Soundsystem() {
         </div>
       </div>
     </div>
+    </>
   );
 }
