@@ -1,6 +1,11 @@
 {
     "pastGigs": [
     {
+      "title": "Kopstootbar",
+      "venue": "Kopstootbar, Amsterdam",
+      "monthYear": "Jan 2022"
+    },
+    {
       "title": "Nightclubbing",
       "venue": "Pllek, Amsterdam",
       "monthYear": "Dec 2022"
