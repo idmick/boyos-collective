@@ -1,6 +1,16 @@
 {
     "pastGigs": [
     {
+      "title": "Groove Pool",
+      "venue": "Lovelee, Amsterdam",
+      "monthYear": "Feb 2022"
+    },
+    {
+      "title": "Lola",
+      "venue": "Skatepark Haarlem, Haarlem",
+      "monthYear": "Jan 2022"
+    },
+    {
       "title": "Kopstootbar",
       "venue": "Kopstootbar, Amsterdam",
       "monthYear": "Jan 2022"
