@@ -1,6 +1,11 @@
 {
     "pastGigs": [
     {
+      "title": "Bleyenberg",
+      "venue": "Bleyenberg, The Hague",
+      "monthYear": "Feb 2023"
+    },
+    {
       "title": "Studio Houtbaar",
       "venue": "Houtbaar, Amsterdam",
       "monthYear": "Feb 2023"
@@ -107,7 +112,7 @@
     },
     {
       "title": "Pizza Club",
-      "venue": "Pizza Club @ Scheveningen strand",
+      "venue": "Pizza Club, The Hague",
       "monthYear": "May 2022"
     },
     {
