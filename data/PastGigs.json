@@ -1,6 +1,16 @@
 {
     "pastGigs": [
     {
+      "title": "Rooftop",
+      "venue": "Bleyenberg, The Hague",
+      "monthYear": "Mar 2023"
+    },
+    {
+      "title": "Aperativo",
+      "venue": "Bar Italia, Amsterdam",
+      "monthYear": "Mar 2023"
+    },
+    {
       "title": "CLUB NIGHT W/ LÖVESTAD",
       "venue": "Club Atelier, Amsterdam",
       "monthYear": "Mar 2023"
