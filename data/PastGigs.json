@@ -1,6 +1,11 @@
 {
     "pastGigs": [
     {
+      "title": "Happy Feelings",
+      "venue": "Patronaat, Haarlem",
+      "monthYear": "Mar 2023"
+    },
+    {
       "title": "Rooftop",
       "venue": "Bleyenberg, The Hague",
       "monthYear": "Mar 2023"
