@@ -22,12 +22,12 @@ const linkTree = [
   {
     id: idGen(),
     title: "STOKED x Skatepark NOORD - 12 Mei 2023 | Ripstar",
-    url: "https://lola-events.nl/",
+    url: "https://shop.eventix.io/ed8a6e8d-b1c2-11ed-9550-6a57c78572ab/tickets?shop_code=dd5fsyn4",
   },
   {
     id: idGen(),
-    title: "STOKED x Skatepark NOORD - 12 Mei 2023 | Ripstar",
-    url: "Lola | 1 Year Anniversary | Mini Festival",
+    title: "Lola | 1 Year Anniversary | Mini Festival",
+    url: "https://shop.eventix.io/24408c48-c48c-11ec-b3c4-9e36bf7d673e/tickets?shop_code=f7y92dsb&original_referer=https%3A%2F%2Flola-events.nl%2F",
   },
   {
     id: idGen(),
