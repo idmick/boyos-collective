@@ -21,6 +21,16 @@ const linkTree = [
   // },
   {
     id: idGen(),
+    title: "STOKED x Skatepark NOORD - 12 Mei 2023 | Ripstar",
+    url: "https://lola-events.nl/",
+  },
+  {
+    id: idGen(),
+    title: "STOKED x Skatepark NOORD - 12 Mei 2023 | Ripstar",
+    url: "Lola | 1 Year Anniversary | Mini Festival",
+  },
+  {
+    id: idGen(),
     title: "Open Source Radio 30/10/22 - Boyos Soundsysystem DJ Set (Youtube)",
     url: "https://www.youtube.com/watch?v=ANB1UNfqitE&t=3359s",
   },
