@@ -1,6 +1,16 @@
 {
   "pastGigs": [
     {
+      "title": "Happy Feelings",
+      "venue": "Oostkust, Breda",
+      "monthYear": "May 2023"
+    },
+    {
+      "title": "Ripstar presents: Stoked",
+      "venue": "Skatepark Noord, Amsterdam",
+      "monthYear": "May 2023"
+    },
+    {
       "title": "Boyos Wonderland: a Kingsday Blockparty",
       "venue": "Carroll's, Amsterdam",
       "monthYear": "Apr 2023"
