@@ -21,16 +21,6 @@ const linkTree = [
   // },
   {
     id: idGen(),
-    title: "Lola | 1 Year Anniversary | Mini Festival",
-    url: "https://shop.eventix.io/24408c48-c48c-11ec-b3c4-9e36bf7d673e/tickets?shop_code=f7y92dsb&original_referer=https%3A%2F%2Flola-events.nl%2F",
-  },
-  {
-    id: idGen(),
-    title: "De Zon Festival | Fan tickets",
-    url: "https://shop.eventix.io/8fb7d566-ebea-477d-a339-78e569c93695/tickets?shop_code=dqjrz6qk",
-  },
-  {
-    id: idGen(),
     title: "Open Source Radio 30/10/22 - Boyos Soundsysystem DJ Set (Youtube)",
     url: "https://www.youtube.com/watch?v=ANB1UNfqitE&t=3359s",
   },

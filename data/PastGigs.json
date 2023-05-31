@@ -1,6 +1,21 @@
 {
   "pastGigs": [
     {
+      "title": "De Zon Festival",
+      "venue": "Tuinen van West, Amsterdam",
+      "monthYear": "May 2023"
+    },
+    {
+      "title": "Lola | 1 Year Anniversary | Mini Festival",
+      "venue": "Houtbaar, Haarlem",
+      "monthYear": "May 2023"
+    },
+    {
+      "title": "TechRise Festival",
+      "venue": "Club Atelier, Amsterdam",
+      "monthYear": "May 2023"
+    },
+    {
       "title": "Happy Feelings",
       "venue": "Oostkust, Breda",
       "monthYear": "May 2023"
@@ -57,7 +72,7 @@
     },
     {
       "title": "Studio Houtbaar",
-      "venue": "Houtbaar, Amsterdam",
+      "venue": "Houtbaar, Haarlem",
       "monthYear": "Feb 2023"
     },
     {
