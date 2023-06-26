@@ -1,6 +1,16 @@
 {
   "pastGigs": [
     {
+      "title": "Nightclubbing",
+      "venue": "Pllek, Amsterdam",
+      "monthYear": "Jun 2023"
+    },
+    {
+      "title": "Lagerwal",
+      "venue": "Lagerwal, Amsterdam",
+      "monthYear": "Jun 2023"
+    },
+    {
       "title": "Woodstock 69: All Day Set",
       "venue": "Woodstock 69, Bloemendaal aan Zee",
       "monthYear": "Jun 2023"
