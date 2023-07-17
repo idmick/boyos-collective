@@ -3,7 +3,7 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import BoyosMerch from "../public/images/boyos_merch.jpeg";
 import BoyosVinyl from "../public/images/boyos_vinyl.png";
-import ByMickey from "../public/images/artworks/Greg.png";
+// import ByMickey from "../public/images/artworks/Greg.png";
 import BoyosBoxed from "../public/images/Boyos_logo_boxed.png";
 import { NextSeo } from 'next-seo';
 
@@ -89,7 +89,7 @@ const Home = () => {
                   Boyos Soundsytem
                 </h2>
                 <p>
-                  Boyos Soundsystem is a dynamic trio of DJs who bring a blend of vinyl and digital music to the dance floor. Their sets are filled with funky, high-energy beats across a variety of genres including Brazilian Boogie, Soca, Zouk, Italo, Disco, and (Afro) House. With their signature style and energy behind the decks, Boyos Soundsystem always knows how to get a crowd moving. Catch them at a venue near you and join in on the fun on the dance floor.
+                Boyos Soundsystem, an Amsterdam-based trio of DJs - Nicolaas, Tomas, and Mick - are known for their electrifying sets across the Netherlands, transforming house parties into vibrant dance events. With their eclectic blend of Brazilian Boogie, Soca, Zouk, Italo, Disco, and Afro House, they have lit up stages at events such as De Zon Festival, Veerplas Festival, and the legendary Woodstock 69. Their performances are a unique journey through sound, creating unforgettable experiences. Join the groove and be part of their musical voyage. Stay groovy!
                 </p>
                 <div className="justify-end card-actions">
                   <button
@@ -102,7 +102,7 @@ const Home = () => {
               </div>
             </div>
           </div>
-          <div className="w-full px-4 sm:w-4/12">
+          {/* <div className="w-full px-4 sm:w-4/12">
             <div className="card">
               <figure className="rounded-full">
                 <Image
@@ -113,7 +113,7 @@ const Home = () => {
                 />
               </figure>
               <div className="card-body">
-                <h2 className="card-title font-limelight text-center">
+                <h2 className="card-title font-spicyrice text-center">
                   By Mickey
                 </h2>
                 <p>
@@ -131,7 +131,7 @@ const Home = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </>
