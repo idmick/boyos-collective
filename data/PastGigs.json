@@ -1,6 +1,26 @@
 {
   "pastGigs": [
     {
+      "title": "Woodstock 69: All Day Set",
+      "venue": "Woodstock 69, Bloemendaal aan Zee",
+      "monthYear": "Aug 2023"
+    },
+    {
+      "title": "Sissi's Expo-Resto",
+      "venue": "Sissi's Expo-Resto, Amsterdam",
+      "monthYear": "Aug 2023"
+    },
+    {
+      "title": "Studio Houtbaar",
+      "venue": "Houtbaar, Haarlem",
+      "monthYear": "Aug 2023"
+    },
+    {
+      "title": "Nightclubbing",
+      "venue": "Pllek, Amsterdam",
+      "monthYear": "Jul 2023"
+    },
+    {
       "title": "Vierdaagsefeesten",
       "venue": "Hotel Credible, Nijmegen",
       "monthYear": "Jul 2023"
