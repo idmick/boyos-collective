@@ -21,6 +21,11 @@ const linkTree = [
   // },
   {
     id: idGen(),
+    title: "Electic Voyage @ Jaguar House - Boyos Soundsysystem DJ Set (Youtube)",
+    url: "https://youtu.be/TY_hzG5HY3k?si=Quyy5CXRNH-alS3M",
+  },
+  {
+    id: idGen(),
     title: "Open Source Radio 30/10/22 - Boyos Soundsysystem DJ Set (Youtube)",
     url: "https://www.youtube.com/watch?v=ANB1UNfqitE&t=3359s",
   },
