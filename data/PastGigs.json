@@ -1,6 +1,21 @@
 {
   "pastGigs": [
     {
+      "title": "Nightclubbing",
+      "venue": "Pllek, Amsterdam",
+      "monthYear": "Sept 2023"
+    },
+    {
+      "title": "Houtbaar Summer Closing w/ Benwal & Tjade",
+      "venue": "Houtbaar, Haarlem",
+      "monthYear": "Sept 2023"
+    },
+    {
+      "title": "Privte Event",
+      "venue": "Kleine Canvas, Amsterdam",
+      "monthYear": "Sept 2023"
+    },
+    {
       "title": "Kopstootbar",
       "venue": "Kopstootbar, Amsterdam",
       "monthYear": "Aug 2023"
