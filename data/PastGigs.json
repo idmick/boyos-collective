@@ -1,6 +1,16 @@
 {
   "pastGigs": [
     {
+      "title": "RARARADIO",
+      "venue": "RARARADIO, Eindhoven",
+      "monthYear": "Oct 2023"
+    },
+    {
+      "title": "Privte Event",
+      "venue": "Strandpaal 69, Zandvoort",
+      "monthYear": "Oct 2023"
+    },
+    {
       "title": "Nightclubbing",
       "venue": "Pllek, Amsterdam",
       "monthYear": "Sept 2023"
