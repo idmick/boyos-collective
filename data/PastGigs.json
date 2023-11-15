@@ -1,6 +1,16 @@
 {
   "pastGigs": [
     {
+      "title": "Private Event",
+      "venue": "Aknathon, Amsterdam",
+      "monthYear": "Nov 2023"
+    },
+    {
+      "title": "Yellow House",
+      "venue": "Yellow House, Amsterdam",
+      "monthYear": "Nov 2023"
+    },
+    {
       "title": "RARARADIO",
       "venue": "RARARADIO, Eindhoven",
       "monthYear": "Oct 2023"
