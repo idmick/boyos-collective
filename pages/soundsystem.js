@@ -21,6 +21,11 @@ const linkTree = [
   // },
   {
     id: idGen(),
+    title: "Club Night 02-12-2023 W/ Boyos Soundsystem All Night Long",
+    url: "https://shop.eventix.io/0b27b1d3-5d0a-4611-824b-375fafe9942f/tickets?shop_code=urcmnrr8",
+  },
+  {
+    id: idGen(),
     title: "Eclectic Voyage @ Jaguar House - Boyos Soundsysystem DJ Set (Youtube)",
     url: "https://youtu.be/TY_hzG5HY3k?si=Quyy5CXRNH-alS3M",
   },

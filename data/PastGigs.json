@@ -1,6 +1,11 @@
 {
   "pastGigs": [
     {
+      "title": "Nightclubbing",
+      "venue": "Pllek, Amsterdam",
+      "monthYear": "Nov 2023"
+    },
+    {
       "title": "Private Event",
       "venue": "Aknathon, Amsterdam",
       "monthYear": "Nov 2023"
@@ -9,6 +14,11 @@
       "title": "Yellow House",
       "venue": "Yellow House, Amsterdam",
       "monthYear": "Nov 2023"
+    },
+    {
+      "title": "Open Source Radio",
+      "venue": "Open Source Radio, Nijmegen",
+      "monthYear": "Oct 2023"
     },
     {
       "title": "RARARADIO",
