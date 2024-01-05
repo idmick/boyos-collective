@@ -22,7 +22,12 @@ const linkTree = [
   {
     id: idGen(),
     title: "Upcomming gigs",
-    url: "https://www.instagram.com/p/C0PEVbMId7U/",
+    url: "https://www.instagram.com/p/C1rMDPZIAr_/",
+  },
+  {
+    id: idGen(),
+    title: "Essential Groove - Spotify Playlist",
+    url: "https://open.spotify.com/playlist/0sB9bNTv9HNaGlIC5KyLuH?si=8035d8a8a8bd4c7f",
   },
   {
     id: idGen(),
@@ -49,11 +54,6 @@ const linkTree = [
   //   id: idGen(),
   //   title: "Twitch Live Streams",
   //   url: "https://www.twitch.tv/boyos_soundsystem",
-  // },
-  // {
-  //   id: idGen(),
-  //   title: "Spotify Playlist",
-  //   url: "https://open.spotify.com/playlist/4x9nUqSbxBrwtTQ52iQ5lW?si=0a982c62d80e46b7",
   // },
   // {
   //   id: idGen(),
