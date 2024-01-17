@@ -1,6 +1,11 @@
 {
   "pastGigs": [
     {
+      "title": "Boyos Wonderland",
+      "venue": "Houtbaar, Haarlem",
+      "monthYear": "Jan 2024"
+    },
+    {
       "title": "Bar Dancing Multipla",
       "venue": "Bar Dancing Multipla, Amsterdam",
       "monthYear": "Dec 2023"
