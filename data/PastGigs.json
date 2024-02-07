@@ -1,6 +1,21 @@
 {
   "pastGigs": [
     {
+      "title": "Private Event",
+      "venue": "Haarlemmermeerstation, Amsterdam",
+      "monthYear": "Jan 2024"
+    },
+    {
+      "title": "Friendly Vibes",
+      "venue": "Club Atelier, Amsterdam",
+      "monthYear": "Jan 2024"
+    },
+    {
+      "title": "Kopstootbar: All-nighter",
+      "venue": "Kopstootbar, Amsterdam",
+      "monthYear": "Jan 2024"
+    },
+    {
       "title": "Boyos Wonderland",
       "venue": "Houtbaar, Haarlem",
       "monthYear": "Jan 2024"
