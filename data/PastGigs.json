@@ -1,14 +1,29 @@
 {
   "pastGigs": [
     {
+      "title": "Lost Paradise",
+      "venue": "Toekomstmuziek, Amsterdam",
+      "monthYear": "Feb 2024"
+    },
+    {
+      "title": "Happy Feelings",
+      "venue": "Patronaat, Haarlem",
+      "monthYear": "Feb 2024"
+    },
+    {
+      "title": "Boyos Wonderland w/ Laura Meester",
+      "venue": "Houtbaar, Haarlem",
+      "monthYear": "Feb 2024"
+    },
+    {
       "title": "Private Event",
       "venue": "Haarlemmermeerstation, Amsterdam",
-      "monthYear": "Jan 2024"
+      "monthYear": "Feb 2024"
     },
     {
       "title": "Friendly Vibes",
       "venue": "Club Atelier, Amsterdam",
-      "monthYear": "Jan 2024"
+      "monthYear": "Feb 2024"
     },
     {
       "title": "Kopstootbar: All-nighter",
@@ -16,7 +31,7 @@
       "monthYear": "Jan 2024"
     },
     {
-      "title": "Boyos Wonderland",
+      "title": "Boyos Wonderland w/ Da Graca Brothers",
       "venue": "Houtbaar, Haarlem",
       "monthYear": "Jan 2024"
     },
