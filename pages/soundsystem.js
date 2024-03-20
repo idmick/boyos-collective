@@ -26,6 +26,11 @@ const linkTree = [
   },
   {
     id: idGen(),
+    title: "Soulful Sunday at Bret 14.04.2024",
+    url: "https://eventix.shop/z27knuav",
+  },
+  {
+    id: idGen(),
     title: "Essential Groove - Spotify Playlist",
     url: "https://open.spotify.com/playlist/0sB9bNTv9HNaGlIC5KyLuH?si=8035d8a8a8bd4c7f",
   },
