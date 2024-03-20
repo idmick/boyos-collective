@@ -26,8 +26,13 @@ const linkTree = [
   },
   {
     id: idGen(),
-    title: "Soulful Sunday at Bret 14.04.2024",
+    title: "Tickets: Soulful Sunday at Bret 14.04.2024",
     url: "https://eventix.shop/z27knuav",
+  },
+  {
+    id: idGen(),
+    title: "Tickets: Lola x Houtbaar haarlem 18.05.2024",
+    url: "https://shop.eventix.io/24408c48-c48c-11ec-b3c4-9e36bf7d673e/tickets?shop_code=tq6qcz37",
   },
   {
     id: idGen(),
