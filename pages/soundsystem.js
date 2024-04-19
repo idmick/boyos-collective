@@ -22,12 +22,7 @@ const linkTree = [
   {
     id: idGen(),
     title: "Upcomming gigs",
-    url: "https://www.instagram.com/p/C3x8gLwIMBu/",
-  },
-  {
-    id: idGen(),
-    title: "Tickets: Soulful Sunday at Bret 14.04.2024",
-    url: "https://eventix.shop/z27knuav",
+    url: "https://www.instagram.com/p/C5LJ_EWI1l4/",
   },
   {
     id: idGen(),
