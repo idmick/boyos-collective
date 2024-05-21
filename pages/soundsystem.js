@@ -26,13 +26,23 @@ const linkTree = [
   },
   {
     id: idGen(),
-    title: "Tickets: Lola x Houtbaar haarlem 18.05.2024",
-    url: "https://shop.eventix.io/24408c48-c48c-11ec-b3c4-9e36bf7d673e/tickets?shop_code=tq6qcz37",
+    title: "Tickets: Pacific by Night w/ Boyos Soundsystem",
+    url: "https://shop.eventix.io/9d78af80-a006-11ee-a9cb-7e126431635e/tickets?event=a8316232-4aae-4deb-a145-dbb5d5fbbf69",
+  },
+  {
+    id: idGen(),
+    title: "Tickets: Jaguar House x Doka Studio (26-5)",
+    url: "https://www.volkshotel.nl/agenda/doka/jaguar-house-x-doka-studio-w-boyos-soundsystem-da-graca-brothers-vasco/",
   },
   {
     id: idGen(),
     title: "Essential Groove - Spotify Playlist",
     url: "https://open.spotify.com/playlist/0sB9bNTv9HNaGlIC5KyLuH?si=8035d8a8a8bd4c7f",
+  },
+  {
+    id: idGen(),
+    title: "Join our WhatsApp Comunnity",
+    url: "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
   },
   {
     id: idGen(),
