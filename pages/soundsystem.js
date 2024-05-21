@@ -22,7 +22,7 @@ const linkTree = [
   {
     id: idGen(),
     title: "Upcomming gigs",
-    url: "https://www.instagram.com/p/C5LJ_EWI1l4/",
+    url: "https://www.instagram.com/p/C6OaSGGoCYK/",
   },
   {
     id: idGen(),
