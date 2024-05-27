@@ -31,11 +31,6 @@ const linkTree = [
   },
   {
     id: idGen(),
-    title: "Tickets: Jaguar House x Doka Studio [26-05]",
-    url: "https://www.volkshotel.nl/agenda/doka/jaguar-house-x-doka-studio-w-boyos-soundsystem-da-graca-brothers-vasco/",
-  },
-  {
-    id: idGen(),
     title: "Essential Groove - Spotify Playlist",
     url: "https://open.spotify.com/playlist/0sB9bNTv9HNaGlIC5KyLuH?si=8035d8a8a8bd4c7f",
   },
