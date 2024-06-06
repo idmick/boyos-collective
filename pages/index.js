@@ -43,6 +43,34 @@ const Home = () => {
           </div>
         </div>
         <div className="flex flex-wrap">
+        <div className="w-full px-4 sm:w-4/12">
+            <div className="card">
+              <figure>
+                <Image
+                  src={BoyosVinyl}
+                  layout="responsive"
+                  objectFit="contain"
+                  height={450}
+                />
+              </figure>
+              <div className="card-body">
+                <h2 className="card-title font-limelight text-center">
+                  Boyos Soundsytem
+                </h2>
+                <p>
+                Boyos Soundsystem, an Amsterdam-based trio of DJs - Nicolaas, Tomas, and Mick - are known for their electrifying sets across the Netherlands, transforming house parties into vibrant dance events. With their eclectic blend of Brazilian Boogie, Soca, Zouk, Italo, Disco, and Afro House, they have lit up stages at events such as De Zon Festival, Veerplas Festival, and the legendary Woodstock 69. Their performances are a unique journey through sound, creating unforgettable experiences. Join the groove and be part of their musical voyage. Stay groovy!
+                </p>
+                <div className="justify-end card-actions">
+                  <button
+                    className="btn btn-secondary btn-outline btn-block"
+                    onClick={() => router.push("/soundsystem")}
+                  >
+                    Checkout the Groove
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className="w-full px-4 sm:w-4/12">
             <div className="card">
               <figure>
@@ -70,34 +98,6 @@ const Home = () => {
                   >
                     Checkout more
                   </a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div className="w-full px-4 sm:w-4/12">
-            <div className="card">
-              <figure>
-                <Image
-                  src={BoyosVinyl}
-                  layout="responsive"
-                  objectFit="contain"
-                  height={450}
-                />
-              </figure>
-              <div className="card-body">
-                <h2 className="card-title font-limelight text-center">
-                  Boyos Soundsytem
-                </h2>
-                <p>
-                Boyos Soundsystem, an Amsterdam-based trio of DJs - Nicolaas, Tomas, and Mick - are known for their electrifying sets across the Netherlands, transforming house parties into vibrant dance events. With their eclectic blend of Brazilian Boogie, Soca, Zouk, Italo, Disco, and Afro House, they have lit up stages at events such as De Zon Festival, Veerplas Festival, and the legendary Woodstock 69. Their performances are a unique journey through sound, creating unforgettable experiences. Join the groove and be part of their musical voyage. Stay groovy!
-                </p>
-                <div className="justify-end card-actions">
-                  <button
-                    className="btn btn-secondary btn-outline btn-block"
-                    onClick={() => router.push("/soundsystem")}
-                  >
-                    Checkout the Groove
-                  </button>
                 </div>
               </div>
             </div>
