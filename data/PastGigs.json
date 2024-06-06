@@ -1,16 +1,12 @@
 {
   "pastGigs": [
     {
-<<<<<<< HEAD
-      "title": "Jaguar House x Doka w/ Boyos Soundsystem, Da Graca Brothers & Vasco",
-=======
       "title": "PbN w/ Boyos Soundsystem",
       "venue": "Pacific, Amsterdam",
       "monthYear": "Jun 2024"
     },
     {
-      "title": "Jaguar House x Doka",
->>>>>>> 971bc2b (chore: added past gigs and updated link tree)
+      "title": "Jaguar House x Doka Studio",
       "venue": "Doka, Amsterdam",
       "monthYear": "May 2024"
     },
