@@ -22,22 +22,7 @@ const linkTree = [
   {
     id: idGen(),
     title: "Upcoming gigs",
-    url: "https://www.instagram.com/p/C6OaSGGoCYK/",
-  },
-  {
-    id: idGen(),
-    title: "Tickets: Pacific by Night w/ Boyos Soundsystem [01-06]",
-    url: "https://shop.eventix.io/9d78af80-a006-11ee-a9cb-7e126431635e/tickets?event=a8316232-4aae-4deb-a145-dbb5d5fbbf69",
-  },
-  {
-    id: idGen(),
-    title: "Essential Groove - Spotify Playlist",
-    url: "https://open.spotify.com/playlist/0sB9bNTv9HNaGlIC5KyLuH?si=8035d8a8a8bd4c7f",
-  },
-  {
-    id: idGen(),
-    title: "Join our WhatsApp Comunnity",
-    url: "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
+    url: "https://www.instagram.com/p/C7msy27oPb2/",
   },
   {
     id: idGen(),
@@ -48,6 +33,21 @@ const linkTree = [
     id: idGen(),
     title: "Instagram",
     url: "https://www.instagram.com/boyos.soundsystem/",
+  },
+  {
+    id: idGen(),
+    title: "Join our WhatsApp Comunnity",
+    url: "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
+  },
+  // {
+  //   id: idGen(),
+  //   title: "Tickets: Jaguar House x Doka Studio [26-05]",
+  //   url: "https://www.volkshotel.nl/agenda/doka/jaguar-house-x-doka-studio-w-boyos-soundsystem-da-graca-brothers-vasco/",
+  // },
+  {
+    id: idGen(),
+    title: "Essential Groove - Spotify Playlist",
+    url: "https://open.spotify.com/playlist/0sB9bNTv9HNaGlIC5KyLuH?si=8035d8a8a8bd4c7f",
   },
   {
     id: idGen(),
