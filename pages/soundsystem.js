@@ -19,6 +19,11 @@ const linkTree = [
   //   title: "Like what you heard? Support us",
   //   url: "https://bunq.me/BoyosSoundsystem",
   // },
+    {
+    id: idGen(),
+    title: "Tickets: Boyos Wonderland Mini Festival [17-08]",
+    url: "https://shop.eventix.io/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9",
+  },
   {
     id: idGen(),
     title: "Upcoming gigs",
@@ -26,13 +31,13 @@ const linkTree = [
   },
   {
     id: idGen(),
-    title: "Boyos Wonderland",
-    url: "https://www.instagram.com/boyos.wonderland/",
+    title: "Instagram",
+    url: "https://www.instagram.com/boyos.soundsystem/",
   },
   {
     id: idGen(),
-    title: "Instagram",
-    url: "https://www.instagram.com/boyos.soundsystem/",
+    title: "Boyos Wonderland",
+    url: "https://www.instagram.com/boyos.wonderland/",
   },
   {
     id: idGen(),
