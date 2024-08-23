@@ -19,11 +19,11 @@ const linkTree = [
   //   title: "Like what you heard? Support us",
   //   url: "https://bunq.me/BoyosSoundsystem",
   // },
-  {
-    id: idGen(),
-    title: "Tickets: Boyos Wonderland Mini Festival [17-08]",
-    url: "https://shop.eventix.io/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9",
-  },
+  // {
+  //   id: idGen(),
+  //   title: "Tickets: Boyos Wonderland Mini Festival [17-08]",
+  //   url: "https://shop.eventix.io/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9",
+  // },
   {
     id: idGen(),
     title: "Upcoming gigs",
@@ -44,11 +44,6 @@ const linkTree = [
     title: "Join our WhatsApp Comunnity",
     url: "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
   },
-  // {
-  //   id: idGen(),
-  //   title: "Tickets: Jaguar House x Doka Studio [26-05]",
-  //   url: "https://www.volkshotel.nl/agenda/doka/jaguar-house-x-doka-studio-w-boyos-soundsystem-da-graca-brothers-vasco/",
-  // },
   {
     id: idGen(),
     title: "Essential Groove - Spotify Playlist",
@@ -70,11 +65,11 @@ const linkTree = [
   //   title: "Twitch Live Streams",
   //   url: "https://www.twitch.tv/boyos_soundsystem",
   // },
-  // {
-  //   id: idGen(),
-  //   title: "Merch",
-  //   url: "https://merch.boyoscollective.nl/",
-  // },
+  {
+    id: idGen(),
+    title: "Merch",
+    url: "https://merch.boyoscollective.nl/",
+  },
 ];
 
 const pastGigs = PastGigs.pastGigs;
