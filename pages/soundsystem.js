@@ -19,15 +19,15 @@ const linkTree = [
   //   title: "Like what you heard? Support us",
   //   url: "https://bunq.me/BoyosSoundsystem",
   // },
-  // {
-  //   id: idGen(),
-  //   title: "Tickets: Boyos Wonderland Mini Festival [17-08]",
-  //   url: "https://shop.eventix.io/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9",
-  // },
+  {
+    id: idGen(),
+    title: "Tickets: Woodstock presents Sunday Night Fever [15-09]",
+    url: "https://shop.eventix.io/8d4903df-ea79-4ef7-9512-9938f7678341/tickets?shop_code=tced3g96",
+  },
   {
     id: idGen(),
     title: "Upcoming gigs",
-    url: "https://www.instagram.com/p/C9KgJZdorNc/",
+    url: "https://www.instagram.com/p/C_NqbziIapk/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
   },
   {
     id: idGen(),
