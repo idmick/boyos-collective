@@ -19,11 +19,11 @@ const linkTree = [
   //   title: "Like what you heard? Support us",
   //   url: "https://bunq.me/BoyosSoundsystem",
   // },
-  {
-    id: idGen(),
-    title: "Tickets: Woodstock presents Sunday Night Fever [15-09]",
-    url: "https://shop.eventix.io/8d4903df-ea79-4ef7-9512-9938f7678341/tickets?shop_code=tced3g96",
-  },
+  // {
+  //   id: idGen(),
+  //   title: "Tickets: Woodstock presents Sunday Night Fever [15-09]",
+  //   url: "https://shop.eventix.io/8d4903df-ea79-4ef7-9512-9938f7678341/tickets?shop_code=tced3g96",
+  // },
   {
     id: idGen(),
     title: "Upcoming gigs",
