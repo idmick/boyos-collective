@@ -19,11 +19,11 @@ const linkTree = [
   //   title: "Like what you heard? Support us",
   //   url: "https://bunq.me/BoyosSoundsystem",
   // },
-  // {
-  //   id: idGen(),
-  //   title: "Tickets: Woodstock presents Sunday Night Fever [15-09]",
-  //   url: "https://shop.eventix.io/8d4903df-ea79-4ef7-9512-9938f7678341/tickets?shop_code=tced3g96",
-  // },
+  {
+    id: idGen(),
+    title: "Tickets: PBN W/ Boyos Soundsystem & Friends [14-09]",
+    url: "https://shop.eventix.io/9d78af80-a006-11ee-a9cb-7e126431635e/tickets?event=0a388c0f-85be-44a3-a84c-67c14c8cfdfa",
+  },
   {
     id: idGen(),
     title: "Upcoming gigs",
