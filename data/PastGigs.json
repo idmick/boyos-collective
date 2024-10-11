@@ -1,6 +1,11 @@
 {
   "pastGigs": [
     {
+      "title": "Paard Cafe",
+      "venue": "Paard Cade, The Hague",
+      "monthYear": "Sept 2024"
+    },
+    {
       "title": "De Binnenstad",
       "venue": "Shelter, Amsterdam",
       "monthYear": "Sept 2024"
