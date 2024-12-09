@@ -65,11 +65,11 @@ const linkTree = [
   //   title: "Twitch Live Streams",
   //   url: "https://www.twitch.tv/boyos_soundsystem",
   // },
-  {
-    id: idGen(),
-    title: "Merch",
-    url: "https://merch.boyoscollective.nl/",
-  },
+  // {
+  //   id: idGen(),
+  //   title: "Merch",
+  //   url: "https://merch.boyoscollective.nl/",
+  // },
 ];
 
 const pastGigs = PastGigs.pastGigs;
