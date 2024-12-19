@@ -1,9 +1,14 @@
 {
   "pastGigs": [
     {
+      "title": "Studio Houtbaar",
+      "venue": "Houtbaar, Haarlem",
+      "monthYear": "Dec 2024"
+    },
+    {
       "title": "IDFA DocLab Opening",
       "venue": "de Brakke Grond, Amsterdam",
-      "monthYear": "Oct 2024"
+      "monthYear": "Nov 2024"
     },
     {
       "title": "Paard Cafe",
