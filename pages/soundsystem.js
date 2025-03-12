@@ -19,11 +19,17 @@ const linkTree = [
   //   title: "Like what you heard? Support us",
   //   url: "https://bunq.me/BoyosSoundsystem",
   // },
-  // {
-  //   id: idGen(),
-  //   title: "Tickets: PBN W/ BOYOS SOUNDSYSTEM (ALL NIGHT) [22-02]",
-  //   url: "https://shop.eventix.io/9d78af80-a006-11ee-a9cb-7e126431635e/tickets?shop_code=2qqefxmd&event=a93491fb-7478-4a2f-98a0-77a372b91520",
-  // },
+  {
+    id: idGen(),
+    title:
+      "Dinner Tickets: Boyos Wonderland, The Dine and Dance Edition [12-04]",
+    url: "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9",
+  },
+  {
+    id: idGen(),
+    title: "Boyos Wonderland, The Dine and Dance Edition [12-04]",
+    url: "https://www.instagram.com/p/DHGd_9lI5He/",
+  },
   {
     id: idGen(),
     title: "Upcoming gigs",
