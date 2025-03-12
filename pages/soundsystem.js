@@ -19,11 +19,11 @@ const linkTree = [
   //   title: "Like what you heard? Support us",
   //   url: "https://bunq.me/BoyosSoundsystem",
   // },
-  {
-    id: idGen(),
-    title: "Tickets: PBN W/ BOYOS SOUNDSYSTEM (ALL NIGHT) [22-02]",
-    url: "https://shop.eventix.io/9d78af80-a006-11ee-a9cb-7e126431635e/tickets?shop_code=2qqefxmd&event=a93491fb-7478-4a2f-98a0-77a372b91520",
-  },
+  // {
+  //   id: idGen(),
+  //   title: "Tickets: PBN W/ BOYOS SOUNDSYSTEM (ALL NIGHT) [22-02]",
+  //   url: "https://shop.eventix.io/9d78af80-a006-11ee-a9cb-7e126431635e/tickets?shop_code=2qqefxmd&event=a93491fb-7478-4a2f-98a0-77a372b91520",
+  // },
   {
     id: idGen(),
     title: "Upcoming gigs",
