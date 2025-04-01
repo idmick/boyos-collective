@@ -21,7 +21,7 @@ const Footer = () => {
           </defs>
         </svg>
         <p className="font-bold">Boyos Collective</p>
-        <p>Copyright © 2023 - All right reserved</p>
+        <p>Copyright © 2025 - All right reserved</p>
       </div>
       <div>
         <div className="grid grid-flow-col gap-4">
