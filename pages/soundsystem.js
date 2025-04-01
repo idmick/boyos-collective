@@ -22,13 +22,8 @@ const linkTree = [
   {
     id: idGen(),
     title:
-      "Dinner Tickets: Boyos Wonderland, The Dine and Dance Edition [12-04]",
-    url: "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9",
-  },
-  {
-    id: idGen(),
-    title: "Boyos Wonderland, The Dine and Dance Edition [12-04]",
-    url: "https://www.instagram.com/p/DHGd_9lI5He/",
+      "RSVP: Boyos Wonderland, The Dine and Dance Edition [12-04]",
+    url: "https://bash.social/nl/e/RnepEgYGOojT?u=64879",
   },
   {
     id: idGen(),
