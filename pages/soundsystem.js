@@ -21,9 +21,19 @@ const linkTree = [
   // },
   {
     id: idGen(),
-    title:
-      "RSVP: Boyos Wonderland, The Dine and Dance Edition [12-04]",
+    title: "RSVP: Boyos Wonderland, The Dine and Dance Edition [12-04]",
     url: "https://bash.social/nl/e/RnepEgYGOojT?u=64879",
+  },
+  {
+    id: idGen(),
+    title: "Tickets: Boyos Wonderland, The Dine and Dance Edition #2 [16-05]",
+    url: "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/events?shop_code=mv8kegk9&event=50d15694-0f22-4859-8c4c-df03dff309fc",
+  },
+  {
+    id: idGen(),
+    title:
+      "Tickets: Boyos Wonderland mini festival w/ Another Taste (live) & more [28-06]",
+    url: "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/events?shop_code=mv8kegk9&event=50d15694-0f22-4859-8c4c-df03dff309fc",
   },
   {
     id: idGen(),
