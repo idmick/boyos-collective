@@ -210,7 +210,7 @@ export default function BoyosWonderlandPage() {
             </p>
             <p>
               This is a space where the essential groove comes alive. Come
-              early, stay late, and feel part of something real.
+              early, stay late, and be part part of something real.
             </p>
           </div>
         </section>
