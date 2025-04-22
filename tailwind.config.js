@@ -9,6 +9,8 @@ module.exports = {
       },
       fontFamily: {
         limelight: ["Limelight", "cursive"],
+        pretoria: ["Pretoria", "serif"],
+        moret: ["Moret", "serif"],
       },
     },
   },

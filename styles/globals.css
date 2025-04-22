@@ -2,24 +2,34 @@
 @import "tailwindcss/components";
 @import "tailwindcss/utilities";
 
-/* @layer base {
-  h1 {
-    @apply text-4xl font-bold md:text-5xl;
-  }
+@font-face {
+  font-family: 'Pretoria';
+  src: url('/fonts/Pretoria-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
 
-  h2 {
-    @apply text-3xl font-bold md:text-4xl;
-  }
+@font-face {
+  font-family: 'Moret';
+  src: url('/fonts/Moret-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
 
-  h3 {
-    @apply text-2xl font-bold md:text-3xl;
-  }
+@font-face {
+  font-family: 'Moret';
+  src: url('/fonts/Moret-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
 
-  h4 {
-    @apply text-xl font-bold;
-  }
-
-  h5 {
-    @apply text-lg font-bold;
-  }
-} */
+@font-face {
+  font-family: 'Moret';
+  src: url('/fonts/Moret-BookObilque.otf') format('opentype');
+  font-weight: 200;
+  font-style: italic;
+  font-display: swap;
+}
