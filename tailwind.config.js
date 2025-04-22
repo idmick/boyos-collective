@@ -5,7 +5,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
-        "spin-slow": "spin 1.9s linear infinite",
+        "spin-slow": "spin 3s linear infinite",
       },
       fontFamily: {
         limelight: ["Limelight", "cursive"],

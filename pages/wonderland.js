@@ -1,7 +1,22 @@
 import { useState } from "react";
+import ReactPlayer from "react-player";
 
 export default function BoyosWonderlandPage() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
+  const handleHoverStart = () => {
+    if (!isPlaying) setIsHovered(true);
+  };
+
+  const handleHoverEnd = () => {
+    if (!isPlaying) setIsHovered(false);
+  };
+  const togglePlay = () => {
+    setIsPlaying((prev) => !prev);
+    setIsHovered(false);
+  };
 
   const CTAButton = ({ href, label }) => (
     <a
@@ -45,6 +60,20 @@ export default function BoyosWonderlandPage() {
 
   return (
     <div className="bg-[#FAF4EB]">
+      <ReactPlayer
+        url="https://soundcloud.com/boyos_soundsystem"
+        playing={isPlaying || isHovered}
+        style={{ display: "none" }}
+        config={{
+          soundcloud: {
+            options: {
+              color: "#EC90B0",
+              auto_play: true,
+            },
+          },
+        }}
+      />
+
       <div className="relative flex flex-col scroll-smooth max-w-[500px] mx-auto bg-neutral-100 text-[#1B1212] font-sans">
         {/* FLOATING MENU BUTTON */}
         <button
@@ -57,11 +86,22 @@ export default function BoyosWonderlandPage() {
           ☰
         </button>
 
-        <img
+        {/* <img
           src="/images/essential_groove.png"
           className="fixed w-24 h-auto z-50 bottom-4 right-4"
           alt="essential groove logo"
-        />
+        /> */}
+        <button
+          onMouseEnter={handleHoverStart}
+          onMouseLeave={handleHoverEnd}
+          onClick={togglePlay}
+          aria-label="Play music"
+          className={`fixed w-24 h-auto z-50 bottom-4 right-4 transition-transform ${
+            isPlaying || isHovered ? "animate-spin-slow" : ""
+          }`}
+        >
+          <img src="/images/essential_groove.png" alt="Essential Groove logo" />
+        </button>
         <img
           src="/images/cover.png"
           className="fixed top-0 bottom-0 left-0 h-screen object-none z-40 pointer-events-none"
