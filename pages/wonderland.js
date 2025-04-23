@@ -1,10 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
+import dynamic from "next/dynamic";
+import RadioPlayer from "../components/RadioPlayer";
 
 export default function BoyosWonderlandPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+
+  const HeroVideo = dynamic(() => import("../components/HeroVideo"), {
+    ssr: false,
+  });
 
   const handleHoverStart = () => {
     if (!isPlaying) setIsHovered(true);
@@ -23,7 +29,7 @@ export default function BoyosWonderlandPage() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="mt-4 text-2xl font-moret  px-6 py-2 bg-yellow-400 font-medium rounded-full max-w-fit w-fit flex-none hover:bg-yellow-500 text-[#1B1212] "
+      className="mt-4 text-2xl font-[moret]  px-6 py-2 bg-yellow-400 font-medium rounded-full max-w-fit w-fit flex-none hover:bg-yellow-500 text-[#1B1212] "
     >
       {label}
     </a>
@@ -34,7 +40,7 @@ export default function BoyosWonderlandPage() {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex text-2xl font-moret font-bold underline gap-2 text-[#F0E2D4] hover:text-[#45120F] max-w-fit w-fit"
+      className="flex text-2xl font-[moret] font-bold underline gap-2 text-[#F0E2D4] hover:text-[#45120F] max-w-fit w-fit"
     >
       {label}
     </a>
@@ -60,18 +66,30 @@ export default function BoyosWonderlandPage() {
 
   return (
     <div className="bg-[#FAF4EB]">
-      <ReactPlayer
+      {/* <ReactPlayer
         url="https://soundcloud.com/boyos_soundsystem"
         playing={isPlaying || isHovered}
         style={{ display: "none" }}
         config={{
           soundcloud: {
             options: {
-              color: "#EC90B0",
-              auto_play: true,
+              soundcloud: {
+                options: {
+                  visual: false,
+                  auto_play: false,
+                  show_artwork: false,
+                  show_playcount: false,
+                  show_user: false,
+                  single_active: false,
+                },
+              },
             },
           },
         }}
+      /> */}
+      <RadioPlayer
+        playlistUrl="https://soundcloud.com/boyos_soundsystem"
+        clientId="sQHBwYwmzeqpmKktQSeKYpDpE1YsCSWl"
       />
 
       <div className="relative flex flex-col scroll-smooth max-w-[500px] mx-auto bg-neutral-100 text-[#1B1212] font-sans">
@@ -96,7 +114,7 @@ export default function BoyosWonderlandPage() {
           onMouseLeave={handleHoverEnd}
           onClick={togglePlay}
           aria-label="Play music"
-          className={`fixed w-24 h-auto z-50 bottom-4 right-4 transition-transform ${
+          className={`fixed w-24 h-auto z-50 bottom-4 right-2 transition-transform ${
             isPlaying || isHovered ? "animate-spin-slow" : ""
           }`}
         >
@@ -111,7 +129,7 @@ export default function BoyosWonderlandPage() {
         {menuOpen && (
           <div
             id="mobile-menu"
-            className="fixed inset-0 bg-[#F9ABC5]  text-[#1B1212] font-moret flex flex-col items-center justify-center gap-8 text-4xl font-bold z-50 "
+            className="fixed inset-0 bg-[#F9ABC5]  text-[#1B1212] font-[moret] flex flex-col items-center justify-center gap-8 text-4xl font-bold z-50 "
             role="dialog"
             aria-modal="true"
           >
@@ -149,41 +167,20 @@ export default function BoyosWonderlandPage() {
         {/* HERO */}
         <section
           id="hero"
-          className="relative flex h-screen overflow-hidden flex items-center justify-center text-[#F2EEE9]"
+          className="relative flex h-screen overflow-hidden items-center justify-center text-[#F2EEE9]"
         >
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className="absolute top-0 left-0 w-full h-full object-cover"
-            aria-hidden="true"
-          >
-            <source src="./videos/wonderland_fest_24.mp4" type="video/mp4" />
-            <img
-              src="/images/Boyos Wonderland-093.jpg"
-              alt=""
-              className="absolute top-0 left-0 w-full h-full object-cover object-top"
-              aria-hidden="true"
-            />
-          </video>
+          <HeroVideo />
 
-          <div className="absolute left-0 top-0 w-full h-full  bg-[#1B1212] opacity-30" />
+          <div className="absolute left-0 top-0 w-full h-full  bg-[#1B1212]/30" />
 
           <div className="flex flex-col z-10  px-4">
             <div className="">
               <WonderlandLogo />
             </div>
-            <p className="mt-4 font-moret text-2xl tracking-wide text-left">
+            <p className="mt-4 font-[moret] text-2xl tracking-wide text-left">
               Step beyond the ordinary, where groove sparks imagination, and
               every rhythm invites adventure.
             </p>
-            {/* <a
-              href="#events"
-              className="mt-4 px-6 py-3 bg-[#F2EEE9] text-[#1B1212] rounded-full size-fit font-bold shadow-lg hover:bg-gray-200 transition"
-            >
-              View Events
-            </a> */}
             {<CTAButton href="#events" label="View Events"></CTAButton>}
           </div>
         </section>
@@ -193,10 +190,10 @@ export default function BoyosWonderlandPage() {
           id="about"
           className="bg-[#F9ABC5] px-6 py-12 text-left text-[#641B16]"
         >
-          <h2 className="uppercase  font-pretoria tracking-wider sticky top-0 z-10 bg-[#F9ABC5] text-4xl font-[#1B1212] tracking-wide py-8">
+          <h2 className="uppercase  font-[pretoria] tracking-wider sticky top-0 z-10 bg-[#F9ABC5] text-4xl text-[#1B1212]  py-8">
             Our Story
           </h2>
-          <div className="text-2xl font-moret">
+          <div className="text-2xl font-[moret]">
             <p className="mb-4">
               Boyos Wonderland is what happens when DJs dream beyond the booth.
               What started as friends cooking, hosting, and spinning tunes has
@@ -217,7 +214,7 @@ export default function BoyosWonderlandPage() {
 
         {/* EVENTS */}
         <section id="events" className="bg-[#FAF4EB] px-6 py-12">
-          <h2 className="uppercase  font-pretoria tracking-wider sticky top-0 z-10 bg-[#f9f4ec] text-4xl font-[#1B1212] tracking-wide py-8">
+          <h2 className="uppercase  font-[pretoria] tracking-wider sticky top-0 z-10 bg-[#f9f4ec] text-4xl text-[#1B1212]  py-8">
             Events
           </h2>
           <div className="mb-12">
@@ -226,17 +223,17 @@ export default function BoyosWonderlandPage() {
               alt="Dine & Dance poster"
               className="mb-6"
             />
-            <h3 className="uppercase text-3xl font-pretoria tracking-wider font-bold mb-6">
+            <h3 className="uppercase text-3xl font-[pretoria] tracking-wider font-bold mb-6">
               Dine and Dance
             </h3>
-            <p className="text-2xl font-moret mb-6">
+            <p className="text-2xl font-[moret] mb-6">
               A cozy shared-table dinner and a dancefloor that flows.
               Japanese-inspired food, curated music, and all the right energy.
             </p>
-            <p className="text-2xl font-moret font-bold mb-1">
+            <p className="text-2xl font-[moret] font-bold mb-1">
               16 May from 17:00 – 01:00 at Houtbaar
             </p>
-            <ul className="text-2xl font-moret mb-4 list-disc list-inside">
+            <ul className="text-2xl font-[moret] mb-4 list-disc list-inside">
               <li>3-course vegetarian dinner – €15</li>
               <li>Dance Free from 20:00</li>
             </ul>
@@ -253,17 +250,17 @@ export default function BoyosWonderlandPage() {
               alt="Mini Festival poster"
               className="mb-6"
             />
-            <h3 className="uppercase text-3xl font-pretoria tracking-wider font-bold mb-6">
+            <h3 className="uppercase text-3xl font-[pretoria] tracking-wider font-bold mb-6">
               Mini Festival
             </h3>
-            <p className="text-2xl font-moret  mb-1">
+            <p className="text-2xl font-[moret]  mb-1">
               Our season finale in Houtbaar’s garden. Live music, DJs, food, and
               tattoos. A day-to-night trip built around the essential groove.
             </p>
-            <p className="text-2xl font-moret font-bold mb-6">
+            <p className="text-2xl font-[moret] font-bold mb-6">
               28 June from 15:00 – 23:00 at Houtbaar
             </p>
-            <p className="text-2xl font-moret mb-6">
+            <p className="text-2xl font-[moret] mb-6">
               Early entry tickets from <span className="font-bold">€13.50</span>
               , limited spots available
             </p>
@@ -281,10 +278,10 @@ export default function BoyosWonderlandPage() {
           id="cta"
           className="bg-[#60B5C2] px-6 py-12 text-center text-[#1B1212]"
         >
-          <h2 className="uppercase  sticky top-0 z-10 bg-[#60B5C2] text-4xl text-left font-[#1B1212] tracking-widest py-8 font-pretoria tracking-wider">
+          <h2 className="uppercase  sticky top-0 z-10 bg-[#60B5C2] text-4xl text-left text-[#1B1212]  py-8 font-[pretoria] tracking-wider">
             Stay Up to Date
           </h2>
-          <p className="mb-8 max-w-sm text-left text-2xl font-moret">
+          <p className="mb-8 max-w-sm text-left text-2xl font-[moret]">
             Wanna stay on top of the next drops? Join our WhatsApp community,
             hop on the newsletter, or follow us on Instagram.
           </p>

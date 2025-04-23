@@ -1,6 +1,4 @@
-@import "tailwindcss/base";
-@import "tailwindcss/components";
-@import "tailwindcss/utilities";
+@import "tailwindcss";
 
 @font-face {
   font-family: 'Pretoria';
@@ -29,7 +27,15 @@
 @font-face {
   font-family: 'Moret';
   src: url('/fonts/Moret-BookObilque.otf') format('opentype');
-  font-weight: 200;
+  font-weight: 300;
   font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Moret';
+  src: url('/fonts/Moret-Book.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
   font-display: swap;
 }
