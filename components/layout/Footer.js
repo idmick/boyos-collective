@@ -1,11 +1,11 @@
 // components/Footer.jsx
-import Link from 'next/link'
-import React from 'react'
+import Link from "next/link";
+import React from "react";
 
 const social = [
   {
-    name: 'Instagram',
-    href: 'https://www.instagram.com/boyos.soundsystem/',
+    name: "Instagram",
+    href: "https://www.instagram.com/boyos.soundsystem/",
     icon: (
       <svg
         aria-hidden="true"
@@ -21,8 +21,8 @@ const social = [
     ),
   },
   {
-    name: 'SoundCloud',
-    href: 'https://soundcloud.com/boyos_soundsystem',
+    name: "SoundCloud",
+    href: "https://soundcloud.com/boyos_soundsystem",
     icon: (
       <svg
         aria-hidden="true"
@@ -45,8 +45,8 @@ const social = [
     ),
   },
   {
-    name: 'Twitch',
-    href: 'https://www.twitch.tv/boyos_soundsystem',
+    name: "Twitch",
+    href: "https://www.twitch.tv/boyos_soundsystem",
     icon: (
       <svg
         aria-hidden="true"
@@ -64,8 +64,8 @@ const social = [
     ),
   },
   {
-    name: 'YouTube',
-    href: 'https://www.youtube.com/channel/UCZfwTtKxSGoZFi38RuBEjvQ',
+    name: "YouTube",
+    href: "https://www.youtube.com/channel/UCZfwTtKxSGoZFi38RuBEjvQ",
     icon: (
       <svg
         aria-hidden="true"
@@ -80,12 +80,12 @@ const social = [
       </svg>
     ),
   },
-]
+];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0083d0] text-white py-10">
-      <div className="max-w-screen-lg mx-auto flex flex-col items-center gap-4 px-4">
+    <footer className="bg-[#0083d0] relative flex flex-col scroll-smooth max-w-[500px] w-full self-center text-white py-10">
+      <div className="mx-auto flex flex-col items-center gap-4 px-6 py-12">
         {/* Logo + Site Info */}
         <div className="flex flex-col items-center gap-2">
           <svg
@@ -125,7 +125,7 @@ export default function Footer() {
                   aria-label={name}
                 >
                   {React.cloneElement(icon, {
-                    className: icon.props.className + ' text-current',
+                    className: icon.props.className + " text-current",
                   })}
                 </a>
               </Link>
@@ -134,5 +134,5 @@ export default function Footer() {
         </ul>
       </div>
     </footer>
-  )
+  );
 }

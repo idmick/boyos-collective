@@ -1,81 +1,92 @@
-import { useEffect, useRef, useState, useCallback } from 'react'
-import Waveform from './Waveform'
+import { useEffect, useRef, useState, useCallback } from "react";
+import Waveform from "./Waveform";
 
 export default function RadioPlayer({
   channels = [
     {
-      name: 'Essential Groove Radio (Default)',
-      url: 'https://soundcloud.com/boyos_soundsystem/sets/essential-groove',
+      name: "Essential Groove Radio (Default)",
+      url: "https://soundcloud.com/boyos_soundsystem/sets/essential-groove",
     },
     {
-      name: 'Aram Mukanay',
-      url: 'https://soundcloud.com/aram-mukanay',
+      name: "Aram Mukanay",
+      url: "https://soundcloud.com/aram-mukanay",
     },
   ],
 }) {
   if (!Array.isArray(channels) || channels.length === 0) {
-    return <div className="p-4 text-center">No channels provided</div>
+    return <div className="p-4 text-center">No channels provided</div>;
   }
 
-  const iframeRef = useRef(null)
-  const widgetRef = useRef(null)
+  const iframeRef = useRef(null);
+  const widgetRef = useRef(null);
 
-  const [channelIndex, setChannelIndex] = useState(0)
-  const [dropdownOpen, setDropdownOpen] = useState(false)
-  const [tracks, setTracks] = useState([])
-  const [waveformUrl, setWaveformUrl] = useState('')
-  const [isPlaying, setIsPlaying] = useState(false)
-  const [position, setPosition] = useState(0)
-  const [duration, setDuration] = useState(1)
-  const [trackIndex, setTrackIndex] = useState(0)
-  const [currentArtist, setCurrentArtist] = useState('–')
-  const [currentTitle, setCurrentTitle] = useState('–')
+  const [channelIndex, setChannelIndex] = useState(0);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [tracks, setTracks] = useState([]);
+  const [waveformUrl, setWaveformUrl] = useState("");
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [position, setPosition] = useState(0);
+  const [duration, setDuration] = useState(1);
+  const [trackIndex, setTrackIndex] = useState(0);
+  const [currentArtist, setCurrentArtist] = useState("–");
+  const [currentTitle, setCurrentTitle] = useState("–");
 
   // 1) instantiate SC.Widget once
   useEffect(() => {
-    if (!iframeRef.current || !window.SC) return
-    const widget = window.SC.Widget(iframeRef.current)
-    widgetRef.current = widget
+    if (!iframeRef.current || !window.SC) return;
+    const widget = window.SC.Widget(iframeRef.current);
+    widgetRef.current = widget;
 
     // READY → populate tracks / duration / waveform
     widget.bind(window.SC.Widget.Events.READY, () => {
-      setTrackIndex(0)
-      setPosition(0)
+      setTrackIndex(0);
+      setPosition(0);
       widget.getSounds((list) => {
-        setTracks(list)
+        setTracks(list);
         widget.getCurrentSound((s) => {
-          setWaveformUrl(s ? s.waveform_url : '')
-          setCurrentArtist(s ? s.user?.username : '–')
-          setCurrentTitle(s ? s.title : '–')
-        })
-      })
-      widget.getDuration((d) => setDuration(d))
-    })
+          setWaveformUrl(s ? s.waveform_url : "");
+          setCurrentArtist(s ? s.user?.username : "–");
+          setCurrentTitle(s ? s.title : "–");
+        });
+      });
+      widget.getDuration((d) => setDuration(d));
+    });
 
     // PLAY → update play state / current track / waveform
     widget.bind(window.SC.Widget.Events.PLAY, () => {
-      setIsPlaying(true)
-      widget.getCurrentSoundIndex((i) => setTrackIndex(i))
+      setIsPlaying(true);
+      widget.getCurrentSoundIndex((i) => setTrackIndex(i));
       widget.getCurrentSound((s) => {
-        setWaveformUrl(s ? s.waveform_url : '')
-        setCurrentArtist(s ? s.user?.username : '–')
-        setCurrentTitle(s ? s.title : '–')
-      })
-    })
+        setWaveformUrl(s ? s.waveform_url : "");
+        setCurrentArtist(s ? s.user?.username : "–");
+        setCurrentTitle(s ? s.title : "–");
+      });
+    });
 
-    widget.bind(window.SC.Widget.Events.PAUSE, () => setIsPlaying(false))
+    widget.bind(window.SC.Widget.Events.PAUSE, () => setIsPlaying(false));
     widget.bind(window.SC.Widget.Events.PLAY_PROGRESS, ({ currentPosition }) =>
       setPosition(currentPosition)
-    )
+    );
 
-    return () => widget.unbind()
-  }, [])
+    return () => {
+      // Only unbind if the iframe is still in the DOM and widgetRef is valid
+      if (
+        widgetRef.current &&
+        widgetRef.current.options &&
+        widgetRef.current.options.iframe &&
+        document.body.contains(widgetRef.current.options.iframe)
+      ) {
+        widgetRef.current.unbind();
+      }
+      widgetRef.current = null;
+    };
+  }, []);
 
   // 2) whenever channelIndex changes, reload that playlist
   useEffect(() => {
-    const widget = widgetRef.current
-    const { url } = channels[channelIndex]
-    if (!widget || !url) return
+    const widget = widgetRef.current;
+    const { url } = channels[channelIndex];
+    if (!widget || !url) return;
 
     widget.load(url, {
       // only this effect watches channelIndex:
@@ -83,55 +94,55 @@ export default function RadioPlayer({
       visual: false,
       callback: () => {
         // 1️⃣ reset UI
-        setPosition(0)
-        setTrackIndex(0)
-        setIsPlaying(false)
+        setPosition(0);
+        setTrackIndex(0);
+        setIsPlaying(false);
 
         // 2️⃣ grab the new track‐list, duration & first‐track info
-        widget.getSounds((list) => setTracks(list))
-        widget.getDuration((d) => setDuration(d))
+        widget.getSounds((list) => setTracks(list));
+        widget.getDuration((d) => setDuration(d));
         widget.getCurrentSound((s) => {
-          setWaveformUrl(s?.waveform_url || '')
-          setCurrentArtist(s?.user?.username || '–')
-          setCurrentTitle(s?.title || '–')
-        })
+          setWaveformUrl(s?.waveform_url || "");
+          setCurrentArtist(s?.user?.username || "–");
+          setCurrentTitle(s?.title || "–");
+        });
         // 3️⃣ auto‐play if the previous track was playing
-        const shouldAutoPlay = isPlaying
-        if (shouldAutoPlay) widget.play()
+        const shouldAutoPlay = isPlaying;
+        if (shouldAutoPlay) widget.play();
       },
-    })
-  }, [channelIndex])
+    });
+  }, [channelIndex]);
 
   // playback controls
   const togglePlay = useCallback(() => {
-    widgetRef.current?.toggle()
-  }, [])
-  const nextTrack = useCallback(() => widgetRef.current?.next(), [])
-  const prevTrack = useCallback(() => widgetRef.current?.prev(), [])
+    widgetRef.current?.toggle();
+  }, []);
+  const nextTrack = useCallback(() => widgetRef.current?.next(), []);
+  const prevTrack = useCallback(() => widgetRef.current?.prev(), []);
   const seekTo = useCallback(
     (ms) => {
-      const w = widgetRef.current
-      if (!w) return
-      w.seekTo(Math.max(0, Math.min(ms, duration)))
+      const w = widgetRef.current;
+      if (!w) return;
+      w.seekTo(Math.max(0, Math.min(ms, duration)));
     },
     [duration]
-  )
+  );
 
   // formatter for mm:ss or hh:mm:ss
   const fmt = (ms) => {
-    const t = Math.floor(ms / 1000)
+    const t = Math.floor(ms / 1000);
     if (t >= 3600) {
-      const h = String(Math.floor(t / 3600)).padStart(2, '0')
-      const m = String(Math.floor((t % 3600) / 60)).padStart(2, '0')
-      const s = String(t % 60).padStart(2, '0')
-      return `${h}:${m}:${s}`
+      const h = String(Math.floor(t / 3600)).padStart(2, "0");
+      const m = String(Math.floor((t % 3600) / 60)).padStart(2, "0");
+      const s = String(t % 60).padStart(2, "0");
+      return `${h}:${m}:${s}`;
     }
-    const m = String(Math.floor(t / 60)).padStart(2, '0')
-    const s = String(t % 60).padStart(2, '0')
-    return `${m}:${s}`
-  }
+    const m = String(Math.floor(t / 60)).padStart(2, "0");
+    const s = String(t % 60).padStart(2, "0");
+    return `${m}:${s}`;
+  };
 
-  const current = tracks[trackIndex] || { user: { username: '–' }, title: '–' }
+  const current = tracks[trackIndex] || { user: { username: "–" }, title: "–" };
 
   return (
     <>
@@ -149,12 +160,12 @@ export default function RadioPlayer({
           `&single_active=true`
         }
         style={{
-          position: 'absolute',
+          position: "absolute",
           width: 0,
           height: 0,
           border: 0,
           opacity: 0,
-          pointerEvents: 'none',
+          pointerEvents: "none",
         }}
       />
       <div className="fixed max-w-[500px] bottom-0 left-0 right-0 m-auto z-50 bg-[#adadad] p-2 shadow-lg border-[#1B1212] border font-[moret]">
@@ -163,17 +174,17 @@ export default function RadioPlayer({
           <div className="flex-1 flex flex-col gap-1">
             <div
               className={`h-[1px] w-full bg-[#1B1212] ${
-                isPlaying ? 'animate-vibrate-bars' : ''
+                isPlaying ? "animate-vibrate-bars" : ""
               }`}
             />
             <div
               className={`h-[1px] w-full bg-[#1B1212] ${
-                isPlaying ? 'animate-vibrate-bars' : ''
+                isPlaying ? "animate-vibrate-bars" : ""
               }`}
             />
             <div
               className={`h-[1px] w-full bg-[#1B1212] ${
-                isPlaying ? 'animate-vibrate-bars' : ''
+                isPlaying ? "animate-vibrate-bars" : ""
               }`}
             />
           </div>
@@ -185,7 +196,7 @@ export default function RadioPlayer({
         <img
           src="/images/essential_groove.png"
           className={`absolute w-24 h-auto z-60 bottom-42 right-2 transition-transform ${
-            isPlaying ? 'animate-spin-vinyl' : ''
+            isPlaying ? "animate-spin-vinyl" : ""
           }`}
           alt="Essential Groove logo"
         />
@@ -216,8 +227,8 @@ export default function RadioPlayer({
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              {' '}
-              <path stroke="none" d="M0 0h24v24H0z" />{' '}
+              {" "}
+              <path stroke="none" d="M0 0h24v24H0z" />{" "}
               <path d="M18 15l-6-6l-6 6h12" transform="rotate(180 12 12)" />
             </svg>
           </button>
@@ -241,11 +252,11 @@ export default function RadioPlayer({
                   <li
                     key={i}
                     onClick={() => {
-                      setChannelIndex(i)
-                      setDropdownOpen(false)
+                      setChannelIndex(i);
+                      setDropdownOpen(false);
                     }}
-                    className="px-4 py-2 cursor-pointer border-b-1 hover:bg-gray-100"
-                    style={{ overflowAnchor: 'none' }}
+                    className="px-4 py-2 cursor-pointer border-b-1 hover:font-bold"
+                    style={{ overflowAnchor: "none" }}
                   >
                     {ch.name}
                   </li>
@@ -280,14 +291,14 @@ export default function RadioPlayer({
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                {' '}
-                <polygon points="19 20 9 12 19 4 19 20" />{' '}
+                {" "}
+                <polygon points="19 20 9 12 19 4 19 20" />{" "}
                 <line x1="5" y1="19" x2="5" y2="5" />
               </svg>
             </button>
             <button
               onClick={togglePlay}
-              aria-label={isPlaying ? 'Pause' : 'Play'}
+              aria-label={isPlaying ? "Pause" : "Play"}
               className="px-3 py-1 border-t border-b border-[#1B1212]"
             >
               {isPlaying ? (
@@ -300,8 +311,8 @@ export default function RadioPlayer({
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  {' '}
-                  <rect x="6" y="4" width="4" height="16" />{' '}
+                  {" "}
+                  <rect x="6" y="4" width="4" height="16" />{" "}
                   <rect x="14" y="4" width="4" height="16" />
                 </svg>
               ) : (
@@ -314,7 +325,7 @@ export default function RadioPlayer({
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 >
-                  {' '}
+                  {" "}
                   <polygon points="5 3 19 12 5 21 5 3" />
                 </svg>
               )}
@@ -333,8 +344,8 @@ export default function RadioPlayer({
                 strokeLinecap="round"
                 strokeLinejoin="round"
               >
-                {' '}
-                <polygon points="5 4 15 12 5 20 5 4" />{' '}
+                {" "}
+                <polygon points="5 4 15 12 5 20 5 4" />{" "}
                 <line x1="19" y1="5" x2="19" y2="19" />
               </svg>
             </button>
@@ -354,5 +365,5 @@ export default function RadioPlayer({
         </div>
       </div>
     </>
-  )
+  );
 }
