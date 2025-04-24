@@ -206,15 +206,15 @@ export default function RadioPlayer({
               <span>{channels[channelIndex].name}</span>
             </div>
             <svg
-              class="h-6 w-6 text-[#1B1212]"
+              className="h-6 w-6 text-[#1B1212]"
               width="24"
               height="24"
               viewBox="0 0 24 24"
-              stroke-width="1"
+              strokeWidth="1"
               stroke="currentColor"
               fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
               {' '}
               <path stroke="none" d="M0 0h24v24H0z" />{' '}
@@ -272,13 +272,13 @@ export default function RadioPlayer({
               className="px-3 py-1 border-[#1B1212] border"
             >
               <svg
-                class="h-5 w-5"
+                className="h-5 w-5"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 {' '}
                 <polygon points="19 20 9 12 19 4 19 20" />{' '}
@@ -292,13 +292,13 @@ export default function RadioPlayer({
             >
               {isPlaying ? (
                 <svg
-                  class="h-5 w-5"
+                  className="h-5 w-5"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   {' '}
                   <rect x="6" y="4" width="4" height="16" />{' '}
@@ -306,13 +306,13 @@ export default function RadioPlayer({
                 </svg>
               ) : (
                 <svg
-                  class="h-5 w-5"
+                  className="h-5 w-5"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
                   {' '}
                   <polygon points="5 3 19 12 5 21 5 3" />
@@ -325,13 +325,13 @@ export default function RadioPlayer({
               className="px-3 py-1 border-[#1B1212] border"
             >
               <svg
-                class="h-5 w-5"
+                className="h-5 w-5"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
                 {' '}
                 <polygon points="5 4 15 12 5 20 5 4" />{' '}

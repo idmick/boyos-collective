@@ -17,13 +17,13 @@ const linkTree = [
   {
     id: idGen(),
     title: 'Tickets: Boyos Wonderland, The Dine and Dance Edition #2 [16-05]',
-    url: 'https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/events?shop_code=mv8kegk9&event=50d15694-0f22-4859-8c4c-df03dff309fc',
+    url: 'https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=9f7eee1f-5e6f-4488-867a-39e7c8be3b9e',
   },
   {
     id: idGen(),
     title:
       'Tickets: Boyos Wonderland mini festival w/ Another Taste (live) & more [28-06]',
-    url: 'https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/events?shop_code=mv8kegk9&event=50d15694-0f22-4859-8c4c-df03dff309fc',
+    url: 'https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=50d15694-0f22-4859-8c4c-df03dff309fc',
   },
   {
     id: idGen(),
