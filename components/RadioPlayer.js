@@ -161,9 +161,21 @@ export default function RadioPlayer({
         {/* header bars + title */}
         <div className="flex items-center justify-between gap-4">
           <div className="flex-1 flex flex-col gap-1">
-            <div className="h-[1px] w-full bg-[#1B1212]" />
-            <div className="h-[1px] w-full bg-[#1B1212]" />
-            <div className="h-[1px] w-full bg-[#1B1212]" />
+            <div
+              className={`h-[1px] w-full bg-[#1B1212] ${
+                isPlaying ? 'animate-vibrate-bars' : ''
+              }`}
+            />
+            <div
+              className={`h-[1px] w-full bg-[#1B1212] ${
+                isPlaying ? 'animate-vibrate-bars' : ''
+              }`}
+            />
+            <div
+              className={`h-[1px] w-full bg-[#1B1212] ${
+                isPlaying ? 'animate-vibrate-bars' : ''
+              }`}
+            />
           </div>
           <div className="whitespace-nowrap text-[#1B1212] text-lg font-semibold">
             Essential Groove Radio

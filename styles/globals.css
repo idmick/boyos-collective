@@ -51,6 +51,10 @@
     animation: spin-vinyl 1.8s linear infinite;
   }
 
+  .vibrate-bars {
+    animation: vibrate 0.3s linear infinite;
+  }
+
     /* force all scrollbar parts to use border-box sizing */
     .scrollbar, 
     .scrollbar::-webkit-scrollbar,

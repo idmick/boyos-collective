@@ -1,4 +1,9 @@
-module.exports = {
+// tailwind.config.js
+import typography from '@tailwindcss/typography'
+import daisyui from 'daisyui'
+
+/** @type {import('tailwindcss').Config} */
+export default {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
@@ -6,6 +11,7 @@ module.exports = {
   theme: {
     extend: {
       animation: {
+        // your custom animation
         'spin-slow': 'spin 3s linear infinite',
       },
       fontFamily: {
@@ -15,7 +21,10 @@ module.exports = {
       },
     },
   },
-  plugins: [require('@tailwindcss/typography'), require('daisyui')],
+  plugins: [
+    typography, // official Tailwind typography
+    daisyui, // then DaisyUI
+  ],
   daisyui: {
     styled: true,
     themes: [
