@@ -39,3 +39,35 @@
   font-style: normal;
   font-display: swap;
 }
+
+/* 33 ⅓ RPM → 33.333… revolutions per minute → 60 s ÷ 33.333… ≈ 1.8 s per revolution */
+@keyframes spin-vinyl {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@layer utilities {
+  .animate-spin-vinyl {
+    animation: spin-vinyl 1.8s linear infinite;
+  }
+
+    /* force all scrollbar parts to use border-box sizing */
+    .scrollbar, 
+    .scrollbar::-webkit-scrollbar,
+    .scrollbar-track-bordered::-webkit-scrollbar-track,
+    .scrollbar-thumb-bordered::-webkit-scrollbar-thumb {
+      box-sizing: border-box;
+    }
+  /* make your scrollbar a fixed width (so the border sits inside) */
+  .scrollbar::-webkit-scrollbar {
+    width: theme('spacing.4'); /* e.g. 1rem */
+  }
+
+  /* now you can do a normal border-left and it won’t grow the track */
+  .scrollbar-track-bordered::-webkit-scrollbar-track {
+    border-left: 1px solid #1B1212;
+  }
+  .scrollbar-thumb-bordered::-webkit-scrollbar-thumb {
+    border-left: 1px solid #1B1212;
+  }
+}

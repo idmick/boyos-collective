@@ -1,4 +1,5 @@
-import { useEffect, useRef } from "react";
+// components/Waveform.js
+import { useEffect, useRef, useCallback } from 'react'
 
 export default function Waveform({
   waveformUrl,
@@ -7,96 +8,103 @@ export default function Waveform({
   duration = 1,
   onSeek,
 }) {
-  const canvasRef = useRef(null);
-  const dataRef = useRef([]);
+  const canvasRef = useRef(null)
+  const dataRef = useRef([]) // normalized bar heights
+  const dimsRef = useRef({}) // { cssWidth, cssHeight, dpr }
 
-  // the generic draw routine
-  const draw = () => {
-    const data = dataRef.current;
-    if (!data.length) return;
+  // draw routine
+  const drawFrame = useCallback(() => {
+    const data = dataRef.current
+    const { cssWidth, cssHeight } = dimsRef.current
+    if (!data.length || !cssWidth || !cssHeight) return
 
-    const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
+    const c = canvasRef.current
+    const ctx = c.getContext('2d')
 
-    // 1) measure CSS size
-    const cssWidth = canvas.clientWidth;
-    const cssHeight = canvas.clientHeight;
+    // clear in CSS-pixel coords
+    ctx.clearRect(0, 0, cssWidth, cssHeight)
 
-    // 2) backstore for HiDPI
-    const dpr = typeof window !== "undefined" ? window.devicePixelRatio : 1;
-    canvas.width = cssWidth * dpr;
-    canvas.height = cssHeight * dpr;
-
-    // 3) reset any prior transforms, then scale
-    ctx.setTransform(1, 0, 0, 1, 0, 0);
-    ctx.scale(dpr, dpr);
-
-    // 4) clear & draw
-    ctx.clearRect(0, 0, cssWidth, cssHeight);
-
-    const barWidth = cssWidth / samples;
-    const playedBars = Math.floor((position / duration) * samples);
+    const barW = cssWidth / samples
+    const playedBar = Math.floor((position / duration) * samples)
 
     data.forEach((val, i) => {
-      const x = i * barWidth;
-      const barH = val * cssHeight;
+      const x = i * barW
+      const h = val * cssHeight
+      ctx.fillStyle = i < playedBar ? '#60B5C2' : '#1B1212'
+      ctx.fillRect(x, cssHeight - h, barW * 0.8, h)
+    })
+  }, [position, duration, samples])
 
-      // dark for “played”, gray for “up next”
-      ctx.fillStyle = i < playedBars ? "#1B1212" : "#ccc";
-      ctx.fillRect(x, cssHeight - barH, barWidth * 0.8, barH);
-    });
-  };
-
-  // fetch & preprocess JSON once per URL
+  // 1️⃣ load + preprocess JSON once per URL
   useEffect(() => {
-    if (!waveformUrl) return;
+    if (!waveformUrl) return
     fetch(waveformUrl)
       .then((r) => r.json())
       .then((raw) => {
+        const arr = raw.samples
+        if (!Array.isArray(arr)) throw new Error('Invalid waveform data')
         // down-sample
-        const blockSize = Math.floor(raw.length / samples);
-        const filtered = Array.from({ length: samples }, (_, i) => {
-          let sum = 0;
-          for (let j = 0; j < blockSize; j++) {
-            sum += Math.abs(raw[i * blockSize + j]);
-          }
-          return sum / blockSize;
-        });
-
+        const block = Math.floor(arr.length / samples)
+        const filt = Array.from({ length: samples }, (_, i) => {
+          let sum = 0
+          for (let j = 0; j < block; j++) sum += Math.abs(arr[i * block + j])
+          return sum / block
+        })
         // normalize
-        const mx = Math.max(...filtered, 1);
-        dataRef.current = filtered.map((n) => n / mx);
+        const max = Math.max(...filt, 1)
+        dataRef.current = filt.map((n) => n / max)
 
-        // initial draw
-        draw();
+        // initial draw (dimensions will come from ResizeObserver)
+        drawFrame()
       })
-      .catch(console.error);
-  }, [waveformUrl, samples]);
+      .catch(console.error)
+  }, [waveformUrl, samples, drawFrame])
 
-  // re-draw as playhead moves
+  // 2️⃣ observe size changes and re-size canvas
   useEffect(() => {
-    draw();
-  }, [position, duration]);
+    const c = canvasRef.current
+    if (!c) return
+    const ro = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        const { width: cssWidth, height: cssHeight } = entry.contentRect
+        const dpr = window.devicePixelRatio || 1
+        dimsRef.current = { cssWidth, cssHeight, dpr }
 
-  // clicking on canvas seeks
+        const ctx = c.getContext('2d')
+        c.width = cssWidth * dpr
+        c.height = cssHeight * dpr
+        ctx.scale(dpr, dpr)
+
+        drawFrame()
+      }
+    })
+    ro.observe(c)
+    return () => ro.disconnect()
+  }, [drawFrame])
+
+  // 3️⃣ redraw whenever position changes
   useEffect(() => {
-    if (!onSeek) return;
-    const c = canvasRef.current;
+    if (dataRef.current.length) drawFrame()
+  }, [position, drawFrame])
+
+  // 4️⃣ click → seek
+  useEffect(() => {
+    if (!onSeek) return
+    const c = canvasRef.current
     const handler = (e) => {
-      const { left, width } = c.getBoundingClientRect();
-      const x = e.clientX - left;
-      const pct = Math.max(0, Math.min(1, x / width));
-      onSeek(pct * duration * 1000);
-    };
-    c.addEventListener("click", handler);
-    return () => c.removeEventListener("click", handler);
-  }, [duration, onSeek]);
+      const { left, width } = c.getBoundingClientRect()
+      const pct = Math.max(0, Math.min(1, (e.clientX - left) / width))
+      onSeek(pct * duration) // ← no *1000 here
+    }
+    c.addEventListener('click', handler)
+    return () => c.removeEventListener('click', handler)
+  }, [duration, onSeek])
 
   return (
     <canvas
       ref={canvasRef}
-      className="w-full h-10 cursor-pointer"
+      className="w-full h-full cursor-pointer block"
       aria-label="Waveform"
     />
-  );
+  )
 }
