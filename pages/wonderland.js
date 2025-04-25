@@ -80,15 +80,25 @@ export default function BoyosWonderlandPage() {
 
         <div className="relative flex flex-col scroll-smooth max-w-[500px] mx-auto bg-neutral-100 text-[#1B1212] font-sans">
           {/* FLOATING MENU BUTTON */}
-          <button
-            className="fixed top-4 right-4 z-50 bg-[#F9ABC5] text-[#1B1212] font-bold p-3 rounded-full  shadow-lg hover:text-[#641B16]"
-            onClick={() => setMenuOpen(!menuOpen)}
-            aria-label="Toggle menu"
-            aria-expanded={menuOpen}
-            aria-controls="mobile-menu"
-          >
-            ☰
-          </button>
+          <div className="fixed flex top-4 right-4 z-50 gap-2">
+            <a
+              className=" bg-[#F9ABC5] text-[#1B1212] font-bold p-3 rounded-full  shadow-lg hover:text-[#641B16]"
+              href="https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Tickets
+            </a>
+            <button
+              className=" bg-[#F9ABC5] text-[#1B1212] font-bold p-3 rounded-full  shadow-lg hover:text-[#641B16]"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
+            >
+              ☰
+            </button>
+          </div>
 
           <img
             src="/images/cover.png"
@@ -123,6 +133,15 @@ export default function BoyosWonderlandPage() {
                 onClick={() => setMenuOpen(false)}
               >
                 Events
+              </a>
+              <a
+                href="https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-[#641B16]"
+                onClick={() => setMenuOpen(false)}
+              >
+                Tickets
               </a>
               <a
                 href="#cta"
