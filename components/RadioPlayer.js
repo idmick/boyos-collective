@@ -7,15 +7,20 @@ export default function RadioPlayer({
       name: "Essential Groove Radio (Default)",
       url: "https://soundcloud.com/boyos_soundsystem/sets/essential-groove",
     },
-    {
-      name: "Aram Mukanay",
-      url: "https://soundcloud.com/aram-mukanay",
-    },
   ],
 }) {
   if (!Array.isArray(channels) || channels.length === 0) {
     return <div className="p-4 text-center">No channels provided</div>;
   }
+
+  const shuffleArray = (arr) => {
+    const a = [...arr];
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  };
 
   const iframeRef = useRef(null);
   const widgetRef = useRef(null);
@@ -30,6 +35,7 @@ export default function RadioPlayer({
   const [trackIndex, setTrackIndex] = useState(0);
   const [currentArtist, setCurrentArtist] = useState("–");
   const [currentTitle, setCurrentTitle] = useState("–");
+  const [trackUrl, setTrackUrl] = useState("");
 
   // 1) instantiate SC.Widget once
   useEffect(() => {
@@ -47,6 +53,7 @@ export default function RadioPlayer({
           setWaveformUrl(s ? s.waveform_url : "");
           setCurrentArtist(s ? s.user?.username : "–");
           setCurrentTitle(s ? s.title : "–");
+          setTrackUrl(s ? s.permalink_url : "");
         });
       });
       widget.getDuration((d) => setDuration(d));
@@ -60,6 +67,7 @@ export default function RadioPlayer({
         setWaveformUrl(s ? s.waveform_url : "");
         setCurrentArtist(s ? s.user?.username : "–");
         setCurrentTitle(s ? s.title : "–");
+        setTrackUrl(s ? s.permalink_url : "");
       });
     });
 
@@ -67,6 +75,12 @@ export default function RadioPlayer({
     widget.bind(window.SC.Widget.Events.PLAY_PROGRESS, ({ currentPosition }) =>
       setPosition(currentPosition)
     );
+
+    // Loop to first track when finished
+    widget.bind(window.SC.Widget.Events.FINISH, () => {
+      widget.skip(0);
+      widget.play();
+    });
 
     return () => {
       // Only unbind if the iframe is still in the DOM and widgetRef is valid
@@ -89,26 +103,22 @@ export default function RadioPlayer({
     if (!widget || !url) return;
 
     widget.load(url, {
-      // only this effect watches channelIndex:
       show_artwork: false,
       visual: false,
       callback: () => {
-        // 1️⃣ reset UI
         setPosition(0);
         setTrackIndex(0);
         setIsPlaying(false);
 
-        // 2️⃣ grab the new track‐list, duration & first‐track info
-        widget.getSounds((list) => setTracks(list));
-        widget.getDuration((d) => setDuration(d));
-        widget.getCurrentSound((s) => {
-          setWaveformUrl(s?.waveform_url || "");
-          setCurrentArtist(s?.user?.username || "–");
-          setCurrentTitle(s?.title || "–");
+        widget.getSounds((list) => {
+          setTracks(list);
+          // Pick a random index from the original list
+          const randomIndex = Math.floor(Math.random() * list.length);
+          widget.skip(randomIndex);
+          // Do NOT set track info here!
         });
-        // 3️⃣ auto‐play if the previous track was playing
-        const shouldAutoPlay = isPlaying;
-        if (shouldAutoPlay) widget.play();
+        widget.getDuration((d) => setDuration(d));
+        if (isPlaying) widget.play();
       },
     });
   }, [channelIndex]);
@@ -117,8 +127,28 @@ export default function RadioPlayer({
   const togglePlay = useCallback(() => {
     widgetRef.current?.toggle();
   }, []);
-  const nextTrack = useCallback(() => widgetRef.current?.next(), []);
-  const prevTrack = useCallback(() => widgetRef.current?.prev(), []);
+  const nextTrack = useCallback(() => {
+    const w = widgetRef.current;
+    if (!w) return;
+    if (trackIndex === tracks.length - 1) {
+      w.skip(0);
+      w.play();
+    } else {
+      w.next();
+    }
+  }, [trackIndex, tracks.length]);
+
+  const prevTrack = useCallback(() => {
+    const w = widgetRef.current;
+    if (!w) return;
+    if (trackIndex === 0) {
+      w.skip(tracks.length - 1);
+      w.play();
+    } else {
+      w.prev();
+    }
+  }, [trackIndex, tracks.length]);
+
   const seekTo = useCallback(
     (ms) => {
       const w = widgetRef.current;
@@ -217,7 +247,9 @@ export default function RadioPlayer({
               <span>{channels[channelIndex].name}</span>
             </div>
             <svg
-              className="h-6 w-6 text-[#1B1212]"
+              className={`h-6 w-6 text-[#1B1212] transition-transform duration-200 ${
+                dropdownOpen ? "" : "rotate-180"
+              }`}
               width="24"
               height="24"
               viewBox="0 0 24 24"
@@ -227,9 +259,8 @@ export default function RadioPlayer({
               strokeLinecap="round"
               strokeLinejoin="round"
             >
-              {" "}
-              <path stroke="none" d="M0 0h24v24H0z" />{" "}
-              <path d="M18 15l-6-6l-6 6h12" transform="rotate(180 12 12)" />
+              <path stroke="none" d="M0 0h24v24H0z" />
+              <path d="M18 15l-6-6l-6 6h12" />
             </svg>
           </button>
 
@@ -246,7 +277,7 @@ export default function RadioPlayer({
                       [&::-webkit-scrollbar-thumb]:bg-[#c4c4c4]
                       scrollbar-track-bordered 
                       scrollbar-thumb-bordered
-                      list-none text-s bg-[#FAF4EB] w-full max-h-22"
+                      list-none text-s bg-[#c4c4c4] w-full max-h-22"
               >
                 {channels.map((ch, i) => (
                   <li
@@ -269,9 +300,23 @@ export default function RadioPlayer({
           {fmt(position)} / {fmt(duration)}
         </div>
         <div className="flex gap-1 truncate">
-          <span className="font-bold">{currentArtist}</span>
-          <span>–</span>
-          <span className="truncate">{currentTitle}</span>
+          {trackUrl ? (
+            <a
+              href={trackUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-bold underline hover:text-blue-700 transition truncate"
+              title="Open track on SoundCloud"
+            >
+              {currentArtist} – {currentTitle}
+            </a>
+          ) : (
+            <>
+              <span className="font-bold">{currentArtist}</span>
+              <span>–</span>
+              <span className="truncate">{currentTitle}</span>
+            </>
+          )}
         </div>
 
         {/* Controls + Waveform */}
