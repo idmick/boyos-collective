@@ -5,6 +5,7 @@ import Image from "next/image";
 import BoyosSoundsystem from "../public/images/boyos_we_got_the_funk.png";
 import PastGigs from "../data/PastGigs.json";
 import { NextSeo } from "next-seo";
+import Footer from "../components/layout/Footer";
 
 const idGen = () => {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
@@ -199,6 +200,9 @@ export default function Soundsystem() {
               ))}
             </ol>
           </div>
+        </div>
+        <div className="w-full max-w-[500px]">
+          <Footer />
         </div>
       </div>
     </>

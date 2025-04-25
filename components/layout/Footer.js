@@ -84,8 +84,8 @@ const social = [
 
 export default function Footer() {
   return (
-    <footer className="bg-[#0083d0] relative flex flex-col scroll-smooth max-w-[500px] w-full self-center text-white py-10">
-      <div className="mx-auto flex flex-col items-center gap-4 px-6 py-12">
+    <footer className="bg-[#0083d0] w-full relative flex flex-col scroll-smooth self-center text-white py-10">
+      <div className="flex flex-col items-center gap-4 px-6 py-12">
         {/* Logo + Site Info */}
         <div className="flex flex-col items-center gap-2">
           <svg

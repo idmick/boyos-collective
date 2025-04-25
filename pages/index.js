@@ -5,6 +5,7 @@ import BoyosVinyl from "../public/images/boyos_vinyl.png";
 import BoyosBoxed from "../public/images/Boyos_logo_boxed.png";
 import BoyosWonderland from "../public/images/essential_groove.png";
 import { NextSeo } from "next-seo";
+import Footer from "../components/layout/Footer";
 
 const blocks = [
   {
@@ -131,6 +132,9 @@ const Home = () => {
             </div>
           </div>
         ))}
+      </div>
+      <div className="w-full">
+        <Footer />
       </div>
     </>
   );

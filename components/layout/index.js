@@ -6,7 +6,6 @@ const Layout = ({ children }) => {
     <div className="flex flex-col min-h-screen bg-[#FAF4EB]">
       <Header />
       <main>{children}</main>
-      <Footer className="mt-auto" />
     </div>
   );
 };

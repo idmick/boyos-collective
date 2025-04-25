@@ -3,6 +3,7 @@ import { useState } from "react";
 import dynamic from "next/dynamic";
 import RadioPlayer from "../components/RadioPlayer";
 import WonderlandLogo from "../components/WonderlandLogo";
+import Footer from "../components/layout/Footer";
 
 export default function BoyosWonderlandPage() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -281,6 +282,9 @@ export default function BoyosWonderlandPage() {
           } */}
             </div>
           </section>
+          <div className="mb-[156px]">
+            <Footer />
+          </div>
         </div>
       </div>
     </>
