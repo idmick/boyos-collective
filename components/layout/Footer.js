@@ -108,6 +108,7 @@ export default function Footer() {
             </defs>
           </svg>
           <p className="font-bold text-lg">Boyos Collective</p>
+
           <p className="text-sm">
             Copyright © 2025 Boyos Collective. All rights reserved.
           </p>
@@ -132,6 +133,7 @@ export default function Footer() {
             </li>
           ))}
         </ul>
+        <p className="text-sm">byMickey</p>
       </div>
     </footer>
   );
