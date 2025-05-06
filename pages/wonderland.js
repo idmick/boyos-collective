@@ -230,12 +230,7 @@ export default function BoyosWonderlandPage() {
                 <li>3-course vegetarian dinner – €15</li>
                 <li>Dance Free from 20:00</li>
               </ul>
-              {
-                <CTAButton
-                  href="https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=9f7eee1f-5e6f-4488-867a-39e7c8be3b9e"
-                  label="Get Tickets"
-                ></CTAButton>
-              }
+              {<CTAButton href="" label="Sold Out"></CTAButton>}
             </div>
             <div>
               <img

@@ -18,24 +18,24 @@ const idGen = () => {
 const linkTree = [
   {
     id: idGen(),
-    title: "Tickets: Boyos Wonderland, The Dine and Dance Edition #2 [16-05]",
-    url: "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=9f7eee1f-5e6f-4488-867a-39e7c8be3b9e",
-  },
-  {
-    id: idGen(),
     title:
       "Tickets: Boyos Wonderland mini festival w/ Another Taste (live) & more [28-06]",
     url: "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=50d15694-0f22-4859-8c4c-df03dff309fc",
   },
   {
     id: idGen(),
-    title: "Photo's Boyos Wonderland Dine and Dance 12.04.25",
-    url: "https://1drv.ms/a/c/3ffa6c8616c781f7/EvRL9_kDsXRMmsdl2k9GgeEBlhZhAoiiBPnaoetFuPNylA?e=JcMCOh",
+    title: "Tickets: PBN w/ Boyos Soundsystem & Gledd [31-05]",
+    url: "https://www.pacificamsterdam.nl/en/events/pbn-w-boyos-soundsystem-gledd",
   },
   {
     id: idGen(),
     title: "Upcoming gigs",
-    url: "https://www.instagram.com/p/DHdqWvQoedX/",
+    url: "https://www.instagram.com/p/DJUai8mIN_l/",
+  },
+  {
+    id: idGen(),
+    title: "Photo's Boyos Wonderland Dine and Dance 12.04.25",
+    url: "https://1drv.ms/a/c/3ffa6c8616c781f7/EvRL9_kDsXRMmsdl2k9GgeEBlhZhAoiiBPnaoetFuPNylA?e=JcMCOh",
   },
   {
     id: idGen(),
