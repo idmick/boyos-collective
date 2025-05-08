@@ -1,16 +1,17 @@
-import { NextSeo } from "next-seo";
-import { useState } from "react";
-import dynamic from "next/dynamic";
-import RadioPlayer from "../components/RadioPlayer";
-import WonderlandLogo from "../components/WonderlandLogo";
-import Footer from "../components/layout/Footer";
+import { NextSeo } from 'next-seo'
+import { useState } from 'react'
+import dynamic from 'next/dynamic'
+import RadioPlayer from '../components/RadioPlayer'
+import WonderlandLogo from '../components/WonderlandLogo'
+import SignupForm from '../components/SignupForm'
+import Footer from '../components/layout/Footer'
 
 export default function BoyosWonderlandPage() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false)
 
-  const HeroVideo = dynamic(() => import("../components/HeroVideo"), {
+  const HeroVideo = dynamic(() => import('../components/HeroVideo'), {
     ssr: false,
-  });
+  })
 
   const CTAButton = ({ href, label }) => (
     <a
@@ -21,7 +22,7 @@ export default function BoyosWonderlandPage() {
     >
       {label}
     </a>
-  );
+  )
 
   const CTAButtonSecond = ({ href, label }) => (
     <a
@@ -32,26 +33,26 @@ export default function BoyosWonderlandPage() {
     >
       {label}
     </a>
-  );
+  )
 
   const channels = [
     {
-      name: "Essential Groove Radio (Default)",
-      url: "https://soundcloud.com/boyos_soundsystem/sets/essential-groove",
+      name: 'Essential Groove Radio (Default)',
+      url: 'https://soundcloud.com/boyos_soundsystem/sets/essential-groove',
     },
     {
-      name: "Wonderland Artist Channel",
-      url: "https://soundcloud.com/boyos_soundsystem/sets/artist-channel",
+      name: 'Wonderland Artist Channel',
+      url: 'https://soundcloud.com/boyos_soundsystem/sets/artist-channel',
     },
     {
-      name: "Jaguar House",
-      url: "https://soundcloud.com/jaguarhousemusic/sets/jaguar-house-season-i",
+      name: 'Jaguar House',
+      url: 'https://soundcloud.com/jaguarhousemusic/sets/jaguar-house-season-i',
     },
     {
-      name: "&Friends Mix Series",
-      url: "https://soundcloud.com/and_friends/sets/mix-series",
+      name: '&Friends Mix Series',
+      url: 'https://soundcloud.com/and_friends/sets/mix-series',
     },
-  ];
+  ]
 
   return (
     <>
@@ -59,17 +60,17 @@ export default function BoyosWonderlandPage() {
         title="Boyos Wonderland"
         description="Boyos Wonderland is a unique Amsterdam party series blending music, art, food, tattoos, and immersive experiences. Step into a world where groove sparks imagination and every rhythm invites adventure."
         openGraph={{
-          url: "https://www.boyoscollective.nl/wonderland",
-          title: "Boyos Wonderland",
+          url: 'https://www.boyoscollective.nl/wonderland',
+          title: 'Boyos Wonderland',
           description:
-            "Boyos Wonderland is a unique Amsterdam party series blending music, art, food, and immersive experiences. Step into a world where groove sparks imagination and every rhythm invites adventure.",
+            'Boyos Wonderland is a unique Amsterdam party series blending music, art, food, and immersive experiences. Step into a world where groove sparks imagination and every rhythm invites adventure.',
           images: [
             {
-              url: "https://www.boyoscollective.nl/images/essential_groove.png",
-              alt: "Boyos Wonderland og-image",
+              url: 'https://www.boyoscollective.nl/images/essential_groove.png',
+              alt: 'Boyos Wonderland og-image',
             },
           ],
-          siteName: "Boyos Collective",
+          siteName: 'Boyos Collective',
         }}
       />
       <div className="bg-[#FAF4EB]">
@@ -250,7 +251,7 @@ export default function BoyosWonderlandPage() {
                 28 June from 15:00 – 23:00 at Houtbaar
               </p>
               <p className="text-2xl font-[moret] mb-6">
-                Early entry tickets from{" "}
+                Early entry tickets from{' '}
                 <span className="font-bold">€13.50</span>, limited spots
                 available
               </p>
@@ -276,6 +277,7 @@ export default function BoyosWonderlandPage() {
               hop on the newsletter, or follow us on Instagram.
             </p>
             <div className="flex flex-col gap-4 ">
+              <SignupForm />
               {
                 <CTAButtonSecond
                   href="https://www.instagram.com/boyos.wonderland/?hl=en"
@@ -302,5 +304,5 @@ export default function BoyosWonderlandPage() {
         </div>
       </div>
     </>
-  );
+  )
 }
