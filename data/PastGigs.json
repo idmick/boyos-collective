@@ -1,6 +1,16 @@
 {
   "pastGigs": [
     {
+      "title": "Veerplas Festival", 
+      "venue": "Veerplas, Haarlem",
+      "monthYear": "June 2025"
+    },
+    {
+      "title": "Grasnapolsky x Buitenland", 
+      "venue": "Camping Buitenland, Nieuw-Amsterdam",
+      "monthYear": "June 2025"
+    },
+    {
       "title": "Sunny Side Radio (Sissi's)", 
       "venue": "Sissi's, Amsterdam",
       "monthYear": "June 2025"
