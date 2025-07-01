@@ -82,14 +82,14 @@ export default function BoyosWonderlandPage() {
         <div className="relative flex flex-col scroll-smooth max-w-[500px] mx-auto bg-neutral-100 text-[#1B1212] font-sans">
           {/* FLOATING MENU BUTTON */}
           <div className="fixed flex top-4 right-4 z-50 gap-2">
-            <a
+            {/* <a
               className=" bg-[#F9ABC5] text-[#1B1212] font-bold p-3 rounded-full  shadow-lg hover:text-[#641B16]"
               href="https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=50d15694-0f22-4859-8c4c-df03dff309fc"
               target="_blank"
               rel="noopener noreferrer"
             >
               Tickets
-            </a>
+            </a> */}
             <button
               className=" bg-[#F9ABC5] text-[#1B1212] font-bold p-3 rounded-full  shadow-lg hover:text-[#641B16]"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -135,7 +135,7 @@ export default function BoyosWonderlandPage() {
               >
                 Events
               </a>
-              <a
+              {/* <a
                 href="https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -143,7 +143,7 @@ export default function BoyosWonderlandPage() {
                 onClick={() => setMenuOpen(false)}
               >
                 Tickets
-              </a>
+              </a> */}
               <a
                 href="#cta"
                 className="hover:text-[#641B16]"
@@ -234,7 +234,7 @@ export default function BoyosWonderlandPage() {
               {<CTAButton href="" label="Sold Out"></CTAButton>}
             </div> */}
             <div>
-              <img
+              {/* <img
                 src="/images/events/mini_festival.png"
                 alt="Mini Festival poster"
                 className="mb-6"
@@ -260,7 +260,15 @@ export default function BoyosWonderlandPage() {
                   href="https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=50d15694-0f22-4859-8c4c-df03dff309fc"
                   label="Get Tickets"
                 ></CTAButton>
-              }
+              } */}
+              <h3 className="uppercase text-3xl font-[pretoria] tracking-wider font-bold mb-6">
+                No Events Scheduled
+              </h3>
+              <p className="text-2xl font-[moret]  mb-1">
+                We had an amazing season with our Dine & Dance events and Mini
+                Festival, but we currently have no new events scheduled. Stay
+                tuned for updates!
+              </p>
             </div>
           </section>
 
