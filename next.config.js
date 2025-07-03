@@ -6,7 +6,6 @@ const withPWA = require('next-pwa')({
 const path = require('path')
 
 module.exports = withPWA({
-  swcMinify: true,
   reactStrictMode: true,
   images: {
     domains: ['www.netlify.com', 'vercel.com'],

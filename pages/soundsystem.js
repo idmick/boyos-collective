@@ -138,10 +138,10 @@ export default function Soundsystem() {
               alt="Boyos Soundsytem Logo"
             />
           </div>
-          <h1 className="text-3xl font-[pretoria] font-bold text-center mb-6 text-[#1B1212]">
+          <h1 className="text-3xl font-[impact] font-bold text-center mb-6 text-[#1B1212]">
             Boyos Soundsystem
           </h1>
-          <h2 className="text-xl font-semibold mb-2 text-[#1B1212] underline font-[pretoria]">
+          <h2 className="text-xl font-semibold mb-2 text-[#1B1212] underline font-[impact]">
             Our sets
           </h2>
           <div className="mb-6">
@@ -208,7 +208,7 @@ export default function Soundsystem() {
           </div>
           <h2
             id="past-gigs"
-            className="text-xl font-semibold mb-2 text-[#1B1212] mt-8 underline font-[pretoria]"
+            className="text-xl font-semibold mb-2 text-[#1B1212] mt-8 underline font-[impact]"
           >
             Past Gigs
           </h2>

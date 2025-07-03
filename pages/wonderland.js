@@ -266,7 +266,7 @@ export default function BoyosWonderlandPage() {
             id="about"
             className="bg-[#9370DB] px-6 py-12 text-left text-[#F0E68C]"
           >
-            <h2 className="uppercase  font-[pretoria] tracking-wider sticky top-0 z-10 bg-[#9370DB] text-4xl text-[#F0E68C]  py-8">
+            <h2 className="uppercase  font-[impact] tracking-wider sticky top-0 z-10 bg-[#9370DB] text-4xl text-[#F0E68C]  py-8">
               Our Story
             </h2>
             <div className="text-2xl font-[moret]">
@@ -297,7 +297,7 @@ export default function BoyosWonderlandPage() {
             id="events"
             className="bg-[#F0E68C] text-[#8B008B] px-6 py-12"
           >
-            <h2 className="uppercase  font-[pretoria] tracking-wider sticky top-0 z-10 bg-[#F0E68C] text-4xl text-[#8B008B]  py-8">
+            <h2 className="uppercase  font-[impact] tracking-wider sticky top-0 z-10 bg-[#F0E68C] text-4xl text-[#8B008B]  py-8">
               No Events Scheduled
             </h2>
             {/* <div className="mb-12">
@@ -306,7 +306,7 @@ export default function BoyosWonderlandPage() {
                 alt="Dine & Dance poster"
                 className="mb-6"
               />
-              <h3 className="uppercase text-3xl font-[pretoria] tracking-wider font-bold mb-6">
+              <h3 className="uppercase text-3xl font-[impact] tracking-wider font-bold mb-6">
                 Dine and Dance
               </h3>
               <p className="text-2xl font-[moret] mb-6">
@@ -409,7 +409,7 @@ export default function BoyosWonderlandPage() {
           </section>
           {/* PHOTO ALBUMS CAROUSEL */}
           <section id="photos" className="bg-[#9370DB] px-6 py-12">
-            <h2 className="uppercase font-[pretoria] tracking-wider text-4xl text-[#F0E68C] py-8">
+            <h2 className="uppercase font-[impact] tracking-wider text-4xl text-[#F0E68C] py-8">
               Photo Albums
             </h2>
             <div className="relative w-full">
@@ -479,7 +479,7 @@ export default function BoyosWonderlandPage() {
             id="cta"
             className="bg-[#F0E68C] px-6 py-12 text-center text-[#8B008B]"
           >
-            <h2 className="uppercase  sticky top-0 z-10 bg-[#F0E68C] text-4xl text-left text-[#8B008B]  py-8 font-[pretoria] tracking-wider">
+            <h2 className="uppercase  sticky top-0 z-10 bg-[#F0E68C] text-4xl text-left text-[#8B008B]  py-8 font-[impact] tracking-wider">
               Stay Up to Date
             </h2>
             <p className="max-w-sm text-left text-2xl font-[moret]">

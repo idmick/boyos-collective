@@ -103,8 +103,8 @@ const Home = () => {
           },
         ]}
       />
-      {/* Logo/Header */}
-      <div className="w-full flex flex-col items-center py-10">
+
+      {/* <div className="w-full flex flex-col items-center py-10">
         <div className="w-full max-w-md flex flex-col items-center">
           <Image
             src={BoyosBoxed}
@@ -118,7 +118,7 @@ const Home = () => {
           </p>
         </div>
       </div>
-      {/* Full-width, alternating blocks */}
+
       <div className="flex flex-col items-start md:flex-row w-full min-h-screen">
         {blocks.map((block, idx) => (
           <div
@@ -135,10 +135,10 @@ const Home = () => {
                   alt={block.title}
                 />
               </div>
-              <h2 className="text-2xl font-[pretoria] font-bold text-center mt-4 mb-2 text-[#1B1212]">
+              <h2 className="text-2xl font-[impact] font-bold text-center mt-4 mb-2 ">
                 {block.title}
               </h2>
-              <p className="text-sm text-[#1B1212] text-center mb-4">
+              <p className="text-sm  text-center mb-4">
                 {block.text}
               </p>
               {block.cta.type === 'button' ? (
@@ -161,6 +161,72 @@ const Home = () => {
             </div>
           </div>
         ))}
+      </div> */}
+      <div className="flex flex-col min-h-screen">
+        <div className="flex flex-1 flex-col md:flex-row w-full h-full">
+          {/* Left: Soundsystem */}
+          <div className="flex-1 flex flex-col bg-[#EC90B0] text-[#fff] justify-center items-center px-6 py-12">
+            <div className="max-w-xs w-full flex flex-col items-center">
+              <div className="w-full flex justify-center items-start mb-2">
+                <Image
+                  src={BoyosVinyl} // or BoyosWonderland
+                  width={140}
+                  height={140}
+                  objectFit="contain"
+                  alt="Boyos Soundsystem" // or Boyos Wonderland
+                  priority
+                />
+              </div>
+              <h2 className="text-2xl font-[impact] font-bold text-center mt-4 mb-2 ">
+                Boyos Soundsystem
+              </h2>
+              <p className="text-sm  text-center mb-4">
+                Boyos Soundsystem, an Amsterdam-based trio of DJs - Nicolaas,
+                Tomas, and Mick - are known for their electrifying sets across
+                the Netherlands, transforming house parties into vibrant dance
+                events. With their eclectic blend of Brazilian Boogie, Soca,
+                Zouk, Italo, Disco, and Afro House, they have lit up stages at
+                events such as De Zon Festival, Veerplas Festival, and the
+                legendary Woodstock 69.
+              </p>
+              <button
+                className="mt-4 text-2xl font-[moret]  px-6 py-2 border border-[#0083d0]  text-[#0083d0] font-medium rounded-full max-w-fit w-fit flex-none hover:bg-[#0083d0] hover:text-[#EC90B0]"
+                onClick={() => router.push('/soundsystem')}
+              >
+                CHECKOUT THE GROOVE
+              </button>
+            </div>
+          </div>
+          {/* Right: Wonderland */}
+          <div className="flex-1 flex flex-col  bg-[#9370DB] text-[#fff] justify-center items-center px-6 py-12">
+            <div className="max-w-xs w-full flex flex-col items-center">
+              <div className="w-full flex justify-center items-start mb-2">
+                <Image
+                  src={BoyosWonderland} // or BoyosWonderland
+                  width={140}
+                  height={140}
+                  objectFit="contain"
+                  alt="Boyos Wonderland" // or Boyos Wonderland
+                  priority
+                />
+              </div>
+              <h2 className="text-2xl font-[impact] font-bold text-center mt-4 mb-2 ">
+                Boyos Wonderland
+              </h2>
+              <p className="text-xl font-[moret]  text-center mb-4">
+                Boyos Wonderland is our annual themed party in Amsterdam,
+                bringing together music, art, and immersive experiences. Dive
+                into a world of creativity and celebration with the Boyos crew!
+              </p>
+              <button
+                className="mt-4 text-2xl font-[moret]  px-6 py-2 border border-[#FFD700]  text-[#FFD700] font-medium rounded-full max-w-fit w-fit flex-none hover:bg-[#FFD700] hover:text-[#9370DB]"
+                onClick={() => router.push('/wonderland')}
+              >
+                ENTER WONDERLAND
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
       <div className="w-full">
         <Footer />
