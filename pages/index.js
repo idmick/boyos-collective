@@ -180,14 +180,31 @@ const Home = () => {
               <h2 className="text-2xl font-[anton] uppercase font-bold text-center mt-4 mb-2 ">
                 Boyos Soundsystem
               </h2>
-              <p className="text-sm  text-center mb-4">
-                Boyos Soundsystem, an Amsterdam-based trio of DJs - Nicolaas,
-                Tomas, and Mick - are known for their electrifying sets across
-                the Netherlands, transforming house parties into vibrant dance
-                events. With their eclectic blend of Brazilian Boogie, Soca,
-                Zouk, Italo, Disco, and Afro House, they have lit up stages at
-                events such as De Zon Festival, Veerplas Festival, and the
-                legendary Woodstock 69.
+              <p className="text-xl font-[moret] text-center mb-4">
+                Boyos Soundsystem is a DJ collective made up of Tomas, Nico, and
+                Mickey. Driven by a shared love for music and nightlife, their
+                sets are eclectic and energetic, blending Disco, House, and
+                global grooves like Zouk, Soca, and Brazilian Boogie.
+                <br />
+                <br />
+                With a keen sense for reading the room and building dynamic
+                momentum, their style works equally well in intimate settings
+                and on big festival stages. From all-night club sets to dine &
+                dance evenings and festival slots, Boyos has performed at iconic
+                venues and events such as Woodstock 69 (residency), Shelter,
+                Pacific, Veerplas Festival, De Zon, and more.
+                <br />
+                <br />
+                In addition to DJing, the collective hosts their own series
+                called Boyos Wonderland at Houtbaar (Haarlem), combining music
+                with visual art and pop-up tattoos to create immersive
+                experiences.
+                <br />
+                <br />
+                Known for their thoughtful selections, energetic chemistry
+                behind the decks, and easygoing approach, Boyos Soundsystem is
+                carving out a place as a trusted name within the scene, and is
+                eager to take their sound further afield.
               </p>
               <button
                 className="mt-4 text-2xl font-[moret]  px-6 py-2 border border-[#0083d0]  text-[#0083d0] font-medium rounded-full max-w-fit w-fit flex-none hover:bg-[#0083d0] hover:text-[#EC90B0]"
@@ -213,10 +230,13 @@ const Home = () => {
               <h2 className="text-2xl font-[anton] uppercase font-bold text-center mt-4 mb-2 ">
                 Boyos Wonderland
               </h2>
-              <p className="text-xl font-[moret]  text-center mb-4">
-                Boyos Wonderland is our annual themed party in Amsterdam,
-                bringing together music, art, and immersive experiences. Dive
-                into a world of creativity and celebration with the Boyos crew!
+              <p className="text-xl font-[moret] text-center mb-4">
+                Boyos Wonderland is our ongoing event series, hosting everything
+                from intimate Dine & Dance nights to vibrant indoor parties and
+                open-air garden festivals. Each edition blends music, art, food,
+                and tattoos for a truly immersive experience. Step into a world
+                where the groove brings people together—join the Boyos crew and
+                be part of the wonder!
               </p>
               <button
                 className="mt-4 text-2xl font-[moret]  px-6 py-2 border border-[#FFD700]  text-[#FFD700] font-medium rounded-full max-w-fit w-fit flex-none hover:bg-[#FFD700] hover:text-[#9370DB]"

@@ -113,40 +113,30 @@ export default function BoyosWonderlandPage() {
         }}
       /> */}
       <NextSeo
-        title="Boyos Wonderland | Music Events & Festivals in and around Haarlem"
-        description="Boyos Wonderland is our own event series in Haarlem, featuring Dine & Dance nights and mini festivals at Houtbaar. Experience music, food, tattoos, and good vibes!"
+        title="Boyos Wonderland | Music Events & Festivals"
+        description="Boyos Wonderland is an ongoing event series blending music, art, food, and tattoos for immersive experiences. From intimate Dine & Dance nights to vibrant parties and garden festivals, join the groove with the Boyos crew."
         canonical="https://www.boyoscollective.nl/wonderland"
         openGraph={{
           url: 'https://www.boyoscollective.nl/wonderland',
-          title: 'Boyos Wonderland | Music Events & Mini Festivals Haarlem',
+          title: 'Boyos Wonderland | Music Events & Festivals',
           description:
-            'Boyos Wonderland is our own event series in Haarlem, featuring Dine & Dance nights and mini festivals at Houtbaar. Experience music, food, tattoos, and good vibes!',
+            'Boyos Wonderland is an ongoing event series blending music, art, food, and tattoos for immersive experiences. From intimate Dine & Dance nights to vibrant parties and garden festivals, join the groove with the Boyos crew.',
           images: [
             {
               url: 'https://www.boyoscollective.nl/images/cover_minifestival_2.jpg',
-              alt: 'Boyos Wonderland at Houtbaar w/ Another Taste',
+              alt: 'Boyos Wonderland event',
             },
           ],
           siteName: 'Boyos Collective',
         }}
       />
       <EventJsonLd
-        name="Boyos Wonderland Mini Festival"
-        location={{
-          name: 'Houtbaar',
-          address: {
-            streetAddress: 'Woudplein 2',
-            addressLocality: 'Haarlem',
-            addressRegion: 'North Holland',
-            postalCode: '2031 CZ ',
-            addressCountry: 'NL',
-          },
-        }}
+        name="Boyos Wonderland"
         url="https://www.boyoscollective.nl/wonderland"
         images={[
           'https://www.boyoscollective.nl/images/cover_minifestival_2.jpg',
         ]}
-        description="Boyos Wonderland is a unique mini festival in Haarlem with music, food, art, and tattoos. Organized by Boyos Collective."
+        description="Boyos Wonderland is an ongoing event series blending music, art, food, and tattoos for immersive experiences at various venues in and around Haarlem, Amsterdam, and beyond."
         organizer={{
           name: 'Boyos Collective',
           url: 'https://www.boyoscollective.nl',
@@ -273,9 +263,9 @@ export default function BoyosWonderlandPage() {
               <p className="mb-4">
                 Boyos Wonderland is what happens when DJs dream beyond the
                 booth. What started as friends cooking, hosting, and spinning
-                tunes has grown into a series of warm, soulful events at
-                Houtbaar, from intimate Dine & Dance nights to our garden mini
-                festival.
+                tunes has grown into a series of warm, soulful events—first at
+                Houtbaar, our home base and creative partner, and now expanding
+                to new spaces and cities.
               </p>
               <p className="mb-4">
                 We blend food, music, tattoos, and good people into one shared
@@ -284,7 +274,7 @@ export default function BoyosWonderlandPage() {
               </p>
               <p>
                 This is a space where the essential groove comes alive. Come
-                early, stay late, and be part part of something real.
+                early, stay late, and be part of something real.
               </p>
             </div>
             <div className="flex justify-center mt-8">
