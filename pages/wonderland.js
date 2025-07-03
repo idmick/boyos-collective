@@ -251,7 +251,7 @@ export default function BoyosWonderlandPage() {
               </p>
             </div>
             <div className="flex justify-center mt-8">
-              <img src="/images/mini-fest-party.png" />
+              <img src="/images/BoyosWonderland-mini-fest-at.jpg" />
             </div>
           </section>
 
