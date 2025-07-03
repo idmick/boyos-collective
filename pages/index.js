@@ -181,30 +181,11 @@ const Home = () => {
                 Boyos Soundsystem
               </h2>
               <p className="text-xl font-[moret] text-center mb-4">
-                Boyos Soundsystem is a DJ collective made up of Tomas, Nico, and
-                Mickey. Driven by a shared love for music and nightlife, their
-                sets are eclectic and energetic, blending Disco, House, and
-                global grooves like Zouk, Soca, and Brazilian Boogie.
-                <br />
-                <br />
-                With a keen sense for reading the room and building dynamic
-                momentum, their style works equally well in intimate settings
-                and on big festival stages. From all-night club sets to dine &
-                dance evenings and festival slots, Boyos has performed at iconic
-                venues and events such as Woodstock 69 (residency), Shelter,
-                Pacific, Veerplas Festival, De Zon, and more.
-                <br />
-                <br />
-                In addition to DJing, the collective hosts their own series
-                called Boyos Wonderland at Houtbaar (Haarlem), combining music
-                with visual art and pop-up tattoos to create immersive
-                experiences.
-                <br />
-                <br />
-                Known for their thoughtful selections, energetic chemistry
-                behind the decks, and easygoing approach, Boyos Soundsystem is
-                carving out a place as a trusted name within the scene, and is
-                eager to take their sound further afield.
+                Boyos Soundsystem is a DJ collective—Tomas, Nico, and Mickey.
+                Known for energetic, eclectic sets that blend Disco, House, and
+                global grooves. From intimate club nights to major festivals,
+                they bring vibrant, feel-good music and a unique vibe to every
+                dancefloor.
               </p>
               <button
                 className="mt-4 text-2xl font-[moret]  px-6 py-2 border border-[#0083d0]  text-[#0083d0] font-medium rounded-full max-w-fit w-fit flex-none hover:bg-[#0083d0] hover:text-[#EC90B0]"
