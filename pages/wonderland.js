@@ -1,9 +1,9 @@
-import { NextSeo } from 'next-seo'
+import { NextSeo, EventJsonLd } from 'next-seo'
 import { useState } from 'react'
 import dynamic from 'next/dynamic'
 import RadioPlayer from '../components/RadioPlayer'
 import WonderlandLogo from '../components/WonderlandLogo'
-import SignupForm from '../components/SignupForm'
+// import SignupForm from '../components/SignupForm'
 import Footer from '../components/layout/Footer'
 import { useKeenSlider } from 'keen-slider/react'
 import CarouselDots from '@/components/CarouselDots'
@@ -33,17 +33,7 @@ export default function BoyosWonderlandPage() {
       target="_blank"
       rel="noopener noreferrer"
       className="mt-4 text-2xl font-[moret]  px-6 py-2 bg-[#FFD700] text-[#8B008B] font-medium rounded-full max-w-fit w-fit flex-none hover:bg-yellow-500"
-    >
-      {label}
-    </a>
-  )
-
-  const CTAButtonSecond = ({ href, label }) => (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="flex text-2xl font-[moret] font-bold underline gap-2 text-[#9370DB] hover:text-[#8B008B] max-w-fit w-fit"
+      onClick={() => trackPiratepx('cta_view_events')}
     >
       {label}
     </a>
@@ -96,9 +86,16 @@ export default function BoyosWonderlandPage() {
     },
   ]
 
+  const trackPiratepx = (eventId) => {
+    const img = new window.Image()
+    img.src = `https://app.piratepx.com/ship?p=55de87a9-341f-4c3f-ac22-feba7ac931d8&i=${encodeURIComponent(
+      eventId
+    )}`
+  }
+
   return (
     <>
-      <NextSeo
+      {/* <NextSeo
         title="Boyos Wonderland"
         description="Boyos Wonderland is a unique Amsterdam party series blending music, art, food, tattoos, and immersive experiences. Step into a world where groove sparks imagination and every rhythm invites adventure."
         openGraph={{
@@ -113,6 +110,46 @@ export default function BoyosWonderlandPage() {
             },
           ],
           siteName: 'Boyos Collective',
+        }}
+      /> */}
+      <NextSeo
+        title="Boyos Wonderland | Music Events & Festivals in and around Haarlem"
+        description="Boyos Wonderland is our own event series in Haarlem, featuring Dine & Dance nights and mini festivals at Houtbaar. Experience music, food, tattoos, and good vibes!"
+        canonical="https://www.boyoscollective.nl/wonderland"
+        openGraph={{
+          url: 'https://www.boyoscollective.nl/wonderland',
+          title: 'Boyos Wonderland | Music Events & Mini Festivals Haarlem',
+          description:
+            'Boyos Wonderland is our own event series in Haarlem, featuring Dine & Dance nights and mini festivals at Houtbaar. Experience music, food, tattoos, and good vibes!',
+          images: [
+            {
+              url: 'https://www.boyoscollective.nl/images/cover_minifestival_2.jpg',
+              alt: 'Boyos Wonderland at Houtbaar w/ Another Taste',
+            },
+          ],
+          siteName: 'Boyos Collective',
+        }}
+      />
+      <EventJsonLd
+        name="Boyos Wonderland Mini Festival"
+        location={{
+          name: 'Houtbaar',
+          address: {
+            streetAddress: 'Woudplein 2',
+            addressLocality: 'Haarlem',
+            addressRegion: 'North Holland',
+            postalCode: '2031 CZ ',
+            addressCountry: 'NL',
+          },
+        }}
+        url="https://www.boyoscollective.nl/wonderland"
+        images={[
+          'https://www.boyoscollective.nl/images/cover_minifestival_2.jpg',
+        ]}
+        description="Boyos Wonderland is a unique mini festival in Haarlem with music, food, art, and tattoos. Organized by Boyos Collective."
+        organizer={{
+          name: 'Boyos Collective',
+          url: 'https://www.boyoscollective.nl',
         }}
       />
       <div className="bg-[#FAF4EB]">
@@ -300,6 +337,7 @@ export default function BoyosWonderlandPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-lg font-bold underline text-[#9370DB] hover:text-[#8B008B] transition"
+                  onClick={() => trackPiratepx('cta_whatsapp')}
                 >
                   <svg
                     fill="currentColor"
@@ -329,6 +367,7 @@ export default function BoyosWonderlandPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-lg font-bold underline text-[#9370DB] hover:text-[#8B008B] transition"
+                  onClick={() => trackPiratepx('cta_instagram')}
                 >
                   <svg
                     width="24px"
@@ -385,6 +424,11 @@ export default function BoyosWonderlandPage() {
                     tabIndex={0}
                     aria-label={`Open album: ${album.title}`}
                     title={`View album: ${album.title}`}
+                    onClick={() =>
+                      trackPiratepx(
+                        `album_open_${album.title.replace(/\s+/g, '_')}`
+                      )
+                    }
                   >
                     <div className="relative w-full h-80">
                       <img

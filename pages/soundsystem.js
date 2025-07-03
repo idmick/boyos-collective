@@ -1,108 +1,133 @@
-import { useState } from "react";
-import { useRouter } from "next/router"; // <-- Add this import
-import ReactPlayer from "react-player";
-import Image from "next/image";
-import BoyosSoundsystem from "../public/images/boyos_we_got_the_funk.png";
-import PastGigs from "../data/PastGigs.json";
-import { NextSeo } from "next-seo";
-import Footer from "../components/layout/Footer";
+import { useState } from 'react'
+import { useRouter } from 'next/router' // <-- Add this import
+import ReactPlayer from 'react-player'
+import Image from 'next/image'
+import BoyosSoundsystem from '../public/images/boyos_we_got_the_funk.png'
+import PastGigs from '../data/PastGigs.json'
+import { NextSeo, MusicGroupJsonLd } from 'next-seo'
+import Footer from '../components/layout/Footer'
 
 const idGen = () => {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
     var r = (Math.random() * 16) | 0,
-      v = c == "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-};
+      v = c == 'x' ? r : (r & 0x3) | 0x8
+    return v.toString(16)
+  })
+}
 
 const linkTree = [
   {
     id: idGen(),
     title:
-      "Tickets: Boyos Wonderland mini festival w/ Another Taste (live) & more [28-06]",
-    url: "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=50d15694-0f22-4859-8c4c-df03dff309fc",
+      'Tickets: Boyos Wonderland mini festival w/ Another Taste (live) & more [28-06]',
+    url: 'https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=50d15694-0f22-4859-8c4c-df03dff309fc',
   },
   {
     id: idGen(),
-    title: "Tickets: PBN w/ Boyos Soundsystem & Gledd [31-05]",
-    url: "https://www.pacificamsterdam.nl/en/events/pbn-w-boyos-soundsystem-gledd",
+    title: 'Tickets: PBN w/ Boyos Soundsystem & Gledd [31-05]',
+    url: 'https://www.pacificamsterdam.nl/en/events/pbn-w-boyos-soundsystem-gledd',
   },
   {
     id: idGen(),
-    title: "Upcoming gigs",
-    url: "https://www.instagram.com/p/DJUai8mIN_l/",
+    title: 'Upcoming gigs',
+    url: 'https://www.instagram.com/p/DJUai8mIN_l/',
   },
   {
     id: idGen(),
     title: "Photo's Boyos Wonderland Dine and Dance 16.05.25",
-    url: "https://1drv.ms/a/c/3ffa6c8616c781f7/EjgpbRxYJLhDh8npP18xpDIBkACc1p1d8ATNy1F9J-zNUQ?e=FguJ8f",
+    url: 'https://1drv.ms/a/c/3ffa6c8616c781f7/EjgpbRxYJLhDh8npP18xpDIBkACc1p1d8ATNy1F9J-zNUQ?e=FguJ8f',
   },
   {
     id: idGen(),
     title: "Photo's Boyos Wonderland Dine and Dance 12.04.25",
-    url: "https://1drv.ms/a/c/3ffa6c8616c781f7/EvRL9_kDsXRMmsdl2k9GgeEBlhZhAoiiBPnaoetFuPNylA?e=JcMCOh",
+    url: 'https://1drv.ms/a/c/3ffa6c8616c781f7/EvRL9_kDsXRMmsdl2k9GgeEBlhZhAoiiBPnaoetFuPNylA?e=JcMCOh',
   },
   {
     id: idGen(),
-    title: "Instagram",
-    url: "https://www.instagram.com/boyos.soundsystem/",
+    title: 'Instagram',
+    url: 'https://www.instagram.com/boyos.soundsystem/',
   },
   {
     id: idGen(),
-    title: "Boyos Wonderland",
-    url: "/wonderland/",
+    title: 'Boyos Wonderland',
+    url: '/wonderland/',
   },
   {
     id: idGen(),
-    title: "Join our WhatsApp Comunnity",
-    url: "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
+    title: 'Join our WhatsApp Comunnity',
+    url: 'https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR',
   },
   {
     id: idGen(),
-    title: "Essential Groove - Spotify Playlist",
-    url: "https://open.spotify.com/playlist/0sB9bNTv9HNaGlIC5KyLuH?si=8035d8a8a8bd4c7f",
+    title: 'Essential Groove - Spotify Playlist',
+    url: 'https://open.spotify.com/playlist/0sB9bNTv9HNaGlIC5KyLuH?si=8035d8a8a8bd4c7f',
   },
   {
     id: idGen(),
-    title: "Resident Advisor",
-    url: "https://ra.co/dj/boyossoundsystem",
+    title: 'Resident Advisor',
+    url: 'https://ra.co/dj/boyossoundsystem',
   },
   {
     id: idGen(),
-    title: "Book us - Get in contact",
-    url: "mailto:soundsystem@boyoscollective.nl?subject=Booking: ...",
+    title: 'Book us - Get in contact',
+    url: 'mailto:soundsystem@boyoscollective.nl?subject=Booking: ...',
   },
-];
+]
 
-const pastGigs = PastGigs.pastGigs;
+const pastGigs = PastGigs.pastGigs
 
 export default function Soundsystem() {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const router = useRouter(); // <-- Add this
+  const [isPlaying, setIsPlaying] = useState(false)
+  const router = useRouter() // <-- Add this
 
-  const startVinyl = () => setIsPlaying(true);
-  const pauseVinyl = () => setIsPlaying(false);
-
-  const onWonderland = (router) => router.push("/soundsystem");
+  const startVinyl = () => setIsPlaying(true)
+  const pauseVinyl = () => setIsPlaying(false)
 
   return (
     <>
       <NextSeo
-        title="Boyos Soundsystem"
-        description="Boyos Soundsystem is a dynamic trio of DJs who bring a blend of vinyl and digital music to the dance floor. Their sets are filled with funky, high-energy beats across a variety of genres including Brazilian Boogie, Soca, Zouk, Italo, Disco, and (Afro) House. With their signature style and energy behind the decks, Boyos Soundsystem always knows how to get a crowd moving. Catch them at a venue near you and join in on the fun on the dance floor."
+        title="Boyos Soundsystem | Funk, Disco, House & Global Groove DJs"
+        description="Boyos Soundsystem is a DJ trio from Amsterdam, Haarlem & The Hague. Book us for Funk, Disco, House and more. Check our gigs, listen to our sets and get in touch!"
+        canonical="https://www.boyoscollective.nl/soundsystem"
         openGraph={{
-          url: "https://www.boyoscollective.nl/soundsystem",
-          title: "Boyos Soundsystem",
+          url: 'https://www.boyoscollective.nl/soundsystem',
+          title: 'Boyos Soundsystem | Funk, Disco, House & Global Grooves DJs',
           description:
-            "Boyos Soundsystem is a dynamic trio of DJs who bring a blend of vinyl and digital music to the dance floor. Their sets are filled with funky, high-energy beats across a variety of genres including Brazilian Boogie, Soca, Zouk, Italo, Disco, and (Afro) House. With their signature style and energy behind the decks, Boyos Soundsystem always knows how to get a crowd moving. Catch them at a venue near you and join in on the fun on the dance floor.",
+            'Boyos Soundsystem is a DJ trio from Amsterdam, Haarlem & The Hague. Book us for Funk, Disco, House and more. Check our gigs, listen to our sets and get in touch!',
           images: [
             {
-              url: "https://www.boyoscollective.nl/images/Boyos_we_got_the_funk - square.png",
-              alt: "Boyos Soundsytem og-image",
+              url: 'https://www.boyoscollective.nl/images//Users/mickvanvliet/Downloads/wonderland web/boyos-25-20.jpg',
+              alt: 'Boyos Soundsystem',
             },
           ],
-          siteName: "Boyos Collective",
+          siteName: 'Boyos Collective',
         }}
+      />
+      <MusicGroupJsonLd
+        name="Boyos Soundsystem"
+        url="https://www.boyoscollective.nl/soundsystem"
+        genre={['Funk', 'Disco', 'House', 'Global Grooves']}
+        foundingLocation="Amsterdam, Netherlands"
+        foundingDate="2021"
+        image="https://www.boyoscollective.nl/images/Boyos_we_got_the_funk - square.png"
+        sameAs={[
+          'https://www.instagram.com/boyos.soundsystem/',
+          'https://ra.co/dj/boyossoundsystem',
+        ]}
+        member={[
+          {
+            '@type': 'Person',
+            name: 'NMN - Nicolaas',
+          },
+          {
+            '@type': 'Person',
+            name: 'Di Tomaso - Tomas',
+          },
+          {
+            '@type': 'Person',
+            name: 'Mickey Anthony - Mick',
+          },
+        ]}
       />
       <div className="min-h-screen  flex flex-col items-center">
         <div className="w-full max-w-[500px] bg-[#EC90B0] mx-auto flex flex-col items-center px-4 py-8">
@@ -131,7 +156,7 @@ export default function Soundsystem() {
               config={{
                 soundcloud: {
                   options: {
-                    color: "#EC90B0",
+                    color: '#EC90B0',
                     sharing: true,
                     auto_play: true,
                   },
@@ -151,7 +176,7 @@ export default function Soundsystem() {
           </div>
           <div className="flex flex-col gap-4 w-full">
             {linkTree.map((link) =>
-              link.title === "Boyos Wonderland" ? (
+              link.title === 'Boyos Wonderland' ? (
                 <button
                   key={link.id}
                   className="w-full py-3 px-4 rounded-lg bg-[#0085D0] text-white text-m font-semibold text-center hover:bg-[#0072B2] transition"
@@ -211,5 +236,5 @@ export default function Soundsystem() {
         </div>
       </div>
     </>
-  );
+  )
 }

@@ -1,15 +1,20 @@
-const path = require("path");
+const withPWA = require('next-pwa')({
+  dest: 'public',
+  register: true,
+  disable: process.env.NODE_ENV !== 'production', // Alleen PWA in productie
+})
+const path = require('path')
 
-module.exports = {
+module.exports = withPWA({
   swcMinify: true,
   reactStrictMode: true,
   images: {
-    domains: ["www.netlify.com"],
+    domains: ['www.netlify.com', 'vercel.com'],
   },
   experimental: {
     optimizeCss: true,
   },
   sassOptions: {
-    includePaths: [path.join(__dirname, "styles")],
+    includePaths: [path.join(__dirname, 'styles')],
   },
-};
+})

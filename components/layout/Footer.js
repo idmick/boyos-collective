@@ -138,6 +138,12 @@ export default function Footer({ bgColor = '#0083d0', textColor = '#ffffff' }) {
         </ul>
         <p className="text-s font-[moret]">byMickey</p>
       </div>
+      <img
+        src="https://app.piratepx.com/ship?p=55de87a9-341f-4c3f-ac22-feba7ac931d8"
+        alt=""
+        style={{ width: 1, height: 1, position: 'absolute', left: -9999 }}
+        aria-hidden="true"
+      />
     </footer>
   )
 }
