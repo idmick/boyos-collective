@@ -9,6 +9,7 @@
     "postbuild": "next-sitemap"
   },
   "dependencies": {
+    "@fontsource/anton": "^5.2.6",
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.5",
     "@tailwindcss/typography": "^0.4.1",

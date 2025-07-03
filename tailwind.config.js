@@ -18,7 +18,7 @@ export default {
         limelight: ['Limelight', 'cursive'],
         pretoria: ['Pretoria', 'serif'],
         moret: ['Moret', 'serif'],
-        impact: ['Impact', 'Arial Black', 'Arial', 'sans-serif'],
+        anton: ['Anton', 'Impact', 'Arial Black', 'Arial', 'sans-serif'],
       },
     },
   },

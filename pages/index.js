@@ -135,7 +135,7 @@ const Home = () => {
                   alt={block.title}
                 />
               </div>
-              <h2 className="text-2xl font-[impact] font-bold text-center mt-4 mb-2 ">
+              <h2 className="text-2xl font-[anton] uppercase font-bold text-center mt-4 mb-2 ">
                 {block.title}
               </h2>
               <p className="text-sm  text-center mb-4">
@@ -177,7 +177,7 @@ const Home = () => {
                   priority
                 />
               </div>
-              <h2 className="text-2xl font-[impact] font-bold text-center mt-4 mb-2 ">
+              <h2 className="text-2xl font-[anton] uppercase font-bold text-center mt-4 mb-2 ">
                 Boyos Soundsystem
               </h2>
               <p className="text-sm  text-center mb-4">
@@ -210,7 +210,7 @@ const Home = () => {
                   priority
                 />
               </div>
-              <h2 className="text-2xl font-[impact] font-bold text-center mt-4 mb-2 ">
+              <h2 className="text-2xl font-[anton] uppercase font-bold text-center mt-4 mb-2 ">
                 Boyos Wonderland
               </h2>
               <p className="text-xl font-[moret]  text-center mb-4">

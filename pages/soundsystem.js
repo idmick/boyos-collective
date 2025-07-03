@@ -138,10 +138,10 @@ export default function Soundsystem() {
               alt="Boyos Soundsytem Logo"
             />
           </div>
-          <h1 className="text-3xl font-[impact] font-bold text-center mb-6 text-[#1B1212]">
+          <h1 className="text-3xl font-[anton] uppercase font-bold text-center mb-6 text-[#1B1212]">
             Boyos Soundsystem
           </h1>
-          <h2 className="text-xl font-semibold mb-2 text-[#1B1212] underline font-[impact]">
+          <h2 className="text-xl font-semibold mb-2 text-[#1B1212] underline font-[anton] uppercase">
             Our sets
           </h2>
           <div className="mb-6">
@@ -208,7 +208,7 @@ export default function Soundsystem() {
           </div>
           <h2
             id="past-gigs"
-            className="text-xl font-semibold mb-2 text-[#1B1212] mt-8 underline font-[impact]"
+            className="text-xl font-semibold mb-2 text-[#1B1212] mt-8 underline font-[anton] uppercase"
           >
             Past Gigs
           </h2>
@@ -217,13 +217,15 @@ export default function Soundsystem() {
               {pastGigs.map((gig, i) => (
                 <li className="mb-10 ml-4" key={i}>
                   <div className="absolute w-3 h-3 bg-[#0084d0] rounded-full mt-1.5 -left-1.5 border border-[#0084d0]" />
-                  <time className="mb-1 text-sm font-normal leading-none text-[#0084d0]">
+                  <time className="mb-1 text-sm font-[moret] font-normal leading-none text-[#0084d0]">
                     {gig.monthYear}
                   </time>
-                  <h3 className="text-lg font-bold text-[#EC90B0] font-[moret]">
+                  <h3 className="text-lg font-bold text-[#EC90B0] font-[anton]">
                     {gig.title || gig.venue}
                   </h3>
-                  <p className="mb-4 text-semibold text-white">{gig.venue}</p>
+                  <p className="mb-4 text-semibold font-[moret] text-white">
+                    {gig.venue}
+                  </p>
                 </li>
               ))}
             </ol>
