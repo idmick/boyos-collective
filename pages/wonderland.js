@@ -95,23 +95,6 @@ export default function BoyosWonderlandPage() {
 
   return (
     <>
-      {/* <NextSeo
-        title="Boyos Wonderland"
-        description="Boyos Wonderland is a unique Amsterdam party series blending music, art, food, tattoos, and immersive experiences. Step into a world where groove sparks imagination and every rhythm invites adventure."
-        openGraph={{
-          url: 'https://www.boyoscollective.nl/wonderland',
-          title: 'Boyos Wonderland',
-          description:
-            'Boyos Wonderland is a unique Amsterdam party series blending music, art, food, and immersive experiences. Step into a world where groove sparks imagination and every rhythm invites adventure.',
-          images: [
-            {
-              url: 'https://www.boyoscollective.nl/images/essential_groove.png',
-              alt: 'Boyos Wonderland og-image',
-            },
-          ],
-          siteName: 'Boyos Collective',
-        }}
-      /> */}
       <NextSeo
         title="Boyos Wonderland | Music Events & Festivals"
         description="Boyos Wonderland is an ongoing event series blending music, art, food, and tattoos for immersive experiences. From intimate Dine & Dance nights to vibrant parties and garden festivals, join the groove with the Boyos crew."
@@ -132,6 +115,16 @@ export default function BoyosWonderlandPage() {
       />
       <EventJsonLd
         name="Boyos Wonderland"
+        location={{
+          name: 'N/A',
+          address: {
+            streetAddress: 'N/A',
+            addressLocality: 'N/A',
+            addressRegion: 'N/A',
+            postalCode: 'N/A',
+            addressCountry: 'NL',
+          },
+        }}
         url="https://www.boyoscollective.nl/wonderland"
         images={[
           'https://www.boyoscollective.nl/images/cover_minifestival_2.jpg',
