@@ -12,7 +12,7 @@ export default function SignupForm() {
   return (
     <div className="my-10">
       <div
-        style={{ 'text-align': 'left' }}
+        style={{ textAlign: 'left' }}
         className="sender-form-field"
         data-sender-form-id="maf665nwen58jp3njnr"
       ></div>

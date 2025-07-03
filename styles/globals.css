@@ -1,4 +1,10 @@
 @import "tailwindcss";
+@import 'keen-slider/keen-slider.min.css';
+
+.keen-slider {
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+}
 
 @font-face {
   font-family: 'Pretoria';

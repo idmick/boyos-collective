@@ -1,11 +1,11 @@
 // components/Footer.jsx
-import Link from "next/link";
-import React from "react";
+import Link from 'next/link'
+import React from 'react'
 
 const social = [
   {
-    name: "Instagram",
-    href: "https://www.instagram.com/boyos.soundsystem/",
+    name: 'Instagram',
+    href: 'https://www.instagram.com/boyos.soundsystem/',
     icon: (
       <svg
         aria-hidden="true"
@@ -21,8 +21,8 @@ const social = [
     ),
   },
   {
-    name: "SoundCloud",
-    href: "https://soundcloud.com/boyos_soundsystem",
+    name: 'SoundCloud',
+    href: 'https://soundcloud.com/boyos_soundsystem',
     icon: (
       <svg
         aria-hidden="true"
@@ -45,8 +45,8 @@ const social = [
     ),
   },
   {
-    name: "Twitch",
-    href: "https://www.twitch.tv/boyos_soundsystem",
+    name: 'Twitch',
+    href: 'https://www.twitch.tv/boyos_soundsystem',
     icon: (
       <svg
         aria-hidden="true"
@@ -64,8 +64,8 @@ const social = [
     ),
   },
   {
-    name: "YouTube",
-    href: "https://www.youtube.com/channel/UCZfwTtKxSGoZFi38RuBEjvQ",
+    name: 'YouTube',
+    href: 'https://www.youtube.com/channel/UCZfwTtKxSGoZFi38RuBEjvQ',
     icon: (
       <svg
         aria-hidden="true"
@@ -80,11 +80,14 @@ const social = [
       </svg>
     ),
   },
-];
+]
 
-export default function Footer() {
+export default function Footer({ bgColor = '#0083d0', textColor = '#ffffff' }) {
   return (
-    <footer className="bg-[#0083d0] w-full relative flex flex-col scroll-smooth self-center text-white py-10">
+    <footer
+      className="w-full relative flex flex-col scroll-smooth self-center  py-10"
+      style={{ backgroundColor: bgColor, color: textColor }}
+    >
       <div className="flex flex-col items-center gap-4 px-6 py-12">
         {/* Logo + Site Info */}
         <div className="flex flex-col items-center gap-2">
@@ -109,7 +112,7 @@ export default function Footer() {
           </svg>
           <p className="font-bold text-lg">Boyos Collective</p>
 
-          <p className="text-sm">
+          <p className="text-sm ">
             Copyright © 2025 Boyos Collective. All rights reserved.
           </p>
         </div>
@@ -126,15 +129,15 @@ export default function Footer() {
                   aria-label={name}
                 >
                   {React.cloneElement(icon, {
-                    className: icon.props.className + " text-current",
+                    className: icon.props.className + 'text-current',
                   })}
                 </a>
               </Link>
             </li>
           ))}
         </ul>
-        <p className="text-sm">byMickey</p>
+        <p className="text-s font-[moret]">byMickey</p>
       </div>
     </footer>
-  );
+  )
 }
