@@ -4,7 +4,7 @@ import ReactPlayer from 'react-player'
 import Image from 'next/image'
 import BoyosSoundsystem from '../public/images/boyos_we_got_the_funk.png'
 import PastGigs from '../data/PastGigs.json'
-import { NextSeo, MusicGroupJsonLd } from 'next-seo'
+import { NextSeo } from 'next-seo'
 import Footer from '../components/layout/Footer'
 
 const idGen = () => {
@@ -96,38 +96,36 @@ export default function Soundsystem() {
             'Boyos Soundsystem is a DJ trio from Amsterdam, Haarlem & The Hague. Book us for Funk, Disco, House and more. Check our gigs, listen to our sets and get in touch!',
           images: [
             {
-              url: 'https://www.boyoscollective.nl/images//Users/mickvanvliet/Downloads/wonderland web/boyos-25-20.jpg',
+              url: 'https://www.boyoscollective.nl/images/boyos-25-20.jpg',
               alt: 'Boyos Soundsystem',
             },
           ],
           siteName: 'Boyos Collective',
         }}
       />
-      <MusicGroupJsonLd
-        name="Boyos Soundsystem"
-        url="https://www.boyoscollective.nl/soundsystem"
-        genre={['Funk', 'Disco', 'House', 'Global Grooves']}
-        foundingLocation="Amsterdam, Netherlands"
-        foundingDate="2021"
-        image="https://www.boyoscollective.nl/images/Boyos_we_got_the_funk - square.png"
-        sameAs={[
-          'https://www.instagram.com/boyos.soundsystem/',
-          'https://ra.co/dj/boyossoundsystem',
-        ]}
-        member={[
-          {
-            '@type': 'Person',
-            name: 'NMN - Nicolaas',
-          },
-          {
-            '@type': 'Person',
-            name: 'Di Tomaso - Tomas',
-          },
-          {
-            '@type': 'Person',
-            name: 'Mickey Anthony - Mick',
-          },
-        ]}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'MusicGroup',
+            name: 'Boyos Soundsystem',
+            url: 'https://www.boyoscollective.nl/soundsystem',
+            genre: ['Funk', 'Disco', 'House', 'Global Grooves'],
+            foundingLocation: 'Amsterdam, Netherlands',
+            foundingDate: '2021',
+            image: 'https://www.boyoscollective.nl/images/boyos-25-20.jpg',
+            sameAs: [
+              'https://www.instagram.com/boyos.soundsystem/',
+              'https://ra.co/dj/boyossoundsystem',
+            ],
+            member: [
+              { '@type': 'Person', name: 'NMN - Nicolaas' },
+              { '@type': 'Person', name: 'Di Tomaso - Tomas' },
+              { '@type': 'Person', name: 'Mickey Anthony - Mick' },
+            ],
+          }),
+        }}
       />
       <div className="min-h-screen  flex flex-col items-center">
         <div className="w-full max-w-[500px] bg-[#EC90B0] mx-auto flex flex-col items-center px-4 py-8">
