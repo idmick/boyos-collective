@@ -10,7 +10,7 @@ export default function RadioPlayer({
   ],
 }) {
   if (!Array.isArray(channels) || channels.length === 0) {
-    return <div className="p-4 text-center">No channels provided</div>
+    return <div className="p-4 text-center" style={{ color: 'var(--color-text)' }}>No channels provided</div>
   }
 
   const shuffleArray = (arr) => {
@@ -247,7 +247,7 @@ export default function RadioPlayer({
               <span>{channels[channelIndex].name}</span>
             </div>
             <svg
-              className={`h-6 w-6 text-[#1B1212] transition-transform duration-200 ${
+              className={`h-6 w-6 transition-transform duration-200 ${
                 dropdownOpen ? '' : 'rotate-180'
               }`}
               width="24"
@@ -258,6 +258,7 @@ export default function RadioPlayer({
               fill="none"
               strokeLinecap="round"
               strokeLinejoin="round"
+              style={{ color: 'var(--color-text)' }}
             >
               <path stroke="none" d="M0 0h24v24H0z" />
               <path d="M18 15l-6-6l-6 6h12" />
@@ -320,12 +321,13 @@ export default function RadioPlayer({
         </div>
 
         {/* Controls + Waveform */}
-        <div className="flex items-baseline mt-2 gap-2">
-          <div className="flex items-center text-[#1B1212]">
+        <div className="flex items-baseline mt-2 gap-2" style={{ color: 'var(--color-text)' }}>
+          <div className="flex items-center" style={{ color: 'var(--color-text)' }}>
             <button
               onClick={prevTrack}
               aria-label="Previous"
-              className="px-3 py-1 border-[#1B1212] border"
+              className="px-3 py-1 border"
+              style={{ borderColor: 'var(--color-text)' }}
             >
               <svg
                 className="h-5 w-5"
@@ -344,7 +346,8 @@ export default function RadioPlayer({
             <button
               onClick={togglePlay}
               aria-label={isPlaying ? 'Pause' : 'Play'}
-              className="px-3 py-1 border-t border-b border-[#1B1212]"
+              className="px-3 py-1 border-t border-b"
+              style={{ borderColor: 'var(--color-text)' }}
             >
               {isPlaying ? (
                 <svg
@@ -378,7 +381,8 @@ export default function RadioPlayer({
             <button
               onClick={nextTrack}
               aria-label="Next"
-              className="px-3 py-1 border-[#1B1212] border"
+              className="px-3 py-1 border"
+              style={{ borderColor: 'var(--color-text)' }}
             >
               <svg
                 className="h-5 w-5"

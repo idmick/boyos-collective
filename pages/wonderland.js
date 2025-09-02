@@ -1,157 +1,466 @@
-import { NextSeo, EventJsonLd } from 'next-seo'
-import { useState } from 'react'
-import dynamic from 'next/dynamic'
-import RadioPlayer from '../components/RadioPlayer'
-import WonderlandLogo from '../components/WonderlandLogo'
+import { NextSeo, EventJsonLd } from "next-seo";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import dynamic from "next/dynamic";
+import RadioPlayer from "../components/RadioPlayer";
+import WonderlandLogo from "../components/WonderlandLogo";
 // import SignupForm from '../components/SignupForm'
-import Footer from '../components/layout/Footer'
-import { useKeenSlider } from 'keen-slider/react'
-import CarouselDots from '@/components/CarouselDots'
+import Footer from "../components/layout/Footer";
+import { useKeenSlider } from "keen-slider/react";
+import CarouselDots from "@/components/CarouselDots";
 
 export default function BoyosWonderlandPage() {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  // Keen slider setup
-  const [currentSlide, setCurrentSlide] = useState(0)
-  const [sliderRef, instanceRef] = useKeenSlider({
-    slideChanged(slider) {
-      setCurrentSlide(slider.track.details.rel)
-    },
-    loop: true,
-    slides: { perView: 1 },
-    mode: 'snap',
-    rubberband: false, // Optional: disables bounce at the ends
-  })
+  // Note: slider state moved into PhotoAlbums component to avoid page re-renders
 
-  const HeroVideo = dynamic(() => import('../components/HeroVideo'), {
+  const HeroVideo = dynamic(() => import("../components/HeroVideo"), {
     ssr: false,
-  })
+  });
 
-  const CTAButton = ({ href, label }) => (
-    <a
-      href={href}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="mt-4 text-2xl font-[moret]  px-6 py-2 bg-[#FFD700] text-[#8B008B] font-medium rounded-full max-w-fit w-fit flex-none hover:bg-yellow-500"
-      onClick={() => trackPiratepx('cta_view_events')}
-    >
-      {label}
-    </a>
-  )
+  const CTAButton = ({ href, label }) => {
+    const isExternal = /^https?:\/\//.test(href);
+    const handleClick = (e) => {
+      trackPiratepx("cta_view_events");
+      if (!isExternal && href?.startsWith("#")) {
+        e.preventDefault();
+        const el = document.querySelector(href);
+        if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    };
+    return (
+      <a
+        href={href}
+        {...(isExternal
+          ? { target: "_blank", rel: "noopener noreferrer" }
+          : {})}
+        className="mt-4 text-2xl font-[moret]  px-6 py-2 bg-[#FFD700] text-[#8B008B] font-medium rounded-full max-w-fit w-fit flex-none hover:bg-yellow-500"
+        onClick={handleClick}
+      >
+        {label}
+      </a>
+    );
+  };
+
+  // Isolated Photo Albums slider to prevent page re-render on slide change
+  const PhotoAlbums = ({ albums, onTrack }) => {
+    const [currentSlide, setCurrentSlide] = useState(0);
+    const [sliderRef, instanceRef] = useKeenSlider({
+      slideChanged(slider) {
+        setCurrentSlide(slider.track.details.rel);
+      },
+      loop: true,
+      slides: { perView: 1 },
+      mode: "snap",
+      rubberband: false,
+    });
+    return (
+      <section id="photos" className="bg-[#9370DB] px-6 py-12">
+        <h2 className="uppercase font-[anton] tracking-wider text-4xl text-[#F0E68C] py-8">
+          Photo Albums
+        </h2>
+        <div className="relative w-full">
+          <div ref={sliderRef} className="keen-slider">
+            {albums.map((album) => (
+              <a
+                key={album.url}
+                href={album.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="keen-slider__slide group flex flex-col items-center justify-center rounded-lg overflow-hidden shadow-lg focus:outline-none cursor-pointer"
+                tabIndex={0}
+                aria-label={`Open album: ${album.title}`}
+                title={`View album: ${album.title}`}
+                onClick={() =>
+                  onTrack(`album_open_${album.title.replace(/\s+/g, "_")}`)
+                }
+              >
+                <div className="relative w-full h-80">
+                  <img
+                    src={album.cover}
+                    alt={album.title}
+                    className="w-full h-80 object-cover transition-transform duration-200 group-hover:scale-105 group-focus:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-black/40 flex items-end opacity-100 group-hover:opacity-100 group-focus:opacity-100 transition-opacity">
+                    <span className="text-[#F0E68C] text-xl font-bold p-4">
+                      {album.title}
+                    </span>
+                  </div>
+                  <div className="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 group-focus:opacity-100 transition-opacity">
+                    <span className="bg-[#9370DB]/90 text-[#F0E68C] px-4 py-2 rounded-full font-bold text-lg shadow-lg">
+                      View Album
+                    </span>
+                  </div>
+                </div>
+              </a>
+            ))}
+          </div>
+          {/* Navigation buttons */}
+          <button
+            onClick={() => instanceRef.current?.prev()}
+            className="hidden sm:block absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-[#1B1212] rounded-full p-2 shadow transition z-10"
+            aria-label="Previous album"
+          >
+            &#8592;
+          </button>
+          <button
+            onClick={() => instanceRef.current?.next()}
+            className="hidden sm:block absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-[#1B1212] rounded-full p-2 shadow transition z-10"
+            aria-label="Next album"
+          >
+            &#8594;
+          </button>
+          {/* Dots */}
+          <CarouselDots
+            total={albums.length}
+            current={currentSlide}
+            onDotClick={(idx) => instanceRef.current?.moveToIdx(idx)}
+          />
+        </div>
+      </section>
+    );
+  };
 
   const channels = [
     {
-      name: 'Essential Groove Radio (Default)',
-      url: 'https://soundcloud.com/boyos_soundsystem/sets/essential-groove',
+      name: "Essential Groove Radio (Default)",
+      url: "https://soundcloud.com/boyos_soundsystem/sets/essential-groove",
     },
     {
-      name: 'Wonderland Artist Channel',
-      url: 'https://soundcloud.com/boyos_soundsystem/sets/artist-channel',
+      name: "Wonderland Artist Channel",
+      url: "https://soundcloud.com/boyos_soundsystem/sets/artist-channel",
     },
     {
-      name: 'Jaguar House',
-      url: 'https://soundcloud.com/jaguarhousemusic/sets/jaguar-house-season-i',
+      name: "Jaguar House",
+      url: "https://soundcloud.com/jaguarhousemusic/sets/jaguar-house-season-i",
     },
     {
-      name: '&Friends Mix Series',
-      url: 'https://soundcloud.com/and_friends/sets/mix-series',
+      name: "&Friends Mix Series",
+      url: "https://soundcloud.com/and_friends/sets/mix-series",
     },
-  ]
+  ];
+
+  // Next event data (hardcoded)
+  const nextEvent = {
+    title: "Boyos Wonderland — Dine & Dance",
+    date: "2025-10-17",
+    weekday: "Thursday",
+    venueName: "Houtbaar",
+    venueUrl: "https://houtbaarhaarlem.nl",
+    address: {
+      streetAddress: "Woudplein 2",
+      addressLocality: "Haarlem",
+      postalCode: "2031CZ",
+      addressCountry: "NL",
+    },
+    doors: "17:00",
+    danceFrom: "20:00",
+    end: "01:00",
+    price: "€20",
+    dinnerCopyShort: "3-course Caribbean vegetarian dinner",
+    danceCopyShort: "Dance free after 20:00",
+    lineup: {
+      host: "Boyos Soundsystem",
+      guest: "The Square Sun B2B Vrøge",
+      dinnerDj: "Sbagliato (Dinner Set)",
+    },
+    // Use the actual poster placed in public/images/events
+    poster: "/images/events/dine_and_dance_17_oct.png",
+    ticketCtaLabel: "Get Tickets",
+    ticketUrl: "https://eventix.shop/mv8kegk9",
+    whatsappUrl: "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
+    instagramUrl: "https://www.instagram.com/boyos.wonderland/?hl=en",
+  };
 
   const photoAlbums = [
     {
-      title: 'Mini Festival 28.06.25',
-      cover: '/images/albums/cover_minifestival_2.jpg',
-      url: 'https://1drv.ms/a/c/3ffa6c8616c781f7/EmvsUIjckHxIn6AQJg7DoXEBIO84vzIzjU66sRVUc4GB3w?e=g3WgEL',
+      title: "Mini Festival 28.06.25",
+      cover: "/images/albums/cover_minifestival_2.jpg",
+      url: "https://1drv.ms/a/c/3ffa6c8616c781f7/EmvsUIjckHxIn6AQJg7DoXEBIO84vzIzjU66sRVUc4GB3w?e=g3WgEL",
     },
     {
-      title: 'Dine and Dance 16.05.25',
-      cover: '/images/albums/cover_dine_dance_2.jpg',
-      url: 'https://1drv.ms/a/c/3ffa6c8616c781f7/EjgpbRxYJLhDh8npP18xpDIBkACc1p1d8ATNy1F9J-zNUQ?e=2JDEE8',
+      title: "Dine and Dance 16.05.25",
+      cover: "/images/albums/cover_dine_dance_2.jpg",
+      url: "https://1drv.ms/a/c/3ffa6c8616c781f7/EjgpbRxYJLhDh8npP18xpDIBkACc1p1d8ATNy1F9J-zNUQ?e=2JDEE8",
     },
     {
-      title: 'Dine and Dance 12.04.25',
-      cover: '/images/albums/cover_dine_dance_1.jpg',
-      url: 'https://1drv.ms/a/c/3ffa6c8616c781f7/EvRL9_kDsXRMmsdl2k9GgeEBlhZhAoiiBPnaoetFuPNylA?e=HqzSFC',
+      title: "Dine and Dance 12.04.25",
+      cover: "/images/albums/cover_dine_dance_1.jpg",
+      url: "https://1drv.ms/a/c/3ffa6c8616c781f7/EvRL9_kDsXRMmsdl2k9GgeEBlhZhAoiiBPnaoetFuPNylA?e=HqzSFC",
     },
     {
-      title: 'Mini Festival 17.8.24',
-      cover: '/images/albums/cover_minifestival_1_24.jpg',
-      url: 'https://1drv.ms/a/c/3ffa6c8616c781f7/EpOMafot_TJHu437auQpZgwBvll7UOzvQq4GBjlX0XzRcA?e=EGILLu',
+      title: "Mini Festival 17.8.24",
+      cover: "/images/albums/cover_minifestival_1_24.jpg",
+      url: "https://1drv.ms/a/c/3ffa6c8616c781f7/EpOMafot_TJHu437auQpZgwBvll7UOzvQq4GBjlX0XzRcA?e=EGILLu",
     },
     {
-      title: 'Boyos Wonderland 10.02.24',
-      cover: '/images/albums/cover_wonderland_2_w-laura.jpg',
-      url: 'https://1drv.ms/a/c/3ffa6c8616c781f7/EpVXR6eV1gBIitfiUlS3uU4B72jW6b8xbdMDHzxcSuV6bw?e=uLk8ZR',
+      title: "Boyos Wonderland 10.02.24",
+      cover: "/images/albums/cover_wonderland_2_w-laura.jpg",
+      url: "https://1drv.ms/a/c/3ffa6c8616c781f7/EpVXR6eV1gBIitfiUlS3uU4B72jW6b8xbdMDHzxcSuV6bw?e=uLk8ZR",
     },
-  ]
+  ];
 
   const trackPiratepx = (eventId) => {
-    const img = new window.Image()
+    const img = new window.Image();
     img.src = `https://app.piratepx.com/ship?p=55de87a9-341f-4c3f-ac22-feba7ac931d8&i=${encodeURIComponent(
       eventId
-    )}`
-  }
+    )}`;
+  };
+
+  // Minimal in-view once hook to reveal content with motion-safe transitions
+  const useInViewOnce = () => {
+    const ref = useRef(null);
+    const [inView, setInView] = useState(false);
+
+    useEffect(() => {
+      if (!ref.current || typeof window === "undefined") return;
+      const prefersReduced = window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
+      if (prefersReduced) {
+        setInView(true);
+        return;
+      }
+      const obs = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((e) => {
+            if (e.isIntersecting) {
+              setInView(true);
+              obs.disconnect();
+            }
+          });
+        },
+        { rootMargin: "0px 0px -10% 0px", threshold: 0.15 }
+      );
+      obs.observe(ref.current);
+      return () => obs.disconnect();
+    }, []);
+
+    return { ref, inView };
+  };
+
+  // Subcomponents for the feature card
+  const FeaturePoster = ({ ImageCmp, nextEvent }) => {
+    const { ref, inView } = useInViewOnce();
+    return (
+      <div
+        ref={ref}
+        className={[
+          "relative group aspect-[3/4] w-full rounded-xl overflow-hidden",
+          "ring-1 ring-white/10 shadow-xl",
+          "transition-all duration-700 ease-out",
+          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
+          "motion-reduce:transition-none motion-reduce:transform-none",
+        ].join(" ")}
+      >
+        <ImageCmp
+          src={nextEvent.poster}
+          alt="Boyos Wonderland Dine & Dance poster for 17 October at Houtbaar."
+          fill
+          priority
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover motion-safe:group-hover:scale-[1.01] transition-transform duration-500"
+        />
+        {/* Soft inner glow on hover */}
+        <div
+          className="pointer-events-none absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+          style={{ boxShadow: "inset 0 0 80px rgba(22,211,215,0.18)" }}
+        />
+      </div>
+    );
+  };
+
+  const FeatureContent = ({ nextEvent, onTrack }) => {
+    const { ref, inView } = useInViewOnce();
+    const sub = `Thursday 17 Oct · Dinner ${nextEvent.doors} · Dance ${nextEvent.danceFrom}–${nextEvent.end} · ${nextEvent.venueName}, Haarlem`;
+
+    const PrimaryCTA = () => (
+      <a
+        href={nextEvent.ticketUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Buy tickets for Boyos Wonderland Dine & Dance 17 October"
+        onClick={() => onTrack && onTrack("cta_tickets_oct17")}
+        className="px-6 py-3 text-black font-bold rounded-full transition"
+        style={{ backgroundColor: "var(--event-accent-1)" }}
+      >
+        {nextEvent.ticketCtaLabel}
+      </a>
+    );
+
+    return (
+      <div
+        ref={ref}
+        className={[
+          "flex flex-col gap-4 pr-2 sm:pr-4",
+          "transition-all duration-700 ease-out theme-event",
+          inView ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6",
+          "motion-reduce:transition-none motion-reduce:transform-none",
+        ].join(" ")}
+      >
+        <p
+          className="uppercase tracking-[0.28em] text-[11px]"
+          style={{ color: "var(--event-accent-2)" }}
+        >
+          THE DINE & DANCE EDITION
+        </p>
+        <h1
+          className="font-[anton] uppercase text-5xl sm:text-6xl leading-[0.95]"
+          style={{ color: "var(--event-accent-1)" }}
+        >
+          BOYOS WONDERLAND
+        </h1>
+        <p
+          className="text-sm sm:text-base font-[moret] uppercase"
+          style={{ color: "var(--event-accent-2)" }}
+        >
+          {sub}
+        </p>
+
+        <p className="text-base">
+          Caribbean dinner, eclectic dancefloor. Warm table first, bigger energy
+          after.
+        </p>
+
+        <ul className="mt-2 list-disc list-inside space-y-1 text-base">
+          <li>Dine {nextEvent.price}</li>
+          <li>{nextEvent.dinnerCopyShort}</li>
+          <li>Dance free after {nextEvent.danceFrom}</li>
+          <li>Fixed menu · No substitutions</li>
+        </ul>
+
+        <div className="mt-4 text-base tracking-wide">
+          <p className="font-bold">Boyos Soundsystem invites:</p>
+          <p style={{ color: "var(--feature-accent)" }}>
+            The Square Sun B2B Vrøge
+          </p>
+          <p className="italic">Sbagliato (Dinner Set)</p>
+        </div>
+
+        <p className="text-sm text-neutral-400 mt-2">
+          Our Dine & Dance tables go fast — previous editions filled up early.
+        </p>
+
+        <div className="mt-6 flex flex-col sm:flex-row items-center gap-6">
+          <PrimaryCTA />
+
+          {/* WhatsApp (text link) */}
+          <a
+            href={nextEvent.whatsappUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => onTrack && onTrack("cta_whatsapp_oct17")}
+            aria-label="Join WhatsApp for Boyos Wonderland updates"
+            className="font-medium underline underline-offset-4 hover:opacity-90"
+            style={{ color: "var(--feature-accent)" }}
+          >
+            Join WhatsApp
+          </a>
+
+          {/* Instagram (text link) */}
+          <a
+            href={nextEvent.instagramUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={() => onTrack && onTrack("cta_instagram_oct17")}
+            aria-label="Follow Boyos Wonderland on Instagram"
+            className="font-medium underline underline-offset-4 hover:opacity-90"
+            style={{ color: "var(--feature-text)" }}
+          >
+            Instagram
+          </a>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <>
       <NextSeo
-        title="Boyos Wonderland | Music Events & Festivals"
-        description="Boyos Wonderland is an ongoing event series blending music, art, food, and tattoos for immersive experiences. From intimate Dine & Dance nights to vibrant parties and garden festivals, join the groove with the Boyos crew."
+        title="Boyos Wonderland Dine & Dance at Houtbaar — 17 Oct, Caribbean Vegetarian Dinner & Free Party"
+        description={`Dine & Dance in Haarlem on 17 Oct at Houtbaar. A 3-course Caribbean vegetarian dinner (${nextEvent.price}) at ${nextEvent.doors}, then a free party from ${nextEvent.danceFrom} with Boyos Soundsystem, The Square Sun B2B Vrøge, and Sbagliato. Tickets available now.`}
         canonical="https://www.boyoscollective.nl/wonderland"
         openGraph={{
-          url: 'https://www.boyoscollective.nl/wonderland',
-          title: 'Boyos Wonderland | Music Events & Festivals',
-          description:
-            'Boyos Wonderland is an ongoing event series blending music, art, food, and tattoos for immersive experiences. From intimate Dine & Dance nights to vibrant parties and garden festivals, join the groove with the Boyos crew.',
+          url: "https://www.boyoscollective.nl/wonderland",
+          title:
+            "Boyos Wonderland Dine & Dance at Houtbaar — 17 Oct, Caribbean Vegetarian Dinner & Free Party",
+          description: `3-course Caribbean vegetarian dinner and free party in Haarlem. Dinner ${nextEvent.doors}, dance ${nextEvent.danceFrom}–${nextEvent.end}.`,
           images: [
             {
-              url: 'https://www.boyoscollective.nl/images/cover_minifestival_2.jpg',
-              alt: 'Boyos Wonderland event',
+              url: "https://www.boyoscollective.nl/images/events/dine_and_dance_17_oct.png",
+              alt: "Boyos Wonderland Dine & Dance poster for 17 October at Houtbaar.",
             },
           ],
-          siteName: 'Boyos Collective',
+          siteName: "Boyos Collective",
         }}
+        additionalMetaTags={[
+          {
+            name: "keywords",
+            content:
+              "Houtbaar Haarlem, Caribbean dinner, vegetarian 3-course, free party, soca, zouk, house",
+          },
+        ]}
       />
       <EventJsonLd
-        name="Boyos Wonderland"
+        name="Boyos Wonderland — Dine & Dance"
+        description="3-course Caribbean vegetarian dinner and eclectic dancefloor at Houtbaar. Dinner at 17:00, dance from 20:00. Line-up: Boyos Soundsystem invites The Square Sun B2B Vrøge. Sbagliato on the dinner set."
+        startDate="2025-10-17T17:00:00+02:00"
+        endDate="2025-10-18T01:00:00+02:00"
+        eventStatus="EventScheduled"
+        eventAttendanceMode="OfflineEventAttendanceMode"
         location={{
-          name: 'N/A',
+          name: nextEvent.venueName,
+          sameAs: nextEvent.venueUrl,
           address: {
-            streetAddress: 'N/A',
-            addressLocality: 'N/A',
-            addressRegion: 'N/A',
-            postalCode: 'N/A',
-            addressCountry: 'NL',
+            streetAddress: nextEvent.address.streetAddress,
+            addressLocality: nextEvent.address.addressLocality,
+            postalCode: nextEvent.address.postalCode,
+            addressCountry: nextEvent.address.addressCountry,
           },
         }}
-        url="https://www.boyoscollective.nl/wonderland"
         images={[
-          'https://www.boyoscollective.nl/images/cover_minifestival_2.jpg',
+          "https://www.boyoscollective.nl/images/events/dine_and_dance_17_oct.png",
         ]}
-        description="Boyos Wonderland is an ongoing event series blending music, art, food, and tattoos for immersive experiences at various venues in and around Haarlem, Amsterdam, and beyond."
-        organizer={{
-          name: 'Boyos Collective',
-          url: 'https://www.boyoscollective.nl',
+        offers={{
+          price: "20",
+          priceCurrency: "EUR",
+          availability: "InStock",
+          url: nextEvent.ticketUrl || "https://boyoscollective.nl/wonderland",
+          validFrom: "2025-09-02T12:00:00+02:00",
         }}
+        organizer={{
+          name: "Boyos Collective",
+          url: "https://www.boyoscollective.nl",
+        }}
+        performer={[
+          { name: "Boyos Soundsystem", type: "MusicGroup" },
+          { name: "The Square Sun", type: "MusicGroup" },
+          { name: "Vrøge", type: "MusicGroup" },
+          { name: "Sbagliato", type: "MusicGroup" },
+        ]}
       />
-      <div className="bg-[#FAF4EB]">
+      <div
+        className="theme-core min-h-screen"
+        style={{ backgroundColor: "var(--bg)", color: "var(--text)" }}
+      >
         <RadioPlayer
           channels={channels}
           clientId="sQHBwYwmzeqpmKktQSeKYpDpE1YsCSWl"
         />
 
-        <div className="relative flex flex-col scroll-smooth max-w-[500px] mx-auto bg-neutral-100 text-[#1B1212] font-sans">
+        <div className="relative flex flex-col scroll-smooth max-w-[500px] mx-auto font-sans">
           {/* FLOATING MENU BUTTON */}
           <div className="fixed flex top-4 right-4 z-50 gap-2">
-            {/* <a
-              className=" bg-[#F9ABC5] text-[#1B1212] font-bold p-3 rounded-full  shadow-lg hover:text-[#641B16]"
-              href="https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=50d15694-0f22-4859-8c4c-df03dff309fc"
+            <a
+              href={nextEvent.ticketUrl}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Buy tickets for Boyos Wonderland Dine & Dance 17 October"
+              onClick={() => onTrack && onTrack("cta_tickets_oct17")}
+              className="border-2 border-[#9370DB] text-[#9370DB] font-bold p-3 rounded-full   hover:bg-[#9370DB] hover:text-[#F0E68C]"
             >
-              Tickets
-            </a> */}
+              {nextEvent.ticketCtaLabel}
+            </a>
             <button
               className=" bg-[#9370DB] text-[#F0E68C] font-bold p-3 rounded-full  shadow-lg hover:text-[#FFD700]"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -204,15 +513,15 @@ export default function BoyosWonderlandPage() {
               >
                 Photos Albums
               </a>
-              {/* <a
-                href="https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets"
+              <a
+                href={nextEvent.ticketUrl}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="hover:text-[#641B16]"
                 onClick={() => setMenuOpen(false)}
               >
                 Tickets
-              </a> */}
+              </a>
               <a
                 href="#cta"
                 className="hover:text-[#FFD700]"
@@ -277,8 +586,8 @@ export default function BoyosWonderlandPage() {
 
           {/* EVENTS */}
           <section
-            id="events"
-            className="bg-[#F0E68C] text-[#8B008B] px-6 py-12"
+            id="events-old"
+            className="hidden bg-[#F0E68C] text-[#8B008B] px-6 py-12"
           >
             <h2 className="uppercase  font-[anton] uppercase tracking-wider sticky top-0 z-10 bg-[#F0E68C] text-4xl text-[#8B008B]  py-8">
               No Events Scheduled
@@ -320,7 +629,7 @@ export default function BoyosWonderlandPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-lg font-bold underline text-[#9370DB] hover:text-[#8B008B] transition"
-                  onClick={() => trackPiratepx('cta_whatsapp')}
+                  onClick={() => trackPiratepx("cta_whatsapp")}
                 >
                   <svg
                     fill="currentColor"
@@ -350,7 +659,7 @@ export default function BoyosWonderlandPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-lg font-bold underline text-[#9370DB] hover:text-[#8B008B] transition"
-                  onClick={() => trackPiratepx('cta_instagram')}
+                  onClick={() => trackPiratepx("cta_instagram")}
                 >
                   <svg
                     width="24px"
@@ -366,23 +675,23 @@ export default function BoyosWonderlandPage() {
                       stroke-linejoin="round"
                     ></g>
                     <g id="SVGRepo_iconCarrier">
-                      {' '}
+                      {" "}
                       <path
                         fill-rule="evenodd"
                         clip-rule="evenodd"
                         d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
                         fill="currentColor"
-                      ></path>{' '}
+                      ></path>{" "}
                       <path
                         d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z"
                         fill="currentColor"
-                      ></path>{' '}
+                      ></path>{" "}
                       <path
                         fill-rule="evenodd"
                         clip-rule="evenodd"
                         d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"
                         fill="currentColor"
-                      ></path>{' '}
+                      ></path>{" "}
                     </g>
                   </svg>
                   Instagram
@@ -390,72 +699,33 @@ export default function BoyosWonderlandPage() {
               </div>
             </div>
           </section>
-          {/* PHOTO ALBUMS CAROUSEL */}
-          <section id="photos" className="bg-[#9370DB] px-6 py-12">
-            <h2 className="uppercase font-[anton] uppercase tracking-wider text-4xl text-[#F0E68C] py-8">
-              Photo Albums
-            </h2>
-            <div className="relative w-full">
-              <div ref={sliderRef} className="keen-slider">
-                {photoAlbums.map((album, idx) => (
-                  <a
-                    key={album.url}
-                    href={album.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="keen-slider__slide group flex flex-col items-center justify-center rounded-lg overflow-hidden shadow-lg focus:outline-none cursor-pointer"
-                    tabIndex={0}
-                    aria-label={`Open album: ${album.title}`}
-                    title={`View album: ${album.title}`}
-                    onClick={() =>
-                      trackPiratepx(
-                        `album_open_${album.title.replace(/\s+/g, '_')}`
-                      )
-                    }
-                  >
-                    <div className="relative w-full h-80">
-                      <img
-                        src={album.cover}
-                        alt={album.title}
-                        className="w-full h-80 object-cover transition-transform duration-200 group-hover:scale-105 group-focus:scale-105"
-                      />
-                      <div className="absolute inset-0 bg-black/40 flex items-end opacity-100 group-hover:opacity-100 group-focus:opacity-100 transition-opacity">
-                        <span className="text-[#F0E68C] text-xl font-bold p-4">
-                          {album.title}
-                        </span>
-                      </div>
-                      <div className="absolute inset-0 flex items-center justify-center opacity-90 group-hover:opacity-100 group-focus:opacity-100 transition-opacity">
-                        <span className="bg-[#9370DB]/90 text-[#F0E68C] px-4 py-2 rounded-full font-bold text-lg shadow-lg">
-                          View Album
-                        </span>
-                      </div>
-                    </div>
-                  </a>
-                ))}
+          {/* FEATURE EVENT (Oct 17) */}
+          <section
+            id="events"
+            className="relative theme-event"
+            aria-labelledby="events-heading"
+            style={{ backgroundColor: "var(--bg)", color: "var(--text)" }}
+          >
+            <div className="grain pointer-events-none absolute inset-0" />
+            <div className="parallax-glow" aria-hidden="true" />
+            <div className="px-6 py-16 text-left">
+              <h2 id="events-heading" className="sr-only">
+                Upcoming event
+              </h2>
+              <div className="mx-auto max-w-6xl grid grid-cols-1 gap-10 items-center overflow-visible">
+                <FeaturePoster ImageCmp={Image} nextEvent={nextEvent} />
+                <FeatureContent nextEvent={nextEvent} onTrack={trackPiratepx} />
               </div>
-              {/* Navigation buttons */}
-              <button
-                onClick={() => instanceRef.current?.prev()}
-                className="hidden sm:block absolute left-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-[#1B1212] rounded-full p-2 shadow transition z-10"
-                aria-label="Previous album"
-              >
-                &#8592;
-              </button>
-              <button
-                onClick={() => instanceRef.current?.next()}
-                className="hidden sm:block absolute right-2 top-1/2 -translate-y-1/2 bg-white/70 hover:bg-white text-[#1B1212] rounded-full p-2 shadow transition z-10"
-                aria-label="Next album"
-              >
-                &#8594;
-              </button>
-              {/* Dots */}
-              <CarouselDots
-                total={photoAlbums.length}
-                current={currentSlide}
-                onDotClick={(idx) => instanceRef.current?.moveToIdx(idx)}
-              />
+              <div className="mx-auto max-w-3xl mt-12 text-xs opacity-80">
+                <p>
+                  Fixed menu, no exceptions. What you see is what you eat. Next
+                  time, new dishes.
+                </p>
+              </div>
             </div>
           </section>
+          {/* PHOTO ALBUMS CAROUSEL */}
+          <PhotoAlbums albums={photoAlbums} onTrack={trackPiratepx} />
 
           {/* CTA */}
           {/* <section
@@ -485,10 +755,10 @@ export default function BoyosWonderlandPage() {
             </div>
           </section> */}
           <div className="mb-[156px]">
-            <Footer bgColor="#FF6347" />
+            <Footer bgColor="#F0E68C" textColor="#9370DB" />
           </div>
         </div>
       </div>
     </>
-  )
+  );
 }

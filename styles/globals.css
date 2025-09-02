@@ -2,6 +2,31 @@
 @import 'keen-slider/keen-slider.min.css';
 @import "@fontsource/anton";
 
+:root{
+  --bg: #FAF4EB;
+  --text: #1B1212;
+  --brand-purple: #9370DB;
+  --brand-yellow: #F0E68C;
+  --brand-orange: #FF6347;
+}
+
+/* Utility classes that map Tailwind to vars */
+.theme-core{
+  --bg: #FAF4EB;
+  --text: #1B1212;
+  --brand-purple: #9370DB;
+  --brand-yellow: #F0E68C;
+  --brand-orange: #FF6347;
+}
+
+.theme-event{
+  --bg: #0A0A0A;
+  --text: #F8F5F2;
+  --event-accent-1: #16D3D7;
+  --event-accent-2: #FF6B35;
+  --event-off: #F8F5F2;
+}
+
 .keen-slider {
   touch-action: pan-y;
   -webkit-overflow-scrolling: touch;
@@ -81,4 +106,37 @@
   .scrollbar-thumb-bordered::-webkit-scrollbar-thumb {
     border-left: 1px solid #1B1212;
   }
+}
+
+/* Lightweight grain overlay for tactile feel */
+.grain {
+  background-image: url('/images/ui/grain.png');
+  mix-blend-mode: soft-light;
+  opacity: .18;
+}
+
+/* Premium parallax glow for feature sections */
+.parallax-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: screen;
+  background: radial-gradient(600px 320px at 20% 10%, rgba(22, 211, 215, 0.18), rgba(0,0,0,0) 60%),
+              radial-gradient(550px 300px at 85% 55%, rgba(255, 107, 53, 0.12), rgba(0,0,0,0) 60%);
+  animation: glow-pan 22s linear infinite;
+  opacity: .45;
+}
+
+@keyframes glow-pan {
+  0% { background-position: 20% 10%, 85% 55%; }
+  50% { background-position: 22% 18%, 80% 50%; }
+  100% { background-position: 20% 10%, 85% 55%; }
+}
+
+/* Smooth anchors with reduced-motion guard */
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .parallax-glow { animation: none; }
+  .animate-spin-vinyl, .vibrate-bars { animation: none; }
 }
