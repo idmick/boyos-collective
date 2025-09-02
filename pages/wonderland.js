@@ -517,7 +517,7 @@ export default function BoyosWonderlandPage() {
                 href={nextEvent.ticketUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="hover:text-[#641B16]"
+                className="hover:text-[#FFD700]"
                 onClick={() => setMenuOpen(false)}
               >
                 Tickets
