@@ -457,7 +457,7 @@ export default function BoyosWonderlandPage() {
               rel="noopener noreferrer"
               aria-label="Buy tickets for Boyos Wonderland Dine & Dance 17 October"
               onClick={() => onTrack && onTrack("cta_tickets_oct17")}
-              className="border-2 border-[#9370DB] text-[#9370DB] font-bold p-3 rounded-full   hover:bg-[#9370DB] hover:text-[#F0E68C]"
+              className="bg-[#FF6347] text-[#fff] font-bold p-3 rounded-full   hover:bg-[#FF6347] hover:text-[#fff]"
             >
               {nextEvent.ticketCtaLabel}
             </a>
