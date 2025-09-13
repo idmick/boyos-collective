@@ -253,7 +253,7 @@ export default function BoyosWonderlandPage() {
           "motion-reduce:transition-none motion-reduce:transform-none",
         ].join(" ")}
       >
-        <ImageCmp
+        <img
           src={nextEvent.poster}
           alt="Boyos Wonderland Dine & Dance poster for 17 October at Houtbaar."
           fill
