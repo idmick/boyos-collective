@@ -15,7 +15,24 @@ import CarouselDots from "@/components/CarouselDots";
 export default function BoyosWonderlandPage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [showStickyCta, setShowStickyCta] = useState(false);
+  const [bannerHeight, setBannerHeight] = useState(0);
   const grainOpacity = useMemo(() => 0.18 + Math.random() * 0.07, []);
+  const bannerRef = useRef(null);
+
+  const QUICK_FACTS_HEIGHT = 52;
+  const HEADER_BASE_OFFSET = 0;
+
+  const effectiveBannerHeight = showStickyCta
+    ? Math.max(bannerHeight, QUICK_FACTS_HEIGHT)
+    : 0;
+
+  const stickyHeadlineOffset = `${
+    effectiveBannerHeight + HEADER_BASE_OFFSET
+  }px`;
+
+  const contentTopPadding = showStickyCta
+    ? `${effectiveBannerHeight + 12}px`
+    : "0px";
 
   // Note: slider state moved into PhotoAlbums component to avoid page re-renders
 
@@ -242,6 +259,28 @@ export default function BoyosWonderlandPage() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    if (!bannerRef.current || typeof window === "undefined") return;
+    const element = bannerRef.current;
+    const updateHeight = () => {
+      const rect = element.getBoundingClientRect();
+      setBannerHeight(rect.height);
+    };
+    updateHeight();
+    let observer;
+    if (typeof ResizeObserver !== "undefined") {
+      observer = new ResizeObserver(updateHeight);
+      observer.observe(element);
+    }
+    window.addEventListener("resize", updateHeight);
+    return () => {
+      if (observer) {
+        observer.disconnect();
+      }
+      window.removeEventListener("resize", updateHeight);
+    };
+  }, [showStickyCta]);
+
   // Minimal in-view once hook to reveal content with motion-safe transitions
   const useInViewOnce = () => {
     const ref = useRef(null);
@@ -314,17 +353,22 @@ export default function BoyosWonderlandPage() {
     const sub = `Friday 19 Dec · Dinner ${nextEvent.dinnerAt} · Dance ${nextEvent.danceFrom} · ${nextEvent.venueName}, Haarlem`;
 
     const PrimaryCTA = () => (
-      <a
-        href={nextEvent.ticketUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="Reserve dinner for Boyos Wonderland Dine & Dance Christmas Special"
-        onClick={() => onTrack && onTrack("cta_tickets_dec19")}
-        className="px-6 py-3 text-black font-bold rounded-full transition focus-visible:outline focus-visible:outline-offset-2"
-        style={{ backgroundColor: "var(--event-accent-1)" }}
-      >
-        {nextEvent.ticketCtaLabel}
-      </a>
+      <>
+        <a
+          href={nextEvent.ticketUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Reserve dinner for Boyos Wonderland Dine & Dance Christmas Special"
+          onClick={() => onTrack && onTrack("cta_tickets_dec19")}
+          className="px-6 py-3 w-full text-center text-black font-bold rounded-full transition focus-visible:outline focus-visible:outline-offset-2"
+          style={{ backgroundColor: "var(--event-accent-1)" }}
+        >
+          {nextEvent.ticketCtaLabel}
+          <div className="text-xs text-center self-center tracking-wide rounded-full">
+            Free from 20:00
+          </div>
+        </a>
+      </>
     );
 
     const DirectionsCTA = () => {
@@ -413,6 +457,7 @@ export default function BoyosWonderlandPage() {
             Final edition of the year
           </span>
         </div>
+
         <p
           className="text-base sm:text-lg uppercase"
           style={{ color: "var(--event-accent-2)" }}
@@ -449,15 +494,6 @@ export default function BoyosWonderlandPage() {
         <div className="mt-6 flex flex-col gap-3">
           <div className="flex items-center gap-4 flex-wrap">
             <PrimaryCTA />
-            <span
-              className="text-xs tracking-wide px-3 py-1 rounded-full"
-              style={{
-                backgroundColor: "var(--event-accent-2)",
-                color: "var(--event-off)",
-              }}
-            >
-              Free from 20:00
-            </span>
           </div>
           <div className="flex items-center gap-3 flex-wrap">
             <DirectionsCTA />
@@ -623,56 +659,47 @@ export default function BoyosWonderlandPage() {
           clientId="sQHBwYwmzeqpmKktQSeKYpDpE1YsCSWl"
         />
 
-        <div className="relative flex flex-col scroll-smooth max-w-[500px] mx-auto font-sans">
+        <div
+          className="relative flex flex-col scroll-smooth max-w-[500px] mx-auto font-sans transition-all duration-300 ease-out"
+          style={{ paddingTop: contentTopPadding }}
+        >
           {/* Sticky quick facts bar */}
-          <div
+          <nav
+            ref={bannerRef}
             className={`fixed left-0 right-0 top-0 z-40 transition-all duration-300 ${
               showStickyCta
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 -translate-y-2 pointer-events-none"
             }`}
             style={{
-              backgroundColor: "rgba(63,105,73,0.95)",
+              backgroundColor: "#3F6949",
               color: "#F8F4E8",
+              minHeight: `${QUICK_FACTS_HEIGHT}px`,
+              boxShadow: showStickyCta
+                ? "0 18px 40px rgba(27, 18, 18, 0.35)"
+                : "none",
             }}
+            aria-label="Event quick facts and actions"
           >
-            <div className="mx-auto max-w-[500px] flex items-center justify-between gap-3 px-3 py-2 text-[12px] sm:text-sm">
-              <div className="truncate">
-                Fri 19 Dec · Houtbaar, Haarlem · Dinner 18:00 · Free from 20:00
+            <div className="mx-auto max-w-[500px] px-3 py-2 text-[12px] sm:text-sm">
+              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                <div className="flex items-center gap-2 sm:flex-shrink-0">
+                  <p className="font-semibold leading-snug tracking-wide text-left text-[#F8F4E8] sm:flex-1 sm:truncate">
+                    Fri 19 Dec - Boyos Wonderland Dine & Dance - Houtbaar,
+                    Haarlem - Dinner 18:00 - Free Dance 20:00
+                  </p>
+                  <a
+                    href={nextEvent.ticketUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center rounded-full bg-[#FFB332] px-4 py-2 text-[#1B1212] text-sm font-semibold shadow shadow-[#1B1212]/10 transition-transform hover:-translate-y-[1px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFC75B]"
+                  >
+                    Tickets
+                  </a>
+                </div>
               </div>
-              <a
-                href={nextEvent.ticketUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="px-3 py-1 rounded-full text-black font-bold"
-                style={{ backgroundColor: "#FFB332" }}
-              >
-                Reserve
-              </a>
             </div>
-          </div>
-          {/* FLOATING MENU BUTTON */}
-          <div className="fixed flex top-4 right-4 z-50 gap-2">
-            <a
-              href={nextEvent.ticketUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              aria-label="Reserve dinner for Boyos Wonderland Dine & Dance Christmas Special"
-              onClick={() => onTrack && onTrack("cta_tickets_dec19")}
-              className="bg-[#FF6347] text-[#fff] font-bold p-3 rounded-full hover:bg-[#FF6347] hover:text-[#fff] focus-visible:outline focus-visible:outline-offset-2"
-            >
-              {nextEvent.ticketCtaLabel}
-            </a>
-            <button
-              className=" bg-[#9370DB] text-[#F0E68C] font-bold p-3 rounded-full  shadow-lg hover:text-[#FFD700]"
-              onClick={() => setMenuOpen(!menuOpen)}
-              aria-label="Toggle menu"
-              aria-expanded={menuOpen}
-              aria-controls="mobile-menu"
-            >
-              Menu ☰
-            </button>
-          </div>
+          </nav>
 
           <img
             src="/images/cover.png"
@@ -739,6 +766,24 @@ export default function BoyosWonderlandPage() {
             id="hero"
             className="relative flex h-screen overflow-hidden items-center justify-center text-[#F2EEE9]"
           >
+            {!showStickyCta && (
+              <div className="absolute top-6 right-4 z-20">
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#9370DB]/90 px-4 py-2 text-[#F0E68C] text-sm font-semibold shadow-lg shadow-[#1B1212]/25 backdrop-blur-sm transition-transform hover:-translate-y-[1px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFD700]"
+                  onClick={() => setMenuOpen(true)}
+                  aria-label="Open site menu"
+                  aria-expanded={menuOpen}
+                  aria-haspopup="true"
+                  aria-controls="mobile-menu"
+                >
+                  <span>Menu</span>
+                  <span aria-hidden="true" className="text-base leading-none">
+                    ☰
+                  </span>
+                </button>
+              </div>
+            )}
             <HeroVideo />
 
             <div className="absolute left-0 top-0 w-full h-full  bg-[#1B1212]/30" />
@@ -760,7 +805,10 @@ export default function BoyosWonderlandPage() {
             id="about"
             className="bg-[#9370DB] px-6 py-12 text-left text-[#F0E68C]"
           >
-            <h2 className="uppercase  font-[anton] tracking-wider sticky top-0 z-10 bg-[#9370DB] text-4xl text-[#F0E68C]  py-8">
+            <h2
+              className="uppercase font-[anton] tracking-wider sticky z-10 bg-[#9370DB] text-4xl text-[#F0E68C] py-8 transition-all duration-300"
+              style={{ top: stickyHeadlineOffset }}
+            >
               Our Story
             </h2>
             <div className="text-2xl font-[moret]">
@@ -791,7 +839,10 @@ export default function BoyosWonderlandPage() {
             id="events-old"
             className="hidden bg-[#F0E68C] text-[#8B008B] px-6 py-12"
           >
-            <h2 className="uppercase  font-[anton] tracking-wider sticky top-0 z-10 bg-[#F0E68C] text-4xl text-[#8B008B]  py-8">
+            <h2
+              className="uppercase font-[anton] tracking-wider sticky z-10 bg-[#F0E68C] text-4xl text-[#8B008B] py-8 transition-all duration-300"
+              style={{ top: stickyHeadlineOffset }}
+            >
               No Events Scheduled
             </h2>
             {/* <div className="mb-12">
@@ -1022,7 +1073,10 @@ export default function BoyosWonderlandPage() {
             id="cta"
             className="bg-[#F0E68C] px-6 py-12 text-center text-[#8B008B]"
           >
-            <h2 className="uppercase  sticky top-0 z-10 bg-[#F0E68C] text-4xl text-left text-[#8B008B]  py-8 font-[anton] uppercase tracking-wider">
+            <h2
+              className="uppercase sticky z-10 bg-[#F0E68C] text-4xl text-left text-[#8B008B] py-8 font-[anton] tracking-wider transition-all duration-300"
+              style={{ top: stickyHeadlineOffset }}
+            >
               Stay Up to Date
             </h2>
             <p className="max-w-sm text-left text-2xl font-[moret]">
