@@ -7,7 +7,8 @@ export default function RadioPlayer({
       name: 'Essential Groove Radio (Default)',
       url: 'https://soundcloud.com/boyos_soundsystem/sets/essential-groove',
     },
-  ],
+    ],
+  onPlayStateChange = () => {},
 }) {
   if (!Array.isArray(channels) || channels.length === 0) {
     return <div className="p-4 text-center" style={{ color: 'var(--color-text)' }}>No channels provided</div>
@@ -36,6 +37,12 @@ export default function RadioPlayer({
   const [currentArtist, setCurrentArtist] = useState('–')
   const [currentTitle, setCurrentTitle] = useState('–')
   const [trackUrl, setTrackUrl] = useState('')
+
+  useEffect(() => {
+    if (typeof onPlayStateChange === 'function') {
+      onPlayStateChange(isPlaying)
+    }
+  }, [isPlaying, onPlayStateChange])
 
   // 1) instantiate SC.Widget once
   useEffect(() => {

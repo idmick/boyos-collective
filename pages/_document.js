@@ -32,6 +32,20 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Limelight&display=swap"
             rel="stylesheet"
           />
+          <link
+            rel="preload"
+            href="/fonts/Moret-Regular.otf"
+            as="font"
+            type="font/otf"
+            crossOrigin="anonymous"
+          />
+          <link
+            rel="preload"
+            href="/fonts/Moret-Bold.otf"
+            as="font"
+            type="font/otf"
+            crossOrigin="anonymous"
+          />
           <script src="https://w.soundcloud.com/player/api.js" async></script>
 
           <link rel="icon" href="/favicon.ico" />
