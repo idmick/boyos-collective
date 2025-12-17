@@ -1,6 +1,26 @@
 {
   "pastGigs": [
     {
+      "title": "Disco Exotica", 
+      "venue": "Mosso, Milan, Italy",
+      "monthYear": "Dec 2025"
+    },
+    {
+      "title": "Boyos Soundsystem Presents: Essential Groove", 
+      "venue": "Café Café Bar, Amsterdam",
+      "monthYear": "Dec 2025"
+    },
+    {
+      "title": "Paard Cafe", 
+      "venue": "Paard Café, The Hague",
+      "monthYear": "Nov 2025"
+    },
+    {
+      "title": "IDFA DocLab Opening", 
+      "venue": "de Brakke Grond, Amsterdam",
+      "monthYear": "Nov 2025"
+    },
+    {
       "title": "Hito All Night", 
       "venue": "Hito, The Hague",
       "monthYear": "Oct 2025"
