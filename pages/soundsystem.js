@@ -23,16 +23,6 @@ const linkTree = [
   },
   {
     id: idGen(),
-    title: "Photo's Boyos Wonderland Dine and Dance 16.05.25",
-    url: "https://1drv.ms/a/c/3ffa6c8616c781f7/EjgpbRxYJLhDh8npP18xpDIBkACc1p1d8ATNy1F9J-zNUQ?e=FguJ8f",
-  },
-  {
-    id: idGen(),
-    title: "Photo's Boyos Wonderland Dine and Dance 12.04.25",
-    url: "https://1drv.ms/a/c/3ffa6c8616c781f7/EvRL9_kDsXRMmsdl2k9GgeEBlhZhAoiiBPnaoetFuPNylA?e=JcMCOh",
-  },
-  {
-    id: idGen(),
     title: "Instagram",
     url: "https://www.instagram.com/boyos.soundsystem/",
   },
