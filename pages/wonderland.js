@@ -163,40 +163,14 @@ export default function BoyosWonderlandPage() {
   ];
 
   // Next event data (hardcoded)
-  const nextEvent = {
-    title: "Boyos Wonderland: Dine & Dance Christmas Special",
-    date: "2025-12-19",
-    weekday: "Friday",
-    venueName: "Houtbaar",
-    venueUrl: "https://houtbaarhaarlem.nl",
-    address: {
-      streetAddress: "Woudplein 2",
-      addressLocality: "Haarlem",
-      postalCode: "2031CZ",
-      addressCountry: "NL",
-    },
-    doors: "17:00",
-    dinnerAt: "18:00",
-    danceFrom: "20:00",
-    end: "01:00",
-    prices: { veg: "€22.50", nonVeg: "€25.00" },
-    dinnerCopyShort: "Festive dinner, vegetarian or non-vegetarian menu",
-    danceCopyShort: "Dance free after 20:00",
-    lineup: {
-      host: "Boyos Soundsystem",
-      guest: "Guest DJ TBA",
-      dinnerDj: "Dinner Set",
-    },
-    // Poster path to be added to public/images/events
-    poster: "/images/events/wonderland_christmas_19_dec.png",
-    ticketCtaLabel: "Reserve Dinner",
-    ticketUrl:
-      "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&original_referer=https%3A%2F%2Fl.instagram.com%2F&event=3ce90b71-7780-4ad3-bb17-0543d7e60f68",
-    whatsappUrl: "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
-    instagramUrl: "https://www.instagram.com/boyos.wonderland/?hl=en",
-  };
+  const nextEvent = null; // No events currently scheduled
 
   const photoAlbums = [
+    {
+      title: "Dine and Dance 19.12.25",
+      cover: "/images/albums/cover_dine_dance_christmas_19.jpg",
+      url: "https://1drv.ms/a/c/3ffa6c8616c781f7/IgCmn5dF8NTdR6yGvJhtHw-AAfG9IEd7xRLOPCVbZwrDgMQ?e=KUgkcx",
+    },
     {
       title: "Mini Festival 28.06.25",
       cover: "/images/albums/cover_minifestival_2.jpg",
@@ -552,18 +526,17 @@ export default function BoyosWonderlandPage() {
   return (
     <>
       <NextSeo
-        title="Boyos Wonderland: Dine & Dance Christmas Special at Houtbaar, 19 Dec - Dinner and Free Party"
-        description={`Dine & Dance in Haarlem on 19 Dec at Houtbaar. Festive dinner at ${nextEvent.dinnerAt} with vegetarian ${nextEvent.prices.veg} or non-vegetarian ${nextEvent.prices.nonVeg}. Free party from ${nextEvent.danceFrom} with Boyos Soundsystem. Reserve your dinner now.`}
+        title="Boyos Wonderland - New Editions Brewing "
+        description="Boyos Wonderland brings together music, food, and community. Currently brewing on new editions. Follow us for updates on the next events."
         canonical="https://www.boyoscollective.nl/wonderland"
         openGraph={{
           url: "https://www.boyoscollective.nl/wonderland",
-          title:
-            "Boyos Wonderland: Dine & Dance Christmas Special at Houtbaar, 19 Dec - Dinner and Free Party",
-          description: `Festive dinner and free party in Haarlem, The Netherlands. Dinner ${nextEvent.dinnerAt}, dance ${nextEvent.danceFrom}.`,
+          title: "Boyos Wonderland - New Editions Brewing",
+          description: "Boyos Wonderland brings together music, food, and community. Currently brewing new editions. Follow us for updates.",
           images: [
             {
-              url: "https://www.boyoscollective.nl/images/events/wonderland_christmas_19_dec.png",
-              alt: "Boyos Wonderland Dine & Dance Christmas Special poster for 19 December at Houtbaar.",
+              url: "https://www.boyoscollective.nl/images/cover.png",
+              alt: "Boyos Wonderland logo",
             },
           ],
           siteName: "Boyos Collective",
@@ -573,10 +546,11 @@ export default function BoyosWonderlandPage() {
           {
             name: "keywords",
             content:
-              "Houtbaar Haarlem, Christmas dinner, Haarlem events, vegetarian dinner, free entry party, disco, house, soca, zouk, afrobeat",
+              "Boyos Wonderland, Dine and Dance, house music, disco, afrobeat, Haarlem events",
           },
         ]}
       />
+      {nextEvent && (
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -650,6 +624,7 @@ export default function BoyosWonderlandPage() {
           }),
         }}
       />
+      )}
       <div
         className="theme-core min-h-screen"
         style={{ backgroundColor: "var(--bg)", color: "var(--text)" }}
@@ -664,6 +639,7 @@ export default function BoyosWonderlandPage() {
           style={{ paddingTop: contentTopPadding }}
         >
           {/* Sticky quick facts bar */}
+          {nextEvent && (
           <nav
             ref={bannerRef}
             className={`fixed left-0 right-0 top-0 z-40 transition-all duration-300 ${
@@ -700,6 +676,7 @@ export default function BoyosWonderlandPage() {
               </div>
             </div>
           </nav>
+          )}
 
           <img
             src="/images/cover.png"
@@ -742,6 +719,7 @@ export default function BoyosWonderlandPage() {
               >
                 Photos Albums
               </a>
+              {nextEvent && (
               <a
                 href={nextEvent.ticketUrl}
                 target="_blank"
@@ -751,6 +729,7 @@ export default function BoyosWonderlandPage() {
               >
                 Tickets
               </a>
+              )}
               {/* <a
                 href="#cta"
                 className="hover:text-[#FFD700]"
@@ -963,70 +942,100 @@ export default function BoyosWonderlandPage() {
             <div className="parallax-glow" aria-hidden="true" />
             <div className="px-6 py-16 text-left">
               <h2 id="events-heading" className="sr-only">
-                Upcoming event
+                Upcoming events
               </h2>
-              <div className="mx-auto max-w-6xl grid grid-cols-1 gap-10 items-center overflow-visible">
-                <FeaturePoster ImageCmp={Image} nextEvent={nextEvent} />
-                <FeatureContent nextEvent={nextEvent} onTrack={trackPiratepx} />
-              </div>
-              <div className="mx-auto max-w-3xl mt-12 text-sm sm:text-base opacity-90 leading-relaxed">
-                <h3 className="text-base font-semibold mb-2">Event Summary</h3>
-                <dl className="grid grid-cols-1 gap-y-1">
-                  <div>
-                    <dt className="inline font-semibold">What:</dt>{" "}
-                    <dd className="inline">
-                      Boyos Wonderland: Dine & Dance Christmas Special
-                    </dd>
+              <div className="mx-auto max-w-3xl">
+                <div className="text-center py-12">
+                  <h2 className="font-[anton] uppercase text-5xl sm:text-6xl leading-[0.95] mb-6" style={{ color: "var(--event-accent-1)" }}>
+                    Brewing New Editions
+                  </h2>
+                  <p className="text-xl sm:text-2xl mb-6 leading-relaxed">
+                    We currently have no Wonderland events scheduled, but we're working on something special.
+                  </p>
+                  <p className="text-lg opacity-90 mb-8">
+                    Our Dine & Dance events and Mini Festival were incredible, and we're excited to bring you new experiences.
+                  </p>
+                  <p className="text-lg opacity-90 mb-8 font-semibold">
+                    Stay tuned for updates — follow us to be the first to know when the next edition drops.
+                  </p>
+                  
+                  <div className="flex flex-col sm:flex-row gap-6 mt-12 justify-center items-center">
+                    <a
+                      href="https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-lg font-bold underline hover:opacity-80 transition"
+                      onClick={() => trackPiratepx("cta_whatsapp_brewing")}
+                      style={{ color: "var(--event-accent-1)" }}
+                    >
+                      <svg
+                        fill="currentColor"
+                        width="24px"
+                        height="24px"
+                        viewBox="-1.66 0 740.824 740.824"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g
+                          id="SVGRepo_tracerCarrier"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></g>
+                        <g id="SVGRepo_iconCarrier">
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M630.056 107.658C560.727 38.271 468.525.039 370.294 0 167.891 0 3.16 164.668 3.079 367.072c-.027 64.699 16.883 127.855 49.016 183.523L0 740.824l194.666-51.047c53.634 29.244 114.022 44.656 175.481 44.682h.151c202.382 0 367.128-164.689 367.21-367.094.039-98.088-38.121-190.32-107.452-259.707m-259.758 564.8h-.125c-54.766-.021-108.483-14.729-155.343-42.529l-11.146-6.613-115.516 30.293 30.834-112.592-7.258-11.543c-30.552-48.58-46.689-104.729-46.665-162.379C65.146 198.865 202.065 62 370.419 62c81.521.031 158.154 31.81 215.779 89.482s89.342 134.332 89.311 215.859c-.07 168.242-136.987 305.117-305.211 305.117m167.415-228.514c-9.176-4.591-54.286-26.782-62.697-29.843-8.41-3.061-14.526-4.591-20.644 4.592-6.116 9.182-23.7 29.843-29.054 35.964-5.351 6.122-10.703 6.888-19.879 2.296-9.175-4.591-38.739-14.276-73.786-45.526-27.275-24.32-45.691-54.36-51.043-63.542-5.352-9.183-.569-14.148 4.024-18.72 4.127-4.11 9.175-10.713 13.763-16.07 4.587-5.356 6.116-9.182 9.174-15.303 3.059-6.122 1.53-11.479-.764-16.07-2.294-4.591-20.643-49.739-28.29-68.104-7.447-17.886-15.012-15.466-20.644-15.746-5.346-.266-11.469-.323-17.585-.323-6.117 0-16.057 2.296-24.468 11.478-8.41 9.183-32.112 31.374-32.112 76.521s32.877 88.763 37.465 94.885c4.587 6.122 64.699 98.771 156.741 138.502 21.891 9.45 38.982 15.093 52.307 19.323 21.981 6.979 41.983 5.994 57.793 3.633 17.628-2.633 54.285-22.19 61.932-43.616 7.646-21.426 7.646-39.791 5.352-43.617-2.293-3.826-8.41-6.122-17.585-10.714"
+                          ></path>
+                        </g>
+                      </svg>
+                      Join WhatsApp
+                    </a>
+                    <a
+                      href="https://www.instagram.com/boyos.wonderland/?hl=en"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center gap-2 text-lg font-bold underline hover:opacity-80 transition"
+                      onClick={() => trackPiratepx("cta_instagram_brewing")}
+                      style={{ color: "var(--event-accent-1)" }}
+                    >
+                      <svg
+                        width="24px"
+                        height="24px"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g
+                          id="SVGRepo_tracerCarrier"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                        ></g>
+                        <g id="SVGRepo_iconCarrier">
+                          {" "}
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
+                            fill="currentColor"
+                          ></path>{" "}
+                          <path
+                            d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z"
+                            fill="currentColor"
+                          ></path>{" "}
+                          <path
+                            fill-rule="evenodd"
+                            clip-rule="evenodd"
+                            d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"
+                            fill="currentColor"
+                          ></path>{" "}
+                        </g>
+                      </svg>
+                      Instagram
+                    </a>
                   </div>
-                  <div>
-                    <dt className="inline font-semibold">When:</dt>{" "}
-                    <dd className="inline">
-                      <time dateTime="2025-12-19">Friday 19 December 2025</time>{" "}
-                      · Doors <time dateTime="17:00">{nextEvent.doors}</time> ·
-                      Dinner <time dateTime="18:00">{nextEvent.dinnerAt}</time>{" "}
-                      · Dance{" "}
-                      <time dateTime="20:00">{nextEvent.danceFrom}</time>
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="inline font-semibold">Where:</dt>{" "}
-                    <dd className="inline">
-                      <address className="not-italic inline">
-                        {nextEvent.venueName},{" "}
-                        {nextEvent.address.addressLocality}, The Netherlands
-                      </address>
-                    </dd>
-                  </div>
-                  <div>
-                    <dt className="inline font-semibold">Price:</dt>{" "}
-                    <dd className="inline">
-                      Vegetarian {nextEvent.prices.veg}, Non-vegetarian{" "}
-                      {nextEvent.prices.nonVeg}. Dance free from{" "}
-                      {nextEvent.danceFrom}.
-                    </dd>
-                  </div>
-                </dl>
-                <p className="mt-3">
-                  Tickets:{" "}
-                  <a
-                    className="underline font-semibold"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    href={nextEvent.ticketUrl}
-                  >
-                    Reserve on Weeztix
-                  </a>
-                </p>
-                <details className="mt-1 text-xs opacity-70">
-                  <summary className="cursor-pointer">
-                    Show ticket link as plain text
-                  </summary>
-                  <div className="break-all">{nextEvent.ticketUrl}</div>
-                </details>
-                <p className="mt-3">
-                  Fixed menu, no exceptions. What you see is what you eat. Next
-                  time, new dishes.
-                </p>
+                </div>
               </div>
             </div>
           </section>
@@ -1034,6 +1043,7 @@ export default function BoyosWonderlandPage() {
           <PhotoAlbums albums={photoAlbums} onTrack={trackPiratepx} />
 
           {/* Sticky mobile CTA */}
+          {nextEvent && (
           <div
             className={`sm:hidden fixed bottom-4 left-4 right-4 z-40 transition-all duration-300 ${
               showStickyCta
@@ -1067,6 +1077,7 @@ export default function BoyosWonderlandPage() {
               </span>
             </div>
           </div>
+          )}
 
           {/* CTA */}
           {/* <section
