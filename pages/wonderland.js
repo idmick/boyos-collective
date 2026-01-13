@@ -688,6 +688,7 @@ export default function BoyosWonderlandPage() {
             <div
               id="mobile-menu"
               className="fixed inset-0 bg-[#9370DB]  text-[#F0E68C] font-[moret] flex flex-col items-center justify-center gap-8 text-4xl font-bold z-50 "
+              style={{ zIndex: 99999 }}
               role="dialog"
               aria-modal="true"
             >
