@@ -947,16 +947,16 @@ export default function BoyosWonderlandPage() {
               <div className="mx-auto max-w-3xl">
                 <div className="text-center py-12">
                   <h2 className="font-[anton] uppercase text-5xl sm:text-6xl leading-[0.95] mb-6" style={{ color: "var(--event-accent-1)" }}>
-                    Brewing New Editions
+                    New Editions Brewing
                   </h2>
                   <p className="text-xl sm:text-2xl mb-6 leading-relaxed">
-                    We currently have no Wonderland events scheduled, but we're working on something special.
+                    We currently have no Wonderland events scheduled, but we're working on a new series.
                   </p>
                   <p className="text-lg opacity-90 mb-8">
                     Our Dine & Dance events and Mini Festival were incredible, and we're excited to bring you new experiences.
                   </p>
                   <p className="text-lg opacity-90 mb-8 font-semibold">
-                    Stay tuned for updates — follow us to be the first to know when the next edition drops.
+                    Stay tuned for updates, follow us to be the first to know when the next edition drops.
                   </p>
                   
                   <div className="flex flex-col sm:flex-row gap-6 mt-12 justify-center items-center">
