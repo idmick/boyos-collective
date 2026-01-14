@@ -26,9 +26,8 @@ export default function BoyosWonderlandPage() {
     ? Math.max(bannerHeight, QUICK_FACTS_HEIGHT)
     : 0;
 
-  const stickyHeadlineOffset = `${
-    effectiveBannerHeight + HEADER_BASE_OFFSET
-  }px`;
+  const stickyHeadlineOffset = `${effectiveBannerHeight + HEADER_BASE_OFFSET
+    }px`;
 
   const contentTopPadding = showStickyCta
     ? `${effectiveBannerHeight + 12}px`
@@ -377,15 +376,11 @@ export default function BoyosWonderlandPage() {
       if (endD <= startD) endD.setDate(endD.getDate() + 1);
       const ics = `BEGIN:VCALENDAR\nVERSION:2.0\nPRODID:-//Boyos//Wonderland//EN\nBEGIN:VEVENT\nUID:${Date.now()}@boyoscollective.nl\nDTSTAMP:${fmt(
         new Date()
-      )}\nDTSTART:${fmt(startD)}\nDTEND:${fmt(endD)}\nSUMMARY:${
-        nextEvent.title
-      }\nLOCATION:${nextEvent.venueName}, ${nextEvent.address.streetAddress}, ${
-        nextEvent.address.postalCode
-      } ${nextEvent.address.addressLocality}\nDESCRIPTION:Dinner at ${
-        nextEvent.dinnerAt
-      }. Dance from ${nextEvent.danceFrom}. Reserve: ${
-        nextEvent.ticketUrl
-      }\nEND:VEVENT\nEND:VCALENDAR`;
+      )}\nDTSTART:${fmt(startD)}\nDTEND:${fmt(endD)}\nSUMMARY:${nextEvent.title
+        }\nLOCATION:${nextEvent.venueName}, ${nextEvent.address.streetAddress}, ${nextEvent.address.postalCode
+        } ${nextEvent.address.addressLocality}\nDESCRIPTION:Dinner at ${nextEvent.dinnerAt
+        }. Dance from ${nextEvent.danceFrom}. Reserve: ${nextEvent.ticketUrl
+        }\nEND:VEVENT\nEND:VCALENDAR`;
       const blob = new Blob([ics], { type: "text/calendar;charset=utf-8" });
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
@@ -551,79 +546,79 @@ export default function BoyosWonderlandPage() {
         ]}
       />
       {nextEvent && (
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "MusicEvent",
-            name: "Boyos Wonderland: Dine & Dance Christmas Special",
-            startDate: "2025-12-19T18:00:00+01:00",
-            endDate: "2025-12-20T01:00:00+01:00",
-            eventStatus: "https://schema.org/EventScheduled",
-            eventAttendanceMode:
-              "https://schema.org/OfflineEventAttendanceMode",
-            isAccessibleForFree: true,
-            genre: ["Disco", "House", "Soca", "Afrobeat"],
-            image: [
-              "https://www.boyoscollective.nl/images/events/wonderland_christmas_19_dec.png",
-            ],
-            location: {
-              "@type": "Place",
-              name: nextEvent.venueName,
-              sameAs: nextEvent.venueUrl,
-              address: {
-                "@type": "PostalAddress",
-                streetAddress: nextEvent.address.streetAddress,
-                addressLocality: nextEvent.address.addressLocality,
-                postalCode: nextEvent.address.postalCode,
-                addressCountry: nextEvent.address.addressCountry,
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "MusicEvent",
+              name: "Boyos Wonderland: Dine & Dance Christmas Special",
+              startDate: "2025-12-19T18:00:00+01:00",
+              endDate: "2025-12-20T01:00:00+01:00",
+              eventStatus: "https://schema.org/EventScheduled",
+              eventAttendanceMode:
+                "https://schema.org/OfflineEventAttendanceMode",
+              isAccessibleForFree: true,
+              genre: ["Disco", "House", "Soca", "Afrobeat"],
+              image: [
+                "https://www.boyoscollective.nl/images/events/wonderland_christmas_19_dec.png",
+              ],
+              location: {
+                "@type": "Place",
+                name: nextEvent.venueName,
+                sameAs: nextEvent.venueUrl,
+                address: {
+                  "@type": "PostalAddress",
+                  streetAddress: nextEvent.address.streetAddress,
+                  addressLocality: nextEvent.address.addressLocality,
+                  postalCode: nextEvent.address.postalCode,
+                  addressCountry: nextEvent.address.addressCountry,
+                },
               },
-            },
-            organizer: {
-              "@type": "Organization",
-              name: "Boyos Collective",
-              url: "https://www.boyoscollective.nl",
-            },
-            performer: [
-              { "@type": "MusicGroup", name: "Boyos Soundsystem" },
-              { "@type": "MusicGroup", name: "Guest DJ TBA" },
-            ],
-            offers: [
-              {
-                "@type": "Offer",
-                price: "22.50",
-                priceCurrency: "EUR",
-                url: nextEvent.ticketUrl,
-                availability: "https://schema.org/InStock",
-                category: "Vegetarian Dinner",
+              organizer: {
+                "@type": "Organization",
+                name: "Boyos Collective",
+                url: "https://www.boyoscollective.nl",
               },
-              {
-                "@type": "Offer",
-                price: "25.00",
-                priceCurrency: "EUR",
-                url: nextEvent.ticketUrl,
-                availability: "https://schema.org/InStock",
-                category: "Non-vegetarian Dinner",
-              },
-              {
-                "@type": "Offer",
-                price: "0",
-                priceCurrency: "EUR",
-                url: "https://www.boyoscollective.nl/wonderland",
-                availability: "https://schema.org/InStock",
-                category: "Free Party Entry",
-              },
-            ],
-            sameAs: [
-              "https://www.boyoscollective.nl/wonderland",
-              "https://www.instagram.com/boyos.wonderland/?hl=en",
-            ],
-            description:
-              "Festive dinner and a warm, high-energy dance floor at Houtbaar in Haarlem, The Netherlands. Dinner at 18:00, dance from 20:00. Line-up: Boyos Soundsystem with guest DJ TBA.",
-          }),
-        }}
-      />
+              performer: [
+                { "@type": "MusicGroup", name: "Boyos Soundsystem" },
+                { "@type": "MusicGroup", name: "Guest DJ TBA" },
+              ],
+              offers: [
+                {
+                  "@type": "Offer",
+                  price: "22.50",
+                  priceCurrency: "EUR",
+                  url: nextEvent.ticketUrl,
+                  availability: "https://schema.org/InStock",
+                  category: "Vegetarian Dinner",
+                },
+                {
+                  "@type": "Offer",
+                  price: "25.00",
+                  priceCurrency: "EUR",
+                  url: nextEvent.ticketUrl,
+                  availability: "https://schema.org/InStock",
+                  category: "Non-vegetarian Dinner",
+                },
+                {
+                  "@type": "Offer",
+                  price: "0",
+                  priceCurrency: "EUR",
+                  url: "https://www.boyoscollective.nl/wonderland",
+                  availability: "https://schema.org/InStock",
+                  category: "Free Party Entry",
+                },
+              ],
+              sameAs: [
+                "https://www.boyoscollective.nl/wonderland",
+                "https://www.instagram.com/boyos.wonderland/?hl=en",
+              ],
+              description:
+                "Festive dinner and a warm, high-energy dance floor at Houtbaar in Haarlem, The Netherlands. Dinner at 18:00, dance from 20:00. Line-up: Boyos Soundsystem with guest DJ TBA.",
+            }),
+          }}
+        />
       )}
       <div
         className="theme-core min-h-screen"
@@ -640,42 +635,41 @@ export default function BoyosWonderlandPage() {
         >
           {/* Sticky quick facts bar */}
           {nextEvent && (
-          <nav
-            ref={bannerRef}
-            className={`fixed left-0 right-0 top-0 z-40 transition-all duration-300 ${
-              showStickyCta
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 -translate-y-2 pointer-events-none"
-            }`}
-            style={{
-              backgroundColor: "#3F6949",
-              color: "#F8F4E8",
-              minHeight: `${QUICK_FACTS_HEIGHT}px`,
-              boxShadow: showStickyCta
-                ? "0 18px 40px rgba(27, 18, 18, 0.35)"
-                : "none",
-            }}
-            aria-label="Event quick facts and actions"
-          >
-            <div className="mx-auto max-w-[500px] px-3 py-2 text-[12px] sm:text-sm">
-              <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
-                <div className="flex items-center gap-2 sm:flex-shrink-0">
-                  <p className="font-semibold leading-snug tracking-wide text-left text-[#F8F4E8] sm:flex-1 sm:truncate">
-                    Fri 19 Dec - Boyos Wonderland Dine & Dance - Houtbaar,
-                    Haarlem - Dinner 18:00 - Free Dance 20:00
-                  </p>
-                  <a
-                    href={nextEvent.ticketUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center rounded-full bg-[#FFB332] px-4 py-2 text-[#1B1212] text-sm font-semibold shadow shadow-[#1B1212]/10 transition-transform hover:-translate-y-[1px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFC75B]"
-                  >
-                    Tickets
-                  </a>
+            <nav
+              ref={bannerRef}
+              className={`fixed left-0 right-0 top-0 z-40 transition-all duration-300 ${showStickyCta
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 -translate-y-2 pointer-events-none"
+                }`}
+              style={{
+                backgroundColor: "#3F6949",
+                color: "#F8F4E8",
+                minHeight: `${QUICK_FACTS_HEIGHT}px`,
+                boxShadow: showStickyCta
+                  ? "0 18px 40px rgba(27, 18, 18, 0.35)"
+                  : "none",
+              }}
+              aria-label="Event quick facts and actions"
+            >
+              <div className="mx-auto max-w-[500px] px-3 py-2 text-[12px] sm:text-sm">
+                <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between sm:gap-3">
+                  <div className="flex items-center gap-2 sm:flex-shrink-0">
+                    <p className="font-semibold leading-snug tracking-wide text-left text-[#F8F4E8] sm:flex-1 sm:truncate">
+                      Fri 19 Dec - Boyos Wonderland Dine & Dance - Houtbaar,
+                      Haarlem - Dinner 18:00 - Free Dance 20:00
+                    </p>
+                    <a
+                      href={nextEvent.ticketUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center rounded-full bg-[#FFB332] px-4 py-2 text-[#1B1212] text-sm font-semibold shadow shadow-[#1B1212]/10 transition-transform hover:-translate-y-[1px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFC75B]"
+                    >
+                      Tickets
+                    </a>
+                  </div>
                 </div>
               </div>
-            </div>
-          </nav>
+            </nav>
           )}
 
           <img
@@ -721,15 +715,15 @@ export default function BoyosWonderlandPage() {
                 Photos Albums
               </a>
               {nextEvent && (
-              <a
-                href={nextEvent.ticketUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-[#FFD700]"
-                onClick={() => setMenuOpen(false)}
-              >
-                Tickets
-              </a>
+                <a
+                  href={nextEvent.ticketUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-[#FFD700]"
+                  onClick={() => setMenuOpen(false)}
+                >
+                  Tickets
+                </a>
               )}
               {/* <a
                 href="#cta"
@@ -817,13 +811,13 @@ export default function BoyosWonderlandPage() {
           {/* EVENTS */}
           <section
             id="events-old"
-            className="hidden bg-[#F0E68C] text-[#8B008B] px-6 py-12"
+            className="bg-[#F0E68C] text-[#8B008B] px-6 py-12"
           >
             <h2
               className="uppercase font-[anton] tracking-wider sticky z-10 bg-[#F0E68C] text-4xl text-[#8B008B] py-8 transition-all duration-300"
               style={{ top: stickyHeadlineOffset }}
             >
-              No Events Scheduled
+              Upcoming events
             </h2>
             {/* <div className="mb-12">
               <img
@@ -849,12 +843,12 @@ export default function BoyosWonderlandPage() {
             </div> */}
             <div>
               <p className="text-2xl font-[moret]  mb-1">
-                We had an amazing season with our Dine & Dance events and Mini
-                Festival, but we currently have no new events scheduled.
+      We currently have no Wonderland events scheduled, but we're working on a new series.
+ Our Dine & Dance events and Mini Festival were incredible, and we're excited to bring you new experiences.
+
               </p>
               <p className="text-lg font-[moret] text-[#41159a] opacity-80">
-                Stay tuned for updates and follow us on Instagram or join our
-                WhatsApp community to be the first to know!
+               Stay tuned for updates, follow us to be the first to know when the next edition drops.
               </p>
               <div className="flex flex-col sm:flex-row gap-6 mt-8 justify-center items-center">
                 <a
@@ -932,152 +926,43 @@ export default function BoyosWonderlandPage() {
               </div>
             </div>
           </section>
-          {/* FEATURE EVENT (Oct 17) */}
-          <section
-            id="events"
-            className="relative theme-event"
-            aria-labelledby="events-heading"
-            style={{ backgroundColor: "var(--bg)", color: "var(--text)" }}
-          >
-            <div className="grain pointer-events-none absolute inset-0" />
-            <div className="parallax-glow" aria-hidden="true" />
-            <div className="px-6 py-16 text-left">
-              <h2 id="events-heading" className="sr-only">
-                Upcoming events
-              </h2>
-              <div className="mx-auto max-w-3xl">
-                <div className="text-center py-12">
-                  <h2 className="font-[anton] uppercase text-5xl sm:text-6xl leading-[0.95] mb-6" style={{ color: "var(--event-accent-1)" }}>
-                    New Editions Brewing
-                  </h2>
-                  <p className="text-xl sm:text-2xl mb-6 leading-relaxed">
-                    We currently have no Wonderland events scheduled, but we're working on a new series.
-                  </p>
-                  <p className="text-lg opacity-90 mb-8">
-                    Our Dine & Dance events and Mini Festival were incredible, and we're excited to bring you new experiences.
-                  </p>
-                  <p className="text-lg opacity-90 mb-8 font-semibold">
-                    Stay tuned for updates, follow us to be the first to know when the next edition drops.
-                  </p>
-                  
-                  <div className="flex flex-col sm:flex-row gap-6 mt-12 justify-center items-center">
-                    <a
-                      href="https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-lg font-bold underline hover:opacity-80 transition"
-                      onClick={() => trackPiratepx("cta_whatsapp_brewing")}
-                      style={{ color: "var(--event-accent-1)" }}
-                    >
-                      <svg
-                        fill="currentColor"
-                        width="24px"
-                        height="24px"
-                        viewBox="-1.66 0 740.824 740.824"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g
-                          id="SVGRepo_tracerCarrier"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        ></g>
-                        <g id="SVGRepo_iconCarrier">
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M630.056 107.658C560.727 38.271 468.525.039 370.294 0 167.891 0 3.16 164.668 3.079 367.072c-.027 64.699 16.883 127.855 49.016 183.523L0 740.824l194.666-51.047c53.634 29.244 114.022 44.656 175.481 44.682h.151c202.382 0 367.128-164.689 367.21-367.094.039-98.088-38.121-190.32-107.452-259.707m-259.758 564.8h-.125c-54.766-.021-108.483-14.729-155.343-42.529l-11.146-6.613-115.516 30.293 30.834-112.592-7.258-11.543c-30.552-48.58-46.689-104.729-46.665-162.379C65.146 198.865 202.065 62 370.419 62c81.521.031 158.154 31.81 215.779 89.482s89.342 134.332 89.311 215.859c-.07 168.242-136.987 305.117-305.211 305.117m167.415-228.514c-9.176-4.591-54.286-26.782-62.697-29.843-8.41-3.061-14.526-4.591-20.644 4.592-6.116 9.182-23.7 29.843-29.054 35.964-5.351 6.122-10.703 6.888-19.879 2.296-9.175-4.591-38.739-14.276-73.786-45.526-27.275-24.32-45.691-54.36-51.043-63.542-5.352-9.183-.569-14.148 4.024-18.72 4.127-4.11 9.175-10.713 13.763-16.07 4.587-5.356 6.116-9.182 9.174-15.303 3.059-6.122 1.53-11.479-.764-16.07-2.294-4.591-20.643-49.739-28.29-68.104-7.447-17.886-15.012-15.466-20.644-15.746-5.346-.266-11.469-.323-17.585-.323-6.117 0-16.057 2.296-24.468 11.478-8.41 9.183-32.112 31.374-32.112 76.521s32.877 88.763 37.465 94.885c4.587 6.122 64.699 98.771 156.741 138.502 21.891 9.45 38.982 15.093 52.307 19.323 21.981 6.979 41.983 5.994 57.793 3.633 17.628-2.633 54.285-22.19 61.932-43.616 7.646-21.426 7.646-39.791 5.352-43.617-2.293-3.826-8.41-6.122-17.585-10.714"
-                          ></path>
-                        </g>
-                      </svg>
-                      Join WhatsApp
-                    </a>
-                    <a
-                      href="https://www.instagram.com/boyos.wonderland/?hl=en"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-lg font-bold underline hover:opacity-80 transition"
-                      onClick={() => trackPiratepx("cta_instagram_brewing")}
-                      style={{ color: "var(--event-accent-1)" }}
-                    >
-                      <svg
-                        width="24px"
-                        height="24px"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g
-                          id="SVGRepo_tracerCarrier"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        ></g>
-                        <g id="SVGRepo_iconCarrier">
-                          {" "}
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M12 18C15.3137 18 18 15.3137 18 12C18 8.68629 15.3137 6 12 6C8.68629 6 6 8.68629 6 12C6 15.3137 8.68629 18 12 18ZM12 16C14.2091 16 16 14.2091 16 12C16 9.79086 14.2091 8 12 8C9.79086 8 8 9.79086 8 12C8 14.2091 9.79086 16 12 16Z"
-                            fill="currentColor"
-                          ></path>{" "}
-                          <path
-                            d="M18 5C17.4477 5 17 5.44772 17 6C17 6.55228 17.4477 7 18 7C18.5523 7 19 6.55228 19 6C19 5.44772 18.5523 5 18 5Z"
-                            fill="currentColor"
-                          ></path>{" "}
-                          <path
-                            fill-rule="evenodd"
-                            clip-rule="evenodd"
-                            d="M1.65396 4.27606C1 5.55953 1 7.23969 1 10.6V13.4C1 16.7603 1 18.4405 1.65396 19.7239C2.2292 20.8529 3.14708 21.7708 4.27606 22.346C5.55953 23 7.23969 23 10.6 23H13.4C16.7603 23 18.4405 23 19.7239 22.346C20.8529 21.7708 21.7708 20.8529 22.346 19.7239C23 18.4405 23 16.7603 23 13.4V10.6C23 7.23969 23 5.55953 22.346 4.27606C21.7708 3.14708 20.8529 2.2292 19.7239 1.65396C18.4405 1 16.7603 1 13.4 1H10.6C7.23969 1 5.55953 1 4.27606 1.65396C3.14708 2.2292 2.2292 3.14708 1.65396 4.27606ZM13.4 3H10.6C8.88684 3 7.72225 3.00156 6.82208 3.0751C5.94524 3.14674 5.49684 3.27659 5.18404 3.43597C4.43139 3.81947 3.81947 4.43139 3.43597 5.18404C3.27659 5.49684 3.14674 5.94524 3.0751 6.82208C3.00156 7.72225 3 8.88684 3 10.6V13.4C3 15.1132 3.00156 16.2777 3.0751 17.1779C3.14674 18.0548 3.27659 18.5032 3.43597 18.816C3.81947 19.5686 4.43139 20.1805 5.18404 20.564C5.49684 20.7234 5.94524 20.8533 6.82208 20.9249C7.72225 20.9984 8.88684 21 10.6 21H13.4C15.1132 21 16.2777 20.9984 17.1779 20.9249C18.0548 20.8533 18.5032 20.7234 18.816 20.564C19.5686 20.1805 20.1805 19.5686 20.564 18.816C20.7234 18.5032 20.8533 18.0548 20.9249 17.1779C20.9984 16.2777 21 15.1132 21 13.4V10.6C21 8.88684 20.9984 7.72225 20.9249 6.82208C20.8533 5.94524 20.7234 5.49684 20.564 5.18404C20.1805 4.43139 19.5686 3.81947 18.816 3.43597C18.5032 3.27659 18.0548 3.14674 17.1779 3.0751C16.2777 3.00156 15.1132 3 13.4 3Z"
-                            fill="currentColor"
-                          ></path>{" "}
-                        </g>
-                      </svg>
-                      Instagram
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
           {/* PHOTO ALBUMS CAROUSEL */}
           <PhotoAlbums albums={photoAlbums} onTrack={trackPiratepx} />
 
           {/* Sticky mobile CTA */}
           {nextEvent && (
-          <div
-            className={`sm:hidden fixed bottom-4 left-4 right-4 z-40 transition-all duration-300 ${
-              showStickyCta
-                ? "opacity-100 translate-y-0"
-                : "opacity-0 translate-y-3 pointer-events-none"
-            }`}
-          >
             <div
-              className="flex items-center justify-between gap-3 rounded-full px-3 py-2"
-              style={{ backgroundColor: "rgba(0,0,0,0.25)" }}
+              className={`sm:hidden fixed bottom-4 left-4 right-4 z-40 transition-all duration-300 ${showStickyCta
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-3 pointer-events-none"
+                }`}
             >
-              <a
-                href={nextEvent.ticketUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Reserve dinner for Boyos Wonderland Dine & Dance Christmas Special"
-                onClick={() => trackPiratepx("cta_tickets_dec19_sticky")}
-                className="flex-1 text-center px-4 py-3 text-black font-bold rounded-full focus-visible:outline focus-visible:outline-offset-2"
-                style={{ backgroundColor: "var(--event-accent-1)" }}
+              <div
+                className="flex items-center justify-between gap-3 rounded-full px-3 py-2"
+                style={{ backgroundColor: "rgba(0,0,0,0.25)" }}
               >
-                Reserve Dinner
-              </a>
-              <span
-                className="text-[11px] px-3 py-2 rounded-full"
-                style={{
-                  backgroundColor: "rgba(255,255,255,0.12)",
-                  color: "var(--event-off)",
-                }}
-              >
-                Free from 20:00
-              </span>
+                <a
+                  href={nextEvent.ticketUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Reserve dinner for Boyos Wonderland Dine & Dance Christmas Special"
+                  onClick={() => trackPiratepx("cta_tickets_dec19_sticky")}
+                  className="flex-1 text-center px-4 py-3 text-black font-bold rounded-full focus-visible:outline focus-visible:outline-offset-2"
+                  style={{ backgroundColor: "var(--event-accent-1)" }}
+                >
+                  Reserve Dinner
+                </a>
+                <span
+                  className="text-[11px] px-3 py-2 rounded-full"
+                  style={{
+                    backgroundColor: "rgba(255,255,255,0.12)",
+                    color: "var(--event-off)",
+                  }}
+                >
+                  Free from 20:00
+                </span>
+              </div>
             </div>
-          </div>
           )}
 
           {/* CTA */}
