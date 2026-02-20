@@ -2,8 +2,9 @@ import { useState } from "react";
 import { useRouter } from "next/router"; // <-- Add this import
 import ReactPlayer from "react-player";
 import Image from "next/image";
+import fs from "fs/promises";
+import path from "path";
 import BoyosSoundsystem from "../public/images/boyos_we_got_the_funk.png";
-import PastGigs from "../data/PastGigs.json";
 import { NextSeo } from "next-seo";
 import Footer from "../components/layout/Footer";
 
@@ -53,9 +54,7 @@ const linkTree = [
   },
 ];
 
-const pastGigs = PastGigs.pastGigs;
-
-export default function Soundsystem() {
+export default function Soundsystem({ pastGigs }) {
   const [isPlaying, setIsPlaying] = useState(false);
   const router = useRouter(); // <-- Add this
 
@@ -216,4 +215,21 @@ export default function Soundsystem() {
       </div>
     </>
   );
+}
+
+export async function getServerSideProps({ res }) {
+  const pastGigsFilePath = path.join(process.cwd(), "data", "PastGigs.json");
+  const pastGigsFileContent = await fs.readFile(pastGigsFilePath, "utf8");
+  const { pastGigs = [] } = JSON.parse(pastGigsFileContent);
+
+  res.setHeader(
+    "Cache-Control",
+    "public, s-maxage=300, stale-while-revalidate=3600"
+  );
+
+  return {
+    props: {
+      pastGigs,
+    },
+  };
 }
