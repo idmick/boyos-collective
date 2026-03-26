@@ -1,6 +1,36 @@
 {
   "pastGigs": [
     {
+      "title": "De Nada", 
+      "venue": "De Nada, Amsterdam",
+      "monthYear": "Mar 2026"
+    },
+    {
+      "title": "Radio Tempo Não Pára", 
+      "venue": "Radio TNP, Amsterdam",
+      "monthYear": "Mar 2026"
+    },
+    {
+      "title": "Radiator Radio", 
+      "venue": "Radiator Radio, Haarlem",
+      "monthYear": "Mar 2026"
+    },
+    {
+      "title": "Paard Cafe", 
+      "venue": "Paard Café, The Hague",
+      "monthYear": "Mar 2026"
+    },
+    {
+      "title": "Locael Centraal", 
+      "venue": "Locael Centraal, Haarlem",
+      "monthYear": "Mar 2026"
+    },
+    {
+      "title": "In Het Dorp", 
+      "venue": "Het Dorp, Amsterdam",
+      "monthYear": "Mar 2026"
+    },
+    {
       "title": "Basement PRES. w/ Jamie 3:26, Emma Champagne Queen & Boyos Soundsystem", 
       "venue": "Hito, The Hague",
       "monthYear": "Feb 2026"
