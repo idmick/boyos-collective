@@ -1,4 +1,4 @@
-"use client";
+'use client'
 export default function ClientVideo() {
   return (
     <video
@@ -11,11 +11,11 @@ export default function ClientVideo() {
     >
       <source src="/videos/wonderland_fest_24.mp4" type="video/mp4" />
       <img
-        src="/images/Boyos Wonderland-093.jpg"
+        src="/images/BoyosWonderland-mini-fest-at.jpg"
         alt=""
         className="absolute top-0 left-0 w-full h-full object-cover object-top"
         aria-hidden="true"
       />
     </video>
-  );
+  )
 }
