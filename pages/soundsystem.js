@@ -1,65 +1,65 @@
-import { useState } from "react";
-import { useRouter } from "next/router"; // <-- Add this import
-import ReactPlayer from "react-player";
-import Image from "next/image";
-import fs from "fs/promises";
-import path from "path";
-import BoyosSoundsystem from "../public/images/boyos_we_got_the_funk.png";
-import { NextSeo } from "next-seo";
-import Footer from "../components/layout/Footer";
+import { useState } from 'react'
+import { useRouter } from 'next/router' // <-- Add this import
+import ReactPlayer from 'react-player'
+import Image from 'next/image'
+import fs from 'fs/promises'
+import path from 'path'
+import BoyosSoundsystem from '../public/images/boyos_we_got_the_funk.png'
+import { NextSeo } from 'next-seo'
+import Footer from '../components/layout/Footer'
 
 const idGen = () => {
-  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
+  return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
     var r = (Math.random() * 16) | 0,
-      v = c == "x" ? r : (r & 0x3) | 0x8;
-    return v.toString(16);
-  });
-};
+      v = c == 'x' ? r : (r & 0x3) | 0x8
+    return v.toString(16)
+  })
+}
 
 const linkTree = [
   {
     id: idGen(),
-    title: "Upcoming gigs",
-    url: "https://www.instagram.com/p/DP386JdCBo6/?img_index=2/",
+    title: 'Upcoming gigs',
+    url: 'https://www.instagram.com/p/DP386JdCBo6/?img_index=2/',
   },
   {
     id: idGen(),
-    title: "Instagram",
-    url: "https://www.instagram.com/boyos.soundsystem/",
+    title: 'Instagram',
+    url: 'https://www.instagram.com/boyos.soundsystem/',
   },
   {
     id: idGen(),
-    title: "Boyos Wonderland",
-    url: "/wonderland/",
+    title: 'Boyos Wonderland',
+    url: '/wonderland/',
   },
   {
     id: idGen(),
-    title: "Join our WhatsApp Comunnity",
-    url: "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
+    title: 'Join our WhatsApp Comunnity',
+    url: 'https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR',
   },
   {
     id: idGen(),
-    title: "Essential Groove - Spotify Playlist",
-    url: "https://open.spotify.com/playlist/0sB9bNTv9HNaGlIC5KyLuH?si=8035d8a8a8bd4c7f",
+    title: 'Essential Groove - Spotify Playlist',
+    url: 'https://open.spotify.com/playlist/0sB9bNTv9HNaGlIC5KyLuH?si=8035d8a8a8bd4c7f',
   },
   {
     id: idGen(),
-    title: "Resident Advisor",
-    url: "https://ra.co/dj/boyossoundsystem",
+    title: 'Resident Advisor',
+    url: 'https://ra.co/dj/boyossoundsystem',
   },
   {
     id: idGen(),
-    title: "Book us - Get in contact",
-    url: "mailto:soundsystem@boyoscollective.nl?subject=Booking: ...",
+    title: 'Book us - Get in contact',
+    url: 'mailto:soundsystem@boyoscollective.nl?subject=Booking: ...',
   },
-];
+]
 
 export default function Soundsystem({ pastGigs }) {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const router = useRouter(); // <-- Add this
+  const [isPlaying, setIsPlaying] = useState(false)
+  const router = useRouter() // <-- Add this
 
-  const startVinyl = () => setIsPlaying(true);
-  const pauseVinyl = () => setIsPlaying(false);
+  const startVinyl = () => setIsPlaying(true)
+  const pauseVinyl = () => setIsPlaying(false)
 
   return (
     <>
@@ -68,39 +68,39 @@ export default function Soundsystem({ pastGigs }) {
         description="Boyos Soundsystem is a DJ trio from Amsterdam, Haarlem & The Hague. Book us for Funk, Disco, House and more. Check our gigs, listen to our sets and get in touch!"
         canonical="https://www.boyoscollective.nl/soundsystem"
         openGraph={{
-          url: "https://www.boyoscollective.nl/soundsystem",
-          title: "Boyos Soundsystem | Funk, Disco, House & Global Grooves DJs",
+          url: 'https://www.boyoscollective.nl/soundsystem',
+          title: 'Boyos Soundsystem | Funk, Disco, House & Global Grooves DJs',
           description:
-            "Boyos Soundsystem is a DJ trio from Amsterdam, Haarlem & The Hague. Book us for Funk, Disco, House and more. Check our gigs, listen to our sets and get in touch!",
+            'Boyos Soundsystem is a DJ trio from Amsterdam, Haarlem & The Hague. Book us for Funk, Disco, House and more. Check our gigs, listen to our sets and get in touch!',
           images: [
             {
-              url: "https://www.boyoscollective.nl/images/boyos-25-20.jpg",
-              alt: "Boyos Soundsystem",
+              url: 'https://www.boyoscollective.nl/images/boyos-25-20.jpg',
+              alt: 'Boyos Soundsystem',
             },
           ],
-          siteName: "Boyos Collective",
+          siteName: 'Boyos Collective',
         }}
       />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "MusicGroup",
-            name: "Boyos Soundsystem",
-            url: "https://www.boyoscollective.nl/soundsystem",
-            genre: ["Funk", "Disco", "House", "Global Grooves"],
-            foundingLocation: "Amsterdam, Netherlands",
-            foundingDate: "2021",
-            image: "https://www.boyoscollective.nl/images/boyos-25-20.jpg",
+            '@context': 'https://schema.org',
+            '@type': 'MusicGroup',
+            name: 'Boyos Soundsystem',
+            url: 'https://www.boyoscollective.nl/soundsystem',
+            genre: ['Funk', 'Disco', 'House', 'Global Grooves'],
+            foundingLocation: 'Amsterdam, Netherlands',
+            foundingDate: '2021',
+            image: 'https://www.boyoscollective.nl/images/boyos-25-20.jpg',
             sameAs: [
-              "https://www.instagram.com/boyos.soundsystem/",
-              "https://ra.co/dj/boyossoundsystem",
+              'https://www.instagram.com/boyos.soundsystem/',
+              'https://ra.co/dj/boyossoundsystem',
             ],
             member: [
-              { "@type": "Person", name: "NMN - Nicolaas" },
-              { "@type": "Person", name: "Di Tomaso - Tomas" },
-              { "@type": "Person", name: "Mickey Anthony - Mick" },
+              { '@type': 'Person', name: 'NMN - Nicolaas' },
+              { '@type': 'Person', name: 'Di Tomaso - Tomas' },
+              { '@type': 'Person', name: 'Mickey Anthony - Mick' },
             ],
           }),
         }}
@@ -132,12 +132,22 @@ export default function Soundsystem({ pastGigs }) {
               config={{
                 soundcloud: {
                   options: {
-                    color: "#EC90B0",
+                    color: '#EC90B0',
                     sharing: true,
                     auto_play: true,
                   },
                 },
               }}
+            />
+          </div>
+          <div className="mb-6">
+            <ReactPlayer
+              onPlay={startVinyl}
+              onPause={pauseVinyl}
+              playing={false}
+              url="https://www.youtube.com/watch?v=CBAqa9s1DPE"
+              width="100%"
+              height="225px"
             />
           </div>
           <div className="mb-6">
@@ -152,7 +162,7 @@ export default function Soundsystem({ pastGigs }) {
           </div>
           <div className="flex flex-col gap-4 w-full">
             {linkTree.map((link) =>
-              link.title === "Boyos Wonderland" ? (
+              link.title === 'Boyos Wonderland' ? (
                 <button
                   key={link.id}
                   className="w-full py-3 px-4 rounded-lg bg-[#0085D0] text-white text-m font-semibold text-center hover:bg-[#0072B2] transition"
@@ -214,22 +224,22 @@ export default function Soundsystem({ pastGigs }) {
         </div>
       </div>
     </>
-  );
+  )
 }
 
 export async function getServerSideProps({ res }) {
-  const pastGigsFilePath = path.join(process.cwd(), "data", "PastGigs.json");
-  const pastGigsFileContent = await fs.readFile(pastGigsFilePath, "utf8");
-  const { pastGigs = [] } = JSON.parse(pastGigsFileContent);
+  const pastGigsFilePath = path.join(process.cwd(), 'data', 'PastGigs.json')
+  const pastGigsFileContent = await fs.readFile(pastGigsFilePath, 'utf8')
+  const { pastGigs = [] } = JSON.parse(pastGigsFileContent)
 
   res.setHeader(
-    "Cache-Control",
-    "public, s-maxage=300, stale-while-revalidate=3600"
-  );
+    'Cache-Control',
+    'public, s-maxage=300, stale-while-revalidate=3600'
+  )
 
   return {
     props: {
       pastGigs,
     },
-  };
+  }
 }
