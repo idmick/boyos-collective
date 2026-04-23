@@ -7,12 +7,6 @@ const path = require('path')
 
 module.exports = withPWA({
   reactStrictMode: true,
-  images: {
-    domains: ['www.netlify.com', 'vercel.com'],
-  },
-  experimental: {
-    optimizeCss: true,
-  },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
   },

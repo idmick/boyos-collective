@@ -39,7 +39,6 @@ export default function BoyosWonderlandPage() {
   const CTAButton = ({ href, label }) => {
     const isExternal = /^https?:\/\//.test(href)
     const handleClick = (e) => {
-      trackPiratepx('cta_view_events')
       if (!isExternal && href?.startsWith('#')) {
         e.preventDefault()
         const el = document.querySelector(href)
@@ -61,7 +60,7 @@ export default function BoyosWonderlandPage() {
   }
 
   // Isolated Photo Albums slider to prevent page re-render on slide change
-  const PhotoAlbums = ({ albums, onTrack }) => {
+  const PhotoAlbums = ({ albums }) => {
     const [currentSlide, setCurrentSlide] = useState(0)
     const [sliderRef, instanceRef] = useKeenSlider({
       slideChanged(slider) {
@@ -89,9 +88,6 @@ export default function BoyosWonderlandPage() {
                 tabIndex={0}
                 aria-label={`Open album: ${album.title}`}
                 title={`View album: ${album.title}`}
-                onClick={() =>
-                  onTrack(`album_open_${album.title.replace(/\s+/g, '_')}`)
-                }
               >
                 <div className="relative w-full h-80">
                   <img
@@ -219,13 +215,6 @@ export default function BoyosWonderlandPage() {
       url: 'https://1drv.ms/a/c/3ffa6c8616c781f7/EpVXR6eV1gBIitfiUlS3uU4B72jW6b8xbdMDHzxcSuV6bw?e=uLk8ZR',
     },
   ]
-
-  const trackPiratepx = (eventId) => {
-    const img = new window.Image()
-    img.src = `https://app.piratepx.com/ship?p=55de87a9-341f-4c3f-ac22-feba7ac931d8&i=${encodeURIComponent(
-      eventId
-    )}`
-  }
 
   useEffect(() => {
     if (typeof window === 'undefined') return
@@ -379,7 +368,6 @@ export default function BoyosWonderlandPage() {
                       href={nextEvent.whatsappUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      onClick={() => trackPiratepx('cta_whatsapp_sticky')}
                       className="inline-flex items-center rounded-full bg-[#FFB332] px-4 py-2 text-[#1B1212] text-sm font-semibold shadow shadow-[#1B1212]/10 transition-transform hover:-translate-y-[1px] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#FFC75B]"
                     >
                       Updates
@@ -562,7 +550,6 @@ export default function BoyosWonderlandPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="underline underline-offset-4 decoration-2 hover:text-[#9370DB] transition"
-                  onClick={() => trackPiratepx('cta_ini_site_inline')}
                 >
                   INI Movement
                 </a>
@@ -637,7 +624,6 @@ export default function BoyosWonderlandPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-lg font-bold underline text-[#9370DB] hover:text-[#8B008B] transition"
-                  onClick={() => trackPiratepx('cta_whatsapp_summer_jam')}
                 >
                   Stay updated
                 </a>
@@ -646,7 +632,6 @@ export default function BoyosWonderlandPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-lg font-bold underline text-[#9370DB] hover:text-[#8B008B] transition"
-                  onClick={() => trackPiratepx('cta_instagram_summer_jam')}
                 >
                   Boyos Instagram
                 </a>
@@ -655,7 +640,6 @@ export default function BoyosWonderlandPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-lg font-bold underline text-[#9370DB] hover:text-[#8B008B] transition"
-                  onClick={() => trackPiratepx('cta_ini_site')}
                 >
                   INI Movement
                 </a>
@@ -664,7 +648,6 @@ export default function BoyosWonderlandPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-lg font-bold underline text-[#9370DB] hover:text-[#8B008B] transition"
-                  onClick={() => trackPiratepx('cta_ini_instagram')}
                 >
                   INI Instagram
                 </a>
@@ -673,7 +656,6 @@ export default function BoyosWonderlandPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-2 text-lg font-bold underline text-[#9370DB] hover:text-[#8B008B] transition"
-                  onClick={() => trackPiratepx('cta_directions_summer_jam')}
                 >
                   Directions
                 </a>
@@ -681,7 +663,7 @@ export default function BoyosWonderlandPage() {
             </article>
           </section>
           {/* PHOTO ALBUMS CAROUSEL */}
-          <PhotoAlbums albums={photoAlbums} onTrack={trackPiratepx} />
+          <PhotoAlbums albums={photoAlbums} />
 
           {/* Sticky mobile CTA */}
           {nextEvent && (
@@ -701,9 +683,6 @@ export default function BoyosWonderlandPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label="Join WhatsApp for Boyos Wonderland Summer Jam updates"
-                  onClick={() =>
-                    trackPiratepx('cta_whatsapp_summer_jam_sticky')
-                  }
                   className="flex-1 text-center px-4 py-3 text-black font-bold rounded-full focus-visible:outline focus-visible:outline-offset-2"
                   style={{ backgroundColor: 'var(--event-accent-1)' }}
                 >
