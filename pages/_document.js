@@ -10,7 +10,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en" data-theme="mytheme">
+      <Html lang="en">
         <Head>
           <meta name="application-name" content={APP_NAME} />
           <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -49,24 +49,6 @@ class MyDocument extends Document {
           <script src="https://w.soundcloud.com/player/api.js" async></script>
 
           <link rel="icon" href="/favicon.ico" />
-          {/* Sender.net Universal Script */}
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `(function (s, e, n, d, er) {
-    s['Sender'] = er;
-    s[er] = s[er] || function () {
-      (s[er].q = s[er].q || []).push(arguments)
-    }, s[er].l = 1 * new Date();
-    var a = e.createElement(n),
-        m = e.getElementsByTagName(n)[0];
-    a.async = 1;
-    a.src = d;
-    m.parentNode.insertBefore(a, m)
-  })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js', 'sender');
-  sender('d6a4bdbee64934')`,
-            }}
-          />
-
           {/* add your own app-icon */}
           {/* <link
                rel="apple-touch-icon"
@@ -83,7 +65,7 @@ class MyDocument extends Document {
           <script
             defer
             src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon='{"token": "aa320ae5f16c4b93aa8bea34c9ede925"}'
+            data-cf-beacon={`{"token": "${process.env.NEXT_PUBLIC_CLOUDFLARE_TOKEN}"}`}
           />
           {/* End Cloudflare Web Analytics */}
         </body>

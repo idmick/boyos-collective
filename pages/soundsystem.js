@@ -2,10 +2,11 @@ import { useState } from 'react'
 import { useRouter } from 'next/router' // <-- Add this import
 import ReactPlayer from 'react-player'
 import Image from 'next/image'
+import Head from 'next/head'
 import fs from 'fs/promises'
 import path from 'path'
 import BoyosSoundsystem from '../public/images/boyos_we_got_the_funk.png'
-import { NextSeo } from 'next-seo'
+import { generateNextSeo } from 'next-seo/pages'
 import Footer from '../components/layout/Footer'
 
 const idGen = () => {
@@ -63,24 +64,28 @@ export default function Soundsystem({ pastGigs }) {
 
   return (
     <>
-      <NextSeo
-        title="Boyos Soundsystem | Funk, Disco, House & Global Groove DJs"
-        description="Boyos Soundsystem is a DJ trio from Amsterdam, Haarlem & The Hague. Book us for Funk, Disco, House and more. Check our gigs, listen to our sets and get in touch!"
-        canonical="https://www.boyoscollective.nl/soundsystem"
-        openGraph={{
-          url: 'https://www.boyoscollective.nl/soundsystem',
-          title: 'Boyos Soundsystem | Funk, Disco, House & Global Grooves DJs',
+      <Head>
+        {generateNextSeo({
+          title: 'Boyos Soundsystem | Funk, Disco, House & Global Groove DJs',
           description:
             'Boyos Soundsystem is a DJ trio from Amsterdam, Haarlem & The Hague. Book us for Funk, Disco, House and more. Check our gigs, listen to our sets and get in touch!',
-          images: [
-            {
-              url: 'https://www.boyoscollective.nl/images/boyos-25-20.jpg',
-              alt: 'Boyos Soundsystem',
-            },
-          ],
-          siteName: 'Boyos Collective',
-        }}
-      />
+          canonical: 'https://www.boyoscollective.nl/soundsystem',
+          openGraph: {
+            url: 'https://www.boyoscollective.nl/soundsystem',
+            title:
+              'Boyos Soundsystem | Funk, Disco, House & Global Grooves DJs',
+            description:
+              'Boyos Soundsystem is a DJ trio from Amsterdam, Haarlem & The Hague. Book us for Funk, Disco, House and more. Check our gigs, listen to our sets and get in touch!',
+            images: [
+              {
+                url: 'https://www.boyoscollective.nl/images/boyos-25-20.jpg',
+                alt: 'Boyos Soundsystem',
+              },
+            ],
+            siteName: 'Boyos Collective',
+          },
+        })}
+      </Head>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

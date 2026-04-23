@@ -1,10 +1,12 @@
 import { useRouter } from 'next/router'
 import Image from 'next/image'
+import Head from 'next/head'
 // import BoyosMerch from "../public/images/boyos_merch.jpeg";
 import BoyosVinyl from '../public/images/boyos_vinyl.png'
 import BoyosBoxed from '../public/images/Boyos_logo_boxed.png'
 import BoyosWonderland from '../public/images/essential_groove.png'
-import { NextSeo, OrganizationJsonLd } from 'next-seo'
+import { OrganizationJsonLd } from 'next-seo'
+import { generateNextSeo } from 'next-seo/pages'
 import Footer from '../components/layout/Footer'
 
 const blocks = [
@@ -57,25 +59,28 @@ const Home = () => {
 
   return (
     <>
-      <NextSeo
-        title="Boyos Collective | DJ Collective Amsterdam, Haarlem & The Hague"
-        description="Boyos Collective is a DJ collective based in Amsterdam, Haarlem & The Hague. We organize events, play at clubs and festivals, and bring people together through music, art, and creativity."
-        canonical="https://www.boyoscollective.nl/"
-        openGraph={{
-          url: 'https://www.boyoscollective.nl/',
-          title:
-            'Boyos Collective | DJ Collective Amsterdam, Haarlem & The Hague',
+      <Head>
+        {generateNextSeo({
+          title: 'Boyos Collective | DJ Collective Amsterdam, Haarlem & The Hague',
           description:
             'Boyos Collective is a DJ collective based in Amsterdam, Haarlem & The Hague. We organize events, play at clubs and festivals, and bring people together through music, art, and creativity.',
-          images: [
-            {
-              url: 'https://www.boyoscollective.nl/images/Boyos_logo_boxed.png',
-              alt: 'Boyos Collective logo',
-            },
-          ],
-          siteName: 'Boyos Collective',
-        }}
-      />
+          canonical: 'https://www.boyoscollective.nl/',
+          openGraph: {
+            url: 'https://www.boyoscollective.nl/',
+            title:
+              'Boyos Collective | DJ Collective Amsterdam, Haarlem & The Hague',
+            description:
+              'Boyos Collective is a DJ collective based in Amsterdam, Haarlem & The Hague. We organize events, play at clubs and festivals, and bring people together through music, art, and creativity.',
+            images: [
+              {
+                url: 'https://www.boyoscollective.nl/images/Boyos_logo_boxed.png',
+                alt: 'Boyos Collective logo',
+              },
+            ],
+            siteName: 'Boyos Collective',
+          },
+        })}
+      </Head>
       <OrganizationJsonLd
         type="Organization"
         id="https://www.boyoscollective.nl"
