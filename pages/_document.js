@@ -82,7 +82,7 @@ class MyDocument extends Document {
           <script
             defer
             src="https://static.cloudflareinsights.com/beacon.min.js"
-            data-cf-beacon='{"token": "abe64be75d1e4e1885ffa7c71c3000d4"}'
+            data-cf-beacon='{"token": "aa320ae5f16c4b93aa8bea34c9ede925"}'
           ></script>
           {/* End Cloudflare Web Analytics */}
           <NextScript />
