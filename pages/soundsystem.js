@@ -164,22 +164,31 @@ export default function Soundsystem({ pastGigs }) {
           <Reveal>
             <SectionTitle eyebrow="The People" title="The Boyos" />
           </Reveal>
-          <div className="mt-16 grid gap-0 md:grid-cols-3">
+          <div className="mt-16 grid gap-5 md:grid-cols-3 md:gap-6">
             {page.artists.map((artist, index) => (
               <Reveal key={artist.name} delay={index === 0 ? 'none' : 'short'}>
-                <article className="h-full border border-white/10 bg-white/[0.04] p-8 transition hover:bg-white/[0.08] md:p-10">
-                  <div className="type-display mb-[-18px] text-7xl leading-none text-[var(--color-brand-primary)] opacity-25">
-                    {String(index + 1).padStart(2, '0')}
+                <article className="group h-full overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] transition hover:-translate-y-1 hover:border-[color:rgb(217_112_144/0.45)]">
+                  <div className="relative aspect-[4/5] overflow-hidden bg-black/20">
+                    <Image
+                      src={artist.image}
+                      alt={artist.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[rgba(20,18,16,0.96)] via-[rgba(20,18,16,0.18)] to-transparent" />
+                    <div className="absolute left-6 top-5 type-display text-7xl leading-none text-[var(--color-brand-primary)] opacity-35 md:left-7 md:top-6 md:text-8xl">
+                      {artist.number}
+                    </div>
+                    <div className="absolute inset-x-0 bottom-0 p-6 md:p-7">
+                      <h3 className="type-display text-[clamp(2.8rem,5vw,4.6rem)] leading-[0.88] text-[var(--color-surface-paper)]">
+                        {artist.name}
+                      </h3>
+                      <p className="type-meta mt-3 text-[var(--color-brand-secondary)]">
+                        {artist.role}
+                      </p>
+                    </div>
                   </div>
-                  <h3 className="type-display text-5xl leading-none">
-                    {artist.name}
-                  </h3>
-                  <p className="type-meta mb-5 mt-3 text-[var(--color-brand-secondary)]">
-                    {artist.role}
-                  </p>
-                  <p className="type-body text-sm leading-7 text-[color:rgb(var(--color-surface-paper-rgb)/0.55)]">
-                    {artist.bio}
-                  </p>
                 </article>
               </Reveal>
             ))}

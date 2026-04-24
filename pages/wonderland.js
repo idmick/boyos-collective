@@ -103,7 +103,10 @@ export default function BoyosWonderlandPage() {
             />
           </Reveal>
           <Reveal delay="short">
-            <SectionTitle eyebrow={page.story.eyebrow} title={page.story.title} />
+            <SectionTitle
+              eyebrow={page.story.eyebrow}
+              title={page.story.title}
+            />
             <Image
               src={page.story.logo}
               alt="Boyos Wonderland"
@@ -151,7 +154,11 @@ export default function BoyosWonderlandPage() {
       >
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <SectionTitle eyebrow="Upcoming editions" title="Events" dark={false} />
+            <SectionTitle
+              eyebrow="Upcoming editions"
+              title="Events"
+              dark={false}
+            />
           </Reveal>
           <Reveal delay="short">
             <Link
@@ -178,22 +185,22 @@ export default function BoyosWonderlandPage() {
                   </h3>
                   <dl className="type-body my-8 space-y-3 text-sm">
                     <div className="flex gap-4">
-                      <dt className="type-meta w-16 text-black/45">
-                        Date
-                      </dt>
-                      <dd className="font-semibold">{summerJamEvent.dateLabel}</dd>
+                      <dt className="type-meta w-16 text-black/45">Date</dt>
+                      <dd className="font-semibold">
+                        {summerJamEvent.dateLabel}
+                      </dd>
                     </div>
                     <div className="flex gap-4">
-                      <dt className="type-meta w-16 text-black/45">
-                        Time
-                      </dt>
-                      <dd className="font-semibold">{summerJamEvent.timeLabel}</dd>
+                      <dt className="type-meta w-16 text-black/45">Time</dt>
+                      <dd className="font-semibold">
+                        {summerJamEvent.timeLabel}
+                      </dd>
                     </div>
                     <div className="flex gap-4">
-                      <dt className="type-meta w-16 text-black/45">
-                        Venue
-                      </dt>
-                      <dd className="font-semibold">{summerJamEvent.locationLabel}</dd>
+                      <dt className="type-meta w-16 text-black/45">Venue</dt>
+                      <dd className="font-semibold">
+                        {summerJamEvent.locationLabel}
+                      </dd>
                     </div>
                   </dl>
                   <p className="type-body border-t border-black/10 pt-7 text-sm leading-7 text-black/65">

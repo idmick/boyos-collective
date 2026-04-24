@@ -15,7 +15,8 @@ export default function Home() {
     <>
       <Head>
         {generateNextSeo({
-          title: 'Boyos Collective | DJ Collective Amsterdam, Haarlem & The Hague',
+          title:
+            'Boyos Collective | DJ Collective Amsterdam, Haarlem & The Hague',
           description:
             'Boyos Collective is a DJ collective based in Amsterdam, Haarlem & The Hague. We organize events, play at clubs and festivals, and bring people together through music, art, and creativity.',
           canonical: 'https://www.boyoscollective.nl/',
@@ -74,7 +75,10 @@ export default function Home() {
             <ButtonLink href="#next-event" tone="pink">
               Next Event
             </ButtonLink>
-            <ButtonLink href="mailto:booking@boyoscollective.nl" tone="outline">
+            <ButtonLink
+              href="mailto:soundsystem@boyoscollective.nl"
+              tone="outline"
+            >
               Book Boyos Soundsystem
             </ButtonLink>
           </div>
@@ -97,16 +101,18 @@ export default function Home() {
               Jam
             </h2>
             <div className="my-8 flex flex-wrap gap-3">
-              {[nextEvent.dateLabel, nextEvent.locationLabel, nextEvent.timeLabel].map(
-                (item) => (
-                  <span
-                    key={item}
-                    className="type-body rounded-full bg-black/10 px-4 py-2 text-sm font-semibold"
-                  >
-                    {item}
-                  </span>
-                )
-              )}
+              {[
+                nextEvent.dateLabel,
+                nextEvent.locationLabel,
+                nextEvent.timeLabel,
+              ].map((item) => (
+                <span
+                  key={item}
+                  className="type-body rounded-full bg-black/10 px-4 py-2 text-sm font-semibold"
+                >
+                  {item}
+                </span>
+              ))}
             </div>
             <div className="flex flex-wrap gap-3">
               <ButtonLink href={nextEvent.href} tone="ink">
@@ -138,6 +144,7 @@ export default function Home() {
           'Amsterdam',
           'We Got The Funk',
         ]}
+        reverse
       />
 
       <section className="grid md:grid-cols-2">
@@ -200,7 +207,6 @@ export default function Home() {
           'Essential Groove',
         ]}
         tone="teal"
-        reverse
       />
 
       <section

@@ -29,7 +29,7 @@ export const homePage = {
       eyebrow: 'The Experience',
       title: 'Boyos Wonderland',
       badge: '/images/essential_groove.png',
-      image: '/images/events/dine_and_dance_2.png',
+      image: '/images/wonderland_home.jpg',
       href: '/wonderland',
       cta: 'Enter Wonderland',
       tone: 'teal',

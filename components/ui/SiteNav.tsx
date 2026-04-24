@@ -45,7 +45,7 @@ export default function SiteNav() {
       >
         <Link
           href="/"
-          className="flex shrink-0 items-center rounded-md bg-[var(--color-surface-paper)] px-2.5 py-1 transition hover:opacity-85"
+          className="flex shrink-0 items-center rounded-md px-2.5 py-1 transition hover:opacity-85"
           aria-label="Boyos Collective home"
         >
           <Image

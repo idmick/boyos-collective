@@ -38,6 +38,29 @@ describe('redesign data', () => {
     expect(soundsystemPage.booking.title).toBe('Book Boyos Soundsystem')
   })
 
+  it('uses image-backed artist cards with stage names', () => {
+    expect(soundsystemPage.artists).toEqual([
+      expect.objectContaining({
+        number: '01',
+        name: 'Di Tomasso',
+        role: 'DJ · Selector',
+        image: '/images/di-tomasso.jpg',
+      }),
+      expect.objectContaining({
+        number: '02',
+        name: 'NMN (Near Mint Nico)',
+        role: 'DJ · Selector',
+        image: '/images/nmn-near-mint-nico.jpg',
+      }),
+      expect.objectContaining({
+        number: '03',
+        name: 'Mickey',
+        role: 'DJ · Selector',
+        image: '/images/mickey-card.jpg',
+      }),
+    ])
+  })
+
   it('supports the past gigs expand/collapse behavior', () => {
     expect(getVisiblePastGigs(pastGigs, false, 18)).toHaveLength(18)
     expect(getVisiblePastGigs(pastGigs, true, 18)).toHaveLength(pastGigs.length)

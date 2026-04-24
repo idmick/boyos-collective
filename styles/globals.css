@@ -211,11 +211,16 @@ body {
 .ticker-track {
   display: flex;
   width: max-content;
-  min-width: 100%;
   align-items: center;
   white-space: nowrap;
   will-change: transform;
-  animation: ticker-scroll-left 30s linear infinite;
+  animation: ticker-scroll-left var(--ticker-duration, 30s) linear infinite;
+}
+
+.ticker-group {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
 }
 
 .ticker-reverse .ticker-track {
@@ -255,11 +260,11 @@ body {
 
 @keyframes ticker-scroll-left {
   from { transform: translateX(0); }
-  to { transform: translateX(-33.333%); }
+  to { transform: translateX(-50%); }
 }
 
 @keyframes ticker-scroll-right {
-  from { transform: translateX(-33.333%); }
+  from { transform: translateX(-50%); }
   to { transform: translateX(0); }
 }
 

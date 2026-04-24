@@ -25,11 +25,11 @@ export default function SiteFooter() {
 
         <div className="flex justify-center">
           <Image
-            src="/images/Boyos_logo_boxed.png"
+            src="/images/Boyos_logo_white.png"
             alt="Boyos Collective"
             width={116}
             height={38}
-            className="h-[38px] w-auto opacity-70 invert"
+            className="h-[38px] w-auto opacity-70 transition hover:opacity-100"
           />
         </div>
 

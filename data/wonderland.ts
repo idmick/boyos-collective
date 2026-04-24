@@ -75,18 +75,18 @@ export const wonderlandPage = {
     },
   ],
   upcomingRows: [
-    {
-      date: 'TBA',
-      title: 'Boyos Wonderland — Dine & Dance, Autumn Edition',
-      venue: 'Amsterdam, NL — Venue TBA',
-      tag: 'Dine & Dance',
-    },
-    {
-      date: 'TBA',
-      title: 'Boyos Wonderland — Winter Indoor',
-      venue: 'Amsterdam, NL',
-      tag: 'Indoor',
-    },
+    // {
+    //   date: 'TBA',
+    //   title: 'Boyos Wonderland — Dine & Dance, Autumn Edition',
+    //   venue: 'Amsterdam, NL — Venue TBA',
+    //   tag: 'Dine & Dance',
+    // },
+    // {
+    //   date: 'TBA',
+    //   title: 'Boyos Wonderland — Winter Indoor',
+    //   venue: 'Amsterdam, NL',
+    //   tag: 'Indoor',
+    // },
   ],
   albums: [
     {
