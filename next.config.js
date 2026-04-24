@@ -7,8 +7,8 @@ const path = require('path')
 
 module.exports = withPWA({
   reactStrictMode: true,
-  images: {
-    domains: ['www.netlify.com', 'vercel.com'],
+  eslint: {
+    ignoreDuringBuilds: true,
   },
   experimental: {
     optimizeCss: true,

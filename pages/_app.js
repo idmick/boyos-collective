@@ -1,15 +1,19 @@
-import { DefaultSeo } from "next-seo";
 import React from "react";
+import Script from "next/script";
 
-import defaultSEOConfig from "../next-seo.config";
 import Layout from "components/layout";
 import "../styles/globals.css";
 
 const MyApp = ({ Component, pageProps }) => {
   return (
     <React.StrictMode>
+      <Script
+        id="sender-universal"
+        strategy="afterInteractive"
+        src="https://cdn.sender.net/accounts_resources/universal.js"
+        data-account-id={process.env.NEXT_PUBLIC_SENDER_ID}
+      />
       <Layout>
-        {/* <DefaultSeo {...defaultSEOConfig} /> */}
         <Component {...pageProps} />
       </Layout>
     </React.StrictMode>
