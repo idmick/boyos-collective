@@ -48,7 +48,7 @@ describe('redesign data', () => {
       }),
       expect.objectContaining({
         number: '02',
-        name: 'NMN (Near Mint Nico)',
+        name: 'NMN',
         role: 'DJ · Selector',
         image: '/images/nmn-near-mint-nico.jpg',
       }),
