@@ -6,16 +6,11 @@ export default function ClientVideo() {
       muted
       loop
       playsInline
+      poster="/images/BoyosWonderland-mini-fest-at.jpg"
       className="absolute inset-0 w-full h-full object-cover"
       aria-hidden="true"
     >
       <source src="/videos/wonderland_fest_24.mp4" type="video/mp4" />
-      <img
-        src="/images/BoyosWonderland-mini-fest-at.jpg"
-        alt=""
-        className="absolute top-0 left-0 w-full h-full object-cover object-top"
-        aria-hidden="true"
-      />
     </video>
   )
 }

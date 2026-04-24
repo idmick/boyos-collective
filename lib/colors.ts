@@ -1,13 +1,14 @@
 export const core = {
-  bg: 'var(--bg)',
-  text: 'var(--text)'
+  bg: 'rgb(var(--color-brand-deep))',
+  text: 'var(--color-surface-paper)',
+  primary: 'var(--color-brand-primary)',
+  secondary: 'var(--color-brand-secondary)',
 }
 
 export const event = {
-  bg: 'var(--bg)',
-  text: 'var(--text)',
-  a1: 'var(--event-accent-1)', // turquoise
-  a2: 'var(--event-accent-2)', // orange
-  off: 'var(--event-off)'
+  bg: 'rgb(var(--color-brand-deep))',
+  text: 'var(--color-surface-paper)',
+  a1: 'var(--color-brand-amber)',
+  a2: 'var(--color-brand-primary)',
+  off: 'var(--color-surface-paper)',
 }
-

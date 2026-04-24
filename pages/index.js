@@ -1,61 +1,15 @@
-import { useRouter } from 'next/router'
-import Image from 'next/image'
 import Head from 'next/head'
-// import BoyosMerch from "../public/images/boyos_merch.jpeg";
-import BoyosVinyl from '../public/images/boyos_vinyl.png'
-import BoyosBoxed from '../public/images/Boyos_logo_boxed.png'
-import BoyosWonderland from '../public/images/essential_groove.png'
+import Image from 'next/image'
 import { OrganizationJsonLd } from 'next-seo'
 import { generateNextSeo } from 'next-seo/pages'
-import Footer from '../components/layout/Footer'
+import ButtonLink from '../components/ui/ButtonLink'
+import Reveal from '../components/ui/Reveal'
+import SiteFooter from '../components/ui/SiteFooter'
+import Ticker from '../components/ui/Ticker'
+import { homePage } from '../data/home'
 
-const blocks = [
-  {
-    key: 'soundsystem',
-    image: BoyosVinyl,
-    imageProps: { objectFit: 'contain', height: 450 },
-    title: 'Boyos Soundsystem',
-    text: `Boyos Soundsystem, an Amsterdam-based trio of DJs - Nicolaas, Tomas, and Mick - are known for their electrifying sets across the Netherlands, transforming house parties into vibrant dance events. With their eclectic blend of Brazilian Boogie, Soca, Zouk, Italo, Disco, and Afro House, they have lit up stages at events such as De Zon Festival, Veerplas Festival, and the legendary Woodstock 69. Their performances are a unique journey through sound, creating unforgettable experiences. Join the groove and be part of their musical voyage. Stay groovy!`,
-    cta: {
-      type: 'button',
-      label: 'CHECKOUT THE GROOVE',
-      onClick: (router) => router.push('/soundsystem'),
-      className:
-        'w-full mt-2 py-2 px-4 border border-pink-300 text-pink-500 rounded transition hover:bg-pink-50 font-semibold',
-    },
-  },
-  // {
-  //   key: 'merch',
-  //   image: BoyosMerch,
-  //   imageProps: { objectFit: 'contain', height: 600 },
-  //   title: 'Boyos Merch',
-  //   text: `Boyos is an Amsterdam based fashion brand. Boyo is an old Irish term meaning good friend or brother. That is what Boyos is born from, a band of brothers. Join our band, buy our apparel designed by Mickey Anthony.`,
-  //   cta: {
-  //     type: 'link',
-  //     label: 'CHECKOUT MORE',
-  //     href: 'https://merch.boyoscollective.nl',
-  //     className:
-  //       'w-full mt-2 py-2 px-4 border border-pink-300 text-pink-500 rounded transition hover:bg-pink-100 font-semibold text-center',
-  //   },
-  // },
-  {
-    key: 'wonderland',
-    image: BoyosWonderland,
-    imageProps: { objectFit: 'cover', height: 460 },
-    title: 'Boyos Wonderland',
-    text: `Boyos Wonderland is our annual themed party in Amsterdam, bringing together music, art, and immersive experiences. Dive into a world of creativity and celebration with the Boyos crew!`,
-    cta: {
-      type: 'button',
-      label: 'ENTER WONDERLAND',
-      onClick: (router) => router.push('/wonderland'),
-      className:
-        'w-full mt-2 py-2 px-4 border border-pink-300 text-pink-500 rounded transition hover:bg-pink-100 font-semibold text-center',
-    },
-  },
-]
-
-const Home = () => {
-  const router = useRouter()
+export default function Home() {
+  const { hero, playedAt, nextEvent, identities, merch } = homePage
 
   return (
     <>
@@ -93,152 +47,189 @@ const Home = () => {
           'https://ra.co/dj/boyossoundsystem',
           'https://soundcloud.com/boyos_soundsystem',
         ]}
-        address={{
-          streetAddress: 'N/A',
-          addressLocality: 'Amsterdam',
-          addressRegion: 'North Holland',
-          postalCode: 'N/A',
-          addressCountry: 'NL',
-        }}
-        contactPoint={[
-          {
-            telephone: 'N/A',
-            contactType: 'Inquiries',
-            email: 'info@boyoscollective.nl',
-          },
+      />
+
+      <section className="relative flex min-h-screen flex-col justify-end overflow-hidden bg-[rgb(var(--color-brand-deep))]">
+        <Image
+          src={hero.image}
+          alt=""
+          fill
+          priority
+          className="object-cover opacity-80 transition duration-[8000ms] hover:scale-105"
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[rgba(17,16,9,0.3)] via-[rgba(17,16,9,0.1)] to-[rgb(var(--color-brand-deep))]" />
+        <div className="relative z-10 flex flex-col items-center px-6 text-center">
+          <p className="type-meta mb-3 text-[color:rgb(var(--color-surface-paper-rgb)/0.62)]">
+            {hero.eyebrow}
+          </p>
+          <h1 className="type-display text-[clamp(4.5rem,14vw,11rem)] leading-[0.86] text-[var(--color-surface-paper)] drop-shadow-[0_4px_60px_rgba(0,0,0,0.5)]">
+            Boyos
+            <br />
+            Collective
+          </h1>
+          <p className="type-accent mt-3 text-[clamp(1.2rem,2.6vw,2rem)] text-[color:rgb(var(--color-surface-paper-rgb)/0.72)]">
+            {hero.subtitle}
+          </p>
+          <div className="mb-16 mt-9 flex flex-col gap-3 sm:flex-row">
+            <ButtonLink href="#next-event" tone="pink">
+              Next Event
+            </ButtonLink>
+            <ButtonLink href="mailto:booking@boyoscollective.nl" tone="outline">
+              Book Boyos Soundsystem
+            </ButtonLink>
+          </div>
+        </div>
+        <Ticker items={playedAt} label="Played at" tone="paper" />
+      </section>
+
+      <section
+        id="next-event"
+        className="bg-[var(--color-brand-event)] px-6 py-20 text-[var(--color-text-primary)] md:px-10"
+      >
+        <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1fr_auto]">
+          <Reveal>
+            <p className="type-meta mb-4 text-[var(--color-text-muted)]">
+              Next up · Boyos Wonderland × INI Movement
+            </p>
+            <h2 className="type-display text-[clamp(4rem,10vw,8rem)] leading-[0.86]">
+              Summer
+              <br />
+              Jam
+            </h2>
+            <div className="my-8 flex flex-wrap gap-3">
+              {[nextEvent.dateLabel, nextEvent.locationLabel, nextEvent.timeLabel].map(
+                (item) => (
+                  <span
+                    key={item}
+                    className="type-body rounded-full bg-black/10 px-4 py-2 text-sm font-semibold"
+                  >
+                    {item}
+                  </span>
+                )
+              )}
+            </div>
+            <div className="flex flex-wrap gap-3">
+              <ButtonLink href={nextEvent.href} tone="ink">
+                More info →
+              </ButtonLink>
+              <ButtonLink href="/wonderland" tone="ink">
+                All events
+              </ButtonLink>
+            </div>
+          </Reveal>
+          <Reveal delay="short">
+            <Image
+              src={nextEvent.poster}
+              alt={`${nextEvent.shortTitle} poster`}
+              width={320}
+              height={426}
+              className="w-full max-w-[260px] rotate-2 rounded-lg object-cover shadow-2xl transition hover:rotate-0 md:w-[22vw]"
+            />
+          </Reveal>
+        </div>
+      </section>
+
+      <Ticker
+        items={[
+          'Disco',
+          'House',
+          'Global Grooves',
+          'Boyos Collective',
+          'Amsterdam',
+          'We Got The Funk',
         ]}
       />
 
-      {/* <div className="w-full flex flex-col items-center py-10">
-        <div className="w-full max-w-md flex flex-col items-center">
-          <Image
-            src={BoyosBoxed}
-            layout="responsive"
-            objectFit="contain"
-            height={1000}
-            alt="Boyos Collective Logo"
-          />
-          <p className="text-xl text-center font-black font-limelight mt-2">
-            a creative collective
-          </p>
-        </div>
-      </div>
-
-      <div className="flex flex-col items-start md:flex-row w-full min-h-screen">
-        {blocks.map((block, idx) => (
-          <div
-            key={block.key}
-            className={`flex-1 flex flex-col justify-center items-center p-0 m-0`}
+      <section className="grid md:grid-cols-2">
+        {identities.map((identity) => (
+          <article
+            key={identity.href}
+            className="group relative flex min-h-[520px] flex-col justify-end overflow-hidden p-8 md:min-h-[620px] md:p-12"
           >
-            <div className="w-full max-w-lg flex flex-col items-center py-12 px-4">
-              <div className="w-full">
-                <Image
-                  src={block.image}
-                  layout="responsive"
-                  objectFit={block.imageProps.objectFit}
-                  height={block.imageProps.height}
-                  alt={block.title}
-                />
-              </div>
-              <h2 className="text-2xl font-[anton] uppercase font-bold text-center mt-4 mb-2 ">
-                {block.title}
+            <Image
+              src={identity.image}
+              alt={identity.title}
+              fill
+              className="object-cover transition duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[rgba(17,16,9,0.95)] via-[rgba(17,16,9,0.46)] to-transparent" />
+            <Reveal className="relative z-10">
+              <span
+                className={`type-meta mb-3 block ${
+                  identity.tone === 'teal'
+                    ? 'text-[var(--color-brand-secondary)]'
+                    : 'text-[var(--color-brand-primary)]'
+                }`}
+              >
+                {identity.eyebrow}
+              </span>
+              <Image
+                src={identity.badge}
+                alt=""
+                width={76}
+                height={76}
+                className="mb-4 h-[76px] w-[76px] rounded-full object-contain transition duration-500 group-hover:-rotate-12 group-hover:scale-110"
+              />
+              <h2 className="type-display text-[clamp(3.5rem,7vw,6rem)] leading-[0.86]">
+                {identity.title.split(' ').map((word) => (
+                  <span key={word} className="block">
+                    {word}
+                  </span>
+                ))}
               </h2>
-              <p className="text-sm  text-center mb-4">
-                {block.text}
+              <p className="type-body my-6 max-w-sm text-sm leading-7 text-[color:rgb(var(--color-surface-paper-rgb)/0.65)]">
+                {identity.body}
               </p>
-              {block.cta.type === 'button' ? (
-                <button
-                  className={block.cta.className}
-                  onClick={() => block.cta.onClick(router)}
-                >
-                  {block.cta.label}
-                </button>
-              ) : (
-                <a
-                  href={block.cta.href}
-                  className={block.cta.className}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  {block.cta.label}
-                </a>
-              )}
-            </div>
-          </div>
+              <ButtonLink
+                href={identity.href}
+                tone={identity.tone === 'teal' ? 'teal' : 'outline'}
+              >
+                {identity.cta} →
+              </ButtonLink>
+            </Reveal>
+          </article>
         ))}
-      </div> */}
-      <div className="flex flex-col min-h-screen">
-        <div className="flex flex-1 flex-col md:flex-row w-full h-full">
-          {/* Left: Soundsystem */}
-          <div className="flex-1 flex flex-col bg-[#EC90B0] text-[#fff] justify-center items-center px-6 py-12">
-            <div className="max-w-xs w-full flex flex-col items-center">
-              <div className="w-full flex justify-center items-start mb-2">
-                <Image
-                  src={BoyosVinyl} // or BoyosWonderland
-                  width={140}
-                  height={140}
-                  objectFit="contain"
-                  alt="Boyos Soundsystem" // or Boyos Wonderland
-                  priority
-                />
-              </div>
-              <h2 className="text-2xl font-[anton] uppercase font-bold text-center mt-4 mb-2 ">
-                Boyos Soundsystem
-              </h2>
-              <p className="text-xl font-[moret] text-center mb-4">
-                Boyos Soundsystem is a DJ collective—Tomas, Nico, and Mickey.
-                Known for energetic, eclectic sets that blend Disco, House, and
-                global grooves. From intimate club nights to major festivals,
-                they bring vibrant, feel-good music and a unique vibe to every
-                dancefloor.
-              </p>
-              <button
-                className="mt-4 text-2xl font-[moret]  px-6 py-2 border border-[#0083d0]  text-[#0083d0] font-medium rounded-full max-w-fit w-fit flex-none hover:bg-[#0083d0] hover:text-[#EC90B0]"
-                onClick={() => router.push('/soundsystem')}
-              >
-                CHECKOUT THE GROOVE
-              </button>
-            </div>
-          </div>
-          {/* Right: Wonderland */}
-          <div className="flex-1 flex flex-col  bg-[#9370DB] text-[#fff] justify-center items-center px-6 py-12">
-            <div className="max-w-xs w-full flex flex-col items-center">
-              <div className="w-full flex justify-center items-start mb-2">
-                <Image
-                  src={BoyosWonderland} // or BoyosWonderland
-                  width={140}
-                  height={140}
-                  objectFit="contain"
-                  alt="Boyos Wonderland" // or Boyos Wonderland
-                  priority
-                />
-              </div>
-              <h2 className="text-2xl font-[anton] uppercase font-bold text-center mt-4 mb-2 ">
-                Boyos Wonderland
-              </h2>
-              <p className="text-xl font-[moret] text-center mb-4">
-                Boyos Wonderland is our ongoing event series, hosting everything
-                from intimate Dine & Dance nights to vibrant indoor parties and
-                open-air garden festivals. Each edition blends music, art, food,
-                and tattoos for a truly immersive experience. Step into a world
-                where the groove brings people together—join the Boyos crew and
-                be part of the wonder!
-              </p>
-              <button
-                className="mt-4 text-2xl font-[moret]  px-6 py-2 border border-[#FFD700]  text-[#FFD700] font-medium rounded-full max-w-fit w-fit flex-none hover:bg-[#FFD700] hover:text-[#9370DB]"
-                onClick={() => router.push('/wonderland')}
-              >
-                ENTER WONDERLAND
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div className="w-full">
-        <Footer />
-      </div>
+      </section>
+
+      <Ticker
+        items={[
+          'Dine & Dance',
+          'Garden Festival',
+          'Wonderland',
+          'Music · Art · Food · Tattoos',
+          'Essential Groove',
+        ]}
+        tone="teal"
+        reverse
+      />
+
+      <section
+        id="merch"
+        className="relative flex min-h-[500px] items-center overflow-hidden px-6 py-20 md:px-10"
+      >
+        <Image
+          src={merch.image}
+          alt="Boyos Merch"
+          fill
+          className="object-cover grayscale-[0.35]"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[rgba(17,16,9,0.96)] via-[rgba(17,16,9,0.72)] to-[rgba(17,16,9,0.22)]" />
+        <Reveal className="relative z-10 max-w-lg">
+          <span className="type-meta mb-5 inline-block rounded-full bg-[rgba(240,208,96,0.15)] px-3 py-1 text-[var(--color-brand-event)]">
+            {merch.eyebrow}
+          </span>
+          <h2 className="type-display text-[clamp(4rem,11vw,9rem)] leading-[0.86]">
+            Boyos
+            <br />
+            Merch
+          </h2>
+          <p className="type-accent mt-5 max-w-sm text-xl leading-8 text-[color:rgb(var(--color-surface-paper-rgb)/0.66)]">
+            {merch.body}
+          </p>
+        </Reveal>
+      </section>
+
+      <SiteFooter />
     </>
   )
 }
-
-export default Home
