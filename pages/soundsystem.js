@@ -95,7 +95,7 @@ export default function Soundsystem({ pastGigs }) {
           className="hero-parallax-badge surface-badge absolute bottom-[calc(var(--hero-bottom-safe)+1.25rem)] right-8 hidden w-[clamp(120px,14vw,190px)] drop-shadow-2xl transition hover:rotate-0 hover:scale-105 md:block md:bottom-[calc(var(--hero-bottom-safe)+1.25rem)]"
           style={{ '--hero-badge-tilt': '-6deg' }}
         />
-        <div className="hero-parallax-content hero-safe-content relative z-10 max-w-4xl">
+        <div className="hero-parallax-content hero-safe-content hero-safe-content-soundsystem relative z-10 max-w-4xl">
           <p className="type-meta mb-4 text-[var(--color-brand-primary)]">
             {page.hero.eyebrow}
           </p>

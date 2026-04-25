@@ -62,7 +62,7 @@ export default function Home() {
           className="hero-parallax-background object-cover opacity-80"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(17,16,9,0.3)] via-[rgba(17,16,9,0.1)] to-[rgb(var(--color-brand-deep))]" />
-        <div className="hero-parallax-content hero-safe-content relative z-10 flex flex-col items-center px-6 text-center">
+        <div className="hero-parallax-content hero-safe-content hero-safe-content-home relative z-10 flex flex-col items-center px-6 text-center">
           <p className="type-meta mb-3 text-[color:rgb(var(--color-surface-paper-rgb)/0.62)]">
             {hero.eyebrow}
           </p>

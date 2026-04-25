@@ -73,7 +73,7 @@ export default function SummerJamPage() {
       />
 
       <section className="relative grid min-h-screen overflow-hidden bg-[rgb(var(--color-brand-deep))] pt-[72px] md:grid-cols-2">
-        <div className="hero-safe-content relative z-10 flex flex-col justify-center px-6 py-14 md:px-14 md:py-20">
+        <div className="hero-safe-content hero-safe-content-summerjam relative z-10 flex flex-col justify-center px-6 py-14 md:px-14 md:py-20">
           <ButtonLink href="/wonderland" tone="paper" className="mb-12 w-fit">
             ← Boyos Wonderland
           </ButtonLink>

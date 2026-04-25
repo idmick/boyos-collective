@@ -64,7 +64,7 @@ export default function BoyosWonderlandPage() {
           className="hero-parallax-badge surface-badge absolute bottom-[calc(var(--hero-bottom-safe)+1rem)] right-[5%] z-10 hidden w-[clamp(130px,16vw,210px)] drop-shadow-2xl transition hover:rotate-0 hover:scale-105 md:block"
           style={{ '--hero-badge-tilt': '6deg' }}
         />
-        <div className="hero-parallax-content hero-safe-content relative z-10 max-w-3xl">
+        <div className="hero-parallax-content hero-safe-content hero-safe-content-wonderland relative z-10 max-w-3xl">
           <p className="type-meta mb-4 text-[var(--color-brand-secondary)]">
             {page.hero.eyebrow}
           </p>
