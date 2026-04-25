@@ -65,15 +65,18 @@ export default function Soundsystem({ pastGigs }) {
         }}
       />
 
-      <section className="relative flex min-h-screen items-end overflow-hidden bg-[var(--color-brand-charcoal)] px-6 pb-16 pt-24 md:px-10 md:pb-20">
+      <section
+        data-hero-parallax
+        className="hero-parallax-scene relative flex min-h-screen items-end overflow-hidden bg-[var(--color-brand-charcoal)] px-6 pt-24 md:px-10"
+      >
         <Image
           src={page.hero.image}
           alt=""
           fill
           priority
-          className="object-cover brightness-[0.45] grayscale-[0.45]"
+          className="hero-parallax-background object-cover brightness-[0.45] grayscale-[0.45]"
         />
-        <div className="type-display absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-[clamp(8rem,25vw,24rem)] tracking-[0.05em] text-transparent [-webkit-text-stroke:1px_rgba(240,235,226,0.07)]">
+        <div className="hero-parallax-wordmark type-display absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-[clamp(8rem,25vw,24rem)] tracking-[0.05em] text-transparent [-webkit-text-stroke:1px_rgba(240,235,226,0.07)]">
           Soundsystem
         </div>
         <Image
@@ -81,16 +84,18 @@ export default function Soundsystem({ pastGigs }) {
           alt=""
           width={520}
           height={520}
-          className="absolute right-[-5%] top-1/2 hidden w-[min(38vw,520px)] -translate-y-1/2 rotate-12 opacity-10 grayscale md:block"
+          className="hero-parallax-badge absolute right-[-5%] top-1/2 hidden w-[min(38vw,520px)] -translate-y-1/2 opacity-10 grayscale md:block"
+          style={{ '--hero-badge-tilt': '12deg' }}
         />
         <Image
           src={page.hero.badge}
           alt="Boyos Soundsystem"
           width={190}
           height={190}
-          className="absolute bottom-16 right-8 w-[clamp(120px,14vw,190px)] -rotate-6 drop-shadow-2xl transition hover:rotate-0 hover:scale-105"
+          className="hero-parallax-badge surface-badge absolute bottom-[calc(var(--hero-bottom-safe)+1.25rem)] right-8 hidden w-[clamp(120px,14vw,190px)] drop-shadow-2xl transition hover:rotate-0 hover:scale-105 md:block md:bottom-[calc(var(--hero-bottom-safe)+1.25rem)]"
+          style={{ '--hero-badge-tilt': '-6deg' }}
         />
-        <div className="relative z-10">
+        <div className="hero-parallax-content hero-safe-content relative z-10 max-w-4xl">
           <p className="type-meta mb-4 text-[var(--color-brand-primary)]">
             {page.hero.eyebrow}
           </p>
@@ -123,7 +128,7 @@ export default function Soundsystem({ pastGigs }) {
 
       <section className="bg-[var(--color-surface-paper)] px-6 py-[var(--space-section)] text-[var(--color-text-primary)] md:px-10">
         <div className="mx-auto grid max-w-6xl gap-16 md:grid-cols-2 md:gap-20">
-          <Reveal>
+          <Reveal variant="text">
             <SectionTitle
               eyebrow={page.about.eyebrow}
               title={page.about.title}
@@ -142,13 +147,13 @@ export default function Soundsystem({ pastGigs }) {
               ))}
             </div>
           </Reveal>
-          <Reveal delay="short">
+          <Reveal delay="short" variant="media">
             <Image
               src={page.about.image}
               alt="Boyos Soundsystem live"
               width={520}
               height={650}
-              className="aspect-[4/5] w-full max-w-[440px] rotate-1 rounded-md object-cover shadow-2xl transition hover:rotate-0"
+              className="surface-card surface-media aspect-[4/5] w-full max-w-[440px] rotate-1 rounded-md object-cover shadow-2xl"
             />
             <div className="type-body mt-10 space-y-5 text-base leading-8 text-[var(--color-text-muted)]">
               {page.about.body.map((paragraph) => (
@@ -161,20 +166,24 @@ export default function Soundsystem({ pastGigs }) {
 
       <section className="bg-[var(--color-brand-charcoal)] px-6 py-[var(--space-section)] md:px-10">
         <div className="mx-auto max-w-6xl">
-          <Reveal>
+          <Reveal variant="text">
             <SectionTitle eyebrow="The People" title="The Boyos" />
           </Reveal>
           <div className="mt-16 grid gap-5 md:grid-cols-3 md:gap-6">
             {page.artists.map((artist, index) => (
-              <Reveal key={artist.name} delay={index === 0 ? 'none' : 'short'}>
-                <article className="group h-full overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] transition hover:-translate-y-1 hover:border-[color:rgb(217_112_144/0.45)]">
+              <Reveal
+                key={artist.name}
+                delay={index === 0 ? 'none' : 'short'}
+                variant="card"
+              >
+                <article className="surface-card group h-full overflow-hidden border border-white/10 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02))] hover:border-[color:rgb(217_112_144/0.45)]">
                   <div className="relative aspect-[4/5] overflow-hidden bg-black/20">
                     <Image
                       src={artist.image}
                       alt={artist.name}
                       fill
                       sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover object-center transition duration-500 group-hover:scale-[1.03]"
+                      className="surface-media object-cover object-center"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[rgba(20,18,16,0.96)] via-[rgba(20,18,16,0.18)] to-transparent" />
                     <div className="absolute left-6 top-5 type-display text-7xl leading-none text-[var(--color-brand-primary)] opacity-35 md:left-7 md:top-6 md:text-8xl">
@@ -198,7 +207,7 @@ export default function Soundsystem({ pastGigs }) {
 
       <section className="bg-[var(--color-brand-event)] px-6 py-24 text-[var(--color-text-primary)] md:px-10">
         <div className="mx-auto max-w-6xl">
-          <Reveal>
+          <Reveal variant="text">
             <SectionTitle eyebrow="The Sound" title="What We Play" dark={false} />
             <div className="mt-12 flex flex-wrap gap-3">
               {page.genres.map((genre) => (
@@ -216,13 +225,13 @@ export default function Soundsystem({ pastGigs }) {
 
       <section id="sets" className="bg-[var(--color-brand-charcoal)] px-6 py-24 md:px-10">
         <div className="mx-auto max-w-6xl">
-          <Reveal>
+          <Reveal variant="text">
             <SectionTitle eyebrow="Listen" title="Our Sets" />
           </Reveal>
           <div className="mt-12 grid gap-6 md:grid-cols-2">
             {page.sets.map((set) => (
-              <Reveal key={set.url} delay="short">
-                <div>
+              <Reveal key={set.url} delay="short" variant="card">
+                <div className="surface-card border border-white/10 bg-white/[0.02] p-5">
                   <p className="type-meta mb-3 text-[color:rgb(var(--color-surface-paper-rgb)/0.38)]">
                     {set.label}
                   </p>
@@ -245,7 +254,7 @@ export default function Soundsystem({ pastGigs }) {
 
       <section id="past-gigs" className="bg-[var(--color-brand-charcoal)] px-6 py-24 md:px-10">
         <div className="mx-auto max-w-6xl">
-          <Reveal>
+          <Reveal variant="text">
             <SectionTitle eyebrow="The Record" title="Past Gigs" />
           </Reveal>
           <div className="mt-12 grid gap-px bg-white/10 md:grid-cols-3">
@@ -281,7 +290,7 @@ export default function Soundsystem({ pastGigs }) {
       </section>
 
       <section className="bg-[var(--color-surface-paper)] px-6 py-24 text-center text-[var(--color-text-primary)] md:px-10">
-        <Reveal className="mx-auto max-w-3xl">
+        <Reveal className="mx-auto max-w-3xl" variant="text">
           <span className="eyebrow eyebrow-dark text-center">
             Get in touch
           </span>

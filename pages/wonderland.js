@@ -36,13 +36,16 @@ export default function BoyosWonderlandPage() {
         })}
       </Head>
 
-      <section className="relative flex min-h-screen items-end overflow-hidden bg-[rgb(var(--color-brand-deep))] px-6 pb-16 pt-24 md:px-10 md:pb-20">
+      <section
+        data-hero-parallax
+        className="hero-parallax-scene relative flex min-h-screen items-end overflow-hidden bg-[rgb(var(--color-brand-deep))] px-6 pt-24 md:px-10"
+      >
         <Image
           src={page.hero.image}
           alt=""
           fill
           priority
-          className="object-cover brightness-[0.38] saturate-[0.85]"
+          className="hero-parallax-background object-cover brightness-[0.38] saturate-[0.85]"
         />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_60%_40%,rgba(94,196,188,0.08),transparent_70%)]" />
         <Image
@@ -50,16 +53,18 @@ export default function BoyosWonderlandPage() {
           alt=""
           width={560}
           height={560}
-          className="absolute right-[-2%] top-1/2 hidden w-[min(42vw,560px)] -translate-y-1/2 -rotate-12 opacity-10 grayscale md:block"
+          className="hero-parallax-badge absolute right-[-2%] top-1/2 hidden w-[min(42vw,560px)] -translate-y-1/2 opacity-10 grayscale md:block"
+          style={{ '--hero-badge-tilt': '-12deg' }}
         />
         <Image
           src={page.hero.badge}
           alt="Essential Groove"
           width={210}
           height={210}
-          className="absolute bottom-[10%] right-[5%] z-10 w-[clamp(130px,16vw,210px)] rotate-6 drop-shadow-2xl transition hover:rotate-0 hover:scale-105"
+          className="hero-parallax-badge surface-badge absolute bottom-[calc(var(--hero-bottom-safe)+1rem)] right-[5%] z-10 hidden w-[clamp(130px,16vw,210px)] drop-shadow-2xl transition hover:rotate-0 hover:scale-105 md:block"
+          style={{ '--hero-badge-tilt': '6deg' }}
         />
-        <div className="relative z-10 max-w-3xl">
+        <div className="hero-parallax-content hero-safe-content relative z-10 max-w-3xl">
           <p className="type-meta mb-4 text-[var(--color-brand-secondary)]">
             {page.hero.eyebrow}
           </p>
@@ -93,16 +98,16 @@ export default function BoyosWonderlandPage() {
 
       <section className="bg-[var(--color-brand-charcoal)] px-6 py-[var(--space-section)] md:px-10">
         <div className="mx-auto grid max-w-6xl items-center gap-16 md:grid-cols-2 md:gap-24">
-          <Reveal>
+          <Reveal variant="media">
             <Image
               src={page.story.image}
               alt="Summer Jam poster"
               width={520}
               height={693}
-              className="aspect-[3/4] w-full max-w-[460px] -rotate-1 rounded-md object-cover shadow-2xl transition hover:rotate-0"
+              className="surface-card surface-media aspect-[3/4] w-full max-w-[460px] -rotate-1 rounded-md object-cover shadow-2xl"
             />
           </Reveal>
-          <Reveal delay="short">
+          <Reveal delay="short" variant="text">
             <SectionTitle
               eyebrow={page.story.eyebrow}
               title={page.story.title}
@@ -125,13 +130,17 @@ export default function BoyosWonderlandPage() {
 
       <section className="bg-[rgb(var(--color-brand-deep))] px-6 py-[var(--space-section)] md:px-10">
         <div className="mx-auto max-w-6xl">
-          <Reveal>
+          <Reveal variant="text">
             <SectionTitle eyebrow="What we bring" title="The Elements" />
           </Reveal>
           <div className="mt-16 grid gap-0 sm:grid-cols-2 lg:grid-cols-4">
             {page.pillars.map((pillar, index) => (
-              <Reveal key={pillar.name} delay={index > 0 ? 'short' : 'none'}>
-                <article className="h-full border border-white/10 p-8 transition hover:border-[color:rgb(94_196_188/0.28)] hover:bg-[color:rgb(94_196_188/0.06)]">
+              <Reveal
+                key={pillar.name}
+                delay={index > 0 ? 'short' : 'none'}
+                variant="card"
+              >
+                <article className="surface-card h-full border border-white/10 p-8 hover:border-[color:rgb(94_196_188/0.28)] hover:bg-[color:rgb(94_196_188/0.06)]">
                   <div className="type-display mb-[-10px] text-6xl leading-none text-[var(--color-brand-secondary)] opacity-25">
                     {String(index + 1).padStart(2, '0')}
                   </div>
@@ -153,24 +162,24 @@ export default function BoyosWonderlandPage() {
         className="bg-[var(--color-brand-event)] px-6 py-[var(--space-section)] text-[var(--color-text-primary)] md:px-10"
       >
         <div className="mx-auto max-w-6xl">
-          <Reveal>
+          <Reveal variant="text">
             <SectionTitle
               eyebrow="Upcoming editions"
               title="Events"
               dark={false}
             />
           </Reveal>
-          <Reveal delay="short">
+          <Reveal delay="short" variant="card">
             <Link
               href={summerJamEvent.href}
-              className="mt-14 grid overflow-hidden border border-black/20 text-inherit no-underline transition hover:border-black/50 md:grid-cols-2"
+              className="surface-card mt-14 grid overflow-hidden border border-black/20 text-inherit no-underline hover:border-black/50 md:grid-cols-2"
             >
               <div className="relative aspect-[4/3] overflow-hidden md:aspect-[3/4]">
                 <Image
                   src={summerJamEvent.poster}
                   alt={`${summerJamEvent.shortTitle} poster`}
                   fill
-                  className="object-cover transition duration-700 hover:scale-105"
+                  className="surface-media object-cover"
                 />
               </div>
               <div className="flex flex-col justify-between bg-black/[0.04] p-8 md:p-12">
@@ -219,7 +228,7 @@ export default function BoyosWonderlandPage() {
 
           <div className="mt-1">
             {page.upcomingRows.map((event) => (
-              <Reveal key={event.title} delay="short">
+              <Reveal key={event.title} delay="short" variant="card">
                 <article className="grid grid-cols-[72px_1fr] items-center gap-6 border-b border-black/15 py-7 md:grid-cols-[100px_1fr_auto] md:gap-10">
                   <div className="type-display text-4xl leading-none">
                     {event.date}
@@ -249,7 +258,7 @@ export default function BoyosWonderlandPage() {
 
       <section className="bg-[rgb(var(--color-brand-deep))] px-6 py-24 md:px-10">
         <div className="mx-auto max-w-6xl">
-          <Reveal>
+          <Reveal variant="text">
             <SectionTitle eyebrow="Past editions" title="Photo Albums" />
           </Reveal>
           <div className="mt-12 grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
@@ -259,13 +268,13 @@ export default function BoyosWonderlandPage() {
                 href={album.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group relative aspect-[4/3] overflow-hidden"
+                className="surface-card group relative aspect-[4/3] overflow-hidden"
               >
                 <Image
                   src={album.cover}
                   alt={album.title}
                   fill
-                  className="object-cover transition duration-500 group-hover:scale-105"
+                  className="surface-media object-cover"
                 />
                 <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent p-5 opacity-100 transition md:opacity-0 md:group-hover:opacity-100">
                   <span className="type-display text-2xl leading-none">
@@ -282,7 +291,7 @@ export default function BoyosWonderlandPage() {
       </section>
 
       <section className="bg-[var(--color-brand-charcoal)] px-6 py-24 text-center md:px-10">
-        <Reveal className="mx-auto max-w-3xl">
+        <Reveal className="mx-auto max-w-3xl" variant="text">
           <span className="eyebrow text-center">The spirit</span>
           <p className="type-accent text-[clamp(2rem,5vw,4rem)] leading-tight">
             “{page.philosophy.title}”

@@ -50,16 +50,19 @@ export default function Home() {
         ]}
       />
 
-      <section className="relative flex min-h-screen flex-col justify-end overflow-hidden bg-[rgb(var(--color-brand-deep))]">
+      <section
+        data-hero-parallax
+        className="hero-parallax-scene relative flex min-h-screen flex-col justify-end overflow-hidden bg-[rgb(var(--color-brand-deep))]"
+      >
         <Image
           src={hero.image}
           alt=""
           fill
           priority
-          className="object-cover opacity-80 transition duration-[8000ms] hover:scale-105"
+          className="hero-parallax-background object-cover opacity-80"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(17,16,9,0.3)] via-[rgba(17,16,9,0.1)] to-[rgb(var(--color-brand-deep))]" />
-        <div className="relative z-10 flex flex-col items-center px-6 text-center">
+        <div className="hero-parallax-content hero-safe-content relative z-10 flex flex-col items-center px-6 text-center">
           <p className="type-meta mb-3 text-[color:rgb(var(--color-surface-paper-rgb)/0.62)]">
             {hero.eyebrow}
           </p>
@@ -71,7 +74,7 @@ export default function Home() {
           <p className="type-accent mt-3 text-[clamp(1.2rem,2.6vw,2rem)] text-[color:rgb(var(--color-surface-paper-rgb)/0.72)]">
             {hero.subtitle}
           </p>
-          <div className="mb-16 mt-9 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <ButtonLink href="#next-event" tone="pink">
               Next Event
             </ButtonLink>
@@ -91,7 +94,7 @@ export default function Home() {
         className="bg-[var(--color-brand-event)] px-6 py-20 text-[var(--color-text-primary)] md:px-10"
       >
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1fr_auto]">
-          <Reveal>
+          <Reveal variant="text">
             <p className="type-meta mb-4 text-[var(--color-text-muted)]">
               Next up · Boyos Wonderland × INI Movement
             </p>
@@ -123,13 +126,13 @@ export default function Home() {
               </ButtonLink>
             </div>
           </Reveal>
-          <Reveal delay="short">
+          <Reveal delay="short" variant="media">
             <Image
               src={nextEvent.poster}
               alt={`${nextEvent.shortTitle} poster`}
               width={320}
               height={426}
-              className="w-full max-w-[260px] rotate-2 rounded-lg object-cover shadow-2xl transition hover:rotate-0 md:w-[22vw]"
+              className="surface-card surface-media w-full max-w-[260px] rotate-2 rounded-lg object-cover shadow-2xl md:w-[22vw]"
             />
           </Reveal>
         </div>
@@ -151,16 +154,16 @@ export default function Home() {
         {identities.map((identity) => (
           <article
             key={identity.href}
-            className="group relative flex min-h-[520px] flex-col justify-end overflow-hidden p-8 md:min-h-[620px] md:p-12"
+            className="surface-card group relative flex min-h-[520px] flex-col justify-end overflow-hidden p-8 md:min-h-[620px] md:p-12"
           >
             <Image
               src={identity.image}
               alt={identity.title}
               fill
-              className="object-cover transition duration-700 group-hover:scale-105"
+              className="surface-media object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[rgba(17,16,9,0.95)] via-[rgba(17,16,9,0.46)] to-transparent" />
-            <Reveal className="relative z-10">
+            <Reveal className="relative z-10" variant="card">
               <span
                 className={`type-meta mb-3 block ${
                   identity.tone === 'teal'
@@ -175,7 +178,7 @@ export default function Home() {
                 alt=""
                 width={76}
                 height={76}
-                className="mb-4 h-[76px] w-[76px] rounded-full object-contain transition duration-500 group-hover:-rotate-12 group-hover:scale-110"
+                className="surface-badge mb-4 h-[76px] w-[76px] rounded-full object-contain transition duration-500 group-hover:-rotate-12 group-hover:scale-110"
               />
               <h2 className="type-display text-[clamp(3.5rem,7vw,6rem)] leading-[0.86]">
                 {identity.title.split(' ').map((word) => (
@@ -220,7 +223,7 @@ export default function Home() {
           className="object-cover grayscale-[0.35]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[rgba(17,16,9,0.96)] via-[rgba(17,16,9,0.72)] to-[rgba(17,16,9,0.22)]" />
-        <Reveal className="relative z-10 max-w-lg">
+        <Reveal className="relative z-10 max-w-lg" variant="text">
           <span className="type-meta mb-5 inline-block rounded-full bg-[rgba(240,208,96,0.15)] px-3 py-1 text-[var(--color-brand-event)]">
             {merch.eyebrow}
           </span>

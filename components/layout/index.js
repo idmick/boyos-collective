@@ -8,7 +8,7 @@ const RadioPlayer = dynamic(() => import('../RadioPlayer'), {
 
 const Layout = ({ children }) => {
   return (
-    <div className="min-h-screen bg-[rgb(var(--color-brand-deep))] pb-[86px] text-[var(--color-surface-paper)]">
+    <div className="min-h-screen bg-[rgb(var(--color-brand-deep))] pb-[128px] text-[var(--color-surface-paper)] md:pb-[86px]">
       <Header />
       <main>{children}</main>
       <RadioPlayer channels={radioChannels} />

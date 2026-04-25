@@ -17,6 +17,9 @@
   --font-serif: 'DM Serif Display', serif;
   --font-body: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
   --space-section: clamp(5rem, 9vw, 8.125rem);
+  --hero-bottom-safe: 132px;
+  --hero-parallax-max-depth: 88px;
+  --hero-parallax-max-lift: 42px;
 }
 
 *, *::before, *::after {
@@ -43,9 +46,9 @@ body {
   inset: 0;
   z-index: 9998;
   pointer-events: none;
-  opacity: 0.04;
+  opacity: 0.065;
   mix-blend-mode: overlay;
-  animation: grain-animation 0.7s steps(2) infinite;
+  animation: grain-animation 0.85s steps(2) infinite;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
@@ -140,7 +143,19 @@ body {
   line-height: 1;
   text-decoration: none;
   text-transform: uppercase;
-  transition: color 0.28s ease, background 0.28s ease, border-color 0.28s ease;
+  transform: translateY(0);
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+  transition:
+    color 0.28s ease,
+    background 0.28s ease,
+    border-color 0.28s ease,
+    transform 0.28s ease,
+    box-shadow 0.28s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 16px 30px rgba(0, 0, 0, 0.22);
 }
 
 .btn-pink {
@@ -274,9 +289,28 @@ body {
   transition: opacity 0.9s ease, transform 0.9s ease;
 }
 
+.reveal-text {
+  transform: translateY(22px);
+}
+
+.reveal-media {
+  transform: translateY(34px) scale(0.985);
+  transition-duration: 1s;
+}
+
+.reveal-card {
+  transform: translateY(30px) scale(0.98);
+  transition-duration: 0.95s;
+}
+
 .reveal-visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+.reveal-visible.reveal-media,
+.reveal-visible.reveal-card {
+  transform: translateY(0) scale(1);
 }
 
 .reveal-delay-short { transition-delay: 0.12s; }
@@ -338,6 +372,75 @@ body {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
+}
+
+.hero-safe-content {
+  padding-bottom: calc(var(--hero-bottom-safe) + clamp(0.75rem, 2vw, 1.5rem));
+}
+
+.hero-parallax-scene {
+  --hero-depth: 0px;
+  --hero-content-lift: 0px;
+  position: relative;
+}
+
+.hero-parallax-background {
+  transform: translate3d(0, calc(var(--hero-depth) * 0.52), 0) scale(1.055);
+  transform-origin: center;
+  will-change: transform;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-parallax-wordmark {
+  transform: translate3d(0, calc(var(--hero-depth) * 0.72), 0);
+  will-change: transform;
+  transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-parallax-badge {
+  transform: translate3d(0, calc(var(--hero-depth) * 1.05), 0) rotate(var(--hero-badge-tilt, 0deg));
+  transform-origin: center;
+  will-change: transform;
+  transition: transform 0.42s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.hero-parallax-content {
+  transform: translate3d(0, calc(var(--hero-content-lift) * -0.2), 0);
+  will-change: transform;
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.surface-card {
+  transform: translateY(0);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0);
+  transition:
+    transform 0.45s ease,
+    border-color 0.35s ease,
+    box-shadow 0.45s ease,
+    background-color 0.35s ease;
+}
+
+.surface-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.24);
+}
+
+.surface-media {
+  transform: scale(1);
+  transform-origin: center;
+  transition: transform 0.7s ease, filter 0.45s ease;
+}
+
+.surface-card:hover .surface-media {
+  transform: scale(1.035);
+}
+
+.surface-card.surface-media:hover {
+  transform: translateY(-6px) scale(1.02);
+}
+
+.surface-card:hover .surface-badge {
+  transform: rotate(0deg) scale(1.04);
 }
 
 .site-footer {
@@ -416,6 +519,18 @@ body {
     transform: none;
     transition: none;
   }
+
+  .hero-parallax-background,
+  .hero-parallax-wordmark,
+  .hero-parallax-badge,
+  .hero-parallax-content,
+  .surface-card,
+  .surface-media,
+  .btn {
+    transform: none;
+    transition: none;
+    box-shadow: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -440,5 +555,14 @@ body {
     flex-direction: column;
     gap: 10px;
     text-align: center;
+  }
+
+}
+
+@media (min-width: 768px) {
+  :root {
+    --hero-bottom-safe: 96px;
+    --hero-parallax-max-depth: 108px;
+    --hero-parallax-max-lift: 52px;
   }
 }

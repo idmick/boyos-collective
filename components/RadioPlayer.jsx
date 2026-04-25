@@ -7,7 +7,7 @@ export default function RadioPlayer({
       name: 'Essential Groove Radio (Default)',
       url: 'https://soundcloud.com/boyos_soundsystem/sets/essential-groove',
     },
-    ],
+  ],
   onPlayStateChange = () => {},
 }) {
   if (!Array.isArray(channels) || channels.length === 0) {
@@ -213,115 +213,101 @@ export default function RadioPlayer({
       />
       <div className="type-body fixed bottom-0 left-0 right-0 z-[300] border-t border-[color:rgb(var(--color-border-subtle)/0.12)] bg-[#222019] px-3 py-3 text-[var(--color-surface-paper)] shadow-[0_-10px_40px_rgba(0,0,0,0.35)] md:px-5 md:py-[10px]">
         <div className="flex items-center gap-3 md:min-h-[56px]">
-        <img
-          src="/images/essential_groove.png"
-          className={`h-11 w-11 shrink-0 self-start rounded-full object-contain md:self-center ${
-            isPlaying ? 'animate-spin-vinyl' : ''
-          }`}
-          alt="Essential Groove Radio"
-        />
-        <div className="min-w-0 flex-1">
-        {/* header bars + title */}
-        <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between md:gap-4">
+          <img
+            src="/images/essential_groove.png"
+            className={`h-11 w-11 shrink-0 self-start rounded-full object-contain md:self-center ${
+              isPlaying ? 'animate-spin-vinyl' : ''
+            }`}
+            alt="Essential Groove Radio"
+          />
           <div className="min-w-0 flex-1">
-            <div className="type-meta text-[var(--color-brand-secondary)]">
-              Essential Groove Radio
-            </div>
-            <div className="type-body mt-1 flex min-w-0 flex-wrap gap-1 text-xs leading-5 text-[color:rgb(var(--color-surface-paper-rgb)/0.62)]">
-          {trackUrl ? (
-            <a
-              href={trackUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="max-w-full truncate transition hover:text-[var(--color-brand-primary)]"
-              title="Open track on SoundCloud"
-            >
-              {currentArtist} – {currentTitle}
-            </a>
-          ) : (
-            <>
-              <span className="font-semibold">{currentArtist}</span>
-              <span>–</span>
-              <span className="truncate">{currentTitle}</span>
-            </>
-          )}
-            </div>
-          </div>
-
-          <div className="relative w-full md:w-auto md:self-center">
-            <button
-              type="button"
-              onClick={() => setDropdownOpen((o) => !o)}
-              className="type-control inline-flex w-full items-center justify-between rounded border border-[color:rgb(var(--color-border-subtle)/0.16)] px-3 py-2 text-[color:rgb(var(--color-surface-paper-rgb)/0.55)] transition hover:border-[var(--color-brand-secondary)] hover:text-[var(--color-brand-secondary)] md:w-auto md:justify-center md:px-2 md:py-0.5"
-              aria-label="Select channel"
-              aria-expanded={dropdownOpen}
-              aria-controls={dropdownId}
-              aria-haspopup="true"
-              id={selectorId}
-            >
-              <span className="truncate">Channel: {channels[channelIndex].name}</span>
-              <span className="ml-2 shrink-0">{dropdownOpen ? '↓' : '↑'}</span>
-            </button>
-
-            {dropdownOpen && (
-              <div
-                className="absolute bottom-[calc(100%+12px)] left-0 right-0 z-10 overflow-hidden rounded-lg border border-[color:rgb(var(--color-border-subtle)/0.16)] bg-[#2a2520] shadow-[0_-8px_30px_rgba(0,0,0,0.5)] md:left-auto md:right-0 md:min-w-[260px]"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby={selectorId}
-                id={dropdownId}
-              >
-                <ul className="type-body max-h-56 w-full list-none overflow-auto text-sm">
-                  {channels.map((ch, i) => (
-                    <li
-                      key={i}
-                      onClick={() => {
-                        setChannelIndex(i)
-                        setDropdownOpen(false)
-                      }}
-                      className={`cursor-pointer border-b border-[color:rgb(var(--color-border-subtle)/0.06)] px-4 py-3 text-[color:rgb(var(--color-surface-paper-rgb)/0.62)] transition hover:bg-white/5 hover:text-[var(--color-surface-paper)] ${
-                        i === channelIndex ? 'text-[var(--color-brand-secondary)]' : ''
-                      }`}
-                      style={{ overflowAnchor: 'none' }}
+            {/* header bars + title */}
+            <div className="flex flex-col gap-2 md:flex-row md:items-start md:justify-between md:gap-4">
+              <div className="min-w-0 flex-1">
+                <div className="type-meta text-[var(--color-brand-secondary)]">
+                  Essential Groove Radio
+                </div>
+                <div className="type-body mt-1 flex min-w-0 flex-wrap gap-1 text-xs leading-5 text-[color:rgb(var(--color-surface-paper-rgb)/0.62)]">
+                  {trackUrl ? (
+                    <a
+                      href={trackUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="max-w-full truncate transition hover:text-[var(--color-brand-primary)]"
+                      title="Open track on SoundCloud"
                     >
-                      {ch.name}
-                    </li>
-                  ))}
-                </ul>
+                      {currentArtist} – {currentTitle}
+                    </a>
+                  ) : (
+                    <>
+                      <span className="font-semibold">{currentArtist}</span>
+                      <span>–</span>
+                      <span className="truncate">{currentTitle}</span>
+                    </>
+                  )}
+                </div>
               </div>
-            )}
-          </div>
-        </div>
-        </div>
 
-        {/* Controls + Waveform */}
-        <div className="flex shrink-0 self-end text-[var(--color-surface-paper)] md:self-center">
-          <div className="flex items-center">
-            <button
-              onClick={prevTrack}
-              aria-label="Previous"
-              className="flex h-9 w-9 items-center justify-center rounded-l-md border border-[color:rgb(var(--color-border-subtle)/0.18)] transition hover:border-[var(--color-brand-primary)] hover:bg-[var(--color-brand-primary)]"
-            >
-              <svg
-                className="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+              <div className="relative w-full md:w-auto md:self-center">
+                <button
+                  type="button"
+                  onClick={() => setDropdownOpen((o) => !o)}
+                  className="type-control inline-flex w-full items-center justify-between rounded border border-[color:rgb(var(--color-border-subtle)/0.16)] px-3 py-2 text-[color:rgb(var(--color-surface-paper-rgb)/0.55)] transition hover:border-[var(--color-brand-secondary)] hover:text-[var(--color-brand-secondary)] md:w-auto md:justify-center md:px-2 md:py-0.5"
+                  aria-label="Select channel"
+                  aria-expanded={dropdownOpen}
+                  aria-controls={dropdownId}
+                  aria-haspopup="true"
+                  id={selectorId}
+                >
+                  <span className="truncate">
+                    Channel: {channels[channelIndex].name}
+                  </span>
+                  <span className="ml-2 shrink-0">
+                    {dropdownOpen ? '↓' : '↑'}
+                  </span>
+                </button>
+
+                {dropdownOpen && (
+                  <div
+                    className="absolute bottom-[calc(100%+12px)] left-0 right-0 z-10 overflow-hidden rounded-lg border border-[color:rgb(var(--color-border-subtle)/0.16)] bg-[#2a2520] shadow-[0_-8px_30px_rgba(0,0,0,0.5)] md:left-auto md:right-0 md:min-w-[260px]"
+                    role="menu"
+                    aria-orientation="vertical"
+                    aria-labelledby={selectorId}
+                    id={dropdownId}
+                  >
+                    <ul className="type-body max-h-56 w-full list-none overflow-auto text-sm">
+                      {channels.map((ch, i) => (
+                        <li
+                          key={i}
+                          onClick={() => {
+                            setChannelIndex(i)
+                            setDropdownOpen(false)
+                          }}
+                          className={`cursor-pointer border-b border-[color:rgb(var(--color-border-subtle)/0.06)] px-4 py-3 text-[color:rgb(var(--color-surface-paper-rgb)/0.62)] transition hover:bg-white/5 hover:text-[var(--color-surface-paper)] ${
+                            i === channelIndex
+                              ? 'text-[var(--color-brand-secondary)]'
+                              : ''
+                          }`}
+                          style={{ overflowAnchor: 'none' }}
+                        >
+                          {ch.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Controls + Waveform */}
+          <div className="flex shrink-0 gap-2 self-end text-[var(--color-surface-paper)] md:self-center">
+            <div className="flex items-center">
+              <button
+                onClick={prevTrack}
+                aria-label="Previous"
+                className="flex h-9 w-9 items-center justify-center rounded-l-md border border-[color:rgb(var(--color-border-subtle)/0.18)] transition hover:border-[var(--color-brand-primary)] hover:bg-[var(--color-brand-primary)]"
               >
-                {' '}
-                <polygon points="19 20 9 12 19 4 19 20" />{' '}
-                <line x1="5" y1="19" x2="5" y2="5" />
-              </svg>
-            </button>
-            <button
-              onClick={togglePlay}
-              aria-label={isPlaying ? 'Pause' : 'Play'}
-              className="flex h-9 w-10 items-center justify-center border-y border-[color:rgb(var(--color-border-subtle)/0.18)] transition hover:bg-[var(--color-brand-primary)]"
-            >
-              {isPlaying ? (
                 <svg
                   className="h-5 w-5"
                   viewBox="0 0 24 24"
@@ -332,10 +318,49 @@ export default function RadioPlayer({
                   strokeLinejoin="round"
                 >
                   {' '}
-                  <rect x="6" y="4" width="4" height="16" />{' '}
-                  <rect x="14" y="4" width="4" height="16" />
+                  <polygon points="19 20 9 12 19 4 19 20" />{' '}
+                  <line x1="5" y1="19" x2="5" y2="5" />
                 </svg>
-              ) : (
+              </button>
+              <button
+                onClick={togglePlay}
+                aria-label={isPlaying ? 'Pause' : 'Play'}
+                className="flex h-9 w-10 items-center justify-center border-y border-[color:rgb(var(--color-border-subtle)/0.18)] transition hover:bg-[var(--color-brand-primary)]"
+              >
+                {isPlaying ? (
+                  <svg
+                    className="h-5 w-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    {' '}
+                    <rect x="6" y="4" width="4" height="16" />{' '}
+                    <rect x="14" y="4" width="4" height="16" />
+                  </svg>
+                ) : (
+                  <svg
+                    className="h-5 w-5"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    {' '}
+                    <polygon points="5 3 19 12 5 21 5 3" />
+                  </svg>
+                )}
+              </button>
+              <button
+                onClick={nextTrack}
+                aria-label="Next"
+                className="flex h-9 w-9 items-center justify-center rounded-r-md border border-[color:rgb(var(--color-border-subtle)/0.18)] transition hover:border-[var(--color-brand-primary)] hover:bg-[var(--color-brand-primary)]"
+              >
                 <svg
                   className="h-5 w-5"
                   viewBox="0 0 24 24"
@@ -346,46 +371,27 @@ export default function RadioPlayer({
                   strokeLinejoin="round"
                 >
                   {' '}
-                  <polygon points="5 3 19 12 5 21 5 3" />
+                  <polygon points="5 4 15 12 5 20 5 4" />{' '}
+                  <line x1="19" y1="5" x2="19" y2="19" />
                 </svg>
-              )}
-            </button>
-            <button
-              onClick={nextTrack}
-              aria-label="Next"
-              className="flex h-9 w-9 items-center justify-center rounded-r-md border border-[color:rgb(var(--color-border-subtle)/0.18)] transition hover:border-[var(--color-brand-primary)] hover:bg-[var(--color-brand-primary)]"
-            >
-              <svg
-                className="h-5 w-5"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                {' '}
-                <polygon points="5 4 15 12 5 20 5 4" />{' '}
-                <line x1="19" y1="5" x2="19" y2="19" />
-              </svg>
-            </button>
-          </div>
+              </button>
+            </div>
 
-          {/* our animated + clickable waveform */}
-          <div className="hidden h-8 w-56 max-h-8 md:block">
-            <Waveform
-              waveformUrl={waveformUrl}
-              samples={120}
-              position={position}
-              duration={duration}
-              isPlaying={isPlaying}
-              onSeek={seekTo}
-            />
+            {/* our animated + clickable waveform */}
+            <div className="hidden h-8 w-56 max-h-8 md:block">
+              <Waveform
+                waveformUrl={waveformUrl}
+                samples={120}
+                position={position}
+                duration={duration}
+                isPlaying={isPlaying}
+                onSeek={seekTo}
+              />
+            </div>
+            <div className="type-meta hidden w-24 text-[color:rgb(var(--color-surface-paper-rgb)/0.36)] lg:block">
+              {fmt(position)} / {fmt(duration)}
+            </div>
           </div>
-          <div className="type-meta hidden w-24 text-[color:rgb(var(--color-surface-paper-rgb)/0.36)] lg:block">
-            {fmt(position)} / {fmt(duration)}
-          </div>
-        </div>
         </div>
       </div>
     </>
