@@ -23,12 +23,12 @@ export const homePage = {
       cta: 'Checkout the Groove',
       tone: 'pink',
       body:
-        'Tomas, Nico & Mickey. Energetic sets blending Disco, House, and global grooves, from intimate club nights to major festivals.',
+        'Di Tomasso, NMN & Mickey. Energetic sets blending Disco, House, and global grooves, from intimate club nights to major festivals.',
     },
     {
       eyebrow: 'The Experience',
       title: 'Boyos Wonderland',
-      badge: '/images/essential_groove.png',
+      badge: '/images/Boyos_Wonderland_round.png',
       image: '/images/wonderland_home.jpg',
       href: '/wonderland',
       cta: 'Enter Wonderland',
