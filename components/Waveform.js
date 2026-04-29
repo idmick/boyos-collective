@@ -1,6 +1,9 @@
 // components/Waveform.js
 import { useEffect, useRef, useCallback } from 'react'
 
+const PLAYED_BAR_COLOR = '#5ec4bc'
+const REMAINING_BAR_COLOR = 'rgba(240, 235, 226, 0.38)'
+
 export default function Waveform({
   waveformUrl,
   samples = 100,
@@ -30,7 +33,7 @@ export default function Waveform({
     data.forEach((val, i) => {
       const x = i * barW
       const h = val * cssHeight
-      ctx.fillStyle = i < playedBar ? '#60B5C2' : '#1B1212'
+      ctx.fillStyle = i < playedBar ? PLAYED_BAR_COLOR : REMAINING_BAR_COLOR
       ctx.fillRect(x, cssHeight - h, barW * 0.8, h)
     })
   }, [position, duration, samples])
