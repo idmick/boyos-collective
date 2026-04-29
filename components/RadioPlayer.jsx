@@ -193,7 +193,7 @@ export default function RadioPlayer({
 
       <iframe
         ref={iframeRef}
-        allow="autoplay"
+        allow="autoplay; encrypted-media"
         src={
           `https://w.soundcloud.com/player/?url=${encodeURIComponent(
             channels[channelIndex].url
