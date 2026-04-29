@@ -17,14 +17,12 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
-    "ignoreDeprecations": "6.0",
     "paths": {
       "@/*": [
         "./*"
       ],
       "components/*": [
-        "components/*"
+        "./components/*"
       ]
     }
   },

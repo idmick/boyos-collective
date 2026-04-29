@@ -1,6 +1,6 @@
 import React from 'react'
 import Script from 'next/script'
-import Layout from 'components/layout'
+import Layout from '../components/layout'
 import Grain from '../components/ui/Grain'
 import MotionEffects from '../components/ui/MotionEffects'
 import '../styles/globals.css'
