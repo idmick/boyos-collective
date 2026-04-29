@@ -6,12 +6,16 @@ const withPWA = require('next-pwa')({
 const path = require('path')
 
 module.exports = withPWA({
+  output: 'export',
   reactStrictMode: true,
   eslint: {
     ignoreDuringBuilds: true,
   },
   experimental: {
     optimizeCss: true,
+  },
+  images: {
+    unoptimized: true,
   },
   sassOptions: {
     includePaths: [path.join(__dirname, 'styles')],
