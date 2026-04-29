@@ -78,6 +78,8 @@ Belangrijk:
 - Uploads vanuit de CMS komen in `public/images/uploads` en zijn publiek beschikbaar onder `/images/uploads`.
 - De CMS gebruikt de GitHub-backend, niet Netlify Identity/Git Gateway. Editors hebben daarom een GitHub-account met write access tot `idmick/boyos-collective` nodig.
 - Voor productie-login is GitHub OAuth/auth voor Decap nodig. Volg de Decap GitHub backend setup; op Netlify kan dit via de GitHub auth provider zonder Netlify Identity-users te beheren.
+- Decap gebruikt `site_domain: www.boyoscollective.nl`, zodat deploy previews dezelfde canonical OAuth-site gebruiken in plaats van hun tijdelijke preview-hostname.
+- Test login na deployment bij voorkeur op `/admin/#/` op de productie/custom domain. Als GitHub-login nog `Not Found` geeft, controleer dan in Netlify of de GitHub auth provider voor deze site is geconfigureerd.
 - `publish_mode: editorial_workflow` staat aan, zodat CMS-wijzigingen als draft/review-flow via Git branches verlopen.
 
 ## Deployment
