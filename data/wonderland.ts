@@ -43,9 +43,9 @@ export const wonderlandPage = {
   },
   story: {
     eyebrow: 'Our Story',
-    title: 'Step Into The World',
+    title: 'Step Into Wonderland',
     logo: '/images/BoyosWonderlandLogo.svg',
-    image: '/images/summer-jam-poster.png',
+    image: '/images/albums/cover_minifestival_1_24.jpg',
     body: [
       'Boyos Wonderland is our ongoing event series: the place where the music takes physical form. We host everything from intimate Dine & Dance nights to vibrant indoor parties and open-air garden festivals.',
       "Each edition blends music, art, food, and tattoos for a full sensory experience. It's a world built on the same groove that drives Boyos Soundsystem, stretched into a shared event.",
