@@ -1,10 +1,5 @@
 import pastGigsJson from './PastGigs.json'
-
-type PastGig = {
-  title?: string
-  venue: string
-  monthYear: string
-}
+import type { PastGig } from './contentTypes'
 
 export const pastGigs = (pastGigsJson.pastGigs ?? []) as PastGig[]
 

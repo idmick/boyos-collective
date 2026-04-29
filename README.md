@@ -65,7 +65,20 @@ Na `npm run build` wordt ook automatisch `next-sitemap` uitgevoerd (via `postbui
 
 - **Afbeeldingen/video's**: vervang of voeg toe in `public/images` en `public/videos`.
 - **Event/gig data**: werk `data/PastGigs.json` bij.
-- **Pagina-inhoud**: pas de relevante bestanden in `pages/` en `components/` aan.
+- **Pagina-inhoud**: pas de JSON-bestanden in `data/` aan, of gebruik Decap CMS via `/admin`.
+
+## Decap CMS
+
+De site heeft een Decap CMS-admin op `/admin`. Decap schrijft content terug naar GitHub, zodat tekst, events, albums, sets en gig-data aangepast kunnen worden zonder handmatig in de code te werken.
+
+Belangrijk:
+
+- De CMS-content staat in JSON-bestanden zoals `data/home.json`, `data/wonderland.json`, `data/summerJam.json`, `data/soundsystem.json` en `data/PastGigs.json`.
+- De TypeScript-bestanden in `data/` blijven de data-contracten en exports voor de site verzorgen.
+- Uploads vanuit de CMS komen in `public/images/uploads` en zijn publiek beschikbaar onder `/images/uploads`.
+- De CMS gebruikt de GitHub-backend, niet Netlify Identity/Git Gateway. Editors hebben daarom een GitHub-account met write access tot `idmick/boyos-collective` nodig.
+- Voor productie-login is GitHub OAuth/auth voor Decap nodig. Volg de Decap GitHub backend setup; op Netlify kan dit via de GitHub auth provider zonder Netlify Identity-users te beheren.
+- `publish_mode: editorial_workflow` staat aan, zodat CMS-wijzigingen als draft/review-flow via Git branches verlopen.
 
 ## Deployment
 

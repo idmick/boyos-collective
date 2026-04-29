@@ -1,0 +1,72 @@
+{
+  "event": {
+    "title": "Boyos Wonderland x INI Movement Present: Summer Jam",
+    "shortTitle": "Summer Jam",
+    "href": "/wonderland/summer-jam",
+    "date": "2026-07-25",
+    "dateLabel": "Saturday 25 July 2026",
+    "timeLabel": "13:00 – 23:00 + after till late",
+    "venueName": "Houtbaar",
+    "venueUrl": "https://houtbaar.nl/",
+    "locationLabel": "Houtbaar, Haarlem",
+    "poster": "/images/summer-jam-poster.png",
+    "format": "Open air + indoor after",
+    "partners": ["Boyos Wonderland", "INI Movement", "Houtbaar"],
+    "ticketLabel": "Tickets announced soon",
+    "lineUpLabel": "Line-up announced soon",
+    "whatsappUrl": "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
+    "instagramUrl": "https://www.instagram.com/boyos.wonderland/?hl=en",
+    "iniUrl": "https://www.inimovement.nl/",
+    "iniInstagramUrl": "https://www.instagram.com/inimovement/",
+    "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Houtbaar%2C%20Woudplein%202%2C%202031CZ%20Haarlem",
+    "address": {
+      "streetAddress": "Woudplein 2",
+      "postalCode": "2031CZ",
+      "addressLocality": "Haarlem",
+      "addressCountry": "NL"
+    },
+    "description": "A full day that starts with live jam energy in the sun, builds into DJ sets, opens up on the dancefloor, and keeps moving indoors after 23:00. Line-up and tickets announced soon."
+  },
+  "page": {
+    "concept": [
+      "Summer Jam doesn't start with a headline. It starts with a live jam in the sun: open, participatory, warm. People finding the rhythm together before a single DJ has touched the decks.",
+      "From there the energy builds. Live music gives way to DJ sets. The dancefloor opens gradually as afternoon moves toward evening.",
+      "When the garden closes at 23:00, the night doesn't stop. The party continues indoors till late: a natural extension of a day that has been building since the first note.",
+      "No big headline, no manufactured hype. Just a full day that earns its dancefloor."
+    ],
+    "dayArc": [
+      {
+        "time": "13:00",
+        "name": "Live Jam — Open Air",
+        "description": "Participatory live music in the sun. The day starts loose, warm, and open."
+      },
+      {
+        "time": "↓",
+        "name": "DJ Sets — Garden Stage",
+        "description": "Live energy transitions into DJ sets. The groove deepens as afternoon shifts into evening."
+      },
+      {
+        "time": "23:00",
+        "name": "Indoor Afterparty — Till Late",
+        "description": "The garden closes, the night continues. The same energy moves indoors and keeps going."
+      }
+    ],
+    "partners": [
+      {
+        "name": "Boyos Wonderland",
+        "description": "The event world around Boyos Collective: music, food, art, tattoos, and a dancefloor with room for everyone.",
+        "href": "/wonderland"
+      },
+      {
+        "name": "INI Movement",
+        "description": "A creative movement bringing live music and open participation into the day.",
+        "href": "https://www.inimovement.nl/"
+      },
+      {
+        "name": "Houtbaar",
+        "description": "The Haarlem home base for the open-air part of the day and the indoor continuation after 23:00.",
+        "href": "https://houtbaar.nl/"
+      }
+    ]
+  }
+}
