@@ -2,7 +2,7 @@
 import typography from '@tailwindcss/typography'
 
 /** @type {import('tailwindcss').Config} */
-export default {
+const config = {
   content: [
     './pages/**/*.{js,ts,jsx,tsx}',
     './components/**/*.{js,ts,jsx,tsx}',
@@ -25,3 +25,5 @@ export default {
     typography, // official Tailwind typography
   ],
 }
+
+export default config

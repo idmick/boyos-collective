@@ -138,7 +138,7 @@ export default function Footer({ bgColor = "#0083d0", textColor = "#fff" }) {
             </li>
           ))}
         </ul>
-        <p className="text-s font-[moret]">byMickey</p>
+        <p className="text-s font-[var(--font-body)]">byMickey</p>
       </div>
     </footer>
   );

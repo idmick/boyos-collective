@@ -4,7 +4,7 @@ import BoyosBoxed from '../public/images/Boyos_logo_boxed.png'
 
 const Page404 = () => {
   return (
-    <div className="min-h-screen flex flex-col justify-center items-center bg-[#EC90B0] text-[#1B1212] px-4">
+    <div className="flex min-h-screen flex-col items-center justify-center bg-[var(--color-brand-primary)] px-4 text-[var(--color-text-primary)]">
       <div className="flex flex-col items-center">
         <Image
           src={BoyosBoxed}
@@ -13,11 +13,11 @@ const Page404 = () => {
           alt="Boyos Collective Logo"
           className="mb-6"
         />
-        <h1 className="text-7xl font-[anton] uppercase font-bold mb-2 tracking-wider">
+        <h1 className="type-display mb-2 text-7xl tracking-[0.08em]">
           404
         </h1>
-        <h2 className="text-2xl font-[anton] uppercase mb-4">Page Not Found</h2>
-        <p className="text-lg font-[moret] mb-8 text-center max-w-md">
+        <h2 className="type-display mb-4 text-2xl">Page Not Found</h2>
+        <p className="type-accent mb-8 max-w-md text-center text-lg leading-8">
           Oops! The page you’re looking for doesn’t exist.
           <br />
           But the groove never stops at Boyos Collective.
@@ -25,7 +25,7 @@ const Page404 = () => {
         <Link href="/" passHref>
           <button
             type="button"
-            className="px-8 py-3 rounded-full bg-[#0085D0] text-white font-bold text-lg shadow-lg hover:bg-[#0072B2] transition"
+            className="btn btn-ink"
           >
             Go Home
           </button>

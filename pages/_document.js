@@ -29,22 +29,8 @@ class MyDocument extends Document {
             crossOrigin="anonymous"
           />
           <link
-            href="https://fonts.googleapis.com/css2?family=Limelight&display=swap"
+            href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
-          />
-          <link
-            rel="preload"
-            href="/fonts/Moret-Regular.otf"
-            as="font"
-            type="font/otf"
-            crossOrigin="anonymous"
-          />
-          <link
-            rel="preload"
-            href="/fonts/Moret-Bold.otf"
-            as="font"
-            type="font/otf"
-            crossOrigin="anonymous"
           />
           <script src="https://w.soundcloud.com/player/api.js" async></script>
 

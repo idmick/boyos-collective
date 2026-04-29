@@ -1,0 +1,96 @@
+/**
+ * Soundsystem page data.
+ */
+export const soundsystemPage = {
+  hero: {
+    eyebrow: 'Boyos Collective — The Music',
+    title: 'Boyos Soundsystem',
+    image: '/images/boyos-25-20.jpg',
+    badge: '/images/boyos_we_got_the_funk.png',
+    djs: ['Di Tomasso', 'Mickey', 'NMN'],
+  },
+  about: {
+    eyebrow: 'The Collective',
+    title: 'The Groove Is Ours',
+    image: '/images/boyos-25-62.jpg',
+    stats: [
+      { value: '3', label: 'DJs' },
+      { value: '5+', label: 'Years' },
+      { value: '∞', label: 'Dancefloors' },
+    ],
+    body: [
+      'Boyos Soundsystem is a DJ collective: Di Tomasso, NMN, and Mickey. Known for energetic, eclectic sets that blend Disco, House, and global grooves.',
+      'From intimate club nights to major festivals, they bring vibrant, feel-good music and a unique vibe to every dancefloor. The groove is the thread that runs through everything they do.',
+      "What started as three friends sharing a love of music has grown into one of Amsterdam's most distinctive collectives: always rooted in the feeling, never chasing the trend.",
+    ],
+  },
+  artists: [
+    {
+      number: '01',
+      name: 'Di Tomasso',
+      role: 'DJ · Selector',
+      image: '/images/di-tomasso.jpg',
+    },
+    {
+      number: '02',
+      name: 'NMN',
+      role: 'DJ · Selector',
+      image: '/images/nmn-near-mint-nico.jpg',
+    },
+    {
+      number: '03',
+      name: 'Mickey',
+      role: 'DJ · Selector',
+      image: '/images/mickey-card.jpg',
+    },
+  ],
+  genres: [
+    'Disco',
+    'House',
+    'Brazilian Boogie',
+    'Soca',
+    'Zouk',
+    'Italo',
+    'Afro House',
+    'Funk',
+    'Soul',
+    'Balearic',
+  ],
+  sets: [
+    {
+      label: 'SoundCloud',
+      url: 'https://w.soundcloud.com/player/?url=https%3A//soundcloud.com/boyos_soundsystem/&color=%23EC90B0&auto_play=false&hide_related=false&show_comments=false&show_user=true&show_reposts=false&show_teaser=true',
+      type: 'soundcloud',
+    },
+    {
+      label: 'YouTube — Live Set',
+      url: 'https://www.youtube.com/embed/CBAqa9s1DPE',
+      type: 'youtube',
+    },
+    {
+      label: 'YouTube — Mix',
+      url: 'https://www.youtube.com/embed/TY_hzG5HY3k',
+      type: 'youtube',
+    },
+    {
+      label: 'YouTube — Essential Groove',
+      url: 'https://www.youtube.com/embed/ANB1UNfqitE?start=3359',
+      type: 'youtube',
+    },
+  ],
+  ticker: [
+    'Disco',
+    'House',
+    'Global Grooves',
+    'Feel-good Music',
+    'Every Dancefloor',
+    'We Got The Funk',
+  ],
+  booking: {
+    title: 'Book Boyos Soundsystem',
+    body:
+      'For promoters and bookers looking for warm, uplifting, dance-forward energy: Boyos Soundsystem brings a record shaped by Woodstock 69, Shelter, Pacific, Veerplas, De Zon, Paard, Mosso Milan, and more...',
+    href: 'mailto:soundsystem@boyoscollective.nl',
+    cta: 'Send a Booking Request',
+  },
+}
