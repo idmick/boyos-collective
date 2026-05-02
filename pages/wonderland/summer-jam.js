@@ -61,7 +61,9 @@ export default function SummerJamPage() {
             eventStatus: 'https://schema.org/EventScheduled',
             eventAttendanceMode:
               'https://schema.org/OfflineEventAttendanceMode',
-            image: ['https://www.boyoscollective.nl/images/summer-jam-poster.png'],
+            image: [
+              'https://www.boyoscollective.nl/images/summer-jam-poster.png',
+            ],
             location: {
               '@type': 'Place',
               name: event.venueName,
@@ -138,10 +140,10 @@ export default function SummerJamPage() {
               ['Format', event.format],
             ].map(([label, value]) => (
               <div key={label}>
-                <dt className="type-meta mb-1 text-white/35">
-                  {label}
-                </dt>
-                <dd className="type-body text-sm font-semibold leading-6">{value}</dd>
+                <dt className="type-meta mb-1 text-white/35">{label}</dt>
+                <dd className="type-body text-sm font-semibold leading-6">
+                  {value}
+                </dd>
               </div>
             ))}
           </dl>
@@ -182,7 +184,10 @@ export default function SummerJamPage() {
         <div className="mx-auto grid max-w-6xl gap-16 md:grid-cols-[1fr_1.4fr] md:gap-24">
           <Reveal>
             <div className="md:sticky md:top-24">
-              <SectionTitle eyebrow="How it moves" title="From Sun To 02:00" />
+              <SectionTitle
+                eyebrow="How it moves"
+                title="From 13:00 To 02:00"
+              />
             </div>
           </Reveal>
           <Reveal delay="short">
@@ -225,9 +230,10 @@ export default function SummerJamPage() {
           </Reveal>
           <div className="mt-10 max-w-3xl">
             <p className="type-body text-[15px] leading-8 text-[color:rgb(var(--color-surface-paper-rgb)/0.58)]">
-              The timetable is still taking shape, so this is not a play-by-play.
-              It is a feel for the people and sounds carrying the day: live
-              energy, deep record bags, warm club pressure and Boyos groove.
+              The timetable is still taking shape, so this is not a
+              play-by-play. It is a feel for the people and sounds carrying the
+              day: live energy, deep record bags, warm club pressure and Boyos
+              groove.
             </p>
           </div>
           <div className="mt-14 grid grid-flow-dense gap-5 md:grid-cols-12">
@@ -237,9 +243,7 @@ export default function SummerJamPage() {
                 delay={index > 0 ? 'short' : 'none'}
                 className={act.image ? 'md:col-span-6' : 'md:col-span-12'}
               >
-                <article
-                  className="group h-full overflow-hidden border border-white/10 bg-white/[0.025] transition hover:border-[color:rgb(240_200_80/0.22)]"
-                >
+                <article className="group h-full overflow-hidden border border-white/10 bg-white/[0.025] transition hover:border-[color:rgb(240_200_80/0.22)]">
                   {act.image ? (
                     <div className="relative aspect-[16/10] overflow-hidden bg-white/[0.03]">
                       <Image
@@ -323,12 +327,24 @@ export default function SummerJamPage() {
       <section className="bg-[var(--color-brand-event)] px-6 py-[var(--space-section)] text-[var(--color-text-primary)] md:px-10">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <SectionTitle eyebrow="Practical info" title="Good To Know" dark={false} />
+            <SectionTitle
+              eyebrow="Practical info"
+              title="Good To Know"
+              dark={false}
+            />
           </Reveal>
           <div className="mt-14 grid gap-0 md:grid-cols-3">
             {[
-              ['Date', event.dateLabel, 'Summer in Haarlem, starting early afternoon.'],
-              ['Time', event.timeLabel, 'The garden closes at 23:00, then the night moves inside until 02:00.'],
+              [
+                'Date',
+                event.dateLabel,
+                'Summer in Haarlem, starting early afternoon.',
+              ],
+              [
+                'Time',
+                event.timeLabel,
+                'The garden closes at 23:00, then the night moves inside until 02:00.',
+              ],
               [
                 'Location',
                 event.locationLabel,
@@ -337,9 +353,7 @@ export default function SummerJamPage() {
             ].map(([label, value, detail]) => (
               <Reveal key={label} delay="short">
                 <article className="h-full border border-black/15 bg-black/[0.03] p-8">
-                  <p className="type-meta mb-3 text-black/45">
-                    {label}
-                  </p>
+                  <p className="type-meta mb-3 text-black/45">{label}</p>
                   <h3 className="type-display text-[clamp(2rem,4vw,3.2rem)] leading-none">
                     {value}
                   </h3>
