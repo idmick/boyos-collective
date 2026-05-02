@@ -159,6 +159,13 @@ collections:
                 name: ticker
                 widget: list
                 field: { label: Item, name: item, widget: string }
+              - label: Final CTA
+                name: finalCta
+                widget: object
+                fields:
+                  - { label: Eyebrow, name: eyebrow, widget: string }
+                  - { label: Title, name: title, widget: string }
+                  - { label: Body, name: body, widget: text }
               - label: Concept Paragraphs
                 name: concept
                 widget: list

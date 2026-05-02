@@ -9,8 +9,16 @@ import Ticker from '../../components/ui/Ticker'
 import { summerJamPage } from '../../data/wonderland'
 
 export default function SummerJamPage() {
-  const { event, ticker, concept, dayArc, partners, lineup, partnerLogos } =
-    summerJamPage
+  const {
+    event,
+    ticker,
+    finalCta,
+    concept,
+    dayArc,
+    partners,
+    lineup,
+    partnerLogos,
+  } = summerJamPage
 
   return (
     <>
@@ -345,28 +353,28 @@ export default function SummerJamPage() {
         </div>
       </section>
 
-      <section className="bg-[rgb(var(--color-brand-deep))] px-6 py-24 text-center md:px-10">
-        <Reveal className="mx-auto max-w-3xl">
-          <span className="type-meta mb-5 block text-[var(--color-brand-amber)]">
-            Tickets
-          </span>
-          <p className="type-accent text-[clamp(2rem,5vw,4rem)] leading-tight">
-            Come for the live jam, stay for the room opening up.
-          </p>
-          <p className="type-body mx-auto mb-10 mt-6 max-w-xl text-[15px] leading-8 text-white/45">
-            Tickets start at €20 and go through Houtbaar. Bring yourself, bring
-            someone who moves well, and come settle into the garden with us.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <ButtonLink href={event.ticketUrl} tone="amber">
-              {event.ticketLabel}
-            </ButtonLink>
-            <ButtonLink href={event.whatsappUrl} tone="paper">
-              Join WhatsApp updates
-            </ButtonLink>
-            <ButtonLink href={event.directionsUrl} tone="paper">
-              Directions
-            </ButtonLink>
+      <section className="bg-[rgb(var(--color-brand-deep))] px-6 py-[var(--space-section)] md:px-10">
+        <Reveal className="mx-auto grid max-w-6xl gap-10 border-y border-white/10 py-16 md:grid-cols-[1.35fr_0.65fr] md:items-end md:py-20">
+          <div>
+            <span className="type-meta mb-6 block text-[var(--color-brand-amber)]">
+              {finalCta.eyebrow}
+            </span>
+            <p className="type-accent max-w-5xl text-[clamp(2.7rem,7vw,6.8rem)] leading-[0.95]">
+              {finalCta.title}
+            </p>
+          </div>
+          <div>
+            <p className="type-body text-[15px] leading-8 text-white/58">
+              {finalCta.body}
+            </p>
+            <div className="mt-9 flex flex-wrap gap-4">
+              <ButtonLink href={event.ticketUrl} tone="amber">
+                {event.ticketLabel}
+              </ButtonLink>
+              <ButtonLink href={event.instagramUrl} tone="paper">
+                Follow the build-up
+              </ButtonLink>
+            </div>
           </div>
         </Reveal>
       </section>

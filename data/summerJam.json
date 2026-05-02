@@ -7,13 +7,13 @@
     "dateLabel": "Saturday 25 July 2026",
     "timeLabel": "13:00 – 23:00 + afterparty till 02:00",
     "venueName": "Houtbaar",
-    "venueUrl": "https://houtbaarhaarlem.nl/",
+    "venueUrl": "https://www.houtbaarhaarlem.nl/",
     "locationLabel": "Houtbaar, Haarlem",
     "poster": "/images/summer-jam-poster.png",
     "format": "Open air + indoor after",
     "partners": ["Boyos Wonderland", "INI Movement", "Houtbaar"],
     "ticketLabel": "Tickets from €20",
-    "ticketUrl": "https://houtbaar.nl/",
+    "ticketUrl": "https://www.houtbaarhaarlem.nl/",
     "lineUpLabel": "TOMMASO · Estafête (live) · UMOJA · Shamis · Boyos Soundsystem",
     "whatsappUrl": "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
     "instagramUrl": "https://www.instagram.com/boyos.wonderland/?hl=en",
@@ -39,6 +39,11 @@
       "Pop-up Tattoo",
       "Afterparty till 02:00"
     ],
+    "finalCta": {
+      "eyebrow": "Tickets",
+      "title": "Come early. Let the garden do the rest.",
+      "body": "The day starts loose: open jam, DJs, tattoos, sunlight and familiar faces finding each other. When the garden closes at 23:00, the same energy moves inside until 02:00. Tickets start at €20 through Houtbaar."
+    },
     "concept": [
       "Summer Jam is where Boyos Wonderland and INI Movement meet at Houtbaar: a one day mini-festival in the garden, built around live energy, DJs, musicians and people coming together for the same reason: to move.",
       "The garden opens in the afternoon with jams and DJ sets moving through the day. As the evening builds, Estafête brings live musicians into the room and the dancefloor starts to heat up.",
@@ -76,7 +81,7 @@
       {
         "name": "Houtbaar",
         "description": "The Haarlem home base for the open-air part of the day and the indoor continuation after 23:00.",
-        "href": "https://houtbaar.nl/"
+        "href": "https://www.houtbaarhaarlem.nl/"
       }
     ],
     "lineup": [
@@ -133,7 +138,7 @@
       {
         "name": "Houtbaar",
         "image": "/images/partners/houtbaar.png",
-        "href": "https://houtbaar.nl/"
+        "href": "https://www.houtbaarhaarlem.nl/"
       }
     ]
   }

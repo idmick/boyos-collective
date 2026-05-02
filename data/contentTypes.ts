@@ -102,6 +102,11 @@ export type WonderlandPage = {
 export type SummerJamPage = {
   event: SummerJamEvent
   ticker: string[]
+  finalCta: {
+    eyebrow: string
+    title: string
+    body: string
+  }
   concept: string[]
   dayArc: {
     time: string
