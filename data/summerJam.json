@@ -1,32 +1,36 @@
 {
   "event": {
-    "title": "Boyos Wonderland x INI Movement Present: Summer Jam",
-    "shortTitle": "Summer Jam",
-    "href": "/wonderland/summer-jam",
-    "date": "2026-07-25",
-    "dateLabel": "Saturday 25 July 2026",
-    "timeLabel": "13:00 – 23:00 + afterparty till 02:00",
-    "venueName": "Houtbaar",
     "venueUrl": "https://www.houtbaarhaarlem.nl/",
-    "locationLabel": "Houtbaar, Haarlem",
-    "poster": "/images/summer-jam-poster.png",
-    "format": "Open air + indoor after",
-    "partners": ["Boyos Wonderland", "INI Movement", "Houtbaar"],
-    "ticketLabel": "Tickets from €20",
+    "iniInstagramUrl": "https://www.instagram.com/inimovement/",
     "ticketUrl": "https://www.houtbaarhaarlem.nl/",
     "lineUpLabel": "TOMMASO · Estafête (live) · UMOJA · Shamis · Boyos Soundsystem",
-    "whatsappUrl": "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
-    "instagramUrl": "https://www.instagram.com/boyos.wonderland/?hl=en",
+    "dateLabel": "Saturday 25 July 2026",
+    "timeLabel": "13:00 – 23:00 + afterparty till 02:00",
+    "ticketLabel": "Tickets from €20",
+    "partners": [
+      "Boyos Wonderland",
+      "INI Movement",
+      "Houtbaar"
+    ],
     "iniUrl": "https://www.inimovement.nl/",
-    "iniInstagramUrl": "https://www.instagram.com/inimovement/",
-    "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Houtbaar%2C%20Woudplein%202%2C%202031CZ%20Haarlem",
+    "href": "/wonderland/summer-jam",
+    "poster": "/images/summer-jam-poster.png",
+    "date": "2026-07-25",
     "address": {
       "streetAddress": "Woudplein 2",
       "postalCode": "2031CZ",
       "addressLocality": "Haarlem",
       "addressCountry": "NL"
     },
-    "description": "A one day mini-festival at Houtbaar Haarlem where Boyos Wonderland and INI Movement meet: live energy, DJs, musicians, pop-up tattoos and people coming together for the same reason: to move."
+    "format": "Open air + indoor after",
+    "title": "Boyos Wonderland x INI Movement Present: Summer Jam",
+    "venueName": "Houtbaar",
+    "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Houtbaar%2C%20Woudplein%202%2C%202031CZ%20Haarlem",
+    "shortTitle": "Summer Jam",
+    "description": "A one day mini-festival at Houtbaar Haarlem where Boyos Wonderland and INI Movement meet: live energy, DJs, musicians, pop-up tattoos and people coming together for the same reason: to move.",
+    "instagramUrl": "https://www.instagram.com/boyos.wonderland/?hl=en",
+    "whatsappUrl": "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
+    "locationLabel": "Houtbaar, Haarlem"
   },
   "page": {
     "ticker": [
@@ -52,7 +56,7 @@
     ],
     "dayArc": [
       {
-        "time": "Sun",
+        "time": "Afternoon",
         "name": "Garden Open",
         "description": "Jams, DJ sets and people arriving into the same warm garden rhythm."
       },
