@@ -5,15 +5,16 @@
     "href": "/wonderland/summer-jam",
     "date": "2026-07-25",
     "dateLabel": "Saturday 25 July 2026",
-    "timeLabel": "13:00 – 23:00 + after till late",
+    "timeLabel": "13:00 – 23:00 + afterparty till 02:00",
     "venueName": "Houtbaar",
-    "venueUrl": "https://houtbaar.nl/",
+    "venueUrl": "https://www.houtbaarhaarlem.nl/",
     "locationLabel": "Houtbaar, Haarlem",
     "poster": "/images/summer-jam-poster.png",
     "format": "Open air + indoor after",
     "partners": ["Boyos Wonderland", "INI Movement", "Houtbaar"],
-    "ticketLabel": "Tickets announced soon",
-    "lineUpLabel": "Line-up announced soon",
+    "ticketLabel": "Tickets from €20",
+    "ticketUrl": "https://www.houtbaarhaarlem.nl/",
+    "lineUpLabel": "TOMMASO · Estafête (live) · UMOJA · Shamis · Boyos Soundsystem",
     "whatsappUrl": "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
     "instagramUrl": "https://www.instagram.com/boyos.wonderland/?hl=en",
     "iniUrl": "https://www.inimovement.nl/",
@@ -25,30 +26,45 @@
       "addressLocality": "Haarlem",
       "addressCountry": "NL"
     },
-    "description": "A full day that starts with live jam energy in the sun, builds into DJ sets, opens up on the dancefloor, and keeps moving indoors after 23:00. Line-up and tickets announced soon."
+    "description": "A one day mini-festival at Houtbaar Haarlem where Boyos Wonderland and INI Movement meet: live energy, DJs, musicians, pop-up tattoos and people coming together for the same reason: to move."
   },
   "page": {
+    "ticker": [
+      "Boyos Wonderland x INI Movement",
+      "25 July 2026",
+      "Houtbaar Haarlem",
+      "Open Jam",
+      "DJ Sets",
+      "Estafête Live",
+      "Pop-up Tattoo",
+      "Afterparty till 02:00"
+    ],
+    "finalCta": {
+      "eyebrow": "Tickets",
+      "title": "Meet us where the garden turns into a dancefloor.",
+      "body": "Summer Jam brings Boyos Wonderland and INI Movement together for a full day of open jam energy, DJs, live musicians, pop-up tattoos and warm selections. We start outside at Houtbaar in Haarlem, then move inside after 23:00 and keep going till 02:00. Tickets start at €20 through Houtbaar."
+    },
     "concept": [
-      "Summer Jam doesn't start with a headline. It starts with a live jam in the sun: open, participatory, warm. People finding the rhythm together before a single DJ has touched the decks.",
-      "From there the energy builds. Live music gives way to DJ sets. The dancefloor opens gradually as afternoon moves toward evening.",
-      "When the garden closes at 23:00, the night doesn't stop. The party continues indoors till late: a natural extension of a day that has been building since the first note.",
-      "No big headline, no manufactured hype. Just a full day that earns its dancefloor."
+      "Summer Jam is where Boyos Wonderland and INI Movement meet at Houtbaar: a one day mini-festival in the garden, built around live energy, DJs, musicians and people coming together for the same reason: to move.",
+      "The garden opens in the afternoon with jams and DJ sets moving through the day. As the evening builds, Estafête brings live musicians into the room and the dancefloor starts to heat up.",
+      "Around it all: a pop-up tattoo studio, familiar faces, new friends, and that easy summer feeling of staying a little longer than you planned.",
+      "When the garden closes at 23:00, the night moves inside and keeps going until 02:00."
     ],
     "dayArc": [
       {
-        "time": "13:00",
-        "name": "Live Jam — Open Air",
-        "description": "Participatory live music in the sun. The day starts loose, warm, and open."
+        "time": "Sun",
+        "name": "Garden Open",
+        "description": "Jams, DJ sets and people arriving into the same warm garden rhythm."
       },
       {
-        "time": "↓",
-        "name": "DJ Sets — Garden Stage",
-        "description": "Live energy transitions into DJ sets. The groove deepens as afternoon shifts into evening."
+        "time": "Ink",
+        "name": "Pop-up Tattoo Studio",
+        "description": "A piece of Wonderland to carry with you, woven into the day instead of tucked away as an afterthought."
       },
       {
-        "time": "23:00",
-        "name": "Indoor Afterparty — Till Late",
-        "description": "The garden closes, the night continues. The same energy moves indoors and keeps going."
+        "time": "Night",
+        "name": "Inside Afterparty",
+        "description": "The garden closes at 23:00, then the room moves inside and carries on until 02:00."
       }
     ],
     "partners": [
@@ -65,7 +81,64 @@
       {
         "name": "Houtbaar",
         "description": "The Haarlem home base for the open-air part of the day and the indoor continuation after 23:00.",
-        "href": "https://houtbaar.nl/"
+        "href": "https://www.houtbaarhaarlem.nl/"
+      }
+    ],
+    "lineup": [
+      {
+        "name": "Open Jam",
+        "role": "Open musical energy",
+        "description": "The open jam is not a fixed show slot or a closed band moment. It is the loose, participatory pulse of the afternoon: musicians, friends and the garden finding the rhythm together."
+      },
+      {
+        "name": "Estafête",
+        "role": "Live formation",
+        "description": "Estafête is a live formation put together for movement, not a traditional band with a fixed front. DJs and musicians pass energy back and forth, letting the set build in the moment.",
+        "image": "/images/artists/estafete.jpg",
+        "sourceUrl": "https://www.inimovement.nl/events/estafte-makz-shamis-rode-hoed"
+      },
+      {
+        "name": "TOMMASO",
+        "role": "Vinyl selector",
+        "description": "Tommaso Conforti is a Florence-born, Chicago-based vinyl selector and record digger with a deep ear for house music history and global rarities. His sets connect forgotten gems, soulful club records and forward-moving dancefloor moments. He is also behind Elevator Music Live, a platform creating space for artists and live dance music culture between Chicago and wider dancefloor communities.",
+        "image": "/images/artists/tommaso-conforti.jpg"
+      },
+      {
+        "name": "UMOJA",
+        "role": "DJ duo",
+        "description": "UMOJA are a Dutch DJ and producer duo with a name that means togetherness. Their sound moves through global grooves, percussion, bass, and warm club energy, always with the feeling of people meeting each other on the floor.",
+        "image": "/images/artists/umoja.jpg",
+        "sourceUrl": "https://ra.co/dj/umoja"
+      },
+      {
+        "name": "Shamis",
+        "role": "DJ, producer, vocalist",
+        "description": "Shamis is a producer, DJ, vocalist, and co-founder of INI Movement. His work blends soulful electronics, live instinct, and community energy, making him a natural guide between the jam, the stage, and the late-night room.",
+        "image": "/images/artists/shamis.jpg",
+        "sourceUrl": "https://www.shamis-is.com/about"
+      },
+      {
+        "name": "Boyos Soundsystem",
+        "role": "Resident groove keepers",
+        "description": "Boyos Soundsystem bring the essential groove at the heart of the day: disco, house, Brazilian boogie, soca, zouk, italo, afro house, and the kind of selections that make a garden feel like a shared living room.",
+        "image": "/images/boyos-25-20.jpg"
+      }
+    ],
+    "partnerLogos": [
+      {
+        "name": "Boyos Wonderland",
+        "image": "/images/partners/boyos-sun.png",
+        "href": "/wonderland"
+      },
+      {
+        "name": "INI Movement",
+        "image": "/images/partners/ini.png",
+        "href": "https://www.inimovement.nl/"
+      },
+      {
+        "name": "Houtbaar",
+        "image": "/images/partners/houtbaar.png",
+        "href": "https://www.houtbaarhaarlem.nl/"
       }
     ]
   }

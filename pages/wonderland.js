@@ -215,6 +215,9 @@ export default function BoyosWonderlandPage() {
                   <p className="type-body border-t border-black/10 pt-7 text-sm leading-7 text-black/65">
                     {summerJamEvent.description}
                   </p>
+                  <p className="type-body mt-4 text-sm font-semibold leading-7 text-black/70">
+                    {summerJamEvent.lineUpLabel}
+                  </p>
                 </div>
                 <div className="mt-8 flex flex-wrap items-center gap-4">
                   <span className="btn btn-ink type-control">More info →</span>

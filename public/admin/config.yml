@@ -135,6 +135,7 @@ collections:
                 widget: list
                 field: { label: Partner, name: partner, widget: string }
               - { label: Ticket Label, name: ticketLabel, widget: string }
+              - { label: Ticket URL, name: ticketUrl, widget: string, default: "https://www.houtbaarhaarlem.nl/" }
               - { label: Line-up Label, name: lineUpLabel, widget: string }
               - { label: WhatsApp URL, name: whatsappUrl, widget: string }
               - { label: Instagram URL, name: instagramUrl, widget: string }
@@ -154,6 +155,30 @@ collections:
             name: page
             widget: object
             fields:
+              - label: Ticker
+                name: ticker
+                widget: list
+                default:
+                  - Boyos Wonderland x INI Movement
+                  - 25 July 2026
+                  - Houtbaar Haarlem
+                  - Open Jam
+                  - DJ Sets
+                  - Estafête Live
+                  - Pop-up Tattoo
+                  - Afterparty till 02:00
+                field: { label: Item, name: item, widget: string }
+              - label: Final CTA
+                name: finalCta
+                widget: object
+                default:
+                  eyebrow: Tickets
+                  title: Meet us where the garden turns into a dancefloor.
+                  body: Summer Jam brings Boyos Wonderland and INI Movement together for a full day of open jam energy, DJs, live musicians, pop-up tattoos and warm selections. We start outside at Houtbaar in Haarlem, then move inside after 23:00 and keep going till 02:00. Tickets start at €20 through Houtbaar.
+                fields:
+                  - { label: Eyebrow, name: eyebrow, widget: string }
+                  - { label: Title, name: title, widget: string }
+                  - { label: Body, name: body, widget: text }
               - label: Concept Paragraphs
                 name: concept
                 widget: list
@@ -173,6 +198,61 @@ collections:
                 fields:
                   - { label: Name, name: name, widget: string }
                   - { label: Description, name: description, widget: text }
+                  - { label: Link, name: href, widget: string }
+              - label: Lineup
+                name: lineup
+                widget: list
+                summary: "{{fields.name}}"
+                default:
+                  - name: Open Jam
+                    role: Open musical energy
+                    description: The open jam is not a fixed show slot or a closed band moment. It is the loose, participatory pulse of the afternoon; musicians, friends and the garden finding the rhythm together.
+                  - name: Estafête
+                    role: Live formation
+                    description: Estafête is a live formation put together for movement, not a traditional band with a fixed front. DJs and musicians pass energy back and forth, letting the set build in the moment.
+                    image: /images/artists/estafete.jpg
+                    sourceUrl: https://www.inimovement.nl/events/estafte-makz-shamis-rode-hoed
+                  - name: TOMMASO
+                    role: Vinyl selector
+                    description: Tommaso Conforti is a Florence-born, Chicago-based vinyl selector and record digger with a deep ear for house music history and global rarities. His sets connect forgotten gems, soulful club records and forward-moving dancefloor moments. He is also behind Elevator Music Live, a platform creating space for artists and live dance music culture between Chicago and wider dancefloor communities.
+                    image: /images/artists/tommaso-conforti.jpg
+                  - name: UMOJA
+                    role: DJ duo
+                    description: UMOJA are a Dutch DJ and producer duo with a name that means togetherness. Their sound moves through global grooves, percussion, bass, and warm club energy, always with the feeling of people meeting each other on the floor.
+                    image: /images/artists/umoja.jpg
+                    sourceUrl: https://ra.co/dj/umoja
+                  - name: Shamis
+                    role: DJ, producer, vocalist
+                    description: Shamis is a producer, DJ, vocalist, and co-founder of INI Movement. His work blends soulful electronics, live instinct, and community energy, making him a natural guide between the jam, the stage, and the late-night room.
+                    image: /images/artists/shamis.jpg
+                    sourceUrl: https://www.shamis-is.com/about
+                  - name: Boyos Soundsystem
+                    role: Resident groove keepers
+                    description: Boyos Soundsystem bring the essential groove at the heart of the day; disco, house, Brazilian boogie, soca, zouk, italo, afro house, and the kind of selections that make a garden feel like a shared living room.
+                    image: /images/boyos-25-20.jpg
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Role, name: role, widget: string }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Image, name: image, widget: image, required: false }
+                  - { label: Source URL, name: sourceUrl, widget: string, required: false }
+              - label: Partner Logos
+                name: partnerLogos
+                widget: list
+                summary: "{{fields.name}}"
+                default:
+                  - name: Boyos Wonderland
+                    image: /images/partners/boyos-sun.png
+                    href: /wonderland
+                  - name: INI Movement
+                    image: /images/partners/ini.png
+                    href: https://www.inimovement.nl/
+                  - name: Houtbaar
+                    image: /images/partners/houtbaar.png
+                    href: https://www.houtbaarhaarlem.nl/
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Image, name: image, widget: image }
                   - { label: Link, name: href, widget: string }
 
       - name: soundsystem
