@@ -58,6 +58,7 @@ export type SummerJamEvent = {
   format: string
   partners: string[]
   ticketLabel: string
+  ticketUrl: ExternalUrl
   lineUpLabel: string
   whatsappUrl: ExternalUrl
   instagramUrl: ExternalUrl
@@ -100,6 +101,7 @@ export type WonderlandPage = {
 
 export type SummerJamPage = {
   event: SummerJamEvent
+  ticker: string[]
   concept: string[]
   dayArc: {
     time: string
@@ -109,6 +111,18 @@ export type SummerJamPage = {
   partners: {
     name: string
     description: string
+    href: string
+  }[]
+  lineup: {
+    name: string
+    role: string
+    description: string
+    image?: ImagePath
+    sourceUrl?: ExternalUrl
+  }[]
+  partnerLogos: {
+    name: string
+    image: ImagePath
     href: string
   }[]
 }

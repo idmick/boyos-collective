@@ -135,6 +135,7 @@ collections:
                 widget: list
                 field: { label: Partner, name: partner, widget: string }
               - { label: Ticket Label, name: ticketLabel, widget: string }
+              - { label: Ticket URL, name: ticketUrl, widget: string }
               - { label: Line-up Label, name: lineUpLabel, widget: string }
               - { label: WhatsApp URL, name: whatsappUrl, widget: string }
               - { label: Instagram URL, name: instagramUrl, widget: string }
@@ -154,6 +155,10 @@ collections:
             name: page
             widget: object
             fields:
+              - label: Ticker
+                name: ticker
+                widget: list
+                field: { label: Item, name: item, widget: string }
               - label: Concept Paragraphs
                 name: concept
                 widget: list
@@ -173,6 +178,24 @@ collections:
                 fields:
                   - { label: Name, name: name, widget: string }
                   - { label: Description, name: description, widget: text }
+                  - { label: Link, name: href, widget: string }
+              - label: Lineup
+                name: lineup
+                widget: list
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Role, name: role, widget: string }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Image, name: image, widget: image, required: false }
+                  - { label: Source URL, name: sourceUrl, widget: string, required: false }
+              - label: Partner Logos
+                name: partnerLogos
+                widget: list
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: Name, name: name, widget: string }
+                  - { label: Image, name: image, widget: image }
                   - { label: Link, name: href, widget: string }
 
       - name: soundsystem
