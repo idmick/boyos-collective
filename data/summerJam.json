@@ -3,14 +3,15 @@
     "venueUrl": "https://www.houtbaarhaarlem.nl/",
     "iniInstagramUrl": "https://www.instagram.com/inimovement/",
     "ticketUrl": "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=6ea99d8c-4bc7-4656-a7f6-4157dddba51f",
-    "lineUpLabel": "TOMMASO · Estafête (live) · UMOJA · Shamis · Boyos Soundsystem",
+    "lineUpLabel": "Hosted by SYNGA · TOMMASO · Estafête (live) · UMOJA · Shamis · Boyos Soundsystem",
     "dateLabel": "Saturday 25 July 2026",
     "timeLabel": "13:00 – 23:00 + afterparty till 02:00",
     "ticketLabel": "Tickets from €20",
     "partners": [
       "Boyos Wonderland",
       "INI Movement",
-      "Houtbaar"
+      "Houtbaar",
+      "Oshi"
     ],
     "iniUrl": "https://www.inimovement.nl/",
     "href": "/wonderland/summer-jam",
@@ -40,17 +41,20 @@
       "Open Jam",
       "DJ Sets",
       "Estafête Live",
+      "Hosted by SYNGA",
       "Pop-up Tattoo",
+      "Powered by Oshi",
       "Afterparty till 02:00"
     ],
     "finalCta": {
       "eyebrow": "Tickets",
       "title": "Meet us where the garden turns into a dancefloor.",
-      "body": "Summer Jam brings Boyos Wonderland and INI Movement together for a full day of open jam energy, DJs, live musicians, pop-up tattoos and warm selections. We start outside at Houtbaar in Haarlem, then move inside after 23:00 and keep going till 02:00. Tickets start at €20 through Houtbaar."
+      "body": "Summer Jam brings Boyos Wonderland and INI Movement together for a full day of open jam energy, DJs, live musicians, pop-up tattoos and warm selections. We start outside at Houtbaar in Haarlem, then move inside after 23:00 and keep going till 02:00. Tickets start at €20 through Houtbaar.",
+      "secondaryLabel": "Follow the build-up"
     },
     "concept": [
       "Summer Jam is where Boyos Wonderland and INI Movement meet at Houtbaar: a one day mini-festival in the garden, built around live energy, DJs, musicians and people coming together for the same reason: to move.",
-      "The garden opens in the afternoon with jams and DJ sets moving through the day. As the evening builds, Estafête brings live musicians into the room and the dancefloor starts to heat up.",
+      "The garden opens in the afternoon with jams and DJ sets moving through the day, hosted by SYNGA as the voice carrying the energy between the garden and the stage. As the evening builds, Estafête brings live musicians into the room and the dancefloor starts to heat up.",
       "Around it all: a pop-up tattoo studio, familiar faces, new friends, and that easy summer feeling of staying a little longer than you planned.",
       "When the garden closes at 23:00, the night moves inside and keeps going until 02:00."
     ],
@@ -58,7 +62,7 @@
       {
         "time": "Day",
         "name": "Garden Open",
-        "description": "Jams, DJ sets and people arriving into the same warm garden rhythm."
+        "description": "Jams, DJ sets and people arriving into the same warm garden rhythm, with SYNGA hosting the open jams and Estafête through the day."
       },
       {
         "time": "Ink",
@@ -86,6 +90,11 @@
         "name": "Houtbaar",
         "description": "The Haarlem home base for the open-air part of the day and the indoor continuation after 23:00.",
         "href": "https://www.houtbaarhaarlem.nl/"
+      },
+      {
+        "name": "Powered by Oshi",
+        "description": "Oshi helps power the community energy around the day, connecting the music, movement and people around Summer Jam.",
+        "href": "https://www.instagram.com/oshi_community/"
       }
     ],
     "lineup": [
@@ -93,6 +102,14 @@
         "name": "Open Jam",
         "role": "Open musical energy",
         "description": "The open jam is not a fixed show slot or a closed band moment. It is the loose, participatory pulse of the afternoon: musicians, friends and the garden finding the rhythm together."
+      },
+      {
+        "name": "SYNGA",
+        "role": "Host",
+        "description": "SYNGA is the voice guiding Summer Jam through the day: hosting the open jams and Estafête, bringing soulful R&B instinct, synth textures and raw beat energy into the garden.",
+        "image": "/images/artists/synga.jpg",
+        "imagePosition": "center 18%",
+        "sourceUrl": "https://www.instagram.com/synga.music/"
       },
       {
         "name": "Estafête",
@@ -143,6 +160,69 @@
         "name": "Houtbaar",
         "image": "/images/partners/houtbaar.png",
         "href": "https://www.houtbaarhaarlem.nl/"
+      }
+    ],
+    "seo": {
+      "title": "Summer Jam Haarlem | Boyos Wonderland x INI Movement",
+      "description": "Summer Jam is a one day mini-festival at Houtbaar, Haarlem on Saturday 25 July 2026 by Boyos Wonderland and INI Movement, with DJs, live musicians, pop-up tattoos and an indoor afterparty till 02:00.",
+      "keywords": "Summer Jam Haarlem, Houtbaar Haarlem, Boyos Wonderland, INI Movement, Boyos Soundsystem, Haarlem mini festival, Amsterdam DJ collective, disco house DJ Netherlands, pop-up tattoo event Haarlem",
+      "canonical": "https://www.boyoscollective.nl/wonderland/summer-jam",
+      "ogTitle": "Summer Jam Haarlem | Boyos Wonderland x INI Movement",
+      "ogImage": "https://www.boyoscollective.nl/images/summer-jam-poster.png",
+      "ogImageAlt": "Summer Jam poster",
+      "siteName": "Boyos Collective"
+    },
+    "hero": {
+      "backLabel": "← Boyos Wonderland",
+      "presentedBy": "Boyos Wonderland & INI Movement present",
+      "titleLines": [
+        "Summer",
+        "Jam"
+      ],
+      "subtitle": "A mini festival",
+      "secondaryCtaLabel": "Follow the build-up",
+      "stats": {
+        "dateLabel": "Date",
+        "timeLabel": "Time",
+        "venueLabel": "Venue",
+        "formatLabel": "Format"
+      }
+    },
+    "sections": {
+      "concept": {
+        "eyebrow": "How it moves",
+        "title": "From 13:00 To 02:00"
+      },
+      "lineup": {
+        "eyebrow": "Line-up",
+        "title": "Who's Bringing The Groove"
+      },
+      "partners": {
+        "eyebrow": "Together with",
+        "title": "The Partners"
+      },
+      "practicalInfo": {
+        "eyebrow": "Practical info",
+        "title": "Good To Know"
+      }
+    },
+    "lineupIntro": "The timetable is still taking shape, so this is not a play-by-play. It is a feel for the people and sounds carrying the day: live energy, deep record bags, warm club pressure and Boyos groove.",
+    "partnerCtaLabel": "Visit",
+    "practicalInfo": [
+      {
+        "label": "Date",
+        "value": "Saturday 25 July 2026",
+        "detail": "Summer in Haarlem, starting early afternoon."
+      },
+      {
+        "label": "Time",
+        "value": "13:00 – 23:00 + afterparty till 02:00",
+        "detail": "The garden closes at 23:00, then the night moves inside until 02:00."
+      },
+      {
+        "label": "Location",
+        "value": "Houtbaar, Haarlem",
+        "detail": "Woudplein 2, 2031CZ Haarlem"
       }
     ]
   }

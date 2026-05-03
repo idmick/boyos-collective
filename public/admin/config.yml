@@ -133,10 +133,15 @@ collections:
               - label: Partners
                 name: partners
                 widget: list
+                default:
+                  - Boyos Wonderland
+                  - INI Movement
+                  - Houtbaar
+                  - Oshi
                 field: { label: Partner, name: partner, widget: string }
               - { label: Ticket Label, name: ticketLabel, widget: string }
               - { label: Ticket URL, name: ticketUrl, widget: string, default: "https://www.houtbaarhaarlem.nl/" }
-              - { label: Line-up Label, name: lineUpLabel, widget: string }
+              - { label: Line-up Label, name: lineUpLabel, widget: string, default: "Hosted by SYNGA · TOMMASO · Estafête (live) · UMOJA · Shamis · Boyos Soundsystem" }
               - { label: WhatsApp URL, name: whatsappUrl, widget: string }
               - { label: Instagram URL, name: instagramUrl, widget: string }
               - { label: INI URL, name: iniUrl, widget: string }
@@ -155,6 +160,101 @@ collections:
             name: page
             widget: object
             fields:
+              - label: SEO
+                name: seo
+                widget: object
+                default:
+                  title: Summer Jam Haarlem | Boyos Wonderland x INI Movement
+                  description: Summer Jam is a one day mini-festival at Houtbaar, Haarlem on Saturday 25 July 2026 by Boyos Wonderland and INI Movement, with DJs, live musicians, pop-up tattoos and an indoor afterparty till 02:00.
+                  keywords: Summer Jam Haarlem, Houtbaar Haarlem, Boyos Wonderland, INI Movement, Boyos Soundsystem, Haarlem mini festival, Amsterdam DJ collective, disco house DJ Netherlands, pop-up tattoo event Haarlem
+                  canonical: https://www.boyoscollective.nl/wonderland/summer-jam
+                  ogTitle: Summer Jam Haarlem | Boyos Wonderland x INI Movement
+                  ogImage: https://www.boyoscollective.nl/images/summer-jam-poster.png
+                  ogImageAlt: Summer Jam poster
+                  siteName: Boyos Collective
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Description, name: description, widget: text }
+                  - { label: Keywords, name: keywords, widget: text }
+                  - { label: Canonical URL, name: canonical, widget: string }
+                  - { label: Open Graph Title, name: ogTitle, widget: string }
+                  - { label: Open Graph Image, name: ogImage, widget: string }
+                  - { label: Open Graph Image Alt, name: ogImageAlt, widget: string }
+                  - { label: Site Name, name: siteName, widget: string }
+              - label: Hero
+                name: hero
+                widget: object
+                default:
+                  backLabel: ← Boyos Wonderland
+                  presentedBy: Boyos Wonderland & INI Movement present
+                  titleLines:
+                    - Summer
+                    - Jam
+                  subtitle: A mini festival
+                  secondaryCtaLabel: Follow the build-up
+                  stats:
+                    dateLabel: Date
+                    timeLabel: Time
+                    venueLabel: Venue
+                    formatLabel: Format
+                fields:
+                  - { label: Back Label, name: backLabel, widget: string }
+                  - { label: Presented By, name: presentedBy, widget: string }
+                  - label: Title Lines
+                    name: titleLines
+                    widget: list
+                    field: { label: Line, name: line, widget: string }
+                  - { label: Subtitle, name: subtitle, widget: string }
+                  - { label: Secondary CTA Label, name: secondaryCtaLabel, widget: string }
+                  - label: Stat Labels
+                    name: stats
+                    widget: object
+                    fields:
+                      - { label: Date Label, name: dateLabel, widget: string }
+                      - { label: Time Label, name: timeLabel, widget: string }
+                      - { label: Venue Label, name: venueLabel, widget: string }
+                      - { label: Format Label, name: formatLabel, widget: string }
+              - label: Section Headings
+                name: sections
+                widget: object
+                default:
+                  concept:
+                    eyebrow: How it moves
+                    title: From 13:00 To 02:00
+                  lineup:
+                    eyebrow: Line-up
+                    title: Who's Bringing The Groove
+                  partners:
+                    eyebrow: Together with
+                    title: The Partners
+                  practicalInfo:
+                    eyebrow: Practical info
+                    title: Good To Know
+                fields:
+                  - label: Concept
+                    name: concept
+                    widget: object
+                    fields:
+                      - { label: Eyebrow, name: eyebrow, widget: string }
+                      - { label: Title, name: title, widget: string }
+                  - label: Lineup
+                    name: lineup
+                    widget: object
+                    fields:
+                      - { label: Eyebrow, name: eyebrow, widget: string }
+                      - { label: Title, name: title, widget: string }
+                  - label: Partners
+                    name: partners
+                    widget: object
+                    fields:
+                      - { label: Eyebrow, name: eyebrow, widget: string }
+                      - { label: Title, name: title, widget: string }
+                  - label: Practical Info
+                    name: practicalInfo
+                    widget: object
+                    fields:
+                      - { label: Eyebrow, name: eyebrow, widget: string }
+                      - { label: Title, name: title, widget: string }
               - label: Ticker
                 name: ticker
                 widget: list
@@ -165,7 +265,9 @@ collections:
                   - Open Jam
                   - DJ Sets
                   - Estafête Live
+                  - Hosted by SYNGA
                   - Pop-up Tattoo
+                  - Powered by Oshi
                   - Afterparty till 02:00
                 field: { label: Item, name: item, widget: string }
               - label: Final CTA
@@ -175,10 +277,32 @@ collections:
                   eyebrow: Tickets
                   title: Meet us where the garden turns into a dancefloor.
                   body: Summer Jam brings Boyos Wonderland and INI Movement together for a full day of open jam energy, DJs, live musicians, pop-up tattoos and warm selections. We start outside at Houtbaar in Haarlem, then move inside after 23:00 and keep going till 02:00. Tickets start at €20 through Houtbaar.
+                  secondaryLabel: Follow the build-up
                 fields:
                   - { label: Eyebrow, name: eyebrow, widget: string }
                   - { label: Title, name: title, widget: string }
                   - { label: Body, name: body, widget: text }
+                  - { label: Secondary Button Label, name: secondaryLabel, widget: string }
+              - { label: Lineup Intro, name: lineupIntro, widget: text, default: "The timetable is still taking shape, so this is not a play-by-play. It is a feel for the people and sounds carrying the day: live energy, deep record bags, warm club pressure and Boyos groove." }
+              - { label: Partner Button Label, name: partnerCtaLabel, widget: string, default: Visit }
+              - label: Practical Info Cards
+                name: practicalInfo
+                widget: list
+                summary: "{{fields.label}}"
+                default:
+                  - label: Date
+                    value: Saturday 25 July 2026
+                    detail: Summer in Haarlem, starting early afternoon.
+                  - label: Time
+                    value: 13:00 – 23:00 + afterparty till 02:00
+                    detail: The garden closes at 23:00, then the night moves inside until 02:00.
+                  - label: Location
+                    value: Houtbaar, Haarlem
+                    detail: Woudplein 2, 2031CZ Haarlem
+                fields:
+                  - { label: Label, name: label, widget: string }
+                  - { label: Value, name: value, widget: string }
+                  - { label: Detail, name: detail, widget: text }
               - label: Concept Paragraphs
                 name: concept
                 widget: list
@@ -195,6 +319,19 @@ collections:
                 name: partners
                 widget: list
                 summary: "{{fields.name}}"
+                default:
+                  - name: Boyos Wonderland
+                    description: The event world around Boyos Collective; music, food, art, tattoos, and a dancefloor with room for everyone.
+                    href: /wonderland
+                  - name: INI Movement
+                    description: A creative movement bringing live music and open participation into the day.
+                    href: https://www.inimovement.nl/
+                  - name: Houtbaar
+                    description: The Haarlem home base for the open-air part of the day and the indoor continuation after 23:00.
+                    href: https://www.houtbaarhaarlem.nl/
+                  - name: Powered by Oshi
+                    description: Oshi helps power the community energy around the day, connecting the music, movement and people around Summer Jam.
+                    href: https://www.instagram.com/oshi_community/
                 fields:
                   - { label: Name, name: name, widget: string }
                   - { label: Description, name: description, widget: text }
@@ -207,6 +344,12 @@ collections:
                   - name: Open Jam
                     role: Open musical energy
                     description: The open jam is not a fixed show slot or a closed band moment. It is the loose, participatory pulse of the afternoon; musicians, friends and the garden finding the rhythm together.
+                  - name: SYNGA
+                    role: Host
+                    description: SYNGA is the voice guiding Summer Jam through the day; hosting the open jams and Estafête, bringing soulful R&B instinct, synth textures and raw beat energy into the garden.
+                    image: /images/artists/synga.jpg
+                    imagePosition: center 18%
+                    sourceUrl: https://www.instagram.com/synga.music/
                   - name: Estafête
                     role: Live formation
                     description: Estafête is a live formation put together for movement, not a traditional band with a fixed front. DJs and musicians pass energy back and forth, letting the set build in the moment.
@@ -235,6 +378,7 @@ collections:
                   - { label: Role, name: role, widget: string }
                   - { label: Description, name: description, widget: text }
                   - { label: Image, name: image, widget: image, required: false }
+                  - { label: Image Position, name: imagePosition, widget: string, required: false }
                   - { label: Source URL, name: sourceUrl, widget: string, required: false }
               - label: Partner Logos
                 name: partnerLogos
