@@ -29,11 +29,38 @@ export default function Home() {
             images: [
               {
                 url: 'https://www.boyoscollective.nl/images/Boyos_logo_boxed.png',
+                width: 3260,
+                height: 1284,
+                type: 'image/png',
                 alt: 'Boyos Collective logo',
               },
             ],
             siteName: 'Boyos Collective',
           },
+          twitter: {
+            cardType: 'summary_large_image',
+          },
+          additionalMetaTags: [
+            {
+              name: 'twitter:title',
+              content:
+                'Boyos Collective | DJ Collective Amsterdam, Haarlem & The Hague',
+            },
+            {
+              name: 'twitter:description',
+              content:
+                'Boyos Collective is a DJ collective based in Amsterdam, Haarlem & The Hague. We organize events, play at clubs and festivals, and bring people together through music, art, and creativity.',
+            },
+            {
+              name: 'twitter:image',
+              content:
+                'https://www.boyoscollective.nl/images/Boyos_logo_boxed.png',
+            },
+            {
+              name: 'twitter:image:alt',
+              content: 'Boyos Collective logo',
+            },
+          ],
         })}
       </Head>
       <OrganizationJsonLd

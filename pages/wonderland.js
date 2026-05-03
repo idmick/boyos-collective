@@ -28,11 +28,36 @@ export default function BoyosWonderlandPage() {
             images: [
               {
                 url: 'https://www.boyoscollective.nl/images/cover.png',
+                width: 3151,
+                height: 2805,
+                type: 'image/png',
                 alt: 'Boyos Wonderland',
               },
             ],
             siteName: 'Boyos Collective',
           },
+          twitter: {
+            cardType: 'summary_large_image',
+          },
+          additionalMetaTags: [
+            {
+              name: 'twitter:title',
+              content: 'Boyos Wonderland | Events, Art & Essential Groove',
+            },
+            {
+              name: 'twitter:description',
+              content:
+                'Step into Boyos Wonderland: warm events around music, art, food, tattoos and the essential groove.',
+            },
+            {
+              name: 'twitter:image',
+              content: 'https://www.boyoscollective.nl/images/cover.png',
+            },
+            {
+              name: 'twitter:image:alt',
+              content: 'Boyos Wonderland',
+            },
+          ],
         })}
       </Head>
 

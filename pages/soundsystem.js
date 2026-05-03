@@ -34,11 +34,37 @@ export default function Soundsystem({ pastGigs }) {
             images: [
               {
                 url: 'https://www.boyoscollective.nl/images/boyos-25-20.jpg',
+                width: 3578,
+                height: 4472,
+                type: 'image/jpeg',
                 alt: 'Boyos Soundsystem',
               },
             ],
             siteName: 'Boyos Collective',
           },
+          twitter: {
+            cardType: 'summary_large_image',
+          },
+          additionalMetaTags: [
+            {
+              name: 'twitter:title',
+              content: 'Boyos Soundsystem | Disco House DJ Collective',
+            },
+            {
+              name: 'twitter:description',
+              content:
+                'Book Boyos Soundsystem for warm, dance-forward sets across Disco, House, Brazilian Boogie, Soca, Zouk, Italo and Afro House.',
+            },
+            {
+              name: 'twitter:image',
+              content:
+                'https://www.boyoscollective.nl/images/boyos-25-20.jpg',
+            },
+            {
+              name: 'twitter:image:alt',
+              content: 'Boyos Soundsystem',
+            },
+          ],
         })}
       </Head>
       <script
