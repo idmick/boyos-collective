@@ -34,6 +34,23 @@ export default function SummerJamPage() {
               content:
                 'Summer Jam Haarlem, Houtbaar Haarlem, Boyos Wonderland, INI Movement, Boyos Soundsystem, Haarlem mini festival, Amsterdam DJ collective, disco house DJ Netherlands, pop-up tattoo event Haarlem',
             },
+            {
+              name: 'twitter:title',
+              content: 'Summer Jam Haarlem | Boyos Wonderland x INI Movement',
+            },
+            {
+              name: 'twitter:description',
+              content: event.description,
+            },
+            {
+              name: 'twitter:image',
+              content:
+                'https://www.boyoscollective.nl/images/summer-jam-poster.png',
+            },
+            {
+              name: 'twitter:image:alt',
+              content: 'Summer Jam poster',
+            },
           ],
           openGraph: {
             url: 'https://www.boyoscollective.nl/wonderland/summer-jam',
@@ -42,10 +59,16 @@ export default function SummerJamPage() {
             images: [
               {
                 url: 'https://www.boyoscollective.nl/images/summer-jam-poster.png',
+                width: 2160,
+                height: 2700,
+                type: 'image/png',
                 alt: 'Summer Jam poster',
               },
             ],
             siteName: 'Boyos Collective',
+          },
+          twitter: {
+            cardType: 'summary_large_image',
           },
         })}
       </Head>
