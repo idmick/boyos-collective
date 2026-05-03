@@ -11,8 +11,14 @@ import { summerJamPage } from '../../data/wonderland'
 export default function SummerJamPage() {
   const {
     event,
+    seo,
+    hero,
+    sections,
     ticker,
     finalCta,
+    lineupIntro,
+    partnerCtaLabel,
+    practicalInfo,
     concept,
     dayArc,
     partners,
@@ -24,48 +30,45 @@ export default function SummerJamPage() {
     <>
       <Head>
         {generateNextSeo({
-          title: 'Summer Jam Haarlem | Boyos Wonderland x INI Movement',
-          description:
-            'Summer Jam is a one day mini-festival at Houtbaar, Haarlem on Saturday 25 July 2026 by Boyos Wonderland and INI Movement, with DJs, live musicians, pop-up tattoos and an indoor afterparty till 02:00.',
-          canonical: 'https://www.boyoscollective.nl/wonderland/summer-jam',
+          title: seo.title,
+          description: seo.description,
+          canonical: seo.canonical,
           additionalMetaTags: [
             {
               name: 'keywords',
-              content:
-                'Summer Jam Haarlem, Houtbaar Haarlem, Boyos Wonderland, INI Movement, Boyos Soundsystem, Haarlem mini festival, Amsterdam DJ collective, disco house DJ Netherlands, pop-up tattoo event Haarlem',
+              content: seo.keywords,
             },
             {
               name: 'twitter:title',
-              content: 'Summer Jam Haarlem | Boyos Wonderland x INI Movement',
+              content: seo.ogTitle,
             },
             {
               name: 'twitter:description',
-              content: event.description,
+              content: seo.description,
             },
             {
               name: 'twitter:image',
-              content:
-                'https://www.boyoscollective.nl/images/summer-jam-poster.png',
+              content: seo.ogImage,
             },
             {
               name: 'twitter:image:alt',
-              content: 'Summer Jam poster',
+              content: seo.ogImageAlt,
             },
           ],
           openGraph: {
-            url: 'https://www.boyoscollective.nl/wonderland/summer-jam',
-            title: 'Summer Jam Haarlem | Boyos Wonderland x INI Movement',
+            url: seo.canonical,
+            title: seo.ogTitle,
             description: event.description,
             images: [
               {
-                url: 'https://www.boyoscollective.nl/images/summer-jam-poster.png',
+                url: seo.ogImage,
                 width: 2160,
                 height: 2700,
                 type: 'image/png',
-                alt: 'Summer Jam poster',
+                alt: seo.ogImageAlt,
               },
             ],
-            siteName: 'Boyos Collective',
+            siteName: seo.siteName,
           },
           twitter: {
             cardType: 'summary_large_image',
@@ -84,9 +87,7 @@ export default function SummerJamPage() {
             eventStatus: 'https://schema.org/EventScheduled',
             eventAttendanceMode:
               'https://schema.org/OfflineEventAttendanceMode',
-            image: [
-              'https://www.boyoscollective.nl/images/summer-jam-poster.png',
-            ],
+            image: [seo.ogImage],
             location: {
               '@type': 'Place',
               name: event.venueName,
@@ -142,25 +143,28 @@ export default function SummerJamPage() {
       <section className="relative grid min-h-screen w-full max-w-full overflow-hidden bg-[rgb(var(--color-brand-deep))] pt-[72px] md:grid-cols-2">
         <div className="hero-safe-content hero-safe-content-summerjam relative z-10 flex w-screen max-w-[100vw] min-w-0 flex-col justify-center px-6 py-14 md:w-auto md:max-w-none md:px-14 md:py-20">
           <ButtonLink href="/wonderland" tone="paper" className="mb-12 w-fit">
-            ← Boyos Wonderland
+            {hero.backLabel}
           </ButtonLink>
           <p className="type-meta mb-5 text-[var(--color-brand-amber)]">
-            Boyos Wonderland & INI Movement present
+            {hero.presentedBy}
           </p>
           <h1 className="type-display max-w-full text-[clamp(4.6rem,22vw,11rem)] leading-[0.86] md:text-[clamp(5rem,12vw,11rem)]">
-            Summer
-            <br />
-            Jam
+            {hero.titleLines.map((line, index) => (
+              <span key={line}>
+                {index > 0 ? <br /> : null}
+                {line}
+              </span>
+            ))}
           </h1>
           <p className="type-accent mb-12 mt-2 text-[clamp(1.25rem,2.4vw,2rem)] text-[var(--color-brand-amber)]">
-            A mini festival
+            {hero.subtitle}
           </p>
           <dl className="mb-12 grid grid-cols-2 gap-x-8 gap-y-5 border-b border-white/10 pb-10">
             {[
-              ['Date', event.dateLabel],
-              ['Time', event.timeLabel],
-              ['Venue', event.locationLabel],
-              ['Format', event.format],
+              [hero.stats.dateLabel, event.dateLabel],
+              [hero.stats.timeLabel, event.timeLabel],
+              [hero.stats.venueLabel, event.locationLabel],
+              [hero.stats.formatLabel, event.format],
             ].map(([label, value]) => (
               <div key={label}>
                 <dt className="type-meta mb-1 text-white/35">{label}</dt>
@@ -175,7 +179,7 @@ export default function SummerJamPage() {
               {event.ticketLabel}
             </ButtonLink>
             <ButtonLink href={event.instagramUrl} tone="paper">
-              Follow the build-up
+              {hero.secondaryCtaLabel}
             </ButtonLink>
           </div>
         </div>
@@ -208,8 +212,8 @@ export default function SummerJamPage() {
           <Reveal>
             <div className="md:sticky md:top-24">
               <SectionTitle
-                eyebrow="How it moves"
-                title="From 13:00 To 02:00"
+                eyebrow={sections.concept.eyebrow}
+                title={sections.concept.title}
               />
             </div>
           </Reveal>
@@ -249,14 +253,14 @@ export default function SummerJamPage() {
       >
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <SectionTitle eyebrow="Line-up" title="Who's Bringing The Groove" />
+            <SectionTitle
+              eyebrow={sections.lineup.eyebrow}
+              title={sections.lineup.title}
+            />
           </Reveal>
           <div className="mt-10 max-w-3xl">
             <p className="type-body text-[15px] leading-8 text-[color:rgb(var(--color-surface-paper-rgb)/0.58)]">
-              The timetable is still taking shape, so this is not a
-              play-by-play. It is a feel for the people and sounds carrying the
-              day: live energy, deep record bags, warm club pressure and Boyos
-              groove.
+              {lineupIntro}
             </p>
           </div>
           <div className="mt-14 grid grid-flow-dense gap-5 md:grid-cols-12">
@@ -275,6 +279,11 @@ export default function SummerJamPage() {
                         fill
                         sizes="(min-width: 768px) 50vw, 100vw"
                         className="object-cover object-center transition duration-700 group-hover:scale-[1.04]"
+                        style={
+                          act.imagePosition
+                            ? { objectPosition: act.imagePosition }
+                            : undefined
+                        }
                       />
                     </div>
                   ) : null}
@@ -301,7 +310,10 @@ export default function SummerJamPage() {
       <section className="bg-[rgb(var(--color-brand-deep))] px-6 py-[var(--space-section)] md:px-10">
         <div className="mx-auto max-w-6xl">
           <Reveal>
-            <SectionTitle eyebrow="Together with" title="The Partners" />
+            <SectionTitle
+              eyebrow={sections.partners.eyebrow}
+              title={sections.partners.title}
+            />
           </Reveal>
           <div className="mt-14 grid gap-0 md:grid-cols-3">
             {partners.map((partner, index) => (
@@ -338,7 +350,7 @@ export default function SummerJamPage() {
                     {partner.description}
                   </p>
                   <ButtonLink href={partner.href} tone="amber">
-                    Visit
+                    {partnerCtaLabel}
                   </ButtonLink>
                 </article>
               </Reveal>
@@ -351,37 +363,21 @@ export default function SummerJamPage() {
         <div className="mx-auto max-w-6xl">
           <Reveal>
             <SectionTitle
-              eyebrow="Practical info"
-              title="Good To Know"
+              eyebrow={sections.practicalInfo.eyebrow}
+              title={sections.practicalInfo.title}
               dark={false}
             />
           </Reveal>
           <div className="mt-14 grid gap-0 md:grid-cols-3">
-            {[
-              [
-                'Date',
-                event.dateLabel,
-                'Summer in Haarlem, starting early afternoon.',
-              ],
-              [
-                'Time',
-                event.timeLabel,
-                'The garden closes at 23:00, then the night moves inside until 02:00.',
-              ],
-              [
-                'Location',
-                event.locationLabel,
-                `${event.address.streetAddress}, ${event.address.postalCode} ${event.address.addressLocality}`,
-              ],
-            ].map(([label, value, detail]) => (
-              <Reveal key={label} delay="short">
+            {practicalInfo.map((item) => (
+              <Reveal key={item.label} delay="short">
                 <article className="h-full border border-black/15 bg-black/[0.03] p-8">
-                  <p className="type-meta mb-3 text-black/45">{label}</p>
+                  <p className="type-meta mb-3 text-black/45">{item.label}</p>
                   <h3 className="type-display text-[clamp(2rem,4vw,3.2rem)] leading-none">
-                    {value}
+                    {item.value}
                   </h3>
                   <p className="type-body mt-4 text-sm leading-7 text-black/60">
-                    {detail}
+                    {item.detail}
                   </p>
                 </article>
               </Reveal>
@@ -409,7 +405,7 @@ export default function SummerJamPage() {
                 {event.ticketLabel}
               </ButtonLink>
               <ButtonLink href={event.instagramUrl} tone="paper">
-                Follow the build-up
+                {finalCta.secondaryLabel}
               </ButtonLink>
             </div>
           </div>

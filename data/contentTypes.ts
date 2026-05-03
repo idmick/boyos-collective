@@ -101,12 +101,61 @@ export type WonderlandPage = {
 
 export type SummerJamPage = {
   event: SummerJamEvent
+  seo: {
+    title: string
+    description: string
+    keywords: string
+    canonical: ExternalUrl
+    ogTitle: string
+    ogImage: ExternalUrl
+    ogImageAlt: string
+    siteName: string
+  }
+  hero: {
+    backLabel: string
+    presentedBy: string
+    titleLines: string[]
+    subtitle: string
+    secondaryCtaLabel: string
+    stats: {
+      dateLabel: string
+      timeLabel: string
+      venueLabel: string
+      formatLabel: string
+    }
+  }
+  sections: {
+    concept: {
+      eyebrow: string
+      title: string
+    }
+    lineup: {
+      eyebrow: string
+      title: string
+    }
+    partners: {
+      eyebrow: string
+      title: string
+    }
+    practicalInfo: {
+      eyebrow: string
+      title: string
+    }
+  }
   ticker: string[]
   finalCta: {
     eyebrow: string
     title: string
     body: string
+    secondaryLabel: string
   }
+  lineupIntro: string
+  partnerCtaLabel: string
+  practicalInfo: {
+    label: string
+    value: string
+    detail: string
+  }[]
   concept: string[]
   dayArc: {
     time: string
@@ -123,6 +172,7 @@ export type SummerJamPage = {
     role: string
     description: string
     image?: ImagePath
+    imagePosition?: string
     sourceUrl?: ExternalUrl
   }[]
   partnerLogos: {
