@@ -25,7 +25,7 @@ export default function SiteFooter() {
 
         <div className="flex justify-center">
           <Image
-            src="/images/Boyos_logo_white.png"
+            src="/images/optimized/boyos-logo-white-320.png"
             alt="Boyos Collective"
             width={116}
             height={38}

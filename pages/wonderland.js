@@ -27,11 +27,11 @@ export default function BoyosWonderlandPage() {
               'Step into Boyos Wonderland: warm events around music, art, food, tattoos and the essential groove.',
             images: [
               {
-                url: 'https://www.boyoscollective.nl/images/cover.png',
-                width: 3151,
-                height: 2805,
-                type: 'image/png',
-                alt: 'Boyos Wonderland',
+                url: 'https://www.boyoscollective.nl/images/og/boyos-wonderland.jpg',
+                width: 1200,
+                height: 630,
+                type: 'image/jpeg',
+                alt: 'Boyos Wonderland at Houtbaar Haarlem',
               },
             ],
             siteName: 'Boyos Collective',
@@ -51,11 +51,12 @@ export default function BoyosWonderlandPage() {
             },
             {
               name: 'twitter:image',
-              content: 'https://www.boyoscollective.nl/images/cover.png',
+              content:
+                'https://www.boyoscollective.nl/images/og/boyos-wonderland.jpg',
             },
             {
               name: 'twitter:image:alt',
-              content: 'Boyos Wonderland',
+              content: 'Boyos Wonderland at Houtbaar Haarlem',
             },
           ],
         })}
@@ -70,6 +71,7 @@ export default function BoyosWonderlandPage() {
           alt=""
           fill
           priority
+          sizes="100vw"
           className="hero-parallax-background object-cover brightness-[0.38] saturate-[0.85]"
         />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_60%_at_60%_40%,rgba(94,196,188,0.08),transparent_70%)]" />
@@ -204,6 +206,7 @@ export default function BoyosWonderlandPage() {
                   src={summerJamEvent.poster}
                   alt={`${summerJamEvent.shortTitle} poster`}
                   fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
                   className="surface-media object-cover"
                 />
               </div>
@@ -302,6 +305,7 @@ export default function BoyosWonderlandPage() {
                   src={album.cover}
                   alt={album.title}
                   fill
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                   className="surface-media object-cover"
                 />
                 <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent p-5 opacity-100 transition md:opacity-0 md:group-hover:opacity-100">

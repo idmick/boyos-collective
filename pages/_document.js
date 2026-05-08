@@ -32,8 +32,6 @@ class MyDocument extends Document {
             href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Serif+Display:ital@0;1&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
             rel="stylesheet"
           />
-          <script src="https://w.soundcloud.com/player/api.js" async></script>
-
           <link rel="icon" href="/favicon.ico" />
           {/* add your own app-icon */}
           {/* <link

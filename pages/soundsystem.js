@@ -33,9 +33,9 @@ export default function Soundsystem({ pastGigs }) {
               'Book Boyos Soundsystem for warm, dance-forward sets across Disco, House, Brazilian Boogie, Soca, Zouk, Italo and Afro House.',
             images: [
               {
-                url: 'https://www.boyoscollective.nl/images/boyos-25-20.jpg',
-                width: 3578,
-                height: 4472,
+                url: 'https://www.boyoscollective.nl/images/og/boyos-soundsystem.jpg',
+                width: 1200,
+                height: 630,
                 type: 'image/jpeg',
                 alt: 'Boyos Soundsystem',
               },
@@ -58,7 +58,7 @@ export default function Soundsystem({ pastGigs }) {
             {
               name: 'twitter:image',
               content:
-                'https://www.boyoscollective.nl/images/boyos-25-20.jpg',
+                'https://www.boyoscollective.nl/images/og/boyos-soundsystem.jpg',
             },
             {
               name: 'twitter:image:alt',
@@ -77,7 +77,13 @@ export default function Soundsystem({ pastGigs }) {
             url: 'https://www.boyoscollective.nl/soundsystem',
             genre: page.genres,
             foundingLocation: 'Amsterdam, Netherlands',
-            image: 'https://www.boyoscollective.nl/images/boyos-25-20.jpg',
+            image: 'https://www.boyoscollective.nl/images/og/boyos-soundsystem.jpg',
+            areaServed: [
+              'Amsterdam',
+              'Haarlem',
+              'The Hague',
+              'Netherlands',
+            ],
             sameAs: [
               'https://www.instagram.com/boyos.soundsystem/',
               'https://ra.co/dj/boyossoundsystem',
@@ -100,6 +106,7 @@ export default function Soundsystem({ pastGigs }) {
           alt=""
           fill
           priority
+          sizes="100vw"
           className="hero-parallax-background object-cover brightness-[0.45] grayscale-[0.45]"
         />
         <div className="hero-parallax-wordmark type-display absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none text-[clamp(8rem,25vw,24rem)] tracking-[0.05em] text-transparent [-webkit-text-stroke:1px_rgba(240,235,226,0.07)]">

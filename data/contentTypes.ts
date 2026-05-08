@@ -104,7 +104,6 @@ export type SummerJamPage = {
   seo: {
     title: string
     description: string
-    keywords: string
     canonical: ExternalUrl
     ogTitle: string
     ogImage: ExternalUrl

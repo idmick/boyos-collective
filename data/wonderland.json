@@ -2,7 +2,7 @@
   "hero": {
     "eyebrow": "Boyos Collective — The Experience",
     "title": "Boyos Wonderland",
-    "image": "/images/BoyosWonderland-mini-fest-at.jpg",
+    "image": "/images/optimized/boyos-wonderland-mini-fest-at-2200.jpg",
     "badge": "/images/essential_groove.png",
     "subtitle": "From intimate Dine & Dance nights to open-air garden festivals: a world where the groove brings people together."
   },
@@ -10,7 +10,7 @@
     "eyebrow": "Our Story",
     "title": "Step Into Wonderland",
     "logo": "/images/BoyosWonderlandLogo.svg",
-    "image": "/images/albums/cover_minifestival_1_24.jpg",
+    "image": "/images/optimized/cover-minifestival-1-1400.jpg",
     "body": [
       "Boyos Wonderland is our ongoing event series: the place where the music takes physical form. We host everything from intimate Dine & Dance nights to vibrant indoor parties and open-air garden festivals.",
       "Each edition blends music, art, food, and tattoos for a full sensory experience. It's a world built on the same groove that drives Boyos Soundsystem, stretched into a shared event.",
@@ -39,27 +39,27 @@
   "albums": [
     {
       "title": "Dine and Dance 19.12.25",
-      "cover": "/images/albums/cover_dine_dance_christmas_19.jpg",
+      "cover": "/images/optimized/cover-dine-dance-christmas-1000.jpg",
       "url": "https://1drv.ms/a/c/3ffa6c8616c781f7/IgCmn5dF8NTdR6yGvJhtHw-AAfG9IEd7xRLOPCVbZwrDgMQ?e=KUgkcx"
     },
     {
       "title": "Mini Festival 28.06.25",
-      "cover": "/images/albums/cover_minifestival_2.jpg",
+      "cover": "/images/optimized/cover-minifestival-2-1000.jpg",
       "url": "https://1drv.ms/a/c/3ffa6c8616c781f7/EmvsUIjckHxIn6AQJg7DoXEBIO84vzIzjU66sRVUc4GB3w?e=g3WgEL"
     },
     {
       "title": "Dine and Dance 16.05.25",
-      "cover": "/images/albums/cover_dine_dance_2.jpg",
+      "cover": "/images/optimized/cover-dine-dance-2-1000.jpg",
       "url": "https://1drv.ms/a/c/3ffa6c8616c781f7/EjgpbRxYJLhDh8npP18xpDIBkACc1p1d8ATNy1F9J-zNUQ?e=2JDEE8"
     },
     {
       "title": "Dine and Dance 12.04.25",
-      "cover": "/images/albums/cover_dine_dance_1.jpg",
+      "cover": "/images/optimized/cover-dine-dance-1-1000.jpg",
       "url": "https://1drv.ms/a/c/3ffa6c8616c781f7/EvRL9_kDsXRMmsdl2k9GgeEBlhZhAoiiBPnaoetFuPNylA?e=HqzSFC"
     },
     {
       "title": "Mini Festival 17.8.24",
-      "cover": "/images/albums/cover_minifestival_1_24.jpg",
+      "cover": "/images/optimized/cover-minifestival-1-1400.jpg",
       "url": "https://1drv.ms/a/c/3ffa6c8616c781f7/EpOMafot_TJHu437auQpZgwBvll7UOzvQq4GBjlX0XzRcA?e=EGILLu"
     },
     {
