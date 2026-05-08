@@ -35,10 +35,6 @@ export default function SummerJamPage() {
           canonical: seo.canonical,
           additionalMetaTags: [
             {
-              name: 'keywords',
-              content: seo.keywords,
-            },
-            {
               name: 'twitter:title',
               content: seo.ogTitle,
             },
@@ -62,9 +58,9 @@ export default function SummerJamPage() {
             images: [
               {
                 url: seo.ogImage,
-                width: 2160,
-                height: 2700,
-                type: 'image/png',
+                width: 1200,
+                height: 630,
+                type: 'image/jpeg',
                 alt: seo.ogImageAlt,
               },
             ],
@@ -187,9 +183,10 @@ export default function SummerJamPage() {
           <Image
             src={event.poster}
             alt={`${event.shortTitle} poster`}
-            width={2160}
-            height={2700}
+            width={960}
+            height={1200}
             priority
+            sizes="100vw"
             className="block h-auto w-screen max-w-[100vw] md:hidden"
           />
           <Image
@@ -197,6 +194,7 @@ export default function SummerJamPage() {
             alt={`${event.shortTitle} poster`}
             fill
             priority
+            sizes="(min-width: 768px) 50vw, 100vw"
             className="hidden object-cover object-top md:block"
           />
         </div>

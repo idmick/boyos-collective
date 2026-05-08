@@ -15,7 +15,7 @@
     ],
     "iniUrl": "https://www.inimovement.nl/",
     "href": "/wonderland/summer-jam",
-    "poster": "/images/summer-jam-poster.png",
+    "poster": "/images/optimized/summer-jam-poster-1200.jpg",
     "date": "2026-07-25",
     "address": {
       "streetAddress": "Woudplein 2",
@@ -142,7 +142,7 @@
         "name": "Boyos Soundsystem",
         "role": "Resident groove keepers",
         "description": "Boyos Soundsystem bring the essential groove at the heart of the day: disco, house, Brazilian boogie, soca, zouk, italo, afro house, and the kind of selections that make a garden feel like a shared living room.",
-        "image": "/images/boyos-25-20.jpg"
+        "image": "/images/optimized/boyos-25-20-2200.jpg"
       }
     ],
     "partnerLogos": [
@@ -165,11 +165,10 @@
     "seo": {
       "title": "Summer Jam Haarlem | Boyos Wonderland x INI Movement",
       "description": "Summer Jam is a one day mini-festival at Houtbaar, Haarlem on Saturday 25 July 2026 by Boyos Wonderland and INI Movement, with DJs, live musicians, pop-up tattoos and an indoor afterparty till 02:00.",
-      "keywords": "Summer Jam Haarlem, Houtbaar Haarlem, Boyos Wonderland, INI Movement, Boyos Soundsystem, Haarlem mini festival, Amsterdam DJ collective, disco house DJ Netherlands, pop-up tattoo event Haarlem",
       "canonical": "https://www.boyoscollective.nl/wonderland/summer-jam",
       "ogTitle": "Summer Jam Haarlem | Boyos Wonderland x INI Movement",
-      "ogImage": "https://www.boyoscollective.nl/images/summer-jam-poster.png",
-      "ogImageAlt": "Summer Jam poster",
+      "ogImage": "https://www.boyoscollective.nl/images/og/summer-jam.jpg",
+      "ogImageAlt": "Summer Jam at Houtbaar Haarlem",
       "siteName": "Boyos Collective"
     },
     "hero": {

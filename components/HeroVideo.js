@@ -6,7 +6,7 @@ export default function ClientVideo() {
       muted
       loop
       playsInline
-      poster="/images/BoyosWonderland-mini-fest-at.jpg"
+      poster="/images/optimized/boyos-wonderland-mini-fest-at-2200.jpg"
       className="absolute inset-0 w-full h-full object-cover"
       aria-hidden="true"
     >

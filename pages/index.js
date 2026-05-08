@@ -28,11 +28,11 @@ export default function Home() {
               'Boyos Collective is a DJ collective based in Amsterdam, Haarlem & The Hague. We organize events, play at clubs and festivals, and bring people together through music, art, and creativity.',
             images: [
               {
-                url: 'https://www.boyoscollective.nl/images/Boyos_logo_boxed.png',
-                width: 3260,
-                height: 1284,
-                type: 'image/png',
-                alt: 'Boyos Collective logo',
+                url: 'https://www.boyoscollective.nl/images/og/boyos-collective.jpg',
+                width: 1200,
+                height: 630,
+                type: 'image/jpeg',
+                alt: 'Boyos Collective dancefloor',
               },
             ],
             siteName: 'Boyos Collective',
@@ -54,11 +54,11 @@ export default function Home() {
             {
               name: 'twitter:image',
               content:
-                'https://www.boyoscollective.nl/images/Boyos_logo_boxed.png',
+                'https://www.boyoscollective.nl/images/og/boyos-collective.jpg',
             },
             {
               name: 'twitter:image:alt',
-              content: 'Boyos Collective logo',
+              content: 'Boyos Collective dancefloor',
             },
           ],
         })}
@@ -86,6 +86,7 @@ export default function Home() {
           alt=""
           fill
           priority
+          sizes="100vw"
           className="hero-parallax-background object-cover opacity-80"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[rgba(17,16,9,0.3)] via-[rgba(17,16,9,0.1)] to-[rgb(var(--color-brand-deep))]" />
@@ -158,7 +159,7 @@ export default function Home() {
               src={nextEvent.poster}
               alt={`${nextEvent.shortTitle} poster`}
               width={320}
-              height={426}
+              height={400}
               className="surface-card surface-media w-full max-w-[260px] rotate-2 rounded-lg object-cover shadow-2xl md:w-[22vw]"
             />
           </Reveal>
@@ -187,6 +188,7 @@ export default function Home() {
               src={identity.image}
               alt={identity.title}
               fill
+              sizes="(min-width: 768px) 50vw, 100vw"
               className="surface-media object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-[rgba(17,16,9,0.95)] via-[rgba(17,16,9,0.46)] to-transparent" />
@@ -247,6 +249,7 @@ export default function Home() {
           src={merch.image}
           alt="Boyos Merch"
           fill
+          sizes="100vw"
           className="object-cover grayscale-[0.35]"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-[rgba(17,16,9,0.96)] via-[rgba(17,16,9,0.72)] to-[rgba(17,16,9,0.22)]" />

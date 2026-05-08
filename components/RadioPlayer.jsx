@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState, useCallback } from 'react'
+import Script from 'next/script'
 import Waveform from './Waveform'
 
 export default function RadioPlayer({
@@ -41,6 +42,7 @@ export default function RadioPlayer({
   const [currentArtist, setCurrentArtist] = useState('–')
   const [currentTitle, setCurrentTitle] = useState('–')
   const [trackUrl, setTrackUrl] = useState('')
+  const [soundCloudReady, setSoundCloudReady] = useState(false)
   const selectorId = 'radio-channel-selector'
   const dropdownId = 'radio-channel-dropdown'
 
@@ -52,7 +54,7 @@ export default function RadioPlayer({
 
   // 1) instantiate SC.Widget once
   useEffect(() => {
-    if (!iframeRef.current || !window.SC) return
+    if (!soundCloudReady || !iframeRef.current || !window.SC) return
     const widget = window.SC.Widget(iframeRef.current)
     widgetRef.current = widget
 
@@ -107,7 +109,7 @@ export default function RadioPlayer({
       }
       widgetRef.current = null
     }
-  }, [])
+  }, [soundCloudReady])
 
   // 2) whenever channelIndex changes, reload that playlist
   useEffect(() => {
@@ -189,6 +191,12 @@ export default function RadioPlayer({
 
   return (
     <>
+      <Script
+        id="soundcloud-widget-api"
+        strategy="afterInteractive"
+        src="https://w.soundcloud.com/player/api.js"
+        onReady={() => setSoundCloudReady(true)}
+      />
       {/** hide the visual widget UI but keep the JS API alive */}
 
       <iframe

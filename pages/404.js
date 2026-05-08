@@ -21,11 +21,11 @@ const Page404 = () => {
               'This Boyos Collective page could not be found, but the music, events and community are still close by.',
             images: [
               {
-                url: 'https://www.boyoscollective.nl/images/Boyos_logo_boxed.png',
-                width: 3260,
-                height: 1284,
-                type: 'image/png',
-                alt: 'Boyos Collective logo',
+                url: 'https://www.boyoscollective.nl/images/og/boyos-collective.jpg',
+                width: 1200,
+                height: 630,
+                type: 'image/jpeg',
+                alt: 'Boyos Collective dancefloor',
               },
             ],
             siteName: 'Boyos Collective',
@@ -46,11 +46,11 @@ const Page404 = () => {
             {
               name: 'twitter:image',
               content:
-                'https://www.boyoscollective.nl/images/Boyos_logo_boxed.png',
+                'https://www.boyoscollective.nl/images/og/boyos-collective.jpg',
             },
             {
               name: 'twitter:image:alt',
-              content: 'Boyos Collective logo',
+              content: 'Boyos Collective dancefloor',
             },
           ],
         })}

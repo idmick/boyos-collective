@@ -2,7 +2,7 @@
   "hero": {
     "eyebrow": "Boyos Collective — The Music",
     "title": "Boyos Soundsystem",
-    "image": "/images/boyos-25-20.jpg",
+    "image": "/images/optimized/boyos-25-20-2200.jpg",
     "badge": "/images/boyos_we_got_the_funk.png",
     "djs": ["Di Tomasso", "Mickey", "NMN"]
   },
@@ -94,7 +94,7 @@
   ],
   "booking": {
     "title": "Book Boyos Soundsystem",
-    "body": "For promoters and bookers looking for warm, uplifting, dance-forward energy: Boyos Soundsystem brings a record shaped by Woodstock 69, Shelter, Pacific, Veerplas, De Zon, Paard, Mosso Milan, and more...",
+    "body": "For promoters and bookers looking for a disco house DJ trio across Amsterdam, Haarlem, The Hague and the wider Netherlands: Boyos Soundsystem brings warm, dance-forward sets shaped by Woodstock 69, Shelter, Pacific, Veerplas, De Zon, Paard, Mosso Milan, Bleyenberg Rooftop and more.",
     "href": "mailto:soundsystem@boyoscollective.nl",
     "cta": "Send a Booking Request"
   }

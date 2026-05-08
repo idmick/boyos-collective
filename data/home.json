@@ -2,15 +2,15 @@
   "hero": {
     "eyebrow": "Amsterdam · Est. 2020",
     "title": "Boyos Collective",
-    "subtitle": "We Got The Funk",
-    "image": "/images/BoyosWonderland-mini-fest-at.jpg"
+    "subtitle": "Boyos Soundsystem for warm DJ bookings. Boyos Wonderland for events where music, art, food and community move together.",
+    "image": "/images/optimized/boyos-wonderland-mini-fest-at-2200.jpg"
   },
   "identities": [
     {
       "eyebrow": "The Music",
       "title": "Boyos Soundsystem",
       "badge": "/images/boyos_we_got_the_funk.png",
-      "image": "/images/boyos-25-20.jpg",
+      "image": "/images/optimized/boyos-25-20-2200.jpg",
       "href": "/soundsystem",
       "cta": "Checkout the Groove",
       "tone": "pink",
@@ -19,8 +19,8 @@
     {
       "eyebrow": "The Experience",
       "title": "Boyos Wonderland",
-      "badge": "/images/Boyos_Wonderland_round.png",
-      "image": "/images/wonderland_home.jpg",
+      "badge": "/images/optimized/boyos-wonderland-round-320.png",
+      "image": "/images/optimized/wonderland-home-1800.jpg",
       "href": "/wonderland",
       "cta": "Enter Wonderland",
       "tone": "teal",
