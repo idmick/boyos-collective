@@ -118,6 +118,7 @@ export default function SummerJamPage() {
               url: event.ticketUrl,
               price: '20',
               priceCurrency: 'EUR',
+              validFrom: '2026-05-03T00:00:00+02:00',
               availability: 'https://schema.org/InStock',
             },
             performer: lineup
