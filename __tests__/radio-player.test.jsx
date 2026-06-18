@@ -22,6 +22,13 @@ describe('RadioPlayer', () => {
     delete window.SC
   })
 
+  it('renders a fallback message when no channels are provided', () => {
+    render(<RadioPlayer channels={[]} />)
+
+    expect(screen.getByText('No channels provided')).toBeInTheDocument()
+    expect(screen.queryByRole('button', { name: /play/i })).not.toBeInTheDocument()
+  })
+
   it('renders the channel selector and playback controls', () => {
     render(
       <RadioPlayer
