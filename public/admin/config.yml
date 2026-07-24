@@ -140,8 +140,8 @@ collections:
                   - Oshi
                 field: { label: Partner, name: partner, widget: string }
               - { label: Ticket Label, name: ticketLabel, widget: string }
-              - { label: Ticket URL, name: ticketUrl, widget: string, default: "https://www.houtbaarhaarlem.nl/" }
-              - { label: Line-up Label, name: lineUpLabel, widget: string, default: "Hosted by SYNGA · TOMMASO · Estafête (live) · UMOJA · Shamis · Boyos Soundsystem" }
+              - { label: Ticket URL, name: ticketUrl, widget: string, default: "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=6ea99d8c-4bc7-4656-a7f6-4157dddba51f" }
+              - { label: Line-up Label, name: lineUpLabel, widget: string, default: "AEV.AYA · SYNGA · Boyos Soundsystem · Shamis · Tommaso · Estafête · UMOJA" }
               - { label: WhatsApp URL, name: whatsappUrl, widget: string }
               - { label: Instagram URL, name: instagramUrl, widget: string }
               - { label: INI URL, name: iniUrl, widget: string }
@@ -270,20 +270,69 @@ collections:
                   - Powered by Oshi
                   - Afterparty till 02:00
                 field: { label: Item, name: item, widget: string }
+              - label: Start Time Notice
+                name: startNotice
+                widget: object
+                fields:
+                  - { label: Eyebrow, name: eyebrow, widget: string }
+                  - { label: Title, name: title, widget: string }
+                  - { label: Body, name: body, widget: text }
+              - label: Timetable
+                name: schedule
+                widget: object
+                fields:
+                  - { label: Eyebrow, name: eyebrow, widget: string }
+                  - { label: Title, name: title, widget: string }
+                  - label: Garden Programme
+                    name: garden
+                    widget: object
+                    fields:
+                      - { label: Title, name: title, widget: string }
+                      - { label: Hours, name: hours, widget: string }
+                      - label: Schedule
+                        name: items
+                        widget: list
+                        summary: "{{fields.time}} — {{fields.name}}"
+                        fields:
+                          - { label: Time, name: time, widget: string }
+                          - { label: Name, name: name, widget: string }
+                  - label: Inside Afterparty
+                    name: afterparty
+                    widget: object
+                    fields:
+                      - { label: Title, name: title, widget: string }
+                      - { label: Hours, name: hours, widget: string }
+                      - label: Schedule
+                        name: items
+                        widget: list
+                        summary: "{{fields.time}} — {{fields.name}}"
+                        fields:
+                          - { label: Time, name: time, widget: string }
+                          - { label: Name, name: name, widget: string }
+                  - { label: Open Jam Note, name: openJamNote, widget: text }
+              - label: Press Feature
+                name: press
+                widget: object
+                fields:
+                  - { label: Eyebrow, name: eyebrow, widget: string }
+                  - { label: Title, name: title, widget: string }
+                  - { label: Summary, name: summary, widget: text }
+                  - { label: Link Label, name: linkLabel, widget: string }
+                  - { label: URL, name: url, widget: string }
               - label: Final CTA
                 name: finalCta
                 widget: object
                 default:
                   eyebrow: Tickets
                   title: Meet us where the garden turns into a dancefloor.
-                  body: Summer Jam brings Boyos Wonderland and INI Movement together for a full day of open jam energy, DJs, live musicians, pop-up tattoos and warm selections. We start outside at Houtbaar in Haarlem, then move inside after 23:00 and keep going till 02:00. Tickets start at €20 through Houtbaar.
+                  body: Advance tickets are €20. Late tickets and tickets at the door are €25. Arrive from 13:00, take the garden with you and follow the music inside when the evening turns.
                   secondaryLabel: Follow the build-up
                 fields:
                   - { label: Eyebrow, name: eyebrow, widget: string }
                   - { label: Title, name: title, widget: string }
                   - { label: Body, name: body, widget: text }
                   - { label: Secondary Button Label, name: secondaryLabel, widget: string }
-              - { label: Lineup Intro, name: lineupIntro, widget: text, default: "The timetable is still taking shape, so this is not a play-by-play. It is a feel for the people and sounds carrying the day: live energy, deep record bags, warm club pressure and Boyos groove." }
+              - { label: Lineup Intro, name: lineupIntro, widget: text, default: "The full programme moves between DJ sets, an open musical floor and Estafête's live response. These cards show the people carrying the day and the extras waiting around the garden." }
               - { label: Partner Button Label, name: partnerCtaLabel, widget: string, default: Visit }
               - label: Practical Info Cards
                 name: practicalInfo
@@ -303,6 +352,17 @@ collections:
                   - { label: Label, name: label, widget: string }
                   - { label: Value, name: value, widget: string }
                   - { label: Detail, name: detail, widget: text }
+              - label: Practical Sections
+                name: practicalSections
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: Title, name: title, widget: string }
+                  - { label: Body, name: body, widget: text }
+                  - label: Points
+                    name: items
+                    widget: list
+                    field: { label: Point, name: point, widget: string }
               - label: Concept Paragraphs
                 name: concept
                 widget: list
@@ -336,49 +396,41 @@ collections:
                   - { label: Name, name: name, widget: string }
                   - { label: Description, name: description, widget: text }
                   - { label: Link, name: href, widget: string }
+              - label: Programme Groups
+                name: lineupGroups
+                widget: list
+                summary: "{{fields.title}}"
+                fields:
+                  - { label: ID, name: id, widget: string }
+                  - { label: Eyebrow, name: eyebrow, widget: string }
+                  - { label: Title, name: title, widget: string }
+                  - { label: Introduction, name: intro, widget: text }
               - label: Lineup
                 name: lineup
                 widget: list
                 summary: "{{fields.name}}"
-                default:
-                  - name: Open Jam
-                    role: Open musical energy
-                    description: The open jam is not a fixed show slot or a closed band moment. It is the loose, participatory pulse of the afternoon; musicians, friends and the garden finding the rhythm together.
-                  - name: SYNGA
-                    role: Host
-                    description: SYNGA is the voice guiding Summer Jam through the day; hosting the open jams and Estafête, bringing soulful R&B instinct, synth textures and raw beat energy into the garden.
-                    image: /images/artists/synga.jpg
-                    imagePosition: center 18%
-                    sourceUrl: https://www.instagram.com/synga.music/
-                  - name: Estafête
-                    role: Live formation
-                    description: Estafête is a live formation put together for movement, not a traditional band with a fixed front. DJs and musicians pass energy back and forth, letting the set build in the moment.
-                    image: /images/artists/estafete.jpg
-                    sourceUrl: https://www.inimovement.nl/events/estafte-makz-shamis-rode-hoed
-                  - name: TOMMASO
-                    role: Vinyl selector
-                    description: Tommaso Conforti is a Florence-born, Chicago-based vinyl selector and record digger with a deep ear for house music history and global rarities. His sets connect forgotten gems, soulful club records and forward-moving dancefloor moments. He is also behind Elevator Music Live, a platform creating space for artists and live dance music culture between Chicago and wider dancefloor communities.
-                    image: /images/artists/tommaso-conforti.jpg
-                  - name: UMOJA
-                    role: DJ duo
-                    description: UMOJA are a Dutch DJ and producer duo with a name that means togetherness. Their sound moves through global grooves, percussion, bass, and warm club energy, always with the feeling of people meeting each other on the floor.
-                    image: /images/artists/umoja.jpg
-                    sourceUrl: https://ra.co/dj/umoja
-                  - name: Shamis
-                    role: DJ, producer, vocalist
-                    description: Shamis is a producer, DJ, vocalist, and co-founder of INI Movement. His work blends soulful electronics, live instinct, and community energy, making him a natural guide between the jam, the stage, and the late-night room.
-                    image: /images/artists/shamis.jpg
-                    sourceUrl: https://www.shamis-is.com/about
-                  - name: Boyos Soundsystem
-                    role: Resident groove keepers
-                    description: Boyos Soundsystem bring the essential groove at the heart of the day; disco, house, Brazilian boogie, soca, zouk, italo, afro house, and the kind of selections that make a garden feel like a shared living room.
-                    image: /images/boyos-25-20.jpg
                 fields:
                   - { label: Name, name: name, widget: string }
                   - { label: Role, name: role, widget: string }
                   - { label: Description, name: description, widget: text }
-                  - { label: Image, name: image, widget: image, required: false }
+                  - { label: Image, name: image, widget: image }
+                  - { label: Image Alt Text, name: alt, widget: string }
+                  - label: Programme Group
+                    name: group
+                    widget: select
+                    options:
+                      - { label: Featured, value: featured }
+                      - { label: Estafête, value: estafete }
+                      - { label: Daytime Extras, value: extras }
                   - { label: Image Position, name: imagePosition, widget: string, required: false }
+                  - label: Structured Data Type
+                    name: schemaType
+                    widget: select
+                    required: false
+                    options:
+                      - { label: Person, value: Person }
+                      - { label: Music Group, value: MusicGroup }
+                  - { label: Structured Data Name, name: schemaName, widget: string, required: false }
                   - { label: Source URL, name: sourceUrl, widget: string, required: false }
               - label: Partner Logos
                 name: partnerLogos

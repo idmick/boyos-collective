@@ -142,6 +142,39 @@ export type SummerJamPage = {
     }
   }
   ticker: string[]
+  startNotice: {
+    eyebrow: string
+    title: string
+    body: string
+  }
+  schedule: {
+    eyebrow: string
+    title: string
+    garden: {
+      title: string
+      hours: string
+      items: {
+        time: string
+        name: string
+      }[]
+    }
+    afterparty: {
+      title: string
+      hours: string
+      items: {
+        time: string
+        name: string
+      }[]
+    }
+    openJamNote: string
+  }
+  press: {
+    eyebrow: string
+    title: string
+    summary: string
+    linkLabel: string
+    url: ExternalUrl
+  }
   finalCta: {
     eyebrow: string
     title: string
@@ -155,6 +188,11 @@ export type SummerJamPage = {
     value: string
     detail: string
   }[]
+  practicalSections: {
+    title: string
+    body: string
+    items: string[]
+  }[]
   concept: string[]
   dayArc: {
     time: string
@@ -166,12 +204,22 @@ export type SummerJamPage = {
     description: string
     href: string
   }[]
+  lineupGroups: {
+    id: string
+    eyebrow: string
+    title: string
+    intro: string
+  }[]
   lineup: {
     name: string
     role: string
     description: string
-    image?: ImagePath
+    image: ImagePath
+    alt: string
+    group: string
     imagePosition?: string
+    schemaType?: 'Person' | 'MusicGroup'
+    schemaName?: string
     sourceUrl?: ExternalUrl
   }[]
   partnerLogos: {

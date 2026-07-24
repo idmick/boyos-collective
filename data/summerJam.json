@@ -3,10 +3,10 @@
     "venueUrl": "https://www.houtbaarhaarlem.nl/",
     "iniInstagramUrl": "https://www.instagram.com/inimovement/",
     "ticketUrl": "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=6ea99d8c-4bc7-4656-a7f6-4157dddba51f",
-    "lineUpLabel": "Hosted by SYNGA · TOMMASO · Estafête (live) · UMOJA · Shamis · Boyos Soundsystem",
+    "lineUpLabel": "AEV.AYA · SYNGA · Boyos Soundsystem · Shamis · Tommaso · Estafête · UMOJA",
     "dateLabel": "Saturday 25 July 2026",
-    "timeLabel": "13:00 – 23:00 + afterparty till 02:00",
-    "ticketLabel": "Tickets from €20",
+    "timeLabel": "13:00 – 02:00",
+    "ticketLabel": "Advance tickets €20",
     "partners": [
       "Boyos Wonderland",
       "INI Movement",
@@ -19,16 +19,16 @@
     "date": "2026-07-25",
     "address": {
       "streetAddress": "Woudplein 2",
-      "postalCode": "2031CZ",
+      "postalCode": "2031 CZ",
       "addressLocality": "Haarlem",
       "addressCountry": "NL"
     },
-    "format": "Open air + indoor after",
+    "format": "Garden + inside afterparty",
     "title": "Boyos Wonderland x INI Movement Present: Summer Jam",
     "venueName": "Houtbaar",
     "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Houtbaar%2C%20Woudplein%202%2C%202031CZ%20Haarlem",
     "shortTitle": "Summer Jam",
-    "description": "A one day mini-festival at Houtbaar Haarlem where Boyos Wonderland and INI Movement meet: live energy, DJs, musicians, pop-up tattoos and people coming together for the same reason: to move.",
+    "description": "A full Summer Jam day at Houtbaar Haarlem where Boyos Wonderland and INI Movement bring open jams, DJs, live musicians, records, tattoos and an inside afterparty together from 13:00 to 02:00.",
     "instagramUrl": "https://www.instagram.com/boyos.wonderland/?hl=en",
     "whatsappUrl": "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
     "locationLabel": "Houtbaar, Haarlem"
@@ -38,41 +38,125 @@
       "Boyos Wonderland x INI Movement",
       "25 July 2026",
       "Houtbaar Haarlem",
+      "Starts at 13:00",
       "Open Jam",
-      "DJ Sets",
       "Estafête Live",
       "Hosted by SYNGA",
-      "Pop-up Tattoo",
-      "Powered by Oshi",
-      "Afterparty till 02:00"
+      "Inside afterparty",
+      "Ends at 02:00"
     ],
+    "startNotice": {
+      "eyebrow": "Important time update",
+      "title": "Summer Jam starts at 13:00",
+      "body": "Some tickets and event listings still show the old start time. AEV.AYA opens at 13:00 and the first Open Jam begins at 14:00, so the day is moving from the moment the garden opens."
+    },
+    "schedule": {
+      "eyebrow": "The timetable",
+      "title": "From garden to inside",
+      "garden": {
+        "title": "Garden programme",
+        "hours": "13:00 – 23:00",
+        "items": [
+          {
+            "time": "13:00",
+            "name": "AEV.AYA"
+          },
+          {
+            "time": "14:00",
+            "name": "Open Jam"
+          },
+          {
+            "time": "15:00",
+            "name": "Boyos Soundsystem"
+          },
+          {
+            "time": "16:00",
+            "name": "Open Jam"
+          },
+          {
+            "time": "17:00",
+            "name": "Boyos Soundsystem"
+          },
+          {
+            "time": "18:00",
+            "name": "Open Jam"
+          },
+          {
+            "time": "19:00",
+            "name": "Shamis"
+          },
+          {
+            "time": "20:00",
+            "name": "Estafête B2B Shamis"
+          },
+          {
+            "time": "21:00",
+            "name": "Tommaso"
+          },
+          {
+            "time": "22:00",
+            "name": "Estafête B2B Tommaso"
+          },
+          {
+            "time": "23:00",
+            "name": "Garden closes"
+          }
+        ]
+      },
+      "afterparty": {
+        "title": "Inside afterparty",
+        "hours": "23:00 – 02:00",
+        "items": [
+          {
+            "time": "23:00",
+            "name": "UMOJA"
+          },
+          {
+            "time": "00:00",
+            "name": "Boyos Soundsystem"
+          },
+          {
+            "time": "02:00",
+            "name": "End"
+          }
+        ]
+      },
+      "openJamNote": "The Open Jam has no fixed roster. Artists who joined through an INI Movement jam ticket can step in, with SYNGA keeping the session moving and making space for the music to find its own direction."
+    },
+    "press": {
+      "eyebrow": "In the press",
+      "title": "Summer Jam in 3voor12 Noord-Holland",
+      "summary": "3voor12 Noord-Holland spoke with Shamis about how Summer Jam brings live improvisation, club culture and Haarlem's music community together.",
+      "linkLabel": "Read the interview",
+      "url": "https://3voor12lokaal.vpro.nl/artikelen/summer-jam-bij-houtbaar-waar-estafete-live-acts-uitdaagt-en-warme-dj-sounds-de-overhand-hebben"
+    },
     "finalCta": {
       "eyebrow": "Tickets",
       "title": "Meet us where the garden turns into a dancefloor.",
-      "body": "Summer Jam brings Boyos Wonderland and INI Movement together for a full day of open jam energy, DJs, live musicians, pop-up tattoos and warm selections. We start outside at Houtbaar in Haarlem, then move inside after 23:00 and keep going till 02:00. Tickets start at €20 through Houtbaar.",
+      "body": "Advance tickets are €20. Late tickets and tickets at the door are €25. Arrive from 13:00, take the garden with you and follow the music inside when the evening turns.",
       "secondaryLabel": "Follow the build-up"
     },
     "concept": [
-      "Summer Jam is where Boyos Wonderland and INI Movement meet at Houtbaar: a one day mini-festival in the garden, built around live energy, DJs, musicians and people coming together for the same reason: to move.",
-      "The garden opens in the afternoon with jams and DJ sets moving through the day, hosted by SYNGA as the voice carrying the energy between the garden and the stage. As the evening builds, Estafête brings live musicians into the room and the dancefloor starts to heat up.",
-      "Around it all: a pop-up tattoo studio, familiar faces, new friends, and that easy summer feeling of staying a little longer than you planned.",
-      "When the garden closes at 23:00, the night moves inside and keeps going until 02:00."
+      "Summer Jam is where Boyos Wonderland and INI Movement meet at Houtbaar: a full day in the garden built around DJs, live musicians and people coming together for the same reason—to move.",
+      "The Open Jam is part of the day from the start. Artists joining through INI Movement can step in while SYNGA keeps the session moving. Later, Estafête lets DJs and musicians react to one another in real time, passing tracks between decks and live instrumentation.",
+      "Around it all, Team de Boef opens the tattoo pop-up, Ephemeris Records fills the garden with crates and Houtbaar keeps food and drinks moving.",
+      "When the garden closes at 23:00, the night moves inside and carries on until 02:00."
     ],
     "dayArc": [
       {
-        "time": "Day",
-        "name": "Garden Open",
-        "description": "Jams, DJ sets and people arriving into the same warm garden rhythm, with SYNGA hosting the open jams and Estafête through the day."
+        "time": "13:00",
+        "name": "The garden opens",
+        "description": "AEV.AYA starts behind the decks before the first Open Jam begins at 14:00."
       },
       {
-        "time": "Ink",
-        "name": "Pop-up Tattoo Studio",
-        "description": "A piece of Wonderland to carry with you, woven into the day instead of tucked away as an afterthought."
+        "time": "14:00",
+        "name": "Open Jam",
+        "description": "Participating artists step in through the afternoon, with SYNGA guiding the session and leaving room for the music to change."
       },
       {
-        "time": "Night",
-        "name": "Inside Afterparty",
-        "description": "The garden closes at 23:00, then the room moves inside and carries on until 02:00."
+        "time": "23:00",
+        "name": "Inside afterparty",
+        "description": "The garden closes and the room moves inside with UMOJA and Boyos Soundsystem until 02:00."
       }
     ],
     "partners": [
@@ -83,12 +167,12 @@
       },
       {
         "name": "INI Movement",
-        "description": "A creative movement bringing live music and open participation into the day.",
+        "description": "A creative movement bringing live music, open participation and the Estafête format into the day.",
         "href": "https://www.inimovement.nl/"
       },
       {
         "name": "Houtbaar",
-        "description": "The Haarlem home base for the open-air part of the day and the indoor continuation after 23:00.",
+        "description": "The Haarlem home base for the garden programme and the inside continuation after 23:00.",
         "href": "https://www.houtbaarhaarlem.nl/"
       },
       {
@@ -97,52 +181,156 @@
         "href": "https://www.instagram.com/oshi_community/"
       }
     ],
-    "lineup": [
+    "lineupGroups": [
       {
-        "name": "Open Jam",
-        "role": "Open musical energy",
-        "description": "The open jam is not a fixed show slot or a closed band moment. It is the loose, participatory pulse of the afternoon: musicians, friends and the garden finding the rhythm together."
+        "id": "featured",
+        "eyebrow": "DJs, selectors and hosts",
+        "title": "Carrying the day",
+        "intro": "From the first record in the garden to the final stretch inside, these are the people guiding the movement of Summer Jam."
       },
       {
-        "name": "SYNGA",
-        "role": "Host",
-        "description": "SYNGA is the voice guiding Summer Jam through the day: hosting the open jams and Estafête, bringing soulful R&B instinct, synth textures and raw beat energy into the garden.",
-        "image": "/images/artists/synga.jpg",
-        "imagePosition": "center 18%",
+        "id": "estafete",
+        "eyebrow": "The live formation",
+        "title": "Inside Estafête",
+        "intro": "A band built to respond in the moment: a rhythm section at the core, horns and guitar around it, SYNGA on vocals and DJs passing tracks into live hands."
+      },
+      {
+        "id": "extras",
+        "eyebrow": "Around the music",
+        "title": "Crates and ink",
+        "intro": "The garden has more to find between sets, with records to dig through and a tattoo studio running throughout the day."
+      }
+    ],
+    "lineup": [
+      {
+        "name": "AEV.AYA",
+        "role": "Opening DJ · 13:00",
+        "description": "AEV.AYA is SYNGA behind the decks. Her sets are rooted in R&B, soul, funk and hip-hop: deep grooves, familiar vocals and newer cuts with enough bite to keep the floor moving. She opens Summer Jam before returning to the microphone later in the day.",
+        "image": "/images/artists/summer-jam/aev-aya.jpg",
+        "alt": "Summer Jam artist card for AEV.AYA",
+        "group": "featured",
+        "schemaType": "Person",
+        "schemaName": "AEV.AYA",
         "sourceUrl": "https://www.instagram.com/synga.music/"
       },
       {
-        "name": "Estafête",
-        "role": "Live formation",
-        "description": "Estafête is a live formation put together for movement, not a traditional band with a fixed front. DJs and musicians pass energy back and forth, letting the set build in the moment.",
-        "image": "/images/artists/estafete.jpg",
-        "sourceUrl": "https://www.inimovement.nl/events/estafte-makz-shamis-rode-hoed"
-      },
-      {
-        "name": "TOMMASO",
-        "role": "Vinyl selector",
-        "description": "Tommaso Conforti is a Florence-born, Chicago-based vinyl selector and record digger with a deep ear for house music history and global rarities. His sets connect forgotten gems, soulful club records and forward-moving dancefloor moments. He is also behind Elevator Music Live, a platform creating space for artists and live dance music culture between Chicago and wider dancefloor communities.",
-        "image": "/images/artists/tommaso-conforti.jpg"
-      },
-      {
-        "name": "UMOJA",
-        "role": "DJ duo",
-        "description": "UMOJA are a Dutch DJ and producer duo with a name that means togetherness. Their sound moves through global grooves, percussion, bass, and warm club energy, always with the feeling of people meeting each other on the floor.",
-        "image": "/images/artists/umoja.jpg",
-        "sourceUrl": "https://ra.co/dj/umoja"
-      },
-      {
-        "name": "Shamis",
-        "role": "DJ, producer, vocalist",
-        "description": "Shamis is a producer, DJ, vocalist, and co-founder of INI Movement. His work blends soulful electronics, live instinct, and community energy, making him a natural guide between the jam, the stage, and the late-night room.",
-        "image": "/images/artists/shamis.jpg",
-        "sourceUrl": "https://www.shamis-is.com/about"
+        "name": "SYNGA",
+        "role": "Host · Open Jam · Estafête vocals",
+        "description": "SYNGA is a singer, songwriter and MC moving through soul, hip-hop, Chicago house and alternative R&B. She hosts Summer Jam, keeps the Open Jams moving and sings inside Estafête, catching openings in the music and bringing the room into them.",
+        "image": "/images/artists/summer-jam/synga.jpg",
+        "alt": "Summer Jam artist card for SYNGA",
+        "group": "featured",
+        "sourceUrl": "https://www.instagram.com/synga.music/"
       },
       {
         "name": "Boyos Soundsystem",
-        "role": "Resident groove keepers",
-        "description": "Boyos Soundsystem bring the essential groove at the heart of the day: disco, house, Brazilian boogie, soca, zouk, italo, afro house, and the kind of selections that make a garden feel like a shared living room.",
-        "image": "/images/optimized/boyos-25-20-2200.jpg"
+        "role": "Garden sets · Inside closing stretch",
+        "description": "Boyos Soundsystem is Mick, Tomas and Nico: three friends with disco and house at the core, joined by soca, zouk, Brazilian boogie and whatever earns its place in the set. They play through the afternoon and return after midnight for the final stretch inside.",
+        "image": "/images/artists/summer-jam/boyos-soundsystem.jpg",
+        "alt": "Summer Jam artist card for Boyos Soundsystem",
+        "group": "featured",
+        "schemaType": "MusicGroup",
+        "sourceUrl": "https://www.instagram.com/boyos.soundsystem/"
+      },
+      {
+        "name": "Shamis",
+        "role": "DJ set · Estafête B2B",
+        "description": "Shamis is a producer, DJ, songwriter, vocalist and founder of INI Movement. His path runs through hip-hop, soul, jazz, broken beat, house, reggae and afrobeat. He plays his own set first, then steps into Estafête to pass records, cues and live ideas back and forth with the band.",
+        "image": "/images/artists/summer-jam/shamis.jpg",
+        "alt": "Summer Jam artist card for Shamis",
+        "group": "featured",
+        "schemaType": "Person",
+        "sourceUrl": "https://www.shamis-is.com/about"
+      },
+      {
+        "name": "Tommaso",
+        "role": "Vinyl set · Estafête B2B",
+        "description": "Tommaso is a Florence-born, Chicago-based selector, record digger and co-founder of Elevator Music Live. House music runs through his story, alongside global records and deep dancefloor history. At Summer Jam he plays his own vinyl set before going back and forth with the live musicians inside Estafête.",
+        "image": "/images/artists/summer-jam/tommaso.jpg",
+        "alt": "Summer Jam artist card for Tommaso",
+        "group": "featured",
+        "schemaType": "Person"
+      },
+      {
+        "name": "UMOJA",
+        "role": "Inside afterparty · 23:00",
+        "description": "Haarlem duo UMOJA have been digging through Afrobeat, cumbia, highlife, Benga, funk and electronic music since 2011. Their archival knowledge grew into original collaborations across Kenya, Uganda and Tanzania, connecting East African rhythms, Afro disco, basslines, guitar and percussion without taking the safe route.",
+        "image": "/images/artists/summer-jam/umoja.jpg",
+        "alt": "Summer Jam artist card for UMOJA",
+        "group": "featured",
+        "schemaType": "MusicGroup",
+        "sourceUrl": "https://ra.co/dj/umoja"
+      },
+      {
+        "name": "Estafête",
+        "role": "Live improvisation format",
+        "description": "Estafête brings DJs and musicians into the same moving conversation. Tracks are picked up, answered and rebuilt by the band in real time, leaving space for instinct, risk and the moments nobody could plan before the first record changes hands.",
+        "image": "/images/artists/summer-jam/estafete.jpg",
+        "alt": "Summer Jam formation card for Estafête",
+        "group": "estafete",
+        "schemaType": "MusicGroup",
+        "sourceUrl": "https://www.inimovement.nl/events/estafte-makz-shamis-rode-hoed"
+      },
+      {
+        "name": ".Multibeat",
+        "role": "Keys · Bass · Drums",
+        "description": "At the centre of Estafête is .Multibeat: Boudewijn Pleij on keys, Thijs van Zutphen on bass and Aron Smit on drums. The future jazz trio brings hip-hop swing, jazz harmony and a collaborative instinct—the backbone that keeps everything moving while leaving room for the music around them to change.",
+        "image": "/images/artists/summer-jam/dot-multibeat.jpg",
+        "alt": "Summer Jam artist card for .Multibeat",
+        "group": "estafete",
+        "schemaType": "MusicGroup"
+      },
+      {
+        "name": "Yasper",
+        "role": "Guitar",
+        "description": "Yasper is an Amsterdam-based guitarist, producer, composer and musical director known for warm guitar-led beats across chillhop, lo-fi and downtempo. Inside Estafête, that detailed ear gets put to work in real time, responding to the band and the records as they move.",
+        "image": "/images/artists/summer-jam/yasper.jpg",
+        "alt": "Summer Jam artist card for Yasper",
+        "group": "estafete",
+        "schemaType": "Person"
+      },
+      {
+        "name": "Rebiere",
+        "role": "Saxophone · Guitar",
+        "description": "Rebiere is Lucas van Ee on saxophone and guitar. More than a decade of stages with Gallowstreet sits alongside years of building records, artists and live concepts behind the scenes. He knows the Estafête format and when to lead, answer or leave space.",
+        "image": "/images/artists/summer-jam/rebiere.jpg",
+        "alt": "Summer Jam artist card for Rebiere",
+        "group": "estafete",
+        "schemaType": "Person"
+      },
+      {
+        "name": "Lezaam Beets",
+        "role": "Trombone",
+        "description": "Born and raised in Cape Town and now based in Amsterdam, trombonist Lezaam Beets carries South African jazz, West African rhythmic ideas and contemporary improvisation into the formation. His playing adds another voice for Estafête to follow and answer.",
+        "image": "/images/artists/summer-jam/lezaam-beets.jpg",
+        "alt": "Summer Jam artist card for Lezaam Beets",
+        "group": "estafete",
+        "schemaType": "Person"
+      },
+      {
+        "name": "D!ma Loginov",
+        "role": "Trumpet",
+        "description": "Born in Kazakhstan and now based in Amsterdam, D!ma Loginov moves comfortably between jazz, funk, soul and pop. Work with Gallowstreet, Jungle by Night and his own projects all feed into a trumpet voice ready to react when Estafête changes direction.",
+        "image": "/images/artists/summer-jam/dima-loginov.jpg",
+        "alt": "Summer Jam artist card for D!ma Loginov",
+        "group": "estafete",
+        "schemaType": "Person"
+      },
+      {
+        "name": "Ephemeris Records",
+        "role": "Record market",
+        "description": "Ephemeris Records brings crates where Lollywood can sit next to Hollywood, tekno beside Turkish grooves and a shameless Eurodance record can suddenly make complete sense. Dig between sets, bring a tote and leave with something you did not know you needed.",
+        "image": "/images/artists/summer-jam/ephemeris-records.jpg",
+        "alt": "Summer Jam card for Ephemeris Records",
+        "group": "extras"
+      },
+      {
+        "name": "Team de Boef",
+        "role": "Tattoo pop-up studio",
+        "description": "Ben de Boef, Mauro Mejia and Inktprikker host the Summer Jam tattoo studio with flash sheets, freehand options and styles moving from bold old-school work to detailed blackwork and clean fine lines. Walk by, talk to the artists and come early if you want a spot.",
+        "image": "/images/artists/summer-jam/team-de-boef.jpg",
+        "alt": "Summer Jam card for Team de Boef tattoo studio",
+        "group": "extras"
       }
     ],
     "partnerLogos": [
@@ -164,7 +352,7 @@
     ],
     "seo": {
       "title": "Summer Jam Haarlem | Boyos Wonderland x INI Movement",
-      "description": "Summer Jam is a one day mini-festival at Houtbaar, Haarlem on Saturday 25 July 2026 by Boyos Wonderland and INI Movement, with DJs, live musicians, pop-up tattoos and an indoor afterparty till 02:00.",
+      "description": "Summer Jam is a full garden-to-afterparty festival day at Houtbaar, Haarlem on Saturday 25 July 2026, with DJs, Open Jams, Estafête live, records and tattoos from 13:00 to 02:00.",
       "canonical": "https://www.boyoscollective.nl/wonderland/summer-jam",
       "ogTitle": "Summer Jam Haarlem | Boyos Wonderland x INI Movement",
       "ogImage": "https://www.boyoscollective.nl/images/og/summer-jam.jpg",
@@ -178,7 +366,7 @@
         "Summer",
         "Jam"
       ],
-      "subtitle": "A mini festival",
+      "subtitle": "Garden to inside · 13:00 to 02:00",
       "secondaryCtaLabel": "Follow the build-up",
       "stats": {
         "dateLabel": "Date",
@@ -190,38 +378,98 @@
     "sections": {
       "concept": {
         "eyebrow": "How it moves",
-        "title": "From 13:00 To 02:00"
+        "title": "One day, one long movement"
       },
       "lineup": {
         "eyebrow": "Line-up",
-        "title": "Who's Bringing The Groove"
+        "title": "Meet the full programme"
       },
       "partners": {
         "eyebrow": "Together with",
-        "title": "The Partners"
+        "title": "The partners"
       },
       "practicalInfo": {
         "eyebrow": "Practical info",
-        "title": "Good To Know"
+        "title": "Good to know"
       }
     },
-    "lineupIntro": "The timetable is still taking shape, so this is not a play-by-play. It is a feel for the people and sounds carrying the day: live energy, deep record bags, warm club pressure and Boyos groove.",
+    "lineupIntro": "The full programme moves between DJ sets, an open musical floor and Estafête's live response. These cards show the people carrying the day and the extras waiting around the garden.",
     "partnerCtaLabel": "Visit",
     "practicalInfo": [
       {
         "label": "Date",
         "value": "Saturday 25 July 2026",
-        "detail": "Summer in Haarlem, starting early afternoon."
+        "detail": "The garden programme starts at 13:00."
       },
       {
         "label": "Time",
-        "value": "13:00 – 23:00 + afterparty till 02:00",
-        "detail": "The garden closes at 23:00, then the night moves inside until 02:00."
+        "value": "13:00 – 02:00",
+        "detail": "Garden until 23:00, then the programme moves inside."
       },
       {
         "label": "Location",
         "value": "Houtbaar, Haarlem",
-        "detail": "Woudplein 2, 2031CZ Haarlem"
+        "detail": "Woudplein 2, 2031 CZ Haarlem"
+      }
+    ],
+    "practicalSections": [
+      {
+        "title": "Tickets and entry",
+        "body": "Advance tickets are €20. Late tickets and tickets at the door are €25.",
+        "items": [
+          "Summer Jam is 18+. Bring a valid ID.",
+          "There is no re-entry after you leave the event."
+        ]
+      },
+      {
+        "title": "The inside afterparty",
+        "body": "Your festival ticket includes the afterparty. There are no separate afterparty tickets.",
+        "items": [
+          "People will gradually be let inside from 23:00.",
+          "Indoor capacity is limited, so access cannot be guaranteed once the room is full."
+        ]
+      },
+      {
+        "title": "Getting there",
+        "body": "Houtbaar is at Woudplein 2, 2031 CZ Haarlem. Haarlem Spaarnwoude is the nearest train and bus stop.",
+        "items": [
+          "The train from Amsterdam Centraal takes around 15 minutes.",
+          "Plan your journey home before you come."
+        ]
+      },
+      {
+        "title": "Tattoos, records, food and drinks",
+        "body": "Team de Boef works first come, first served. Ephemeris Records keeps the crates open through the day, while Houtbaar serves food and drinks.",
+        "items": [
+          "Team de Boef prefers cash, but card is possible.",
+          "Ephemeris Records accepts cash and card.",
+          "Houtbaar is pin only."
+        ]
+      },
+      {
+        "title": "Respect the groove",
+        "body": "Everyone should feel safe and free to move. Respect boundaries and remember that consent matters.",
+        "items": [
+          "No racism, sexism, queerphobia or harassment.",
+          "If something feels off, find the Boyos, INI or Houtbaar crew."
+        ]
+      },
+      {
+        "title": "Camera notice",
+        "body": "Professional photographers and videographers will be capturing Summer Jam throughout the day and night.",
+        "items": [
+          "Tell the camera team or crew if you prefer not to appear in a recognizable close-up.",
+          "Wider crowd shots may still include you."
+        ]
+      },
+      {
+        "title": "Bring with you",
+        "body": "A few things will make the full garden-to-inside day easier.",
+        "items": [
+          "Your festival ticket and valid ID.",
+          "Sunscreen, sunglasses, earplugs and a layer for later.",
+          "A tote for records and some cash for tattoos."
+        ]
       }
     ]
   }
