@@ -15,13 +15,18 @@ export default function SummerJamPage() {
     hero,
     sections,
     ticker,
+    startNotice,
+    schedule,
+    press,
     finalCta,
     lineupIntro,
     partnerCtaLabel,
     practicalInfo,
+    practicalSections,
     concept,
     dayArc,
     partners,
+    lineupGroups,
     lineup,
     partnerLogos,
   } = summerJamPage
@@ -79,10 +84,11 @@ export default function SummerJamPage() {
             '@type': 'MusicEvent',
             name: event.title,
             startDate: '2026-07-25T13:00:00+02:00',
-            endDate: '2026-07-26T03:00:00+02:00',
+            endDate: '2026-07-26T02:00:00+02:00',
             eventStatus: 'https://schema.org/EventScheduled',
             eventAttendanceMode:
               'https://schema.org/OfflineEventAttendanceMode',
+            typicalAgeRange: '18+',
             image: [seo.ogImage],
             location: {
               '@type': 'Place',
@@ -122,14 +128,10 @@ export default function SummerJamPage() {
               availability: 'https://schema.org/InStock',
             },
             performer: lineup
-              .filter((act) => act.name !== 'Open Jam')
+              .filter((act) => act.schemaType)
               .map((act) => ({
-                '@type': ['Estafête', 'UMOJA', 'Boyos Soundsystem'].includes(
-                  act.name
-                )
-                  ? 'MusicGroup'
-                  : 'Person',
-                name: act.name,
+                '@type': act.schemaType,
+                name: act.schemaName || act.name,
                 description: act.role,
                 sameAs: act.sourceUrl,
               })),
@@ -180,7 +182,7 @@ export default function SummerJamPage() {
             </ButtonLink>
           </div>
         </div>
-        <div className="order-first w-screen max-w-[100vw] min-w-0 bg-[var(--color-brand-event)] md:relative md:order-none md:w-auto md:max-w-none">
+        <div className="relative order-first w-screen max-w-[100vw] min-w-0 bg-[var(--color-brand-event)] md:order-none md:w-auto md:max-w-none">
           <Image
             src={event.poster}
             alt={`${event.shortTitle} poster`}
@@ -202,6 +204,74 @@ export default function SummerJamPage() {
       </section>
 
       <Ticker items={ticker} tone="paper" />
+
+      <section className="bg-[var(--color-brand-event)] px-6 py-16 text-[var(--color-text-primary)] md:px-10 md:py-20">
+        <Reveal className="mx-auto grid max-w-6xl gap-8 border-y border-black/15 py-10 md:grid-cols-[0.55fr_1.45fr] md:items-center md:py-14">
+          <span className="type-meta text-black/45">
+            {startNotice.eyebrow}
+          </span>
+          <div>
+            <h2 className="type-display text-[clamp(3.2rem,8vw,7rem)] leading-[0.88]">
+              {startNotice.title}
+            </h2>
+            <p className="type-body mt-6 max-w-3xl text-[15px] leading-8 text-black/60">
+              {startNotice.body}
+            </p>
+          </div>
+        </Reveal>
+      </section>
+
+      <section
+        id="timetable"
+        className="bg-[rgb(var(--color-brand-deep))] px-6 py-[var(--space-section)] md:px-10"
+      >
+        <div className="mx-auto max-w-6xl">
+          <Reveal>
+            <SectionTitle eyebrow={schedule.eyebrow} title={schedule.title} />
+          </Reveal>
+          <div className="mt-14 grid gap-8 lg:grid-cols-[1.45fr_0.75fr]">
+            {[schedule.garden, schedule.afterparty].map(
+              (programme, programmeIndex) => (
+                <Reveal
+                  key={programme.title}
+                  delay={programmeIndex > 0 ? 'short' : 'none'}
+                >
+                  <article className="h-full border border-white/10 bg-white/[0.025]">
+                    <header className="flex items-end justify-between gap-6 border-b border-white/10 p-7 md:p-8">
+                      <h3 className="type-display text-[clamp(2.4rem,5vw,4rem)] leading-none">
+                        {programme.title}
+                      </h3>
+                      <p className="type-meta shrink-0 text-[var(--color-brand-amber)]">
+                        {programme.hours}
+                      </p>
+                    </header>
+                    <div className="px-7 py-2 md:px-8">
+                      {programme.items.map((item) => (
+                        <div
+                          key={`${programme.title}-${item.time}-${item.name}`}
+                          className="grid grid-cols-[72px_1fr] gap-5 border-b border-white/10 py-5 last:border-b-0 md:grid-cols-[86px_1fr]"
+                        >
+                          <time className="type-meta pt-1 text-[var(--color-brand-amber)]">
+                            {item.time}
+                          </time>
+                          <p className="type-body text-base font-semibold leading-7">
+                            {item.name}
+                          </p>
+                        </div>
+                      ))}
+                    </div>
+                  </article>
+                </Reveal>
+              )
+            )}
+          </div>
+          <Reveal delay="short">
+            <p className="type-body mt-8 max-w-4xl border-l-2 border-[var(--color-brand-amber)] pl-6 text-[15px] leading-8 text-white/58">
+              {schedule.openJamNote}
+            </p>
+          </Reveal>
+        </div>
+      </section>
 
       <section
         id="concept"
@@ -246,6 +316,24 @@ export default function SummerJamPage() {
         </div>
       </section>
 
+      <section className="bg-[var(--color-brand-event)] px-6 py-[var(--space-section)] text-[var(--color-text-primary)] md:px-10">
+        <Reveal className="mx-auto grid max-w-6xl gap-10 border-y border-black/15 py-14 md:grid-cols-[0.7fr_1.3fr] md:items-end md:py-20">
+          <SectionTitle
+            eyebrow={press.eyebrow}
+            title={press.title}
+            dark={false}
+          />
+          <div>
+            <p className="type-body max-w-2xl text-[15px] leading-8 text-black/60">
+              {press.summary}
+            </p>
+            <ButtonLink href={press.url} tone="ink" className="mt-8">
+              {press.linkLabel}
+            </ButtonLink>
+          </div>
+        </Reveal>
+      </section>
+
       <section
         id="lineup"
         className="bg-[rgb(var(--color-brand-deep))] px-6 py-[var(--space-section)] md:px-10"
@@ -262,47 +350,68 @@ export default function SummerJamPage() {
               {lineupIntro}
             </p>
           </div>
-          <div className="mt-14 grid grid-flow-dense gap-5 md:grid-cols-12">
-            {lineup.map((act, index) => (
-              <Reveal
-                key={act.name}
-                delay={index > 0 ? 'short' : 'none'}
-                className={act.image ? 'md:col-span-6' : 'md:col-span-12'}
+          {lineupGroups.map((group, groupIndex) => {
+            const groupActs = lineup.filter((act) => act.group === group.id)
+
+            return (
+              <div
+                key={group.id}
+                className={`${
+                  groupIndex === 0
+                    ? 'mt-16'
+                    : 'mt-24 border-t border-white/10 pt-20'
+                }`}
               >
-                <article className="group h-full overflow-hidden border border-white/10 bg-white/[0.025] transition hover:border-[color:rgb(240_200_80/0.22)]">
-                  {act.image ? (
-                    <div className="relative aspect-[16/10] overflow-hidden bg-white/[0.03]">
-                      <Image
-                        src={act.image}
-                        alt={act.name}
-                        fill
-                        sizes="(min-width: 768px) 50vw, 100vw"
-                        className="object-cover object-center transition duration-700 group-hover:scale-[1.04]"
-                        style={
-                          act.imagePosition
-                            ? { objectPosition: act.imagePosition }
-                            : undefined
-                        }
-                      />
-                    </div>
-                  ) : null}
-                  <div className="flex min-h-[240px] flex-col justify-between p-7 md:p-8">
-                    <div>
-                      <p className="type-meta mb-3 text-[var(--color-brand-amber)]">
-                        {act.role}
-                      </p>
-                      <h3 className="type-display text-[clamp(2.4rem,5vw,4rem)] leading-none">
-                        {act.name}
-                      </h3>
-                      <p className="type-body mt-5 text-sm leading-7 text-white/50">
-                        {act.description}
-                      </p>
-                    </div>
-                  </div>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+                <Reveal>
+                  <p className="type-meta text-[var(--color-brand-amber)]">
+                    {group.eyebrow}
+                  </p>
+                  <h3 className="type-display mt-3 text-[clamp(3.2rem,7vw,6rem)] leading-[0.9]">
+                    {group.title}
+                  </h3>
+                  <p className="type-body mt-6 max-w-3xl text-[15px] leading-8 text-white/50">
+                    {group.intro}
+                  </p>
+                </Reveal>
+                <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+                  {groupActs.map((act, index) => (
+                    <Reveal
+                      key={act.name}
+                      delay={index > 0 ? 'short' : 'none'}
+                    >
+                      <article className="group h-full overflow-hidden border border-white/10 bg-white/[0.025] transition hover:border-[color:rgb(240_200_80/0.22)]">
+                        <div className="relative aspect-[4/5] overflow-hidden bg-white/[0.03]">
+                          <Image
+                            src={act.image}
+                            alt={act.alt}
+                            fill
+                            sizes="(min-width: 1280px) 33vw, (min-width: 768px) 50vw, 100vw"
+                            className="object-cover object-center transition duration-700 group-hover:scale-[1.025]"
+                            style={
+                              act.imagePosition
+                                ? { objectPosition: act.imagePosition }
+                                : undefined
+                            }
+                          />
+                        </div>
+                        <div className="p-7 md:p-8">
+                          <p className="type-meta mb-3 text-[var(--color-brand-amber)]">
+                            {act.role}
+                          </p>
+                          <h4 className="type-display text-[clamp(2.4rem,4.4vw,4rem)] leading-none">
+                            {act.name}
+                          </h4>
+                          <p className="type-body mt-5 text-sm leading-7 text-white/50">
+                            {act.description}
+                          </p>
+                        </div>
+                      </article>
+                    </Reveal>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
         </div>
       </section>
 
@@ -378,6 +487,37 @@ export default function SummerJamPage() {
                   <p className="type-body mt-4 text-sm leading-7 text-black/60">
                     {item.detail}
                   </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+          <div className="mt-10 grid gap-5 lg:grid-cols-2">
+            {practicalSections.map((section, index) => (
+              <Reveal
+                key={section.title}
+                delay={index > 0 ? 'short' : 'none'}
+              >
+                <article className="h-full border border-black/15 bg-black/[0.03] p-8 md:p-10">
+                  <h3 className="type-display text-[clamp(2.2rem,4vw,3.5rem)] leading-none">
+                    {section.title}
+                  </h3>
+                  <p className="type-body mt-5 text-sm leading-7 text-black/60">
+                    {section.body}
+                  </p>
+                  <ul className="type-body mt-6 space-y-3 text-sm leading-7 text-black/60">
+                    {section.items.map((item) => (
+                      <li
+                        key={item}
+                        className="grid grid-cols-[14px_1fr] gap-3"
+                      >
+                        <span
+                          aria-hidden="true"
+                          className="mt-[11px] h-1.5 w-1.5 rounded-full bg-black/45"
+                        />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </article>
               </Reveal>
             ))}
