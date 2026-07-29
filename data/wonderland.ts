@@ -18,6 +18,10 @@ export const summerJamEvent: SummerJamEvent = summerJam.event
 
 export const wonderlandPage: WonderlandPage = wonderland
 
+export const currentWonderlandEvent = wonderland.currentEvent
+
+export const wonderlandCommunity = wonderland.community
+
 export const summerJamPage: SummerJamPage = {
   event: summerJamEvent,
   ...summerJam.page,

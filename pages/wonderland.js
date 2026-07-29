@@ -3,14 +3,16 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { generateNextSeo } from 'next-seo/pages'
 import ButtonLink from '../components/ui/ButtonLink'
+import SignupForm from '../components/SignupForm'
 import Reveal from '../components/ui/Reveal'
 import SectionTitle from '../components/ui/SectionTitle'
 import SiteFooter from '../components/ui/SiteFooter'
 import Ticker from '../components/ui/Ticker'
-import { summerJamEvent, wonderlandPage } from '../data/wonderland'
+import { wonderlandPage } from '../data/wonderland'
 
 export default function BoyosWonderlandPage() {
   const page = wonderlandPage
+  const event = page.currentEvent
 
   return (
     <>
@@ -128,7 +130,7 @@ export default function BoyosWonderlandPage() {
           <Reveal variant="media">
             <Image
               src={page.story.image}
-              alt="Summer Jam poster"
+              alt="Boyos Wonderland mini festival"
               width={520}
               height={693}
               className="surface-card surface-media aspect-[3/4] w-full max-w-[460px] -rotate-1 rounded-md object-cover shadow-2xl"
@@ -198,99 +200,149 @@ export default function BoyosWonderlandPage() {
           </Reveal>
           <Reveal delay="short" variant="card">
             <Link
-              href={summerJamEvent.href}
+              href={event.href}
               className="surface-card mt-14 grid overflow-hidden border border-black/20 text-inherit no-underline hover:border-black/50 md:grid-cols-2"
             >
-              <div className="relative aspect-[4/3] overflow-hidden md:aspect-[3/4]">
-                <Image
-                  src={summerJamEvent.poster}
-                  alt={`${summerJamEvent.shortTitle} poster`}
-                  fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="surface-media object-cover"
-                />
+              <div className="relative flex min-h-[360px] items-end overflow-hidden bg-[rgb(var(--color-brand-deep))] p-8 text-[var(--color-surface-paper)] md:min-h-[620px] md:p-12">
+                <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_24%,rgba(94,196,188,0.3),transparent_34%),radial-gradient(circle_at_15%_88%,rgba(239,125,167,0.2),transparent_42%)]" />
+                <div
+                  aria-hidden="true"
+                  className="type-display absolute -right-[0.08em] top-[0.02em] text-[clamp(13rem,35vw,28rem)] leading-none text-white/[0.04]"
+                >
+                  18
+                </div>
+                <div className="relative">
+                  <p className="type-meta mb-4 text-[var(--color-brand-secondary)]">
+                    Save the date
+                  </p>
+                  <p className="type-display text-[clamp(5.8rem,16vw,10rem)] leading-[0.78]">
+                    {event.dateShort}
+                  </p>
+                  <p className="type-accent mt-5 text-2xl text-white/55">
+                    Amsterdam
+                  </p>
+                </div>
               </div>
               <div className="flex flex-col justify-between bg-black/[0.04] p-8 md:p-12">
                 <div>
                   <p className="type-meta mb-3 text-black/45">
-                    Next edition · Open Air Mini Festival
+                    Next edition · {event.locationLabel}
                   </p>
-                  <h3 className="type-display text-[clamp(3rem,6vw,5rem)] leading-[0.86]">
-                    Summer
-                    <br />
-                    Jam
+                  <h3 className="type-display text-[clamp(3.4rem,6vw,5.8rem)] leading-[0.86]">
+                    Boyos Wonderland
+                    <span className="block">at Club UP</span>
                   </h3>
                   <dl className="type-body my-8 space-y-3 text-sm">
                     <div className="flex gap-4">
                       <dt className="type-meta w-16 text-black/45">Date</dt>
-                      <dd className="font-semibold">
-                        {summerJamEvent.dateLabel}
-                      </dd>
-                    </div>
-                    <div className="flex gap-4">
-                      <dt className="type-meta w-16 text-black/45">Time</dt>
-                      <dd className="font-semibold">
-                        {summerJamEvent.timeLabel}
-                      </dd>
+                      <dd className="font-semibold">{event.dateLabel}</dd>
                     </div>
                     <div className="flex gap-4">
                       <dt className="type-meta w-16 text-black/45">Venue</dt>
-                      <dd className="font-semibold">
-                        {summerJamEvent.locationLabel}
-                      </dd>
+                      <dd className="font-semibold">{event.locationLabel}</dd>
                     </div>
                   </dl>
                   <p className="type-body border-t border-black/10 pt-7 text-sm leading-7 text-black/65">
-                    {summerJamEvent.description}
+                    {event.description}
                   </p>
                   <p className="type-body mt-4 text-sm font-semibold leading-7 text-black/70">
-                    {summerJamEvent.lineUpLabel}
+                    {event.detailsLabel}
                   </p>
                 </div>
                 <div className="mt-8 flex flex-wrap items-center gap-4">
-                  <span className="btn btn-ink type-control">More info →</span>
-                  <span className="type-body text-xs tracking-wide text-black/45">
-                    {summerJamEvent.ticketLabel}
+                  <span className="btn btn-ink type-control">
+                    Event details →
                   </span>
                 </div>
               </div>
             </Link>
           </Reveal>
-
-          <div className="mt-1">
-            {page.upcomingRows.map((event) => (
-              <Reveal key={event.title} delay="short" variant="card">
-                <article className="grid grid-cols-[72px_1fr] items-center gap-6 border-b border-black/15 py-7 md:grid-cols-[100px_1fr_auto] md:gap-10">
-                  <div className="type-display text-4xl leading-none">
-                    {event.date}
-                  </div>
-                  <div>
-                    <h3 className="type-body font-semibold">{event.title}</h3>
-                    <p className="type-body mt-1 text-sm tracking-wide text-black/55">
-                      {event.venue}{' '}
-                      <span className="type-meta ml-2 rounded-full bg-black/10 px-2 py-1">
-                        {event.tag}
-                      </span>
-                    </p>
-                  </div>
-                  <ButtonLink
-                    href="mailto:info@boyoscollective.nl"
-                    tone="ink"
-                    className="hidden md:inline-flex"
-                  >
-                    Stay Updated
-                  </ButtonLink>
-                </article>
-              </Reveal>
-            ))}
-          </div>
         </div>
+      </section>
+
+      <section className="bg-[var(--color-brand-charcoal)] px-6 py-24 md:px-10">
+        <Reveal
+          className="mx-auto grid max-w-6xl overflow-hidden border-y border-white/10 md:grid-cols-12"
+          variant="text"
+        >
+          <div className="py-14 md:col-span-7 md:border-r md:border-white/10 md:py-20 md:pr-14">
+            <span className="type-meta mb-5 block text-[var(--color-brand-secondary)]">
+              {page.community.eyebrow}
+            </span>
+            <p className="type-accent max-w-3xl text-[clamp(2.8rem,6vw,5.7rem)] leading-[0.95]">
+              {page.community.title}
+            </p>
+            <p className="type-body mt-8 max-w-xl text-[15px] leading-8 text-white/55">
+              {page.community.body}
+            </p>
+            <ButtonLink
+              href={page.community.url}
+              tone="teal"
+              className="mt-8"
+            >
+              {page.community.ctaLabel}
+            </ButtonLink>
+          </div>
+
+          <div
+            id="wonderland-signup"
+            className="border-t border-white/10 py-14 md:col-span-5 md:border-t-0 md:py-20 md:pl-14"
+          >
+            <span className="type-meta mb-5 block text-white/38">
+              Prefer email?
+            </span>
+            <h2 className="type-display max-w-md text-[clamp(2.9rem,5vw,4.8rem)] leading-[0.9]">
+              Keep Wonderland in your inbox.
+            </h2>
+            <p className="type-body mt-7 max-w-md text-sm leading-7 text-white/52">
+              Occasional notes about new editions, music and what we&apos;ve
+              been making together.
+            </p>
+            <SignupForm />
+          </div>
+        </Reveal>
       </section>
 
       <section className="bg-[rgb(var(--color-brand-deep))] px-6 py-24 md:px-10">
         <div className="mx-auto max-w-6xl">
           <Reveal variant="text">
-            <SectionTitle eyebrow="Past editions" title="Photo Albums" />
+            <SectionTitle eyebrow="Past editions" title="The Archive" />
+          </Reveal>
+
+          <div className="mt-12 space-y-4">
+            {page.pastEditions.map((edition) => (
+              <Reveal key={edition.href} variant="card">
+                <Link
+                  href={edition.href}
+                  className="surface-card group grid overflow-hidden border border-white/10 text-inherit no-underline transition hover:border-white/25 md:grid-cols-[220px_1fr_auto] md:items-center"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden md:aspect-square">
+                    <Image
+                      src={edition.poster}
+                      alt={`${edition.title} poster`}
+                      fill
+                      sizes="(min-width: 768px) 220px, 100vw"
+                      className="surface-media object-cover"
+                    />
+                  </div>
+                  <div className="p-7 md:p-9">
+                    <p className="type-meta mb-3 text-[var(--color-brand-amber)]">
+                      {edition.dateLabel} · {edition.venueLabel}
+                    </p>
+                    <h3 className="type-display text-[clamp(3rem,6vw,5rem)] leading-none">
+                      {edition.title}
+                    </h3>
+                  </div>
+                  <span className="btn btn-paper type-control mb-7 ml-7 mr-7 md:mb-0 md:ml-0 md:mr-9">
+                    View edition →
+                  </span>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal className="mt-24" variant="text">
+            <SectionTitle eyebrow="Captured moments" title="Photo Albums" />
           </Reveal>
           <div className="mt-12 grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
             {page.albums.map((album) => (

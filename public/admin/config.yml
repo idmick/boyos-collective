@@ -66,6 +66,38 @@ collections:
               - { label: Image, name: image, widget: image }
               - { label: Badge, name: badge, widget: image }
               - { label: Subtitle, name: subtitle, widget: text }
+          - label: Current Event
+            name: currentEvent
+            widget: object
+            fields:
+              - { label: Title, name: title, widget: string }
+              - { label: Short Title, name: shortTitle, widget: string }
+              - { label: Page Path, name: href, widget: string }
+              - { label: Canonical URL, name: canonical, widget: string }
+              - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
+              - { label: Date Label, name: dateLabel, widget: string }
+              - { label: Short Date, name: dateShort, widget: string }
+              - { label: Venue Name, name: venueName, widget: string }
+              - { label: Location Label, name: locationLabel, widget: string }
+              - label: Address
+                name: address
+                widget: object
+                fields:
+                  - { label: Street Address, name: streetAddress, widget: string }
+                  - { label: Postal Code, name: postalCode, widget: string }
+                  - { label: City, name: addressLocality, widget: string }
+                  - { label: Country, name: addressCountry, widget: string }
+              - { label: Description, name: description, widget: text }
+              - { label: Details Label, name: detailsLabel, widget: string }
+          - label: Community
+            name: community
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Title, name: title, widget: string }
+              - { label: Body, name: body, widget: text }
+              - { label: Button Label, name: ctaLabel, widget: string }
+              - { label: WhatsApp URL, name: url, widget: string }
           - label: Story
             name: story
             widget: object
@@ -85,16 +117,16 @@ collections:
             fields:
               - { label: Name, name: name, widget: string }
               - { label: Description, name: description, widget: text }
-          - label: Upcoming Rows
-            name: upcomingRows
+          - label: Past Editions
+            name: pastEditions
             widget: list
-            required: false
             summary: "{{fields.title}}"
             fields:
-              - { label: Date, name: date, widget: string }
               - { label: Title, name: title, widget: string }
-              - { label: Venue, name: venue, widget: string }
-              - { label: Tag, name: tag, widget: string }
+              - { label: Date Label, name: dateLabel, widget: string }
+              - { label: Venue Label, name: venueLabel, widget: string }
+              - { label: Page Path, name: href, widget: string }
+              - { label: Poster, name: poster, widget: image }
           - label: Albums
             name: albums
             widget: list
@@ -139,10 +171,7 @@ collections:
                   - Houtbaar
                   - Oshi
                 field: { label: Partner, name: partner, widget: string }
-              - { label: Ticket Label, name: ticketLabel, widget: string }
-              - { label: Ticket URL, name: ticketUrl, widget: string, default: "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=6ea99d8c-4bc7-4656-a7f6-4157dddba51f" }
               - { label: Line-up Label, name: lineUpLabel, widget: string, default: "AEV.AYA · SYNGA · Boyos Soundsystem · Shamis · Tommaso · Estafête · UMOJA" }
-              - { label: WhatsApp URL, name: whatsappUrl, widget: string }
               - { label: Instagram URL, name: instagramUrl, widget: string }
               - { label: INI URL, name: iniUrl, widget: string }
               - { label: INI Instagram URL, name: iniInstagramUrl, widget: string }
@@ -164,18 +193,16 @@ collections:
                 name: seo
                 widget: object
                 default:
-                  title: Summer Jam Haarlem | Boyos Wonderland x INI Movement
-                  description: Summer Jam is a one day mini-festival at Houtbaar, Haarlem on Saturday 25 July 2026 by Boyos Wonderland and INI Movement, with DJs, live musicians, pop-up tattoos and an indoor afterparty till 02:00.
-                  keywords: Summer Jam Haarlem, Houtbaar Haarlem, Boyos Wonderland, INI Movement, Boyos Soundsystem, Haarlem mini festival, Amsterdam DJ collective, disco house DJ Netherlands, pop-up tattoo event Haarlem
+                  title: Summer Jam 2026 Haarlem | Boyos Wonderland Archive
+                  description: Summer Jam brought Boyos Wonderland and INI Movement to Houtbaar, Haarlem on 25 July 2026 for open jams, DJs, live music, records, tattoos and an inside afterparty.
                   canonical: https://www.boyoscollective.nl/wonderland/summer-jam
-                  ogTitle: Summer Jam Haarlem | Boyos Wonderland x INI Movement
-                  ogImage: https://www.boyoscollective.nl/images/summer-jam-poster.png
-                  ogImageAlt: Summer Jam poster
+                  ogTitle: Summer Jam 2026 | Boyos Wonderland x INI Movement
+                  ogImage: https://www.boyoscollective.nl/images/og/summer-jam.jpg
+                  ogImageAlt: Summer Jam at Houtbaar Haarlem
                   siteName: Boyos Collective
                 fields:
                   - { label: Title, name: title, widget: string }
                   - { label: Description, name: description, widget: text }
-                  - { label: Keywords, name: keywords, widget: text }
                   - { label: Canonical URL, name: canonical, widget: string }
                   - { label: Open Graph Title, name: ogTitle, widget: string }
                   - { label: Open Graph Image, name: ogImage, widget: string }
@@ -186,12 +213,12 @@ collections:
                 widget: object
                 default:
                   backLabel: ← Boyos Wonderland
-                  presentedBy: Boyos Wonderland & INI Movement present
+                  presentedBy: Past edition · Boyos Wonderland & INI Movement
                   titleLines:
                     - Summer
                     - Jam
-                  subtitle: A mini festival
-                  secondaryCtaLabel: Follow the build-up
+                  subtitle: Houtbaar, Haarlem · 25 July 2026
+                  secondaryCtaLabel: Read the 3voor12 interview
                   stats:
                     dateLabel: Date
                     timeLabel: Time
@@ -228,8 +255,8 @@ collections:
                     eyebrow: Together with
                     title: The Partners
                   practicalInfo:
-                    eyebrow: Practical info
-                    title: Good To Know
+                    eyebrow: Edition details
+                    title: At a glance
                 fields:
                   - label: Concept
                     name: concept
@@ -270,13 +297,6 @@ collections:
                   - Powered by Oshi
                   - Afterparty till 02:00
                 field: { label: Item, name: item, widget: string }
-              - label: Start Time Notice
-                name: startNotice
-                widget: object
-                fields:
-                  - { label: Eyebrow, name: eyebrow, widget: string }
-                  - { label: Title, name: title, widget: string }
-                  - { label: Body, name: body, widget: text }
               - label: Timetable
                 name: schedule
                 widget: object
@@ -323,16 +343,16 @@ collections:
                 name: finalCta
                 widget: object
                 default:
-                  eyebrow: Tickets
-                  title: Meet us where the garden turns into a dancefloor.
-                  body: Advance tickets are €20. Late tickets and tickets at the door are €25. Arrive from 13:00, take the garden with you and follow the music inside when the evening turns.
-                  secondaryLabel: Follow the build-up
+                  eyebrow: Past edition
+                  title: The day the garden became a dancefloor.
+                  body: Summer Jam moved from an open afternoon in the garden to a full room inside, carried by live improvisation, warm selections and the Haarlem community.
+                  secondaryLabel: Read the 3voor12 interview
                 fields:
                   - { label: Eyebrow, name: eyebrow, widget: string }
                   - { label: Title, name: title, widget: string }
                   - { label: Body, name: body, widget: text }
                   - { label: Secondary Button Label, name: secondaryLabel, widget: string }
-              - { label: Lineup Intro, name: lineupIntro, widget: text, default: "The full programme moves between DJ sets, an open musical floor and Estafête's live response. These cards show the people carrying the day and the extras waiting around the garden." }
+              - { label: Lineup Intro, name: lineupIntro, widget: text, default: "The programme moved between DJ sets, an open musical floor and Estafête's live response. These are the people who carried the day and the extras found around the garden." }
               - { label: Partner Button Label, name: partnerCtaLabel, widget: string, default: Visit }
               - label: Practical Info Cards
                 name: practicalInfo
@@ -352,17 +372,6 @@ collections:
                   - { label: Label, name: label, widget: string }
                   - { label: Value, name: value, widget: string }
                   - { label: Detail, name: detail, widget: text }
-              - label: Practical Sections
-                name: practicalSections
-                widget: list
-                summary: "{{fields.title}}"
-                fields:
-                  - { label: Title, name: title, widget: string }
-                  - { label: Body, name: body, widget: text }
-                  - label: Points
-                    name: items
-                    widget: list
-                    field: { label: Point, name: point, widget: string }
               - label: Concept Paragraphs
                 name: concept
                 widget: list

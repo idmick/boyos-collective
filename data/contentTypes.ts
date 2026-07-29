@@ -34,7 +34,7 @@ export type HomeContent = {
 
 export type HomePage = HomeContent & {
   playedAt: string[]
-  nextEvent: SummerJamEvent
+  nextEvent: WonderlandEventSummary
 }
 
 export type Address = {
@@ -42,6 +42,37 @@ export type Address = {
   postalCode: string
   addressLocality: string
   addressCountry: string
+}
+
+export type WonderlandEventSummary = {
+  title: string
+  shortTitle: string
+  href: InternalHref
+  canonical: ExternalUrl
+  date: string
+  dateLabel: string
+  dateShort: string
+  venueName: string
+  locationLabel: string
+  address: Address
+  description: string
+  detailsLabel: string
+}
+
+export type WonderlandCommunity = {
+  eyebrow: string
+  title: string
+  body: string
+  ctaLabel: string
+  url: ExternalUrl
+}
+
+export type WonderlandPastEdition = {
+  title: string
+  dateLabel: string
+  venueLabel: string
+  href: InternalHref
+  poster: ImagePath
 }
 
 export type SummerJamEvent = {
@@ -57,10 +88,7 @@ export type SummerJamEvent = {
   poster: ImagePath
   format: string
   partners: string[]
-  ticketLabel: string
-  ticketUrl: ExternalUrl
   lineUpLabel: string
-  whatsappUrl: ExternalUrl
   instagramUrl: ExternalUrl
   iniUrl: ExternalUrl
   iniInstagramUrl: ExternalUrl
@@ -71,6 +99,8 @@ export type SummerJamEvent = {
 
 export type WonderlandPage = {
   hero: Required<Pick<HeroContent, 'eyebrow' | 'title' | 'subtitle' | 'image' | 'badge'>>
+  currentEvent: WonderlandEventSummary
+  community: WonderlandCommunity
   story: {
     eyebrow: string
     title: string
@@ -82,12 +112,7 @@ export type WonderlandPage = {
     name: string
     description: string
   }[]
-  upcomingRows: {
-    date: string
-    title: string
-    venue: string
-    tag: string
-  }[]
+  pastEditions: WonderlandPastEdition[]
   albums: {
     title: string
     cover: ImagePath
@@ -142,11 +167,6 @@ export type SummerJamPage = {
     }
   }
   ticker: string[]
-  startNotice: {
-    eyebrow: string
-    title: string
-    body: string
-  }
   schedule: {
     eyebrow: string
     title: string
@@ -187,11 +207,6 @@ export type SummerJamPage = {
     label: string
     value: string
     detail: string
-  }[]
-  practicalSections: {
-    title: string
-    body: string
-    items: string[]
   }[]
   concept: string[]
   dayArc: {

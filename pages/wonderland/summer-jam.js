@@ -6,7 +6,10 @@ import Reveal from '../../components/ui/Reveal'
 import SectionTitle from '../../components/ui/SectionTitle'
 import SiteFooter from '../../components/ui/SiteFooter'
 import Ticker from '../../components/ui/Ticker'
-import { summerJamPage } from '../../data/wonderland'
+import {
+  currentWonderlandEvent,
+  summerJamPage,
+} from '../../data/wonderland'
 
 export default function SummerJamPage() {
   const {
@@ -15,14 +18,12 @@ export default function SummerJamPage() {
     hero,
     sections,
     ticker,
-    startNotice,
     schedule,
     press,
     finalCta,
     lineupIntro,
     partnerCtaLabel,
     practicalInfo,
-    practicalSections,
     concept,
     dayArc,
     partners,
@@ -82,6 +83,8 @@ export default function SummerJamPage() {
           __html: JSON.stringify({
             '@context': 'https://schema.org',
             '@type': 'MusicEvent',
+            '@id': `${seo.canonical}#event`,
+            url: seo.canonical,
             name: event.title,
             startDate: '2026-07-25T13:00:00+02:00',
             endDate: '2026-07-26T02:00:00+02:00',
@@ -119,14 +122,6 @@ export default function SummerJamPage() {
               },
             ],
             description: event.description,
-            offers: {
-              '@type': 'Offer',
-              url: event.ticketUrl,
-              price: '20',
-              priceCurrency: 'EUR',
-              validFrom: '2026-05-03T00:00:00+02:00',
-              availability: 'https://schema.org/InStock',
-            },
             performer: lineup
               .filter((act) => act.schemaType)
               .map((act) => ({
@@ -174,10 +169,10 @@ export default function SummerJamPage() {
             ))}
           </dl>
           <div className="flex flex-wrap items-center gap-5">
-            <ButtonLink href={event.ticketUrl} tone="amber">
-              {event.ticketLabel}
+            <ButtonLink href={currentWonderlandEvent.href} tone="amber">
+              See the next Wonderland edition
             </ButtonLink>
-            <ButtonLink href={event.instagramUrl} tone="paper">
+            <ButtonLink href={press.url} tone="paper">
               {hero.secondaryCtaLabel}
             </ButtonLink>
           </div>
@@ -204,22 +199,6 @@ export default function SummerJamPage() {
       </section>
 
       <Ticker items={ticker} tone="paper" />
-
-      <section className="bg-[var(--color-brand-event)] px-6 py-16 text-[var(--color-text-primary)] md:px-10 md:py-20">
-        <Reveal className="mx-auto grid max-w-6xl gap-8 border-y border-black/15 py-10 md:grid-cols-[0.55fr_1.45fr] md:items-center md:py-14">
-          <span className="type-meta text-black/45">
-            {startNotice.eyebrow}
-          </span>
-          <div>
-            <h2 className="type-display text-[clamp(3.2rem,8vw,7rem)] leading-[0.88]">
-              {startNotice.title}
-            </h2>
-            <p className="type-body mt-6 max-w-3xl text-[15px] leading-8 text-black/60">
-              {startNotice.body}
-            </p>
-          </div>
-        </Reveal>
-      </section>
 
       <section
         id="timetable"
@@ -491,37 +470,6 @@ export default function SummerJamPage() {
               </Reveal>
             ))}
           </div>
-          <div className="mt-10 grid gap-5 lg:grid-cols-2">
-            {practicalSections.map((section, index) => (
-              <Reveal
-                key={section.title}
-                delay={index > 0 ? 'short' : 'none'}
-              >
-                <article className="h-full border border-black/15 bg-black/[0.03] p-8 md:p-10">
-                  <h3 className="type-display text-[clamp(2.2rem,4vw,3.5rem)] leading-none">
-                    {section.title}
-                  </h3>
-                  <p className="type-body mt-5 text-sm leading-7 text-black/60">
-                    {section.body}
-                  </p>
-                  <ul className="type-body mt-6 space-y-3 text-sm leading-7 text-black/60">
-                    {section.items.map((item) => (
-                      <li
-                        key={item}
-                        className="grid grid-cols-[14px_1fr] gap-3"
-                      >
-                        <span
-                          aria-hidden="true"
-                          className="mt-[11px] h-1.5 w-1.5 rounded-full bg-black/45"
-                        />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              </Reveal>
-            ))}
-          </div>
         </div>
       </section>
 
@@ -540,10 +488,10 @@ export default function SummerJamPage() {
               {finalCta.body}
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
-              <ButtonLink href={event.ticketUrl} tone="amber">
-                {event.ticketLabel}
+              <ButtonLink href={currentWonderlandEvent.href} tone="amber">
+                See the next Wonderland edition
               </ButtonLink>
-              <ButtonLink href={event.instagramUrl} tone="paper">
+              <ButtonLink href={press.url} tone="paper">
                 {finalCta.secondaryLabel}
               </ButtonLink>
             </div>

@@ -8,17 +8,15 @@ const summerJamPageSource = readFileSync(
 )
 
 describe('Summer Jam page source', () => {
-  it('keeps the offer validFrom metadata and performer schema mapping', () => {
+  it('removes active offers and keeps explicit performer schema mapping', () => {
+    expect(summerJamPageSource).not.toContain('offers:')
+    expect(summerJamPageSource).not.toContain('validFrom:')
     expect(summerJamPageSource).toContain(
-      "validFrom: '2026-05-03T00:00:00+02:00'"
+      '.filter((act) => act.schemaType)'
     )
+    expect(summerJamPageSource).toContain("'@type': act.schemaType")
     expect(summerJamPageSource).toContain(
-      ".filter((act) => act.name !== 'Open Jam')"
+      'name: act.schemaName || act.name'
     )
-    expect(summerJamPageSource).toContain(
-      "['Estafête', 'UMOJA', 'Boyos Soundsystem'].includes("
-    )
-    expect(summerJamPageSource).toContain("? 'MusicGroup'")
-    expect(summerJamPageSource).toContain(": 'Person'")
   })
 })

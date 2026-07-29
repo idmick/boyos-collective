@@ -2,11 +2,9 @@
   "event": {
     "venueUrl": "https://www.houtbaarhaarlem.nl/",
     "iniInstagramUrl": "https://www.instagram.com/inimovement/",
-    "ticketUrl": "https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=6ea99d8c-4bc7-4656-a7f6-4157dddba51f",
     "lineUpLabel": "AEV.AYA · SYNGA · Boyos Soundsystem · Shamis · Tommaso · Estafête · UMOJA",
     "dateLabel": "Saturday 25 July 2026",
     "timeLabel": "13:00 – 02:00",
-    "ticketLabel": "Advance tickets €20",
     "partners": [
       "Boyos Wonderland",
       "INI Movement",
@@ -28,9 +26,8 @@
     "venueName": "Houtbaar",
     "directionsUrl": "https://www.google.com/maps/search/?api=1&query=Houtbaar%2C%20Woudplein%202%2C%202031CZ%20Haarlem",
     "shortTitle": "Summer Jam",
-    "description": "A full Summer Jam day at Houtbaar Haarlem where Boyos Wonderland and INI Movement bring open jams, DJs, live musicians, records, tattoos and an inside afterparty together from 13:00 to 02:00.",
+    "description": "Summer Jam brought Boyos Wonderland and INI Movement to Houtbaar Haarlem for a full day of open jams, DJs, live musicians, records, tattoos and an inside afterparty from 13:00 to 02:00.",
     "instagramUrl": "https://www.instagram.com/boyos.wonderland/?hl=en",
-    "whatsappUrl": "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
     "locationLabel": "Houtbaar, Haarlem"
   },
   "page": {
@@ -45,11 +42,6 @@
       "Inside afterparty",
       "Ends at 02:00"
     ],
-    "startNotice": {
-      "eyebrow": "Important time update",
-      "title": "Summer Jam starts at 13:00",
-      "body": "Some tickets and event listings still show the old start time. AEV.AYA opens at 13:00 and the first Open Jam begins at 14:00, so the day is moving from the moment the garden opens."
-    },
     "schedule": {
       "eyebrow": "The timetable",
       "title": "From garden to inside",
@@ -121,7 +113,7 @@
           }
         ]
       },
-      "openJamNote": "The Open Jam has no fixed roster. Artists who joined through an INI Movement jam ticket can step in, with SYNGA keeping the session moving and making space for the music to find its own direction."
+      "openJamNote": "The Open Jam had no fixed roster. Artists who joined through INI Movement stepped in while SYNGA kept the session moving and made space for the music to find its own direction."
     },
     "press": {
       "eyebrow": "In the press",
@@ -131,32 +123,32 @@
       "url": "https://3voor12lokaal.vpro.nl/artikelen/summer-jam-bij-houtbaar-waar-estafete-live-acts-uitdaagt-en-warme-dj-sounds-de-overhand-hebben"
     },
     "finalCta": {
-      "eyebrow": "Tickets",
-      "title": "Meet us where the garden turns into a dancefloor.",
-      "body": "Advance tickets are €20. Late tickets and tickets at the door are €25. Arrive from 13:00, take the garden with you and follow the music inside when the evening turns.",
-      "secondaryLabel": "Follow the build-up"
+      "eyebrow": "Past edition",
+      "title": "The day the garden became a dancefloor.",
+      "body": "Summer Jam moved from an open afternoon in the garden to a full room inside, carried by live improvisation, warm selections and the Haarlem community.",
+      "secondaryLabel": "Read the 3voor12 interview"
     },
     "concept": [
-      "Summer Jam is where Boyos Wonderland and INI Movement meet at Houtbaar: a full day in the garden built around DJs, live musicians and people coming together for the same reason—to move.",
-      "The Open Jam is part of the day from the start. Artists joining through INI Movement can step in while SYNGA keeps the session moving. Later, Estafête lets DJs and musicians react to one another in real time, passing tracks between decks and live instrumentation.",
-      "Around it all, Team de Boef opens the tattoo pop-up, Ephemeris Records fills the garden with crates and Houtbaar keeps food and drinks moving.",
-      "When the garden closes at 23:00, the night moves inside and carries on until 02:00."
+      "Summer Jam brought Boyos Wonderland and INI Movement together at Houtbaar for a full day in the garden built around DJs, live musicians and people moving for the same reason.",
+      "The Open Jam shaped the day from the start. Artists joining through INI Movement stepped in while SYNGA kept the session moving. Later, Estafête let DJs and musicians react to one another in real time, passing tracks between decks and live instrumentation.",
+      "Around it all, Team de Boef opened the tattoo pop-up, Ephemeris Records filled the garden with crates and Houtbaar kept food and drinks moving.",
+      "When the garden closed at 23:00, the night moved inside and carried on until 02:00."
     ],
     "dayArc": [
       {
         "time": "13:00",
-        "name": "The garden opens",
-        "description": "AEV.AYA starts behind the decks before the first Open Jam begins at 14:00."
+        "name": "The garden opened",
+        "description": "AEV.AYA started behind the decks before the first Open Jam began at 14:00."
       },
       {
         "time": "14:00",
         "name": "Open Jam",
-        "description": "Participating artists step in through the afternoon, with SYNGA guiding the session and leaving room for the music to change."
+        "description": "Participating artists stepped in through the afternoon, with SYNGA guiding the session and leaving room for the music to change."
       },
       {
         "time": "23:00",
         "name": "Inside afterparty",
-        "description": "The garden closes and the room moves inside with UMOJA and Boyos Soundsystem until 02:00."
+        "description": "The garden closed and the room moved inside with UMOJA and Boyos Soundsystem until 02:00."
       }
     ],
     "partners": [
@@ -351,23 +343,23 @@
       }
     ],
     "seo": {
-      "title": "Summer Jam Haarlem | Boyos Wonderland x INI Movement",
-      "description": "Summer Jam is a full garden-to-afterparty festival day at Houtbaar, Haarlem on Saturday 25 July 2026, with DJs, Open Jams, Estafête live, records and tattoos from 13:00 to 02:00.",
+      "title": "Summer Jam 2026 Haarlem | Boyos Wonderland Archive",
+      "description": "Summer Jam brought Boyos Wonderland and INI Movement to Houtbaar, Haarlem on 25 July 2026 for open jams, DJs, live music, records, tattoos and an inside afterparty.",
       "canonical": "https://www.boyoscollective.nl/wonderland/summer-jam",
-      "ogTitle": "Summer Jam Haarlem | Boyos Wonderland x INI Movement",
+      "ogTitle": "Summer Jam 2026 | Boyos Wonderland x INI Movement",
       "ogImage": "https://www.boyoscollective.nl/images/og/summer-jam.jpg",
       "ogImageAlt": "Summer Jam at Houtbaar Haarlem",
       "siteName": "Boyos Collective"
     },
     "hero": {
       "backLabel": "← Boyos Wonderland",
-      "presentedBy": "Boyos Wonderland & INI Movement present",
+      "presentedBy": "Past edition · Boyos Wonderland & INI Movement",
       "titleLines": [
         "Summer",
         "Jam"
       ],
-      "subtitle": "Garden to inside · 13:00 to 02:00",
-      "secondaryCtaLabel": "Follow the build-up",
+      "subtitle": "Houtbaar, Haarlem · 25 July 2026",
+      "secondaryCtaLabel": "Read the 3voor12 interview",
       "stats": {
         "dateLabel": "Date",
         "timeLabel": "Time",
@@ -389,87 +381,27 @@
         "title": "The partners"
       },
       "practicalInfo": {
-        "eyebrow": "Practical info",
-        "title": "Good to know"
+        "eyebrow": "Edition details",
+        "title": "At a glance"
       }
     },
-    "lineupIntro": "The full programme moves between DJ sets, an open musical floor and Estafête's live response. These cards show the people carrying the day and the extras waiting around the garden.",
+    "lineupIntro": "The programme moved between DJ sets, an open musical floor and Estafête's live response. These are the people who carried the day and the extras found around the garden.",
     "partnerCtaLabel": "Visit",
     "practicalInfo": [
       {
         "label": "Date",
         "value": "Saturday 25 July 2026",
-        "detail": "The garden programme starts at 13:00."
+        "detail": "The garden programme started at 13:00."
       },
       {
         "label": "Time",
         "value": "13:00 – 02:00",
-        "detail": "Garden until 23:00, then the programme moves inside."
+        "detail": "The programme moved inside after the garden closed at 23:00."
       },
       {
         "label": "Location",
         "value": "Houtbaar, Haarlem",
         "detail": "Woudplein 2, 2031 CZ Haarlem"
-      }
-    ],
-    "practicalSections": [
-      {
-        "title": "Tickets and entry",
-        "body": "Advance tickets are €20. Late tickets and tickets at the door are €25.",
-        "items": [
-          "Summer Jam is 18+. Bring a valid ID.",
-          "There is no re-entry after you leave the event."
-        ]
-      },
-      {
-        "title": "The inside afterparty",
-        "body": "Your festival ticket includes the afterparty. There are no separate afterparty tickets.",
-        "items": [
-          "People will gradually be let inside from 23:00.",
-          "Indoor capacity is limited, so access cannot be guaranteed once the room is full."
-        ]
-      },
-      {
-        "title": "Getting there",
-        "body": "Houtbaar is at Woudplein 2, 2031 CZ Haarlem. Haarlem Spaarnwoude is the nearest train and bus stop.",
-        "items": [
-          "The train from Amsterdam Centraal takes around 15 minutes.",
-          "Plan your journey home before you come."
-        ]
-      },
-      {
-        "title": "Tattoos, records, food and drinks",
-        "body": "Team de Boef works first come, first served. Ephemeris Records keeps the crates open through the day, while Houtbaar serves food and drinks.",
-        "items": [
-          "Team de Boef prefers cash, but card is possible.",
-          "Ephemeris Records accepts cash and card.",
-          "Houtbaar is pin only."
-        ]
-      },
-      {
-        "title": "Respect the groove",
-        "body": "Everyone should feel safe and free to move. Respect boundaries and remember that consent matters.",
-        "items": [
-          "No racism, sexism, queerphobia or harassment.",
-          "If something feels off, find the Boyos, INI or Houtbaar crew."
-        ]
-      },
-      {
-        "title": "Camera notice",
-        "body": "Professional photographers and videographers will be capturing Summer Jam throughout the day and night.",
-        "items": [
-          "Tell the camera team or crew if you prefer not to appear in a recognizable close-up.",
-          "Wider crowd shots may still include you."
-        ]
-      },
-      {
-        "title": "Bring with you",
-        "body": "A few things will make the full garden-to-inside day easier.",
-        "items": [
-          "Your festival ticket and valid ID.",
-          "Sunscreen, sunglasses, earplugs and a layer for later.",
-          "A tote for records and some cash for tattoos."
-        ]
       }
     ]
   }

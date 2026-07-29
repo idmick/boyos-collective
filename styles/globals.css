@@ -513,6 +513,26 @@ body {
   text-transform: uppercase;
 }
 
+#wonderland-signup .wonderland-signup-form {
+  margin-top: 32px;
+}
+
+#wonderland-signup
+  .wonderland-signup-form
+  > .sender-form-field[data-sender-form-id='en58jP'] {
+  min-height: 292px;
+  text-align: left;
+}
+
+#wonderland-signup
+  .wonderland-signup-form
+  > .sender-form-field[data-sender-form-id='en58jP']
+  iframe {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+}
+
 @keyframes spin-vinyl {
   to { transform: rotate(360deg); }
 }

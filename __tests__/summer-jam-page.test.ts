@@ -72,20 +72,20 @@ describe('Summer Jam event page', () => {
     })
   })
 
-  it('keeps admission, ticket and press details exact', () => {
-    const practicalCopy = JSON.stringify(
-      summerJamContent.page.practicalSections
-    )
+  it('presents Summer Jam as an archive without active ticket details', () => {
+    const archiveCopy = JSON.stringify(summerJamContent)
 
-    expect(summerJamContent.event.ticketUrl).toBe(
-      'https://shop.weeztix.com/1e3b52ff-0405-11ec-b3c4-9e36bf7d673e/tickets?shop_code=mv8kegk9&event=6ea99d8c-4bc7-4656-a7f6-4157dddba51f'
-    )
-    expect(summerJamContent.page.finalCta.body).toContain(
-      'Late tickets and tickets at the door are €25.'
-    )
-    expect(practicalCopy).toContain('18+')
-    expect(practicalCopy).toContain('no re-entry')
-    expect(practicalCopy).toContain('Indoor capacity is limited')
+    expect(summerJamContent.page.hero.presentedBy).toContain('Past edition')
+    expect(summerJamContent.page.seo.description).toContain('brought')
+    expect(summerJamContent.page.finalCta.eyebrow).toBe('Past edition')
+    expect(archiveCopy).not.toContain('ticketUrl')
+    expect(archiveCopy).not.toContain('Advance tickets')
+    expect(archiveCopy).not.toContain('no re-entry')
+    expect(archiveCopy).not.toContain('Indoor capacity is limited')
+    expect(pageSource).not.toContain('offers:')
+    expect(pageSource).not.toContain('InStock')
+    expect(pageSource).not.toContain('event.ticketUrl')
+    expect(pageSource).toContain('currentWonderlandEvent.href')
     expect(summerJamContent.page.press.url).toBe(
       'https://3voor12lokaal.vpro.nl/artikelen/summer-jam-bij-houtbaar-waar-estafete-live-acts-uitdaagt-en-warme-dj-sounds-de-overhand-hebben'
     )

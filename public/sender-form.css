@@ -1,0 +1,152 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+
+html,
+body {
+  background: transparent;
+  color: #f0ebe2;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+}
+
+#sender-form-content.sender-form-box {
+  width: 100% !important;
+  background: transparent !important;
+  color: #f0ebe2;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+}
+
+#sender-form-content .sender-form > .sender-form-title,
+#sender-form-content .sender-form > .sender-form-subtitle {
+  display: none !important;
+}
+
+#sender-form-content .sender-form-inputs {
+  margin-top: 0 !important;
+}
+
+#sender-form-content .sender-form .sender-form-label {
+  margin-bottom: 8px !important;
+  color: rgb(240 235 226 / 0.58) !important;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 10px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.18em;
+  line-height: 1.2 !important;
+  text-transform: uppercase;
+}
+
+#sender-form-content .sender-form-input {
+  width: 100%;
+  min-height: 52px;
+  border: 1px solid rgb(240 235 226 / 0.2) !important;
+  border-radius: 0 !important;
+  background: rgb(240 235 226 / 0.04) !important;
+  color: #f0ebe2 !important;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 15px !important;
+  padding: 12px 14px !important;
+}
+
+#sender-form-content .sender-form-input::placeholder {
+  color: rgb(240 235 226 / 0.3) !important;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 14px !important;
+}
+
+#sender-form-content .sender-form-field .sender-form-input:focus-visible {
+  border-color: #5ec4bc !important;
+  outline: 2px solid #5ec4bc !important;
+  outline-offset: 3px;
+}
+
+#sender-form-content .sender-form-checkboxes {
+  margin-top: 20px !important;
+}
+
+#sender-form-content .sender-form-control-label {
+  color: rgb(240 235 226 / 0.58) !important;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 12px !important;
+  line-height: 1.5 !important;
+}
+
+#sender-form-content
+  .sender-form-field
+  .sender-form-b-checkbox.sender-form-checkbox
+  input[type='checkbox']
+  + .sender-form-check {
+  border-color: rgb(240 235 226 / 0.35) !important;
+  border-radius: 0 !important;
+  background-color: transparent !important;
+}
+
+#sender-form-content
+  .sender-form-field
+  .sender-form-b-checkbox.sender-form-checkbox
+  input[type='checkbox']:checked
+  + .sender-form-check {
+  border-color: #5ec4bc !important;
+  background-color: #5ec4bc !important;
+}
+
+#sender-form-content
+  .sender-form-b-checkbox
+  input[type='checkbox']:focus-visible
+  + .sender-form-check {
+  outline: 2px solid #5ec4bc;
+  outline-offset: 3px;
+}
+
+#sender-form-content button.submit-button {
+  width: 100%;
+  min-height: 52px;
+  border-radius: 999px !important;
+  background: #5ec4bc !important;
+  color: #1a1512 !important;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.16em;
+  margin-top: 18px !important;
+  padding: 14px 22px !important;
+  text-transform: uppercase;
+}
+
+#sender-form-content button.submit-button:hover,
+#sender-form-content button.submit-button:focus-visible {
+  filter: brightness(108%);
+}
+
+#sender-form-content button.submit-button:focus-visible {
+  outline: 2px solid #f0ebe2 !important;
+  outline-offset: 3px;
+}
+
+#sender-form-content .sender-form-bottom-text {
+  color: rgb(240 235 226 / 0.32) !important;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 11px !important;
+  line-height: 1.55 !important;
+  margin-top: 14px !important;
+}
+
+#sender-form-content .sender-form-success .sender-form-title {
+  color: #f0ebe2 !important;
+  font-family: 'Bebas Neue', sans-serif !important;
+  font-size: clamp(2.5rem, 5vw, 4rem) !important;
+  font-weight: 400 !important;
+  line-height: 0.95 !important;
+  text-transform: uppercase;
+}
+
+#sender-form-content .sender-form-success .sender-form-subtitle {
+  color: rgb(240 235 226 / 0.58) !important;
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif !important;
+  font-size: 14px !important;
+  line-height: 1.65 !important;
+}
+
+#sender-form-content a[href*='sender.net'] {
+  color: rgb(240 235 226 / 0.32) !important;
+  filter: grayscale(1);
+  font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif !important;
+}
