@@ -4,10 +4,10 @@ import type {
   SummerJamContent,
   SummerJamEvent,
   SummerJamPage,
-  WonderlandPage,
+  WonderlandPageContent,
 } from './contentTypes'
 
-const wonderland = wonderlandContent as WonderlandPage
+const wonderland = wonderlandContent as WonderlandPageContent
 const summerJam = summerJamContent as SummerJamContent
 
 /**
@@ -16,11 +16,7 @@ const summerJam = summerJamContent as SummerJamContent
  */
 export const summerJamEvent: SummerJamEvent = summerJam.event
 
-export const wonderlandPage: WonderlandPage = wonderland
-
-export const currentWonderlandEvent = wonderland.currentEvent
-
-export const wonderlandCommunity = wonderland.community
+export const wonderlandPageContent: WonderlandPageContent = wonderland
 
 export const summerJamPage: SummerJamPage = {
   event: summerJamEvent,

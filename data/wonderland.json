@@ -6,31 +6,18 @@
     "badge": "/images/essential_groove.png",
     "subtitle": "From intimate Dine & Dance nights to open-air garden festivals: a world where the groove brings people together."
   },
-  "currentEvent": {
-    "title": "Boyos Wonderland at Club UP",
-    "shortTitle": "Club UP",
-    "href": "/wonderland/club-up-september-2026",
-    "canonical": "https://www.boyoscollective.nl/wonderland/club-up-september-2026",
-    "date": "2026-09-18",
-    "dateLabel": "Friday 18 September 2026",
-    "dateShort": "18.09",
-    "venueName": "Club UP",
-    "locationLabel": "Club UP, Amsterdam",
-    "address": {
-      "streetAddress": "Korte Leidsedwarsstraat 26-1",
-      "postalCode": "1017 RC",
-      "addressLocality": "Amsterdam",
-      "addressCountry": "NL"
-    },
-    "description": "Boyos Wonderland comes to Club UP in Amsterdam on Friday 18 September 2026.",
-    "detailsLabel": "Line-up, tickets and full details will follow."
-  },
+  "currentEventSlug": "club-up-september-2026",
   "community": {
     "eyebrow": "Stay close",
     "title": "The next night starts here.",
     "body": "Join the Wonderland community for the first word on upcoming editions and everything taking shape around them.",
     "ctaLabel": "Join the Wonderland community",
-    "url": "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR"
+    "url": "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
+    "emailSignup": {
+      "eyebrow": "Prefer email?",
+      "title": "Keep Wonderland in your inbox.",
+      "body": "Occasional notes about new editions, music and what we’ve been making together."
+    }
   },
   "story": {
     "eyebrow": "Our Story",

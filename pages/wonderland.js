@@ -8,10 +8,10 @@ import Reveal from '../components/ui/Reveal'
 import SectionTitle from '../components/ui/SectionTitle'
 import SiteFooter from '../components/ui/SiteFooter'
 import Ticker from '../components/ui/Ticker'
-import { wonderlandPage } from '../data/wonderland'
+import { wonderlandPageContent } from '../data/wonderland'
+import { getCurrentWonderlandEvent } from '../lib/wonderlandEvents'
 
-export default function BoyosWonderlandPage() {
-  const page = wonderlandPage
+export default function BoyosWonderlandPage({ page }) {
   const event = page.currentEvent
 
   return (
@@ -209,7 +209,7 @@ export default function BoyosWonderlandPage() {
                   aria-hidden="true"
                   className="type-display absolute -right-[0.08em] top-[0.02em] text-[clamp(13rem,35vw,28rem)] leading-none text-white/[0.04]"
                 >
-                  18
+                  {event.dateDay}
                 </div>
                 <div className="relative">
                   <p className="type-meta mb-4 text-[var(--color-brand-secondary)]">
@@ -219,7 +219,7 @@ export default function BoyosWonderlandPage() {
                     {event.dateShort}
                   </p>
                   <p className="type-accent mt-5 text-2xl text-white/55">
-                    Amsterdam
+                    {event.address.addressLocality}
                   </p>
                 </div>
               </div>
@@ -229,8 +229,11 @@ export default function BoyosWonderlandPage() {
                     Next edition · {event.locationLabel}
                   </p>
                   <h3 className="type-display text-[clamp(3.4rem,6vw,5.8rem)] leading-[0.86]">
-                    Boyos Wonderland
-                    <span className="block">at Club UP</span>
+                    {event.titleLines.map((line) => (
+                      <span key={line} className="block">
+                        {line}
+                      </span>
+                    ))}
                   </h3>
                   <dl className="type-body my-8 space-y-3 text-sm">
                     <div className="flex gap-4">
@@ -289,14 +292,13 @@ export default function BoyosWonderlandPage() {
             className="border-t border-white/10 py-14 md:col-span-5 md:border-t-0 md:py-20 md:pl-14"
           >
             <span className="type-meta mb-5 block text-white/38">
-              Prefer email?
+              {page.community.emailSignup.eyebrow}
             </span>
             <h2 className="type-display max-w-md text-[clamp(2.9rem,5vw,4.8rem)] leading-[0.9]">
-              Keep Wonderland in your inbox.
+              {page.community.emailSignup.title}
             </h2>
             <p className="type-body mt-7 max-w-md text-sm leading-7 text-white/52">
-              Occasional notes about new editions, music and what we&apos;ve
-              been making together.
+              {page.community.emailSignup.body}
             </p>
             <SignupForm />
           </div>
@@ -392,4 +394,15 @@ export default function BoyosWonderlandPage() {
       <SiteFooter />
     </>
   )
+}
+
+export function getStaticProps() {
+  return {
+    props: {
+      page: {
+        ...wonderlandPageContent,
+        currentEvent: getCurrentWonderlandEvent(wonderlandPageContent),
+      },
+    },
+  }
 }

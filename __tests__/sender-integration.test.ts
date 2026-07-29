@@ -12,7 +12,7 @@ const wonderlandSource = readSource('pages/wonderland.js')
 const netlifyConfig = readSource('netlify.toml')
 const pagesWithoutSignup = [
   readSource('pages/index.js'),
-  readSource('pages/wonderland/club-up-september-2026.js'),
+  readSource('pages/wonderland/[slug].js'),
   readSource('pages/wonderland/summer-jam.js'),
 ]
 

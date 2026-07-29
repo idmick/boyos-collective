@@ -4,36 +4,31 @@ import ButtonLink from '../../components/ui/ButtonLink'
 import Reveal from '../../components/ui/Reveal'
 import SiteFooter from '../../components/ui/SiteFooter'
 import Ticker from '../../components/ui/Ticker'
+import { wonderlandPageContent } from '../../data/wonderland'
 import {
-  currentWonderlandEvent,
-  wonderlandCommunity,
-} from '../../data/wonderland'
+  getAllWonderlandEvents,
+  getWonderlandEventBySlug,
+} from '../../lib/wonderlandEvents'
 
-export default function ClubUpSeptember2026Page() {
-  const event = currentWonderlandEvent
-  const community = wonderlandCommunity
-  const socialImage =
-    'https://www.boyoscollective.nl/images/og/boyos-wonderland.jpg'
-
+export default function WonderlandEventPage({ event, community }) {
   return (
     <>
       <Head>
         {generateNextSeo({
-          title:
-            'Boyos Wonderland at Club UP Amsterdam | 18 September 2026',
-          description: `${event.description} ${event.detailsLabel}`,
+          title: event.seo.title,
+          description: event.seo.description,
           canonical: event.canonical,
           openGraph: {
             url: event.canonical,
-            title: 'Boyos Wonderland at Club UP Amsterdam',
-            description: `${event.description} ${event.detailsLabel}`,
+            title: event.seo.ogTitle,
+            description: event.seo.description,
             images: [
               {
-                url: socialImage,
+                url: event.seo.ogImage,
                 width: 1200,
                 height: 630,
                 type: 'image/jpeg',
-                alt: 'Boyos Wonderland',
+                alt: event.seo.ogImageAlt,
               },
             ],
             siteName: 'Boyos Collective',
@@ -44,19 +39,19 @@ export default function ClubUpSeptember2026Page() {
           additionalMetaTags: [
             {
               name: 'twitter:title',
-              content: 'Boyos Wonderland at Club UP Amsterdam',
+              content: event.seo.ogTitle,
             },
             {
               name: 'twitter:description',
-              content: `${event.description} ${event.detailsLabel}`,
+              content: event.seo.description,
             },
             {
               name: 'twitter:image',
-              content: socialImage,
+              content: event.seo.ogImage,
             },
             {
               name: 'twitter:image:alt',
-              content: 'Boyos Wonderland',
+              content: event.seo.ogImageAlt,
             },
           ],
         })}
@@ -97,19 +92,27 @@ export default function ClubUpSeptember2026Page() {
           aria-hidden="true"
           className="type-display absolute -right-[0.08em] top-[0.18em] select-none text-[clamp(15rem,44vw,42rem)] leading-none text-white/[0.025]"
         >
-          18
+          {event.dateDay}
         </div>
 
         <div className="relative z-10 mx-auto grid w-full max-w-6xl gap-16 lg:grid-cols-[1.35fr_0.65fr] lg:items-end">
           <Reveal variant="text">
             <p className="type-meta mb-6 text-[var(--color-brand-secondary)]">
-              Next edition · Amsterdam
+              Next edition · {event.address.addressLocality}
             </p>
             <h1 className="type-display max-w-5xl text-[clamp(3.35rem,10vw,9.5rem)] leading-[0.84]">
-              Boyos Wonderland
-              <span className="mt-2 block text-[var(--color-brand-secondary)]">
-                at Club UP
-              </span>
+              {event.titleLines.map((line, index) => (
+                <span
+                  key={line}
+                  className={
+                    index === 0
+                      ? 'block'
+                      : 'mt-2 block text-[var(--color-brand-secondary)]'
+                  }
+                >
+                  {line}
+                </span>
+              ))}
             </h1>
             <p className="type-accent mt-10 max-w-3xl text-[clamp(1.35rem,3.2vw,2.7rem)] leading-tight text-white/70">
               {event.description}
@@ -150,17 +153,31 @@ export default function ClubUpSeptember2026Page() {
         </div>
       </section>
 
-      <Ticker
-        items={[
-          'Boyos Wonderland',
-          '18 September 2026',
-          'Club UP Amsterdam',
-          'Details follow',
-        ]}
-        tone="teal"
-      />
+      <Ticker items={event.tickerItems} tone="teal" />
 
       <SiteFooter />
     </>
   )
+}
+
+export function getStaticPaths() {
+  return {
+    paths: getAllWonderlandEvents().map((event) => ({
+      params: { slug: event.slug },
+    })),
+    fallback: false,
+  }
+}
+
+export function getStaticProps({ params }) {
+  const event = getWonderlandEventBySlug(params.slug)
+
+  if (!event) return { notFound: true }
+
+  return {
+    props: {
+      event,
+      community: wonderlandPageContent.community,
+    },
+  }
 }

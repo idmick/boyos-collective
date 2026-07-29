@@ -7,11 +7,12 @@ import SectionTitle from '../../components/ui/SectionTitle'
 import SiteFooter from '../../components/ui/SiteFooter'
 import Ticker from '../../components/ui/Ticker'
 import {
-  currentWonderlandEvent,
   summerJamPage,
+  wonderlandPageContent,
 } from '../../data/wonderland'
+import { getCurrentWonderlandEvent } from '../../lib/wonderlandEvents'
 
-export default function SummerJamPage() {
+export default function SummerJamPage({ currentEvent }) {
   const {
     event,
     seo,
@@ -169,8 +170,8 @@ export default function SummerJamPage() {
             ))}
           </dl>
           <div className="flex flex-wrap items-center gap-5">
-            <ButtonLink href={currentWonderlandEvent.href} tone="amber">
-              See the next Wonderland edition
+            <ButtonLink href={currentEvent.href} tone="amber">
+              {hero.primaryCtaLabel}
             </ButtonLink>
             <ButtonLink href={press.url} tone="paper">
               {hero.secondaryCtaLabel}
@@ -488,8 +489,8 @@ export default function SummerJamPage() {
               {finalCta.body}
             </p>
             <div className="mt-9 flex flex-wrap gap-4">
-              <ButtonLink href={currentWonderlandEvent.href} tone="amber">
-                See the next Wonderland edition
+              <ButtonLink href={currentEvent.href} tone="amber">
+                {finalCta.primaryLabel}
               </ButtonLink>
               <ButtonLink href={press.url} tone="paper">
                 {finalCta.secondaryLabel}
@@ -502,4 +503,12 @@ export default function SummerJamPage() {
       <SiteFooter />
     </>
   )
+}
+
+export function getStaticProps() {
+  return {
+    props: {
+      currentEvent: getCurrentWonderlandEvent(wonderlandPageContent),
+    },
+  }
 }

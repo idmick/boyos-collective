@@ -23,6 +23,11 @@ export type HomeIdentity = {
 
 export type HomeContent = {
   hero: Required<Pick<HeroContent, 'eyebrow' | 'title' | 'subtitle' | 'image'>>
+  nextEventSection: {
+    eyebrow: string
+    detailsCtaLabel: string
+    allEventsCtaLabel: string
+  }
   identities: HomeIdentity[]
   merch: {
     eyebrow: string
@@ -34,7 +39,6 @@ export type HomeContent = {
 
 export type HomePage = HomeContent & {
   playedAt: string[]
-  nextEvent: WonderlandEventSummary
 }
 
 export type Address = {
@@ -44,20 +48,37 @@ export type Address = {
   addressCountry: string
 }
 
-export type WonderlandEventSummary = {
+export type WonderlandEventContent = {
   title: string
   shortTitle: string
-  href: InternalHref
-  canonical: ExternalUrl
+  titleLines: string[]
+  shortTitleLines: string[]
   date: string
-  dateLabel: string
-  dateShort: string
   venueName: string
-  locationLabel: string
   address: Address
   description: string
   detailsLabel: string
+  seo: {
+    title: string
+    description: string
+    ogTitle: string
+    ogImage: ExternalUrl
+    ogImageAlt: string
+  }
 }
+
+export type WonderlandEvent = WonderlandEventContent & {
+  slug: string
+  href: InternalHref
+  canonical: ExternalUrl
+  dateLabel: string
+  dateShort: string
+  dateDay: string
+  locationLabel: string
+  tickerItems: string[]
+}
+
+export type WonderlandEventSummary = WonderlandEvent
 
 export type WonderlandCommunity = {
   eyebrow: string
@@ -65,6 +86,11 @@ export type WonderlandCommunity = {
   body: string
   ctaLabel: string
   url: ExternalUrl
+  emailSignup: {
+    eyebrow: string
+    title: string
+    body: string
+  }
 }
 
 export type WonderlandPastEdition = {
@@ -97,9 +123,9 @@ export type SummerJamEvent = {
   description: string
 }
 
-export type WonderlandPage = {
+export type WonderlandPageContent = {
   hero: Required<Pick<HeroContent, 'eyebrow' | 'title' | 'subtitle' | 'image' | 'badge'>>
-  currentEvent: WonderlandEventSummary
+  currentEventSlug: string
   community: WonderlandCommunity
   story: {
     eyebrow: string
@@ -124,6 +150,10 @@ export type WonderlandPage = {
   }
 }
 
+export type WonderlandPage = Omit<WonderlandPageContent, 'currentEventSlug'> & {
+  currentEvent: WonderlandEvent
+}
+
 export type SummerJamPage = {
   event: SummerJamEvent
   seo: {
@@ -140,6 +170,7 @@ export type SummerJamPage = {
     presentedBy: string
     titleLines: string[]
     subtitle: string
+    primaryCtaLabel: string
     secondaryCtaLabel: string
     stats: {
       dateLabel: string
@@ -199,6 +230,7 @@ export type SummerJamPage = {
     eyebrow: string
     title: string
     body: string
+    primaryLabel: string
     secondaryLabel: string
   }
   lineupIntro: string

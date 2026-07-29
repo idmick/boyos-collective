@@ -11,6 +11,48 @@ public_folder: /images/uploads
 local_backend: true
 
 collections:
+  - name: wonderland_events
+    label: Wonderland Events
+    label_singular: Wonderland Event
+    folder: data/wonderland-events
+    create: true
+    format: json
+    extension: json
+    slug: "{{slug}}"
+    summary: "{{title}} · {{date}} · {{venueName}}"
+    fields:
+      - { label: Title, name: title, widget: string }
+      - { label: Short Title, name: shortTitle, widget: string }
+      - label: Hero Title Lines
+        name: titleLines
+        widget: list
+        field: { label: Line, name: line, widget: string }
+      - label: Short Title Lines
+        name: shortTitleLines
+        widget: list
+        field: { label: Line, name: line, widget: string }
+      - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false, picker_utc: true }
+      - { label: Venue Name, name: venueName, widget: string }
+      - label: Address
+        name: address
+        widget: object
+        fields:
+          - { label: Street Address, name: streetAddress, widget: string }
+          - { label: Postal Code, name: postalCode, widget: string }
+          - { label: City, name: addressLocality, widget: string }
+          - { label: Country, name: addressCountry, widget: string }
+      - { label: Description, name: description, widget: text }
+      - { label: Details Label, name: detailsLabel, widget: string }
+      - label: SEO and Social Sharing
+        name: seo
+        widget: object
+        fields:
+          - { label: SEO Title, name: title, widget: string }
+          - { label: SEO Description, name: description, widget: text }
+          - { label: Open Graph Title, name: ogTitle, widget: string }
+          - { label: Open Graph Image, name: ogImage, widget: string }
+          - { label: Open Graph Image Alt, name: ogImageAlt, widget: string }
+
   - name: site_content
     label: Site Content
     files:
@@ -27,6 +69,13 @@ collections:
               - { label: Title, name: title, widget: string }
               - { label: Subtitle, name: subtitle, widget: string }
               - { label: Image, name: image, widget: image }
+          - label: Next Event Section
+            name: nextEventSection
+            widget: object
+            fields:
+              - { label: Eyebrow, name: eyebrow, widget: string }
+              - { label: Event Button Label, name: detailsCtaLabel, widget: string }
+              - { label: All Events Button Label, name: allEventsCtaLabel, widget: string }
           - label: Identity Cards
             name: identities
             widget: list
@@ -67,28 +116,12 @@ collections:
               - { label: Badge, name: badge, widget: image }
               - { label: Subtitle, name: subtitle, widget: text }
           - label: Current Event
-            name: currentEvent
-            widget: object
-            fields:
-              - { label: Title, name: title, widget: string }
-              - { label: Short Title, name: shortTitle, widget: string }
-              - { label: Page Path, name: href, widget: string }
-              - { label: Canonical URL, name: canonical, widget: string }
-              - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false }
-              - { label: Date Label, name: dateLabel, widget: string }
-              - { label: Short Date, name: dateShort, widget: string }
-              - { label: Venue Name, name: venueName, widget: string }
-              - { label: Location Label, name: locationLabel, widget: string }
-              - label: Address
-                name: address
-                widget: object
-                fields:
-                  - { label: Street Address, name: streetAddress, widget: string }
-                  - { label: Postal Code, name: postalCode, widget: string }
-                  - { label: City, name: addressLocality, widget: string }
-                  - { label: Country, name: addressCountry, widget: string }
-              - { label: Description, name: description, widget: text }
-              - { label: Details Label, name: detailsLabel, widget: string }
+            name: currentEventSlug
+            widget: relation
+            collection: wonderland_events
+            search_fields: [title, venueName, date]
+            value_field: "{{slug}}"
+            display_fields: [title, date, venueName]
           - label: Community
             name: community
             widget: object
@@ -98,6 +131,13 @@ collections:
               - { label: Body, name: body, widget: text }
               - { label: Button Label, name: ctaLabel, widget: string }
               - { label: WhatsApp URL, name: url, widget: string }
+              - label: Email Signup Introduction
+                name: emailSignup
+                widget: object
+                fields:
+                  - { label: Eyebrow, name: eyebrow, widget: string }
+                  - { label: Title, name: title, widget: string }
+                  - { label: Body, name: body, widget: text }
           - label: Story
             name: story
             widget: object
@@ -218,6 +258,7 @@ collections:
                     - Summer
                     - Jam
                   subtitle: Houtbaar, Haarlem · 25 July 2026
+                  primaryCtaLabel: See the next Wonderland edition
                   secondaryCtaLabel: Read the 3voor12 interview
                   stats:
                     dateLabel: Date
@@ -232,6 +273,7 @@ collections:
                     widget: list
                     field: { label: Line, name: line, widget: string }
                   - { label: Subtitle, name: subtitle, widget: string }
+                  - { label: Primary CTA Label, name: primaryCtaLabel, widget: string }
                   - { label: Secondary CTA Label, name: secondaryCtaLabel, widget: string }
                   - label: Stat Labels
                     name: stats
@@ -346,11 +388,13 @@ collections:
                   eyebrow: Past edition
                   title: The day the garden became a dancefloor.
                   body: Summer Jam moved from an open afternoon in the garden to a full room inside, carried by live improvisation, warm selections and the Haarlem community.
+                  primaryLabel: See the next Wonderland edition
                   secondaryLabel: Read the 3voor12 interview
                 fields:
                   - { label: Eyebrow, name: eyebrow, widget: string }
                   - { label: Title, name: title, widget: string }
                   - { label: Body, name: body, widget: text }
+                  - { label: Primary Button Label, name: primaryLabel, widget: string }
                   - { label: Secondary Button Label, name: secondaryLabel, widget: string }
               - { label: Lineup Intro, name: lineupIntro, widget: text, default: "The programme moved between DJ sets, an open musical floor and Estafête's live response. These are the people who carried the day and the extras found around the garden." }
               - { label: Partner Button Label, name: partnerCtaLabel, widget: string, default: Visit }

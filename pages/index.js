@@ -7,9 +7,17 @@ import Reveal from '../components/ui/Reveal'
 import SiteFooter from '../components/ui/SiteFooter'
 import Ticker from '../components/ui/Ticker'
 import { homePage } from '../data/home'
+import { getCurrentWonderlandEvent } from '../lib/wonderlandEvents'
+import { wonderlandPageContent } from '../data/wonderland'
 
-export default function Home() {
-  const { hero, playedAt, nextEvent, identities, merch } = homePage
+export default function Home({ nextEvent }) {
+  const {
+    hero,
+    playedAt,
+    nextEventSection,
+    identities,
+    merch,
+  } = homePage
 
   return (
     <>
@@ -124,11 +132,14 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1fr_auto]">
           <Reveal variant="text">
             <p className="type-meta mb-4 text-[var(--color-text-muted)]">
-              Next up · Boyos Wonderland
+              {nextEventSection.eyebrow}
             </p>
             <h2 className="type-display text-[clamp(4rem,10vw,8rem)] leading-[0.86]">
-              Club
-              <span className="block">UP</span>
+              {nextEvent.shortTitleLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </h2>
             <div className="my-8 flex flex-wrap gap-3">
               {[nextEvent.dateLabel, nextEvent.locationLabel].map((item) => (
@@ -145,10 +156,10 @@ export default function Home() {
             </p>
             <div className="flex flex-wrap gap-3">
               <ButtonLink href={nextEvent.href} tone="ink">
-                Event details →
+                {nextEventSection.detailsCtaLabel}
               </ButtonLink>
               <ButtonLink href="/wonderland" tone="ink">
-                All events
+                {nextEventSection.allEventsCtaLabel}
               </ButtonLink>
             </div>
           </Reveal>
@@ -276,4 +287,12 @@ export default function Home() {
       <SiteFooter />
     </>
   )
+}
+
+export function getStaticProps() {
+  return {
+    props: {
+      nextEvent: getCurrentWonderlandEvent(wonderlandPageContent),
+    },
+  }
 }

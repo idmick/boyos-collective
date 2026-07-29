@@ -85,7 +85,9 @@ describe('Summer Jam event page', () => {
     expect(pageSource).not.toContain('offers:')
     expect(pageSource).not.toContain('InStock')
     expect(pageSource).not.toContain('event.ticketUrl')
-    expect(pageSource).toContain('currentWonderlandEvent.href')
+    expect(pageSource).toContain('currentEvent.href')
+    expect(pageSource).toContain('hero.primaryCtaLabel')
+    expect(pageSource).toContain('finalCta.primaryLabel')
     expect(summerJamContent.page.press.url).toBe(
       'https://3voor12lokaal.vpro.nl/artikelen/summer-jam-bij-houtbaar-waar-estafete-live-acts-uitdaagt-en-warme-dj-sounds-de-overhand-hebben'
     )
