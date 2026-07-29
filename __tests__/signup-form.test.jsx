@@ -1,9 +1,13 @@
-import { fireEvent, render } from '@testing-library/react'
+import { act, fireEvent, render } from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
-import SignupForm, { SENDER_FORM_ID } from '../components/SignupForm'
+import SignupForm, {
+  SENDER_FORM_ID,
+  SENDER_FORM_LOAD_TIMEOUT_MS,
+} from '../components/SignupForm'
 
 describe('SignupForm', () => {
   afterEach(() => {
+    vi.useRealTimers()
     delete window.senderForms
     delete window.senderFormsLoaded
   })
@@ -56,6 +60,7 @@ describe('SignupForm', () => {
   })
 
   it('loads the Boyos theme into the rendered Sender iframe', () => {
+    vi.useFakeTimers()
     window.senderFormsLoaded = true
     window.senderForms = {
       render: vi.fn((_formIds, config) => {
@@ -82,5 +87,66 @@ describe('SignupForm', () => {
       'Keep Wonderland in your inbox'
     )
     expect(stylesheet).toHaveAttribute('href', '/sender-form.css')
+
+    act(() => {
+      vi.advanceTimersByTime(SENDER_FORM_LOAD_TIMEOUT_MS)
+    })
+
+    expect(container.firstChild).toHaveAttribute('data-status', 'ready')
+  })
+
+  it('shows a useful fallback when the Sender SDK is blocked', () => {
+    vi.useFakeTimers()
+
+    const { container, getByRole, getByText } = render(<SignupForm />)
+
+    expect(getByText('Loading the email form…')).toBeInTheDocument()
+
+    act(() => {
+      vi.advanceTimersByTime(SENDER_FORM_LOAD_TIMEOUT_MS)
+    })
+
+    expect(getByRole('status')).toHaveTextContent(
+      "The email form couldn't load."
+    )
+    expect(container.firstChild).toHaveAttribute(
+      'data-status',
+      'unavailable'
+    )
+  })
+
+  it('recovers when the Sender SDK becomes available after the fallback', () => {
+    vi.useFakeTimers()
+
+    const renderForm = vi.fn((_formIds, config) => {
+      const host = document.querySelector(
+        `[data-sender-form-id="${SENDER_FORM_ID}"]`
+      )
+      const iframe = document.createElement('iframe')
+      host.appendChild(iframe)
+      iframe.contentDocument.body.innerHTML =
+        '<form id="sender-form-content"></form>'
+      config.onRender()
+    })
+
+    const { container } = render(<SignupForm />)
+
+    act(() => {
+      vi.advanceTimersByTime(SENDER_FORM_LOAD_TIMEOUT_MS)
+    })
+
+    window.senderFormsLoaded = true
+    window.senderForms = {
+      render: renderForm,
+      destroy: vi.fn(),
+    }
+
+    act(() => {
+      fireEvent(window, new Event('onSenderFormsLoaded'))
+    })
+
+    expect(renderForm).toHaveBeenCalledOnce()
+    expect(container.firstChild).toHaveAttribute('data-status', 'ready')
+    expect(container.querySelector('iframe')).toBeInTheDocument()
   })
 })

@@ -514,14 +514,26 @@ body {
 }
 
 #wonderland-signup .wonderland-signup-form {
+  position: relative;
   margin-top: 32px;
 }
 
 #wonderland-signup
   .wonderland-signup-form
   > .sender-form-field[data-sender-form-id='en58jP'] {
-  min-height: 292px;
   text-align: left;
+}
+
+#wonderland-signup
+  .wonderland-signup-form[data-status='loading']
+  > .sender-form-field[data-sender-form-id='en58jP'] {
+  min-height: 292px;
+}
+
+#wonderland-signup
+  .wonderland-signup-form[data-status='unavailable']
+  > .sender-form-field[data-sender-form-id='en58jP'] {
+  display: none;
 }
 
 #wonderland-signup
@@ -531,6 +543,34 @@ body {
   display: block;
   width: 100%;
   max-width: 100%;
+}
+
+#wonderland-signup .wonderland-signup-status {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: rgb(var(--color-surface-paper-rgb) / 0.38);
+  font-family: var(--font-body);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+#wonderland-signup .wonderland-signup-fallback {
+  border-top: 1px solid rgb(var(--color-surface-paper-rgb) / 0.16);
+  padding-top: 22px;
+  color: rgb(var(--color-surface-paper-rgb) / 0.52);
+  font-family: var(--font-body);
+  font-size: 13px;
+  line-height: 1.75;
+}
+
+#wonderland-signup .wonderland-signup-fallback-title {
+  margin-bottom: 7px;
+  color: rgb(var(--color-surface-paper-rgb) / 0.82);
+  font-size: 12px;
+  font-weight: 600;
 }
 
 @keyframes spin-vinyl {

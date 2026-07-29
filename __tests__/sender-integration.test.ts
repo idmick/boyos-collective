@@ -9,6 +9,7 @@ const documentSource = readSource('pages/_document.js')
 const appSource = readSource('pages/_app.js')
 const signupSource = readSource('components/SignupForm.jsx')
 const wonderlandSource = readSource('pages/wonderland.js')
+const netlifyConfig = readSource('netlify.toml')
 const pagesWithoutSignup = [
   readSource('pages/index.js'),
   readSource('pages/wonderland/club-up-september-2026.js'),
@@ -45,6 +46,18 @@ describe('Sender integration', () => {
     expect(signupSource).toContain('onRender: themeForm')
     expect(readSource('public/sender-form.css')).toContain(
       "font-family: 'Space Grotesk'"
+    )
+  })
+
+  it('allows Sender and its reCAPTCHA through the production CSP', () => {
+    expect(netlifyConfig).toContain(
+      'connect-src \'self\' https://api.github.com https://api.netlify.com https://unpkg.com https://cloudflareinsights.com https://wave.sndcdn.com https://cdn.sender.net https://stats.sender.net https://www.google.com/recaptcha/'
+    )
+    expect(netlifyConfig).toContain(
+      'https://cdn.sender.net https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/'
+    )
+    expect(netlifyConfig).toContain(
+      'https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/'
     )
   })
 })
