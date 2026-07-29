@@ -9,8 +9,17 @@ import {
   getAllWonderlandEvents,
   getWonderlandEventBySlug,
 } from '../../lib/wonderlandEvents'
+import {
+  buildWonderlandEventBreadcrumbs,
+  buildWonderlandEventStructuredData,
+} from '../../lib/wonderlandEventStructuredData'
 
 export default function WonderlandEventPage({ event, community }) {
+  const eventStructuredData =
+    buildWonderlandEventStructuredData(event)
+  const breadcrumbStructuredData =
+    buildWonderlandEventBreadcrumbs(event)
+
   return (
     <>
       <Head>
@@ -57,32 +66,17 @@ export default function WonderlandEventPage({ event, community }) {
         })}
       </Head>
       <script
+        id="wonderland-event-jsonld"
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'MusicEvent',
-            '@id': event.canonical,
-            url: event.canonical,
-            name: event.title,
-            startDate: event.date,
-            eventStatus: 'https://schema.org/EventScheduled',
-            eventAttendanceMode:
-              'https://schema.org/OfflineEventAttendanceMode',
-            location: {
-              '@type': 'Place',
-              name: event.venueName,
-              address: {
-                '@type': 'PostalAddress',
-                ...event.address,
-              },
-            },
-            organizer: {
-              '@type': 'Organization',
-              name: 'Boyos Collective',
-            },
-            description: `${event.description} ${event.detailsLabel}`,
-          }),
+          __html: JSON.stringify(eventStructuredData),
+        }}
+      />
+      <script
+        id="wonderland-breadcrumb-jsonld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(breadcrumbStructuredData),
         }}
       />
 

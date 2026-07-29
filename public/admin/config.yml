@@ -33,6 +33,7 @@ collections:
         field: { label: Line, name: line, widget: string }
       - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false, picker_utc: true }
       - { label: Venue Name, name: venueName, widget: string }
+      - { label: Venue Website, name: venueUrl, widget: string }
       - label: Address
         name: address
         widget: object
@@ -43,6 +44,14 @@ collections:
           - { label: Country, name: addressCountry, widget: string }
       - { label: Description, name: description, widget: text }
       - { label: Details Label, name: detailsLabel, widget: string }
+      - label: Event Images
+        name: images
+        widget: object
+        required: false
+        fields:
+          - { label: Landscape 16:9, name: landscape16x9, widget: string, required: false }
+          - { label: Landscape 4:3, name: landscape4x3, widget: string, required: false }
+          - { label: Square 1:1, name: square, widget: string, required: false }
       - label: SEO and Social Sharing
         name: seo
         widget: object

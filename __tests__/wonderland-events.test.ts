@@ -1,5 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
+import sharp from 'sharp'
 import { describe, expect, it } from 'vitest'
 import clubUpContent from '../data/wonderland-events/club-up-september-2026.json'
 import wonderlandContent from '../data/wonderland.json'
@@ -10,6 +11,10 @@ import {
   getWonderlandEventBySlug,
   resolveWonderlandEvent,
 } from '../lib/wonderlandEvents'
+import {
+  buildWonderlandEventBreadcrumbs,
+  buildWonderlandEventStructuredData,
+} from '../lib/wonderlandEventStructuredData'
 
 const eventPageSource = fs.readFileSync(
   path.join(process.cwd(), 'pages/wonderland/[slug].js'),
@@ -44,6 +49,7 @@ describe('Wonderland events', () => {
         dateShort: '18.09',
         dateDay: '18',
         venueName: 'Club UP',
+        venueUrl: 'https://www.clubup.nl/',
         locationLabel: 'Club UP, Amsterdam',
       })
     )
@@ -102,20 +108,103 @@ describe('Wonderland events', () => {
     expect(eventFields).not.toContain('image')
   })
 
-  it('emits minimal MusicEvent structured data on the dynamic page', () => {
-    expect(eventPageSource).toContain("'@type': 'MusicEvent'")
-    expect(eventPageSource).toContain("'@id': event.canonical")
-    expect(eventPageSource).toContain('startDate: event.date')
-    expect(eventPageSource).toContain(
-      "'https://schema.org/EventScheduled'"
+  it('emits enriched confirmed MusicEvent structured data', () => {
+    const event = getWonderlandEventBySlug(
+      'club-up-september-2026'
     )
-    expect(eventPageSource).toContain(
-      "'https://schema.org/OfflineEventAttendanceMode'"
+
+    expect(event).not.toBeNull()
+
+    const structuredData = buildWonderlandEventStructuredData(event!)
+
+    expect(structuredData).toEqual(
+      expect.objectContaining({
+        '@type': 'MusicEvent',
+        '@id':
+          'https://www.boyoscollective.nl/wonderland/club-up-september-2026',
+        url: 'https://www.boyoscollective.nl/wonderland/club-up-september-2026',
+        startDate: '2026-09-18',
+        eventStatus: 'https://schema.org/EventScheduled',
+        eventAttendanceMode:
+          'https://schema.org/OfflineEventAttendanceMode',
+        description:
+          'A new Boyos Wonderland edition bringing the Boyos Collective community together around music.',
+        location: expect.objectContaining({
+          name: 'Club UP',
+          url: 'https://www.clubup.nl/',
+        }),
+        organizer: {
+          '@type': 'Organization',
+          '@id': 'https://www.boyoscollective.nl',
+          name: 'Boyos Collective',
+          url: 'https://www.boyoscollective.nl',
+        },
+        image: [
+          'https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-16x9.jpg',
+          'https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-4x3.jpg',
+          'https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-1x1.jpg',
+        ],
+      })
     )
-    expect(eventPageSource).not.toContain('offers:')
-    expect(eventPageSource).not.toContain('performer:')
-    expect(eventPageSource).not.toContain('endDate:')
-    expect(eventPageSource).not.toContain('image: event.')
+    expect(structuredData).not.toHaveProperty('offers')
+    expect(structuredData).not.toHaveProperty('performer')
+    expect(structuredData).not.toHaveProperty('endDate')
+    expect(structuredData.startDate).not.toContain('T')
+  })
+
+  it('emits a canonical Wonderland breadcrumb trail', () => {
+    const event = getWonderlandEventBySlug(
+      'club-up-september-2026'
+    )
+
+    expect(buildWonderlandEventBreadcrumbs(event!)).toEqual(
+      expect.objectContaining({
+        '@type': 'BreadcrumbList',
+        itemListElement: [
+          expect.objectContaining({
+            position: 1,
+            item: 'https://www.boyoscollective.nl',
+          }),
+          expect.objectContaining({
+            position: 2,
+            item: 'https://www.boyoscollective.nl/wonderland',
+          }),
+          expect.objectContaining({
+            position: 3,
+            item: event?.canonical,
+          }),
+        ],
+      })
+    )
+    expect(eventPageSource).toContain('wonderland-event-jsonld')
+    expect(eventPageSource).toContain('wonderland-breadcrumb-jsonld')
+  })
+
+  it('ships every referenced event image at its intended size', async () => {
+    const expectedImages = [
+      [clubUpContent.seo.ogImage, 1200, 630],
+      [clubUpContent.images.landscape16x9, 1920, 1080],
+      [clubUpContent.images.landscape4x3, 1200, 900],
+      [clubUpContent.images.square, 1200, 1200],
+    ] as const
+
+    for (const [imageUrl, width, height] of expectedImages) {
+      const imagePath = path.join(
+        process.cwd(),
+        'public',
+        new URL(imageUrl).pathname.replace(/^\//, '')
+      )
+      expect(fs.existsSync(imagePath)).toBe(true)
+
+      const metadata = await sharp(imagePath).metadata()
+
+      expect(metadata.width).toBe(width)
+      expect(metadata.height).toBe(height)
+    }
+
+    expect(clubUpContent.seo.ogImageAlt).toBe(
+      'Boyos Wonderland at Club UP — 18 September 2026, Amsterdam'
+    )
   })
 
   it('renders event-specific content without Club UP hardcoding', () => {

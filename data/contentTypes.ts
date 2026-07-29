@@ -55,9 +55,15 @@ export type WonderlandEventContent = {
   shortTitleLines: string[]
   date: string
   venueName: string
+  venueUrl: ExternalUrl
   address: Address
   description: string
   detailsLabel: string
+  images?: {
+    landscape16x9?: ExternalUrl
+    landscape4x3?: ExternalUrl
+    square?: ExternalUrl
+  }
   seo: {
     title: string
     description: string

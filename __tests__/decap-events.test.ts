@@ -93,6 +93,30 @@ describe('Decap Wonderland event model', () => {
     ).toEqual([])
   })
 
+  it('exposes venue identity and optional event images to editors', () => {
+    const venueUrlField = eventCollection?.fields?.find(
+      (field) => field.name === 'venueUrl'
+    )
+    const imagesField = eventCollection?.fields?.find(
+      (field) => field.name === 'images'
+    )
+
+    expect(venueUrlField).toEqual(
+      expect.objectContaining({ widget: 'string' })
+    )
+    expect(imagesField).toEqual(
+      expect.objectContaining({
+        widget: 'object',
+        required: false,
+      })
+    )
+    expect(imagesField?.fields?.map((field) => field.name)).toEqual([
+      'landscape16x9',
+      'landscape4x3',
+      'square',
+    ])
+  })
+
   it('represents the changed page content in Decap', () => {
     expect(missingFieldPaths(homeContent, homeFile?.fields)).toEqual([])
     expect(
