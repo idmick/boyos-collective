@@ -6,6 +6,19 @@
     "badge": "/images/essential_groove.png",
     "subtitle": "From intimate Dine & Dance nights to open-air garden festivals: a world where the groove brings people together."
   },
+  "currentEventSlug": "club-up-september-2026",
+  "community": {
+    "eyebrow": "Stay close",
+    "title": "The next night starts here.",
+    "body": "Join the Wonderland community for the first word on upcoming editions and everything taking shape around them.",
+    "ctaLabel": "Join the Wonderland community",
+    "url": "https://chat.whatsapp.com/CB2AbyXgPYH3eUphbKVyQR",
+    "emailSignup": {
+      "eyebrow": "Prefer email?",
+      "title": "Keep Wonderland in your inbox.",
+      "body": "Occasional notes about new editions, music and what we’ve been making together."
+    }
+  },
   "story": {
     "eyebrow": "Our Story",
     "title": "Step Into Wonderland",
@@ -35,7 +48,15 @@
       "description": "A rotating selection of guest tattoo artists for anyone who wants to carry a piece of Wonderland home."
     }
   ],
-  "upcomingRows": [],
+  "pastEditions": [
+    {
+      "title": "Summer Jam",
+      "dateLabel": "25 July 2026",
+      "venueLabel": "Houtbaar, Haarlem",
+      "href": "/wonderland/summer-jam",
+      "poster": "/images/optimized/summer-jam-poster-1200.jpg"
+    }
+  ],
   "albums": [
     {
       "title": "Dine and Dance 19.12.25",

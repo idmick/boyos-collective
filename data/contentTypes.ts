@@ -23,6 +23,11 @@ export type HomeIdentity = {
 
 export type HomeContent = {
   hero: Required<Pick<HeroContent, 'eyebrow' | 'title' | 'subtitle' | 'image'>>
+  nextEventSection: {
+    eyebrow: string
+    detailsCtaLabel: string
+    allEventsCtaLabel: string
+  }
   identities: HomeIdentity[]
   merch: {
     eyebrow: string
@@ -34,7 +39,6 @@ export type HomeContent = {
 
 export type HomePage = HomeContent & {
   playedAt: string[]
-  nextEvent: SummerJamEvent
 }
 
 export type Address = {
@@ -42,6 +46,65 @@ export type Address = {
   postalCode: string
   addressLocality: string
   addressCountry: string
+}
+
+export type WonderlandEventContent = {
+  title: string
+  shortTitle: string
+  titleLines: string[]
+  shortTitleLines: string[]
+  date: string
+  venueName: string
+  venueUrl: ExternalUrl
+  address: Address
+  description: string
+  detailsLabel: string
+  images?: {
+    landscape16x9?: ExternalUrl
+    landscape4x3?: ExternalUrl
+    square?: ExternalUrl
+  }
+  seo: {
+    title: string
+    description: string
+    ogTitle: string
+    ogImage: ExternalUrl
+    ogImageAlt: string
+  }
+}
+
+export type WonderlandEvent = WonderlandEventContent & {
+  slug: string
+  href: InternalHref
+  canonical: ExternalUrl
+  dateLabel: string
+  dateShort: string
+  dateDay: string
+  locationLabel: string
+  tickerItems: string[]
+}
+
+export type WonderlandEventSummary = WonderlandEvent
+
+export type WonderlandCommunity = {
+  eyebrow: string
+  title: string
+  body: string
+  ctaLabel: string
+  url: ExternalUrl
+  emailSignup: {
+    eyebrow: string
+    title: string
+    body: string
+  }
+}
+
+export type WonderlandPastEdition = {
+  title: string
+  dateLabel: string
+  venueLabel: string
+  href: InternalHref
+  poster: ImagePath
 }
 
 export type SummerJamEvent = {
@@ -57,10 +120,7 @@ export type SummerJamEvent = {
   poster: ImagePath
   format: string
   partners: string[]
-  ticketLabel: string
-  ticketUrl: ExternalUrl
   lineUpLabel: string
-  whatsappUrl: ExternalUrl
   instagramUrl: ExternalUrl
   iniUrl: ExternalUrl
   iniInstagramUrl: ExternalUrl
@@ -69,8 +129,10 @@ export type SummerJamEvent = {
   description: string
 }
 
-export type WonderlandPage = {
+export type WonderlandPageContent = {
   hero: Required<Pick<HeroContent, 'eyebrow' | 'title' | 'subtitle' | 'image' | 'badge'>>
+  currentEventSlug: string
+  community: WonderlandCommunity
   story: {
     eyebrow: string
     title: string
@@ -82,12 +144,7 @@ export type WonderlandPage = {
     name: string
     description: string
   }[]
-  upcomingRows: {
-    date: string
-    title: string
-    venue: string
-    tag: string
-  }[]
+  pastEditions: WonderlandPastEdition[]
   albums: {
     title: string
     cover: ImagePath
@@ -97,6 +154,10 @@ export type WonderlandPage = {
     title: string
     body: string
   }
+}
+
+export type WonderlandPage = Omit<WonderlandPageContent, 'currentEventSlug'> & {
+  currentEvent: WonderlandEvent
 }
 
 export type SummerJamPage = {
@@ -115,6 +176,7 @@ export type SummerJamPage = {
     presentedBy: string
     titleLines: string[]
     subtitle: string
+    primaryCtaLabel: string
     secondaryCtaLabel: string
     stats: {
       dateLabel: string
@@ -142,11 +204,6 @@ export type SummerJamPage = {
     }
   }
   ticker: string[]
-  startNotice: {
-    eyebrow: string
-    title: string
-    body: string
-  }
   schedule: {
     eyebrow: string
     title: string
@@ -179,6 +236,7 @@ export type SummerJamPage = {
     eyebrow: string
     title: string
     body: string
+    primaryLabel: string
     secondaryLabel: string
   }
   lineupIntro: string
@@ -187,11 +245,6 @@ export type SummerJamPage = {
     label: string
     value: string
     detail: string
-  }[]
-  practicalSections: {
-    title: string
-    body: string
-    items: string[]
   }[]
   concept: string[]
   dayArc: {

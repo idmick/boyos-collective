@@ -7,9 +7,17 @@ import Reveal from '../components/ui/Reveal'
 import SiteFooter from '../components/ui/SiteFooter'
 import Ticker from '../components/ui/Ticker'
 import { homePage } from '../data/home'
+import { getCurrentWonderlandEvent } from '../lib/wonderlandEvents'
+import { wonderlandPageContent } from '../data/wonderland'
 
-export default function Home() {
-  const { hero, playedAt, nextEvent, identities, merch } = homePage
+export default function Home({ nextEvent }) {
+  const {
+    hero,
+    playedAt,
+    nextEventSection,
+    identities,
+    merch,
+  } = homePage
 
   return (
     <>
@@ -124,19 +132,17 @@ export default function Home() {
         <div className="mx-auto grid max-w-6xl items-center gap-12 md:grid-cols-[1fr_auto]">
           <Reveal variant="text">
             <p className="type-meta mb-4 text-[var(--color-text-muted)]">
-              Next up · Boyos Wonderland × INI Movement
+              {nextEventSection.eyebrow}
             </p>
             <h2 className="type-display text-[clamp(4rem,10vw,8rem)] leading-[0.86]">
-              Summer
-              <br />
-              Jam
+              {nextEvent.shortTitleLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
             </h2>
             <div className="my-8 flex flex-wrap gap-3">
-              {[
-                nextEvent.dateLabel,
-                nextEvent.locationLabel,
-                nextEvent.timeLabel,
-              ].map((item) => (
+              {[nextEvent.dateLabel, nextEvent.locationLabel].map((item) => (
                 <span
                   key={item}
                   className="type-body rounded-full bg-black/10 px-4 py-2 text-sm font-semibold"
@@ -145,23 +151,33 @@ export default function Home() {
                 </span>
               ))}
             </div>
+            <p className="type-body mb-8 max-w-xl text-sm leading-7 text-black/60">
+              {nextEvent.detailsLabel}
+            </p>
             <div className="flex flex-wrap gap-3">
               <ButtonLink href={nextEvent.href} tone="ink">
-                More info →
+                {nextEventSection.detailsCtaLabel}
               </ButtonLink>
               <ButtonLink href="/wonderland" tone="ink">
-                All events
+                {nextEventSection.allEventsCtaLabel}
               </ButtonLink>
             </div>
           </Reveal>
           <Reveal delay="short" variant="media">
-            <Image
-              src={nextEvent.poster}
-              alt={`${nextEvent.shortTitle} poster`}
-              width={320}
-              height={400}
-              className="surface-card surface-media w-full max-w-[260px] rotate-2 rounded-lg object-cover shadow-2xl md:w-[22vw]"
-            />
+            <div className="surface-card relative flex aspect-[4/5] w-full max-w-[280px] rotate-2 flex-col justify-between overflow-hidden bg-[rgb(var(--color-brand-deep))] p-7 text-[var(--color-surface-paper)] shadow-2xl md:w-[23vw]">
+              <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_20%,rgba(94,196,188,0.3),transparent_34%),radial-gradient(circle_at_20%_88%,rgba(239,125,167,0.2),transparent_40%)]" />
+              <p className="type-meta relative text-[var(--color-brand-secondary)]">
+                {nextEvent.dateLabel}
+              </p>
+              <div className="relative">
+                <p className="type-display text-[clamp(5.2rem,10vw,8rem)] leading-[0.78]">
+                  {nextEvent.dateShort}
+                </p>
+                <p className="type-accent mt-5 text-2xl text-white/55">
+                  {nextEvent.locationLabel}
+                </p>
+              </div>
+            </div>
           </Reveal>
         </div>
       </section>
@@ -271,4 +287,12 @@ export default function Home() {
       <SiteFooter />
     </>
   )
+}
+
+export function getStaticProps() {
+  return {
+    props: {
+      nextEvent: getCurrentWonderlandEvent(wonderlandPageContent),
+    },
+  }
 }

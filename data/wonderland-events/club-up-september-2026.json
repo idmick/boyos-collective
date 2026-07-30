@@ -1,0 +1,35 @@
+{
+  "title": "Boyos Wonderland at Club UP",
+  "shortTitle": "Club UP",
+  "titleLines": [
+    "Boyos Wonderland",
+    "at Club UP"
+  ],
+  "shortTitleLines": [
+    "Club",
+    "UP"
+  ],
+  "date": "2026-09-18",
+  "venueName": "Club UP",
+  "venueUrl": "https://www.clubup.nl/",
+  "address": {
+    "streetAddress": "Korte Leidsedwarsstraat 26-1",
+    "postalCode": "1017 RC",
+    "addressLocality": "Amsterdam",
+    "addressCountry": "NL"
+  },
+  "description": "A new Boyos Wonderland edition bringing the Boyos Collective community together around music.",
+  "detailsLabel": "Line-up, tickets and full details will follow.",
+  "images": {
+    "landscape16x9": "https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-16x9.jpg",
+    "landscape4x3": "https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-4x3.jpg",
+    "square": "https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-1x1.jpg"
+  },
+  "seo": {
+    "title": "Boyos Wonderland at Club UP Amsterdam | 18 September 2026",
+    "description": "Boyos Wonderland comes to Club UP in Amsterdam on Friday 18 September 2026. Line-up, tickets and full details will follow.",
+    "ogTitle": "Boyos Wonderland at Club UP Amsterdam",
+    "ogImage": "https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026.jpg",
+    "ogImageAlt": "Boyos Wonderland at Club UP — 18 September 2026, Amsterdam"
+  }
+}

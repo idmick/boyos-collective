@@ -1,6 +1,24 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document'
 
 const APP_NAME = 'Boyos Collective'
+const SENDER_BOOTSTRAP = `
+  (function (s, e, n, d, er) {
+    s['Sender'] = er;
+    s[er] = s[er] || function () {
+      (s[er].q = s[er].q || []).push(arguments)
+    }, s[er].l = 1 * new Date();
+    s[er].on = function(event, callback) {
+      s[er].listeners = s[er].listeners || {};
+      (s[er].listeners[event] = s[er].listeners[event] || []).push(callback);
+    };
+    var a = e.createElement(n),
+        m = e.getElementsByTagName(n)[0];
+    a.async = 1;
+    a.src = d;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', 'https://cdn.sender.net/accounts_resources/universal.js?explicit=true', 'sender');
+  sender('d6a4bdbee64934')
+`
 
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -41,6 +59,10 @@ class MyDocument extends Document {
              />
              <link rel="shortcut icon" href="/app-icon.png" /> */}
           <link rel="manifest" href="/manifest.json" />
+          <script
+            id="sender-universal"
+            dangerouslySetInnerHTML={{ __html: SENDER_BOOTSTRAP }}
+          />
         </Head>
         <body>
           <Main />

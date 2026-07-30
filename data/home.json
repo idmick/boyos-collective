@@ -5,6 +5,11 @@
     "subtitle": "Boyos Soundsystem for warm DJ bookings. Boyos Wonderland for events where music, art, food and community move together.",
     "image": "/images/optimized/boyos-wonderland-mini-fest-at-2200.jpg"
   },
+  "nextEventSection": {
+    "eyebrow": "Next up · Boyos Wonderland",
+    "detailsCtaLabel": "Event details →",
+    "allEventsCtaLabel": "All events"
+  },
   "identities": [
     {
       "eyebrow": "The Music",
