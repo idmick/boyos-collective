@@ -10,7 +10,7 @@ import { homePage } from '../data/home'
 import { getCurrentWonderlandEvent } from '../lib/wonderlandEvents'
 import { wonderlandPageContent } from '../data/wonderland'
 
-export default function Home({ nextEvent }) {
+export default function Home({ nextEvent, latestAlbum }) {
   const {
     hero,
     playedAt,
@@ -182,6 +182,55 @@ export default function Home({ nextEvent }) {
         </div>
       </section>
 
+      {latestAlbum ? (
+        <section
+          id="latest-photos"
+          className="bg-[var(--color-brand-charcoal)] px-6 py-[var(--space-section)] md:px-10"
+        >
+          <div className="mx-auto grid max-w-6xl overflow-hidden border border-white/10 lg:grid-cols-[1.08fr_0.92fr]">
+            <Reveal className="h-full min-w-0" variant="media">
+              <div className="surface-card group relative aspect-[4/3] w-full overflow-hidden lg:aspect-auto lg:h-full lg:min-h-[560px]">
+                <Image
+                  src={latestAlbum.cover}
+                  alt={latestAlbum.title}
+                  fill
+                  sizes="(min-width: 768px) 55vw, 100vw"
+                  className="surface-media object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-transparent to-transparent" />
+              </div>
+            </Reveal>
+
+            <Reveal
+              className="flex min-w-0 items-center border-t border-white/10 lg:border-l lg:border-t-0"
+              delay="short"
+              variant="text"
+            >
+              <div className="p-8 sm:p-10 md:p-14">
+                <span className="type-meta mb-5 block text-[var(--color-brand-secondary)]">
+                  Latest from Wonderland
+                </span>
+                <h2 className="type-display max-w-[14ch] text-[clamp(3.2rem,6vw,6rem)] leading-[0.86]">
+                  {latestAlbum.title}
+                </h2>
+                <p className="type-body mt-7 max-w-md text-[15px] leading-8 text-white/55">
+                  A look back at the latest Wonderland edition, from the first
+                  arrivals to the last groove.
+                </p>
+                <div className="mt-9 flex flex-wrap gap-3">
+                  <ButtonLink href={latestAlbum.url} tone="teal">
+                    View full album ↗
+                  </ButtonLink>
+                  <ButtonLink href="/wonderland#photos" tone="outline">
+                    All photo albums
+                  </ButtonLink>
+                </div>
+              </div>
+            </Reveal>
+          </div>
+        </section>
+      ) : null}
+
       <Ticker
         items={[
           'Disco',
@@ -293,6 +342,7 @@ export function getStaticProps() {
   return {
     props: {
       nextEvent: getCurrentWonderlandEvent(wonderlandPageContent),
+      latestAlbum: wonderlandPageContent.albums[0] ?? null,
     },
   }
 }

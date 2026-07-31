@@ -4,10 +4,23 @@ import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 import { getNavigationForPath } from '../../data/navigation'
 
-const isActive = (pathname: string, href: string) => {
+const isActive = (pathname: string, asPath: string, href: string) => {
   if (href === '/') return pathname === '/'
   if (!href.startsWith('/')) return false
-  const clean = href.split('#')[0]
+
+  const [clean, targetHash] = href.split('#')
+  const currentHash = asPath.includes('#')
+    ? asPath.slice(asPath.indexOf('#') + 1)
+    : ''
+
+  if (targetHash) {
+    return pathname === clean && currentHash === targetHash
+  }
+
+  if (clean === '/wonderland') {
+    return pathname.startsWith(clean) && currentHash !== 'photos'
+  }
+
   return clean !== '/' && pathname.startsWith(clean)
 }
 
@@ -15,7 +28,18 @@ export default function SiteNav() {
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [currentLocation, setCurrentLocation] = useState(router.asPath)
   const items = getNavigationForPath(router.pathname)
+
+  useEffect(() => {
+    const syncLocation = () => {
+      setCurrentLocation(`${window.location.pathname}${window.location.hash}`)
+    }
+
+    syncLocation()
+    window.addEventListener('hashchange', syncLocation)
+    return () => window.removeEventListener('hashchange', syncLocation)
+  }, [router.asPath])
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60)
@@ -64,7 +88,9 @@ export default function SiteNav() {
               <Link
                 href={item.href}
                 className={`nav-link ${
-                  isActive(router.pathname, item.href) ? 'nav-link-active' : ''
+                  isActive(router.pathname, currentLocation, item.href)
+                    ? 'nav-link-active'
+                    : ''
                 }`}
               >
                 {item.label}
@@ -98,7 +124,7 @@ export default function SiteNav() {
             key={item.href}
             href={item.href}
             className={`type-display text-[clamp(2.4rem,10vw,4rem)] tracking-[0.08em] text-[color:rgb(var(--color-surface-paper-rgb)/0.65)] transition hover:text-[var(--color-surface-paper)] ${
-              isActive(router.pathname, item.href)
+              isActive(router.pathname, currentLocation, item.href)
                 ? 'text-[var(--color-surface-paper)]'
                 : ''
             }`}
