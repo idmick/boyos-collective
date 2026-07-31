@@ -7,18 +7,21 @@
 export const homeNavigation = [
   { label: 'Soundsystem', href: '/soundsystem' },
   { label: 'Wonderland', href: '/wonderland' },
+  { label: 'Photos', href: '/wonderland#photos' },
   { label: 'Contact', href: 'mailto:info@boyoscollective.nl' },
 ]
 
 export const innerNavigation = [
   { label: 'Soundsystem', href: '/soundsystem' },
   { label: 'Wonderland', href: '/wonderland' },
+  { label: 'Photos', href: '/wonderland#photos' },
   { label: 'Contact', href: 'mailto:info@boyoscollective.nl' },
 ]
 
 export const footerNavigation = [
   { label: 'Soundsystem', href: '/soundsystem' },
   { label: 'Wonderland', href: '/wonderland' },
+  { label: 'Photos', href: '/wonderland#photos' },
   { label: 'Instagram', href: 'https://www.instagram.com/boyos.soundsystem/' },
   { label: 'Soundcloud', href: 'https://soundcloud.com/boyos_soundsystem' },
   { label: 'RA', href: 'https://ra.co/dj/boyossoundsystem' },
