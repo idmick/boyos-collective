@@ -96,6 +96,14 @@ describe('Wonderland events', () => {
     expect(eventPageSource).toContain('fallback: false')
   })
 
+  it('fails fast when the configured current event slug cannot be resolved', () => {
+    expect(() =>
+      getCurrentWonderlandEvent({
+        currentEventSlug: 'missing-event',
+      })
+    ).toThrowError('Unknown current Wonderland event: missing-event')
+  })
+
   it('publishes no unconfirmed event details', () => {
     const eventFields = Object.keys(clubUpContent)
 
@@ -150,6 +158,17 @@ describe('Wonderland events', () => {
     expect(structuredData).not.toHaveProperty('performer')
     expect(structuredData).not.toHaveProperty('endDate')
     expect(structuredData.startDate).not.toContain('T')
+  })
+
+  it('omits image markup when an event has no gallery images configured', () => {
+    const eventWithoutImages = resolveWonderlandEvent('no-images', {
+      ...(clubUpContent as WonderlandEventContent),
+      images: undefined,
+    })
+
+    expect(
+      buildWonderlandEventStructuredData(eventWithoutImages)
+    ).not.toHaveProperty('image')
   })
 
   it('emits a canonical Wonderland breadcrumb trail', () => {
