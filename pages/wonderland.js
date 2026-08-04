@@ -11,6 +11,13 @@ import Ticker from '../components/ui/Ticker'
 import { wonderlandPageContent } from '../data/wonderland'
 import { getCurrentWonderlandEvent } from '../lib/wonderlandEvents'
 
+const wonderlandSections = [
+  { label: 'Story', href: '#story' },
+  { label: 'Events', href: '#events' },
+  { label: 'Archive', href: '#archive' },
+  { label: 'Photos', href: '#photos' },
+]
+
 export default function BoyosWonderlandPage({ page }) {
   const event = page.currentEvent
 
@@ -125,7 +132,29 @@ export default function BoyosWonderlandPage({ page }) {
         tone="teal"
       />
 
-      <section className="bg-[var(--color-brand-charcoal)] px-6 py-[var(--space-section)] md:px-10">
+      <nav
+        aria-label="Wonderland sections"
+        className="border-y border-white/10 bg-[rgb(var(--color-brand-deep))]"
+      >
+        <div className="mx-auto max-w-6xl overflow-x-auto">
+          <div className="flex min-w-max items-center gap-1 px-6 py-3 md:min-w-0 md:justify-center md:px-10">
+            {wonderlandSections.map((section) => (
+              <Link
+                key={section.href}
+                href={section.href}
+                className="type-control shrink-0 border-b border-transparent px-4 py-3 text-[11px] text-white/55 no-underline transition hover:border-[var(--color-brand-secondary)] hover:text-white focus-visible:border-[var(--color-brand-secondary)] focus-visible:text-white focus-visible:outline-none"
+              >
+                {section.label}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </nav>
+
+      <section
+        id="story"
+        className="bg-[var(--color-brand-charcoal)] px-6 py-[var(--space-section)] md:px-10"
+      >
         <div className="mx-auto grid max-w-6xl items-center gap-16 md:grid-cols-2 md:gap-24">
           <Reveal variant="media">
             <Image
@@ -305,7 +334,10 @@ export default function BoyosWonderlandPage({ page }) {
         </Reveal>
       </section>
 
-      <section className="bg-[rgb(var(--color-brand-deep))] px-6 py-24 md:px-10">
+      <section
+        id="archive"
+        className="bg-[rgb(var(--color-brand-deep))] px-6 py-24 md:px-10"
+      >
         <div className="mx-auto max-w-6xl">
           <Reveal variant="text">
             <SectionTitle eyebrow="Past editions" title="The Archive" />
@@ -343,35 +375,37 @@ export default function BoyosWonderlandPage({ page }) {
             ))}
           </div>
 
-          <Reveal className="mt-24" variant="text">
-            <SectionTitle eyebrow="Captured moments" title="Photo Albums" />
-          </Reveal>
-          <div className="mt-12 grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
-            {page.albums.map((album) => (
-              <a
-                key={album.url}
-                href={album.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="surface-card group relative aspect-[4/3] overflow-hidden"
-              >
-                <Image
-                  src={album.cover}
-                  alt={album.title}
-                  fill
-                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                  className="surface-media object-cover"
-                />
-                <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent p-5 opacity-100 transition md:opacity-0 md:group-hover:opacity-100">
-                  <span className="type-display text-2xl leading-none">
-                    {album.title}
-                  </span>
-                  <small className="type-meta mt-1 text-[var(--color-brand-secondary)]">
-                    View album
-                  </small>
-                </div>
-              </a>
-            ))}
+          <div id="photos" className="mt-24">
+            <Reveal variant="text">
+              <SectionTitle eyebrow="Captured moments" title="Photo Albums" />
+            </Reveal>
+            <div className="mt-12 grid gap-1 sm:grid-cols-2 lg:grid-cols-3">
+              {page.albums.map((album) => (
+                <a
+                  key={album.url}
+                  href={album.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="surface-card group relative aspect-[4/3] overflow-hidden"
+                >
+                  <Image
+                    src={album.cover}
+                    alt={album.title}
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="surface-media object-cover"
+                  />
+                  <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/90 to-transparent p-5 opacity-100 transition md:opacity-0 md:group-hover:opacity-100">
+                    <span className="type-display text-2xl leading-none">
+                      {album.title}
+                    </span>
+                    <small className="type-meta mt-1 text-[var(--color-brand-secondary)]">
+                      View album
+                    </small>
+                  </div>
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
