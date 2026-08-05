@@ -96,6 +96,15 @@ describe('Wonderland events', () => {
     expect(eventPageSource).toContain('fallback: false')
   })
 
+  it('keeps the static event route constrained to known slugs', () => {
+    expect(getAllWonderlandEvents().map((event) => event.slug)).toEqual(
+      expect.arrayContaining(['club-up-september-2026'])
+    )
+    expect(eventPageSource).toContain(
+      'if (!event) return { notFound: true }'
+    )
+  })
+
   it('publishes no unconfirmed event details', () => {
     const eventFields = Object.keys(clubUpContent)
 
@@ -150,6 +159,17 @@ describe('Wonderland events', () => {
     expect(structuredData).not.toHaveProperty('performer')
     expect(structuredData).not.toHaveProperty('endDate')
     expect(structuredData.startDate).not.toContain('T')
+  })
+
+  it('omits optional schema images when an event has no gallery assets', () => {
+    const event = resolveWonderlandEvent('gallery-free-edition', {
+      ...(clubUpContent as WonderlandEventContent),
+      images: undefined,
+    })
+
+    const structuredData = buildWonderlandEventStructuredData(event)
+
+    expect(structuredData).not.toHaveProperty('image')
   })
 
   it('emits a canonical Wonderland breadcrumb trail', () => {
@@ -231,5 +251,23 @@ describe('Wonderland events', () => {
         href: '/wonderland/summer-jam',
       }),
     ])
+  })
+
+  it('fails fast when the configured current Wonderland slug is unknown', () => {
+    expect(() =>
+      getCurrentWonderlandEvent({
+        ...wonderlandContent,
+        currentEventSlug: 'does-not-exist',
+      })
+    ).toThrow('Unknown current Wonderland event: does-not-exist')
+  })
+
+  it('rejects invalid event dates before they can be published', () => {
+    expect(() =>
+      resolveWonderlandEvent('invalid-date', {
+        ...(clubUpContent as WonderlandEventContent),
+        date: 'not-a-date',
+      })
+    ).toThrow('Invalid Wonderland event date: not-a-date')
   })
 })
