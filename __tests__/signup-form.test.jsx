@@ -1,4 +1,9 @@
-import { act, fireEvent, render } from '@testing-library/react'
+import {
+  act,
+  fireEvent,
+  render,
+  waitFor,
+} from '@testing-library/react'
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import SignupForm, {
   SENDER_FORM_ID,
@@ -95,6 +100,32 @@ describe('SignupForm', () => {
     expect(container.firstChild).toHaveAttribute('data-status', 'ready')
   })
 
+  it('reuses an existing Boyos stylesheet in the Sender iframe', () => {
+    window.senderFormsLoaded = true
+    window.senderForms = {
+      render: vi.fn((_formIds, config) => {
+        const host = document.querySelector(
+          `[data-sender-form-id="${SENDER_FORM_ID}"]`
+        )
+        const iframe = document.createElement('iframe')
+        host.appendChild(iframe)
+        iframe.contentDocument.head.innerHTML =
+          '<link data-boyos-sender-styles rel="stylesheet" href="/sender-form.css">'
+        iframe.contentDocument.body.innerHTML =
+          '<form id="sender-form-content"></form>'
+        config.onRender()
+      }),
+      destroy: vi.fn(),
+    }
+
+    const { container } = render(<SignupForm />)
+    const stylesheetLinks = container.querySelector('iframe').contentDocument
+      .head.querySelectorAll('link[data-boyos-sender-styles]')
+
+    expect(stylesheetLinks).toHaveLength(1)
+    expect(container.firstChild).toHaveAttribute('data-status', 'ready')
+  })
+
   it('shows a useful fallback when the Sender SDK is blocked', () => {
     vi.useFakeTimers()
 
@@ -109,6 +140,30 @@ describe('SignupForm', () => {
     expect(getByRole('status')).toHaveTextContent(
       "The email form couldn't load."
     )
+    expect(container.firstChild).toHaveAttribute(
+      'data-status',
+      'unavailable'
+    )
+  })
+
+  it('shows the fallback when Sender render throws immediately', async () => {
+    const destroyForm = vi.fn()
+    window.senderFormsLoaded = true
+    window.senderForms = {
+      render: vi.fn(() => {
+        throw new Error('blocked')
+      }),
+      destroy: destroyForm,
+    }
+
+    const { container, getByRole } = render(<SignupForm />)
+
+    await waitFor(() => {
+      expect(getByRole('status')).toHaveTextContent(
+        "The email form couldn't load."
+      )
+    })
+
     expect(container.firstChild).toHaveAttribute(
       'data-status',
       'unavailable'
