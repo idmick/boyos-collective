@@ -152,6 +152,25 @@ describe('Wonderland events', () => {
     expect(structuredData.startDate).not.toContain('T')
   })
 
+  it('omits the image field when an event has no optional social crops', () => {
+    const structuredData = buildWonderlandEventStructuredData(
+      resolveWonderlandEvent('no-images', {
+        ...(clubUpContent as WonderlandEventContent),
+        images: undefined,
+      })
+    )
+
+    expect(structuredData).not.toHaveProperty('image')
+  })
+
+  it('throws when the configured current Wonderland slug does not exist', () => {
+    expect(() =>
+      getCurrentWonderlandEvent({
+        currentEventSlug: 'does-not-exist',
+      })
+    ).toThrow('Unknown current Wonderland event: does-not-exist')
+  })
+
   it('emits a canonical Wonderland breadcrumb trail', () => {
     const event = getWonderlandEventBySlug(
       'club-up-september-2026'
