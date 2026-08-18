@@ -230,27 +230,16 @@ export default function BoyosWonderlandPage({ page }) {
           <Reveal delay="short" variant="card">
             <Link
               href={event.href}
-              className="surface-card mt-14 grid overflow-hidden border border-black/20 text-inherit no-underline hover:border-black/50 md:grid-cols-2"
+              className="surface-card group mt-14 grid overflow-hidden border border-black/20 text-inherit no-underline hover:border-black/50 md:grid-cols-2"
             >
-              <div className="relative flex min-h-[360px] items-end overflow-hidden bg-[rgb(var(--color-brand-deep))] p-8 text-[var(--color-surface-paper)] md:min-h-[620px] md:p-12">
-                <div className="absolute inset-0 bg-[radial-gradient(circle_at_76%_24%,rgba(94,196,188,0.3),transparent_34%),radial-gradient(circle_at_15%_88%,rgba(239,125,167,0.2),transparent_42%)]" />
-                <div
-                  aria-hidden="true"
-                  className="type-display absolute -right-[0.08em] top-[0.02em] text-[clamp(13rem,35vw,28rem)] leading-none text-white/[0.04]"
-                >
-                  {event.dateDay}
-                </div>
-                <div className="relative">
-                  <p className="type-meta mb-4 text-[var(--color-brand-secondary)]">
-                    Save the date
-                  </p>
-                  <p className="type-display text-[clamp(5.8rem,16vw,10rem)] leading-[0.78]">
-                    {event.dateShort}
-                  </p>
-                  <p className="type-accent mt-5 text-2xl text-white/55">
-                    {event.address.addressLocality}
-                  </p>
-                </div>
+              <div className="relative min-h-[360px] overflow-hidden bg-[rgb(var(--color-brand-deep))] md:min-h-[620px]">
+                <Image
+                  src={event.heroImage}
+                  alt={`${event.title} artwork`}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="surface-media object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                />
               </div>
               <div className="flex flex-col justify-between bg-black/[0.04] p-8 md:p-12">
                 <div>
@@ -283,7 +272,7 @@ export default function BoyosWonderlandPage({ page }) {
                 </div>
                 <div className="mt-8 flex flex-wrap items-center gap-4">
                   <span className="btn btn-ink type-control">
-                    Event details →
+                    Event details &amp; tickets →
                   </span>
                 </div>
               </div>

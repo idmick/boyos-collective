@@ -48,17 +48,58 @@ export type Address = {
   addressCountry: string
 }
 
+export type WonderlandEventArtist = {
+  name: string
+  links: {
+    label: string
+    url: ExternalUrl
+  }[]
+}
+
+export type WonderlandTicketTier = {
+  name: string
+  price: number
+  serviceFee?: number
+  total: number
+}
+
+export type WonderlandPracticalInfo = {
+  minimumAge: string
+  doors: string
+  end: string
+  reentry: string
+  lockers: string
+  lastEntry: string
+}
+
 export type WonderlandEventContent = {
   title: string
   shortTitle: string
   titleLines: string[]
   shortTitleLines: string[]
   date: string
+  startDateTime: string
+  endDateTime: string
   venueName: string
   venueUrl: ExternalUrl
   address: Address
   description: string
   detailsLabel: string
+  intro: string[]
+  body: string[]
+  poster: ImagePath
+  heroImage: ImagePath
+  lineup: WonderlandEventArtist[]
+  tickets: {
+    url: ExternalUrl
+    currency: 'EUR'
+    availability: 'InStock' | 'SoldOut' | 'PreOrder'
+    statusLabel: string
+    tiers: WonderlandTicketTier[]
+  }
+  practical: WonderlandPracticalInfo
+  instagramUrl: ExternalUrl
+  residentAdvisorUrl?: ExternalUrl | null
   images?: {
     landscape16x9?: ExternalUrl
     landscape4x3?: ExternalUrl

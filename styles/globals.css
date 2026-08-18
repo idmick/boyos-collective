@@ -376,6 +376,35 @@ body {
   text-transform: uppercase;
 }
 
+.club-up-page {
+  --club-up-blue: #2f8fe0;
+  --club-up-ink: #080a0e;
+  --club-up-paper: #f3f0e8;
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.club-up-page .btn,
+.club-up-page .type-control,
+.club-up-page .type-meta {
+  font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+}
+
+.club-up-page .club-up-ticket-button {
+  border-color: var(--club-up-paper);
+  background: var(--club-up-paper);
+  color: var(--club-up-ink);
+}
+
+.club-up-page .club-up-ticket-button:hover {
+  border-color: var(--club-up-paper);
+  background: transparent;
+  color: var(--club-up-paper);
+}
+
+.club-up-page .ticker-teal .ticker-item {
+  color: var(--club-up-blue);
+}
+
 .hero-safe-content {
   padding-bottom: var(--hero-content-safe-mobile);
 }

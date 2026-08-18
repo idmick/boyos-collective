@@ -52,7 +52,7 @@ export const resolveWonderlandEvent = (
       'Boyos Wonderland',
       formatEventDate(content.date),
       `${content.venueName} ${content.address.addressLocality}`,
-      content.detailsLabel,
+      ...content.lineup.map((artist) => artist.name),
     ],
   }
 }

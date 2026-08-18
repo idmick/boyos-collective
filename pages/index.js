@@ -155,28 +155,23 @@ export default function Home({ nextEvent, latestAlbum }) {
               {nextEvent.detailsLabel}
             </p>
             <div className="flex flex-wrap gap-3">
-              <ButtonLink href={nextEvent.href} tone="ink">
+              <ButtonLink href={nextEvent.tickets.url} tone="ink">
                 {nextEventSection.detailsCtaLabel}
               </ButtonLink>
-              <ButtonLink href="/wonderland" tone="ink">
+              <ButtonLink href={nextEvent.href} tone="ink">
                 {nextEventSection.allEventsCtaLabel}
               </ButtonLink>
             </div>
           </Reveal>
           <Reveal delay="short" variant="media">
-            <div className="surface-card relative flex aspect-[4/5] w-full max-w-[280px] rotate-2 flex-col justify-between overflow-hidden bg-[rgb(var(--color-brand-deep))] p-7 text-[var(--color-surface-paper)] shadow-2xl md:w-[23vw]">
-              <div className="absolute inset-0 bg-[radial-gradient(circle_at_72%_20%,rgba(94,196,188,0.3),transparent_34%),radial-gradient(circle_at_20%_88%,rgba(239,125,167,0.2),transparent_40%)]" />
-              <p className="type-meta relative text-[var(--color-brand-secondary)]">
-                {nextEvent.dateLabel}
-              </p>
-              <div className="relative">
-                <p className="type-display text-[clamp(5.2rem,10vw,8rem)] leading-[0.78]">
-                  {nextEvent.dateShort}
-                </p>
-                <p className="type-accent mt-5 text-2xl text-white/55">
-                  {nextEvent.locationLabel}
-                </p>
-              </div>
+            <div className="surface-card group relative aspect-[4/5] w-full max-w-[320px] rotate-2 overflow-hidden bg-[rgb(var(--color-brand-deep))] shadow-2xl md:w-[25vw]">
+              <Image
+                src={nextEvent.poster}
+                alt={`${nextEvent.title} poster`}
+                fill
+                sizes="(min-width: 768px) 25vw, 80vw"
+                className="surface-media object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+              />
             </div>
           </Reveal>
         </div>

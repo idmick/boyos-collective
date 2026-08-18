@@ -104,16 +104,28 @@ describe('Wonderland events', () => {
     ).toThrowError('Unknown current Wonderland event: missing-event')
   })
 
-  it('publishes no unconfirmed event details', () => {
+  it('publishes the confirmed Club UP event details', () => {
     const eventFields = Object.keys(clubUpContent)
 
-    expect(eventFields).not.toContain('startTime')
-    expect(eventFields).not.toContain('endDate')
-    expect(eventFields).not.toContain('ticketLabel')
-    expect(eventFields).not.toContain('ticketUrl')
-    expect(eventFields).not.toContain('performer')
-    expect(eventFields).not.toContain('lineup')
-    expect(eventFields).not.toContain('image')
+    expect(eventFields).toEqual(
+      expect.arrayContaining([
+        'startDateTime',
+        'endDateTime',
+        'intro',
+        'body',
+        'poster',
+        'heroImage',
+        'lineup',
+        'tickets',
+        'practical',
+      ])
+    )
+    expect(clubUpContent.lineup.map((artist) => artist.name)).toEqual([
+      'Boyos Soundsystem',
+      'Damian Zico B2B Vince FJR',
+      'Ferkoel',
+    ])
+    expect(clubUpContent.residentAdvisorUrl).toBeNull()
   })
 
   it('emits enriched confirmed MusicEvent structured data', () => {
@@ -131,12 +143,12 @@ describe('Wonderland events', () => {
         '@id':
           'https://www.boyoscollective.nl/wonderland/club-up-september-2026',
         url: 'https://www.boyoscollective.nl/wonderland/club-up-september-2026',
-        startDate: '2026-09-18',
+        startDate: '2026-09-18T23:00:00+02:00',
+        endDate: '2026-09-19T04:00:00+02:00',
         eventStatus: 'https://schema.org/EventScheduled',
         eventAttendanceMode:
           'https://schema.org/OfflineEventAttendanceMode',
-        description:
-          'A new Boyos Wonderland edition bringing the Boyos Collective community together around music.',
+        description: clubUpContent.description,
         location: expect.objectContaining({
           name: 'Club UP',
           url: 'https://www.clubup.nl/',
@@ -152,12 +164,23 @@ describe('Wonderland events', () => {
           'https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-4x3.jpg',
           'https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-1x1.jpg',
         ],
+        performer: [
+          expect.objectContaining({ name: 'Boyos Soundsystem' }),
+          expect.objectContaining({
+            name: 'Damian Zico B2B Vince FJR',
+          }),
+          expect.objectContaining({ name: 'Ferkoel' }),
+        ],
+        offers: {
+          '@type': 'Offer',
+          url: clubUpContent.tickets.url,
+          price: 9.75,
+          priceCurrency: 'EUR',
+          availability: 'https://schema.org/InStock',
+        },
       })
     )
-    expect(structuredData).not.toHaveProperty('offers')
-    expect(structuredData).not.toHaveProperty('performer')
-    expect(structuredData).not.toHaveProperty('endDate')
-    expect(structuredData.startDate).not.toContain('T')
+    expect(structuredData.startDate).toContain('T23:00:00+02:00')
   })
 
   it('omits image markup when an event has no gallery images configured', () => {
@@ -205,13 +228,18 @@ describe('Wonderland events', () => {
       [clubUpContent.images.landscape16x9, 1920, 1080],
       [clubUpContent.images.landscape4x3, 1200, 900],
       [clubUpContent.images.square, 1200, 1200],
+      [clubUpContent.poster, 1600, 2000],
+      [clubUpContent.heroImage, 1920, 1080],
     ] as const
 
     for (const [imageUrl, width, height] of expectedImages) {
+      const imagePathname = imageUrl.startsWith('http')
+        ? new URL(imageUrl).pathname
+        : imageUrl
       const imagePath = path.join(
         process.cwd(),
         'public',
-        new URL(imageUrl).pathname.replace(/^\//, '')
+        imagePathname.replace(/^\//, '')
       )
       expect(fs.existsSync(imagePath)).toBe(true)
 
@@ -228,13 +256,19 @@ describe('Wonderland events', () => {
 
   it('renders event-specific content without Club UP hardcoding', () => {
     expect(homepageSource).toContain('nextEvent.shortTitleLines')
+    expect(homepageSource).toContain('nextEvent.tickets.url')
+    expect(homepageSource).toContain('nextEvent.poster')
     expect(homepageSource).not.toContain('Club UP')
     expect(wonderlandPageSource).toContain('event.titleLines')
-    expect(wonderlandPageSource).toContain('event.dateDay')
-    expect(wonderlandPageSource).toContain(
-      'event.address.addressLocality'
-    )
+    expect(wonderlandPageSource).toContain('event.heroImage')
+    expect(wonderlandPageSource).toContain('event.locationLabel')
     expect(wonderlandPageSource).not.toContain('Club UP')
+  })
+
+  it('keeps optional RA links conditional and external links safe', () => {
+    expect(eventPageSource).toContain('event.residentAdvisorUrl ?')
+    expect(eventPageSource).toContain('target="_blank"')
+    expect(eventPageSource).toContain('rel="noopener noreferrer"')
   })
 
   it('keeps the community CTA evergreen and Summer Jam discoverable', () => {

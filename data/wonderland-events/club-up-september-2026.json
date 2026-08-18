@@ -10,6 +10,8 @@
     "UP"
   ],
   "date": "2026-09-18",
+  "startDateTime": "2026-09-18T23:00:00+02:00",
+  "endDateTime": "2026-09-19T04:00:00+02:00",
   "venueName": "Club UP",
   "venueUrl": "https://www.clubup.nl/",
   "address": {
@@ -18,8 +20,89 @@
     "addressLocality": "Amsterdam",
     "addressCountry": "NL"
   },
-  "description": "A new Boyos Wonderland edition bringing the Boyos Collective community together around music.",
-  "detailsLabel": "Line-up, tickets and full details will follow.",
+  "description": "Boyos Wonderland brings house, disco, Afro-Caribbean rhythms and leftfield club sounds to Club UP for its first Amsterdam edition on 18 September 2026.",
+  "detailsLabel": "Tickets are on sale now from €8 plus service fee.",
+  "intro": [
+    "Club UP, 23:00. House runs through the night, but never sets the boundaries. Disco, Afro-Caribbean rhythms, deeper cuts and leftfield club sounds move through the room with Boyos Soundsystem, Ferkoel and Damian Zico B2B Vince FJR behind the decks.",
+    "The first Boyos Wonderland in Amsterdam. Come early, stay late."
+  ],
+  "body": [
+    "Boyos Wonderland takes over Club UP for its first Amsterdam edition.",
+    "After a run of parties, Dine & Dance nights and mini-festivals in Haarlem, Wonderland moves into the centre of Amsterdam for a full club night.",
+    "For this edition, house is a strong thread, not a limitation. The night can move between house, disco, Afro-Caribbean rhythms, deeper cuts and leftfield club sounds, with each artist bringing their own direction to the floor.",
+    "Boyos Soundsystem hosts the night and is joined by Ferkoel and Damian Zico B2B Vince FJR.",
+    "No need to pin it down much further than that. The room opens at 23:00 and from there the night gets to develop on its own terms."
+  ],
+  "poster": "/images/optimized/wonderland-club-up-september-2026-poster-1600.webp",
+  "heroImage": "/images/optimized/wonderland-club-up-september-2026-hero-1920.webp",
+  "lineup": [
+    {
+      "name": "Boyos Soundsystem",
+      "links": [
+        {
+          "label": "Boyos Collective",
+          "url": "https://www.boyoscollective.nl/wonderland"
+        }
+      ]
+    },
+    {
+      "name": "Damian Zico B2B Vince FJR",
+      "links": [
+        {
+          "label": "Damian Zico",
+          "url": "https://www.instagram.com/damianzico_/"
+        },
+        {
+          "label": "Vince FJR",
+          "url": "https://www.instagram.com/vince_fjr/"
+        }
+      ]
+    },
+    {
+      "name": "Ferkoel",
+      "links": [
+        {
+          "label": "Ferkoel",
+          "url": "https://www.instagram.com/_ferkoel/"
+        }
+      ]
+    }
+  ],
+  "tickets": {
+    "url": "https://kring.stager.co/shop/default/events/111668271",
+    "currency": "EUR",
+    "availability": "InStock",
+    "statusLabel": "Tickets are on sale now.",
+    "tiers": [
+      {
+        "name": "Early Bird",
+        "price": 8,
+        "serviceFee": 1.75,
+        "total": 9.75
+      },
+      {
+        "name": "Regular",
+        "price": 12,
+        "serviceFee": 1.75,
+        "total": 13.75
+      },
+      {
+        "name": "Door",
+        "price": 15,
+        "total": 15
+      }
+    ]
+  },
+  "practical": {
+    "minimumAge": "18+",
+    "doors": "23:00",
+    "end": "04:00",
+    "reentry": "Possible with a stamp",
+    "lockers": "Available at Club UP",
+    "lastEntry": "No announced last-entry time"
+  },
+  "instagramUrl": "https://www.instagram.com/boyos.wonderland/",
+  "residentAdvisorUrl": null,
   "images": {
     "landscape16x9": "https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-16x9.jpg",
     "landscape4x3": "https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-4x3.jpg",
@@ -27,8 +110,8 @@
   },
   "seo": {
     "title": "Boyos Wonderland at Club UP Amsterdam | 18 September 2026",
-    "description": "Boyos Wonderland comes to Club UP in Amsterdam on Friday 18 September 2026. Line-up, tickets and full details will follow.",
-    "ogTitle": "Boyos Wonderland at Club UP Amsterdam",
+    "description": "Boyos Wonderland brings house, disco and global club sounds to Club UP Amsterdam on Friday 18 September 2026. Tickets are on sale now.",
+    "ogTitle": "Boyos Wonderland at Club UP · 18 September 2026",
     "ogImage": "https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026.jpg",
     "ogImageAlt": "Boyos Wonderland at Club UP — 18 September 2026, Amsterdam"
   }
