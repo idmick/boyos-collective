@@ -347,7 +347,6 @@ export default function WonderlandEventPage({ event, community }) {
                   ['Age', event.practical.minimumAge],
                   ['Re-entry', event.practical.reentry],
                   ['Lockers', event.practical.lockers],
-                  ['Last entry', event.practical.lastEntry],
                 ].map(([label, value]) => (
                   <div
                     key={label}
