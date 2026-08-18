@@ -95,7 +95,6 @@ collections:
           - { label: End, name: end, widget: string }
           - { label: Re-entry, name: reentry, widget: string }
           - { label: Lockers, name: lockers, widget: string }
-          - { label: Last Entry, name: lastEntry, widget: string }
       - { label: Instagram URL, name: instagramUrl, widget: string }
       - { label: Resident Advisor URL, name: residentAdvisorUrl, widget: string, required: false }
       - label: Event Images

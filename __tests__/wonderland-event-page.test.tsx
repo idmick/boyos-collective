@@ -191,7 +191,6 @@ const makeEvent = (
       end: '05:00',
       reentry: 'With a fixture stamp',
       lockers: 'Fixture lockers available',
-      lastEntry: 'No fixture last-entry time',
     },
     instagramUrl: 'https://instagram.com/fixture-wonderland',
     residentAdvisorUrl: null,
@@ -219,7 +218,7 @@ describe('Wonderland event page', () => {
     expect(screen.getByText('05:00')).toBeInTheDocument()
     expect(screen.getByText('With a fixture stamp')).toBeInTheDocument()
     expect(screen.getByText('Fixture lockers available')).toBeInTheDocument()
-    expect(screen.getByText('No fixture last-entry time')).toBeInTheDocument()
+    expect(screen.queryByText(/last entry/i)).not.toBeInTheDocument()
     expect(screen.getByText('€9.75')).toBeInTheDocument()
     expect(screen.getByText('€13.75')).toBeInTheDocument()
     expect(screen.getByText('€15')).toBeInTheDocument()
@@ -335,6 +334,20 @@ describe('Wonderland event page', () => {
     )
   })
 
+  it('renders the published Resident Advisor event safely', () => {
+    const event = getWonderlandEventBySlug(
+      'club-up-september-2026'
+    )
+
+    expect(event).not.toBeNull()
+    render(<WonderlandEventPage event={event!} community={community} />)
+
+    expectSafeExternalLink(
+      screen.getByRole('link', { name: /Resident Advisor/i }),
+      'https://ra.co/events/2515640'
+    )
+  })
+
   it('publishes valid event and breadcrumb JSON-LD in the document', () => {
     const event = makeEvent()
     const { container } = render(
@@ -353,13 +366,17 @@ describe('Wonderland event page', () => {
       'type',
       'application/ld+json'
     )
-    expect(JSON.parse(eventScript?.textContent ?? '')).toEqual(
+    const eventStructuredData = JSON.parse(
+      eventScript?.textContent ?? ''
+    )
+    expect(eventStructuredData).toEqual(
       expect.objectContaining({
         '@type': 'MusicEvent',
         name: event.title,
         url: event.canonical,
       })
     )
+    expect(eventStructuredData).not.toHaveProperty('sameAs')
     expect(JSON.parse(breadcrumbScript?.textContent ?? '')).toEqual(
       expect.objectContaining({ '@type': 'BreadcrumbList' })
     )

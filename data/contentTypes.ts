@@ -69,7 +69,6 @@ export type WonderlandPracticalInfo = {
   end: string
   reentry: string
   lockers: string
-  lastEntry: string
 }
 
 export type WonderlandEventContent = {

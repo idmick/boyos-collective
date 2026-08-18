@@ -55,6 +55,9 @@ export const buildWonderlandEventStructuredData = (
       sameAs: artist.links.map((link) => resolvePublicUrl(link.url)),
     })),
     description: event.description,
+    ...(event.residentAdvisorUrl
+      ? { sameAs: [event.residentAdvisorUrl] }
+      : {}),
     ...(images.length > 0 ? { image: images } : {}),
     ...(lowestOnlineTier
       ? {

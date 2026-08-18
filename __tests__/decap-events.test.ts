@@ -93,6 +93,21 @@ describe('Decap Wonderland event model', () => {
     ).toEqual([])
   })
 
+  it('keeps practical fields aligned without last entry', () => {
+    const practicalField = eventCollection?.fields?.find(
+      (field) => field.name === 'practical'
+    )
+
+    expect(practicalField?.fields?.map((field) => field.name)).toEqual([
+      'minimumAge',
+      'doors',
+      'end',
+      'reentry',
+      'lockers',
+    ])
+    expect(clubUpContent.practical).not.toHaveProperty('lastEntry')
+  })
+
   it('exposes venue identity and optional event images to editors', () => {
     const venueUrlField = eventCollection?.fields?.find(
       (field) => field.name === 'venueUrl'

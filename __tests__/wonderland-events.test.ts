@@ -121,7 +121,10 @@ describe('Wonderland events', () => {
       13.75,
       15,
     ])
-    expect(clubUpContent.residentAdvisorUrl).toBeNull()
+    expect(clubUpContent.practical).not.toHaveProperty('lastEntry')
+    expect(clubUpContent.residentAdvisorUrl).toBe(
+      'https://ra.co/events/2515640'
+    )
   })
 
   it('derives public event labels and rejects invalid dates', () => {
@@ -187,6 +190,7 @@ describe('Wonderland events', () => {
         eventAttendanceMode:
           'https://schema.org/OfflineEventAttendanceMode',
         description: clubUpContent.description,
+        sameAs: ['https://ra.co/events/2515640'],
         location: expect.objectContaining({
           name: 'Club UP',
           url: 'https://www.clubup.nl/',
@@ -240,6 +244,20 @@ describe('Wonderland events', () => {
     expect(
       buildWonderlandEventStructuredData(eventWithoutImages)
     ).not.toHaveProperty('image')
+  })
+
+  it('omits event sameAs when no Resident Advisor URL is configured', () => {
+    const eventWithoutResidentAdvisor = resolveWonderlandEvent(
+      'no-resident-advisor',
+      {
+        ...(clubUpContent as WonderlandEventContent),
+        residentAdvisorUrl: null,
+      }
+    )
+
+    expect(
+      buildWonderlandEventStructuredData(eventWithoutResidentAdvisor)
+    ).not.toHaveProperty('sameAs')
   })
 
   it('uses the cheapest online ticket regardless of tier order', () => {
