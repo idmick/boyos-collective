@@ -98,9 +98,21 @@ describe('Wonderland events', () => {
     )
     expect(clubUpContent.lineup.map((artist) => artist.name)).toEqual([
       'Boyos Soundsystem',
-      'Damian Zico B2B Vince FJR',
+      'Damian Zico B2B Vince Fajardo',
       'Ferkoel',
     ])
+    expect(
+      clubUpContent.lineup
+        .flatMap((artist) => artist.links)
+        .filter((link) => link.url.includes('soundcloud.com'))
+        .map((link) => link.url)
+    ).toEqual([
+      'https://soundcloud.com/boyos_soundsystem',
+      'https://soundcloud.com/damianzico',
+      'https://soundcloud.com/inceajardo',
+      'https://soundcloud.com/ferkoel',
+    ])
+    expect(JSON.stringify(clubUpContent)).not.toContain('Vince FJR')
     expect(clubUpContent.tickets.url).toBe(
       'https://kring.stager.co/shop/default/events/111668271'
     )
@@ -191,9 +203,16 @@ describe('Wonderland events', () => {
           'https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-1x1.jpg',
         ],
         performer: [
-          expect.objectContaining({ name: 'Boyos Soundsystem' }),
           expect.objectContaining({
-            name: 'Damian Zico B2B Vince FJR',
+            name: 'Boyos Soundsystem',
+            sameAs: expect.arrayContaining([
+              'https://www.boyoscollective.nl/soundsystem',
+              'https://www.instagram.com/boyos.soundsystem/',
+              'https://soundcloud.com/boyos_soundsystem',
+            ]),
+          }),
+          expect.objectContaining({
+            name: 'Damian Zico B2B Vince Fajardo',
           }),
           expect.objectContaining({ name: 'Ferkoel' }),
         ],
@@ -207,6 +226,9 @@ describe('Wonderland events', () => {
       })
     )
     expect(structuredData.startDate).toContain('T23:00:00+02:00')
+    expect(event?.tickerItems).toContain(
+      'Damian Zico B2B Vince Fajardo'
+    )
   })
 
   it('omits image markup when an event has no gallery images configured', () => {

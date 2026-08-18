@@ -52,7 +52,7 @@ export type WonderlandEventArtist = {
   name: string
   links: {
     label: string
-    url: ExternalUrl
+    url: ExternalUrl | InternalHref
   }[]
 }
 

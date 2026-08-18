@@ -2,6 +2,9 @@ import type { WonderlandEvent } from '../data/contentTypes'
 
 const SITE_URL = 'https://www.boyoscollective.nl'
 
+const resolvePublicUrl = (url: string) =>
+  url.startsWith('/') ? `${SITE_URL}${url}` : url
+
 export const buildWonderlandEventStructuredData = (
   event: WonderlandEvent
 ) => {
@@ -49,7 +52,7 @@ export const buildWonderlandEventStructuredData = (
     performer: event.lineup.map((artist) => ({
       '@type': 'PerformingGroup',
       name: artist.name,
-      sameAs: artist.links.map((link) => link.url),
+      sameAs: artist.links.map((link) => resolvePublicUrl(link.url)),
     })),
     description: event.description,
     ...(images.length > 0 ? { image: images } : {}),

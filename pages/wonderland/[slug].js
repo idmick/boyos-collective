@@ -5,6 +5,7 @@ import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/dist/ScrollTrigger'
 import Head from 'next/head'
 import Image from 'next/image'
+import Link from 'next/link'
 import { generateNextSeo } from 'next-seo/pages'
 import ButtonLink from '../../components/ui/ButtonLink'
 import Reveal from '../../components/ui/Reveal'
@@ -63,21 +64,35 @@ function LineupAccordion({ artists }) {
             </button>
             <div
               className={`overflow-hidden transition-[max-height,opacity] duration-500 ${
-                active ? 'max-h-28 opacity-100' : 'max-h-0 opacity-0'
+                active ? 'max-h-48 opacity-100' : 'max-h-0 opacity-0'
               }`}
             >
               <div className="flex flex-wrap gap-x-4 gap-y-2 p-5 pt-3">
-                {artist.links.map((link) => (
-                  <a
-                    key={link.url}
-                    href={link.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs font-bold uppercase tracking-[0.12em] text-black/60 underline decoration-black/25 underline-offset-4 transition hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black"
-                  >
-                    {link.label} ↗
-                  </a>
-                ))}
+                {artist.links.map((link) => {
+                  const external = /^https?:\/\//.test(link.url)
+                  const className =
+                    'text-xs font-bold uppercase tracking-[0.12em] text-black/60 underline decoration-black/25 underline-offset-4 transition hover:text-black focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black'
+
+                  return external ? (
+                    <a
+                      key={link.url}
+                      href={link.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={className}
+                    >
+                      {link.label} ↗
+                    </a>
+                  ) : (
+                    <Link
+                      key={link.url}
+                      href={link.url}
+                      className={className}
+                    >
+                      {link.label}
+                    </Link>
+                  )
+                })}
               </div>
             </div>
           </article>
@@ -352,9 +367,9 @@ export default function WonderlandEventPage({ event, community }) {
 
       <section
         ref={storySectionRef}
-        className="bg-[#07090d] px-6 py-32 md:px-10 md:py-48"
+        className="bg-[#07090d] px-6 py-20 md:px-10 md:py-32 lg:py-48"
       >
-        <div className="mx-auto grid max-w-6xl gap-16 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-24">
+        <div className="mx-auto grid max-w-6xl gap-12 md:gap-16 lg:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] lg:gap-24">
           <div ref={storyMediaRef} className="h-fit">
             <div className="relative aspect-[16/9] overflow-hidden border border-white/10 bg-[var(--club-up-blue)]">
               <Image
@@ -375,11 +390,11 @@ export default function WonderlandEventPage({ event, community }) {
             <h2 className="mt-7 max-w-3xl text-[clamp(3rem,6vw,6rem)] font-black uppercase leading-[0.88] tracking-[-0.07em]">
               House is a thread, not a limitation.
             </h2>
-            <div className="mt-20 space-y-24 lg:space-y-0">
+            <div className="mt-12 md:mt-16 lg:mt-20">
               {event.body.slice(2).map((paragraph) => (
                 <article
                   key={paragraph}
-                  className="flex min-h-[42vh] items-center border-t border-white/10 py-14 first:border-t-0 lg:min-h-[58vh]"
+                  className="flex items-center border-t border-white/10 py-8 first:border-t-0 md:py-10 lg:min-h-[58vh] lg:py-14"
                 >
                   <p className="max-w-2xl text-[clamp(1.35rem,2.7vw,2.4rem)] font-medium leading-[1.42] tracking-[-0.03em] text-white/72">
                     {paragraph}

@@ -7,7 +7,10 @@ import type {
   WonderlandPage as WonderlandPageData,
 } from '../data/contentTypes'
 import { wonderlandPageContent } from '../data/wonderland'
-import { resolveWonderlandEvent } from '../lib/wonderlandEvents'
+import {
+  getWonderlandEventBySlug,
+  resolveWonderlandEvent,
+} from '../lib/wonderlandEvents'
 import Home, { getStaticProps as getHomeStaticProps } from '../pages/index'
 import WonderlandOverviewPage, {
   getStaticProps as getWonderlandStaticProps,
@@ -255,6 +258,57 @@ describe('Wonderland event page', () => {
     expectSafeExternalLink(
       screen.getByRole('link', { name: /Artist Two Instagram/i }),
       event.lineup[1].links[0].url
+    )
+  })
+
+  it('keeps internal artist pages local and opens socials safely', () => {
+    const event = getWonderlandEventBySlug(
+      'club-up-september-2026'
+    )
+
+    expect(event).not.toBeNull()
+    render(<WonderlandEventPage event={event!} community={community} />)
+
+    const boyosButton = screen.getByRole('button', {
+      name: 'Boyos Soundsystem',
+    })
+    const boyosPanel = boyosButton.closest('article')
+    const soundsystemPage = within(boyosPanel as HTMLElement).getByRole(
+      'link',
+      { name: 'Soundsystem page' }
+    )
+
+    expect(soundsystemPage).toHaveAttribute('href', '/soundsystem')
+    expect(soundsystemPage).not.toHaveAttribute('target')
+    expect(soundsystemPage).not.toHaveAttribute('rel')
+
+    const b2bButton = screen.getByRole('button', {
+      name: 'Damian Zico B2B Vince Fajardo',
+    })
+    fireEvent.click(b2bButton)
+    expect(b2bButton).toHaveAttribute('aria-expanded', 'true')
+
+    const expectedExternalLinks = [
+      ['Boyos Instagram', 'https://www.instagram.com/boyos.soundsystem/'],
+      ['Boyos SoundCloud', 'https://soundcloud.com/boyos_soundsystem'],
+      ['Damian Zico Instagram', 'https://www.instagram.com/damianzico_/'],
+      ['Damian Zico SoundCloud', 'https://soundcloud.com/damianzico'],
+      ['Vince Fajardo Instagram', 'https://www.instagram.com/vince_fjr/'],
+      ['Vince Fajardo SoundCloud', 'https://soundcloud.com/inceajardo'],
+      ['Ferkoel Instagram', 'https://www.instagram.com/_ferkoel/'],
+      ['Ferkoel SoundCloud', 'https://soundcloud.com/ferkoel'],
+    ] as const
+
+    expectedExternalLinks.forEach(([label, href]) => {
+      expectSafeExternalLink(
+        screen.getByRole('link', { name: new RegExp(label) }),
+        href
+      )
+    })
+
+    const b2bPanel = b2bButton.closest('article')
+    expect(within(b2bPanel as HTMLElement).getAllByRole('link')).toHaveLength(
+      4
     )
   })
 
