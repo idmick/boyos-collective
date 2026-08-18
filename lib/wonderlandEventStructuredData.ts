@@ -2,6 +2,9 @@ import type { WonderlandEvent } from '../data/contentTypes'
 
 const SITE_URL = 'https://www.boyoscollective.nl'
 
+const resolvePublicUrl = (url: string) =>
+  url.startsWith('/') ? `${SITE_URL}${url}` : url
+
 export const buildWonderlandEventStructuredData = (
   event: WonderlandEvent
 ) => {
@@ -12,6 +15,13 @@ export const buildWonderlandEventStructuredData = (
         event.images.square,
       ].filter((image): image is string => Boolean(image))
     : []
+  const lowestOnlineTier = event.tickets.tiers
+    .filter((tier) => tier.name !== 'Door')
+    .reduce<(typeof event.tickets.tiers)[number] | undefined>(
+      (lowest, tier) =>
+        !lowest || tier.total < lowest.total ? tier : lowest,
+      undefined
+    )
 
   return {
     '@context': 'https://schema.org',
@@ -19,7 +29,8 @@ export const buildWonderlandEventStructuredData = (
     '@id': event.canonical,
     url: event.canonical,
     name: event.title,
-    startDate: event.date,
+    startDate: event.startDateTime,
+    endDate: event.endDateTime,
     eventStatus: 'https://schema.org/EventScheduled',
     eventAttendanceMode:
       'https://schema.org/OfflineEventAttendanceMode',
@@ -38,8 +49,24 @@ export const buildWonderlandEventStructuredData = (
       name: 'Boyos Collective',
       url: SITE_URL,
     },
+    performer: event.lineup.map((artist) => ({
+      '@type': 'PerformingGroup',
+      name: artist.name,
+      sameAs: artist.links.map((link) => resolvePublicUrl(link.url)),
+    })),
     description: event.description,
     ...(images.length > 0 ? { image: images } : {}),
+    ...(lowestOnlineTier
+      ? {
+          offers: {
+            '@type': 'Offer',
+            url: event.tickets.url,
+            price: lowestOnlineTier.total,
+            priceCurrency: event.tickets.currency,
+            availability: `https://schema.org/${event.tickets.availability}`,
+          },
+        }
+      : {}),
   }
 }
 

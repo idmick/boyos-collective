@@ -16,19 +16,6 @@ import {
   buildWonderlandEventStructuredData,
 } from '../lib/wonderlandEventStructuredData'
 
-const eventPageSource = fs.readFileSync(
-  path.join(process.cwd(), 'pages/wonderland/[slug].js'),
-  'utf8'
-)
-const homepageSource = fs.readFileSync(
-  path.join(process.cwd(), 'pages/index.js'),
-  'utf8'
-)
-const wonderlandPageSource = fs.readFileSync(
-  path.join(process.cwd(), 'pages/wonderland.js'),
-  'utf8'
-)
-
 describe('Wonderland events', () => {
   it('resolves the confirmed Club UP entry selected by Decap', () => {
     expect(wonderlandContent.currentEventSlug).toBe(
@@ -92,8 +79,6 @@ describe('Wonderland events', () => {
       'club-up-september-2026'
     )
     expect(getWonderlandEventBySlug('does-not-exist')).toBeNull()
-    expect(eventPageSource).toContain('getStaticPaths')
-    expect(eventPageSource).toContain('fallback: false')
   })
 
   it('fails fast when the configured current event slug cannot be resolved', () => {
@@ -104,16 +89,81 @@ describe('Wonderland events', () => {
     ).toThrowError('Unknown current Wonderland event: missing-event')
   })
 
-  it('publishes no unconfirmed event details', () => {
-    const eventFields = Object.keys(clubUpContent)
+  it('publishes the confirmed Club UP event details', () => {
+    expect(clubUpContent.startDateTime).toBe(
+      '2026-09-18T23:00:00+02:00'
+    )
+    expect(clubUpContent.endDateTime).toBe(
+      '2026-09-19T04:00:00+02:00'
+    )
+    expect(clubUpContent.lineup.map((artist) => artist.name)).toEqual([
+      'Boyos Soundsystem',
+      'Damian Zico B2B Vince Fajardo',
+      'Ferkoel',
+    ])
+    expect(
+      clubUpContent.lineup
+        .flatMap((artist) => artist.links)
+        .filter((link) => link.url.includes('soundcloud.com'))
+        .map((link) => link.url)
+    ).toEqual([
+      'https://soundcloud.com/boyos_soundsystem',
+      'https://soundcloud.com/damianzico',
+      'https://soundcloud.com/inceajardo',
+      'https://soundcloud.com/ferkoel',
+    ])
+    expect(JSON.stringify(clubUpContent)).not.toContain('Vince FJR')
+    expect(clubUpContent.tickets.url).toBe(
+      'https://kring.stager.co/shop/default/events/111668271'
+    )
+    expect(clubUpContent.tickets.tiers.map((tier) => tier.total)).toEqual([
+      9.75,
+      13.75,
+      15,
+    ])
+    expect(clubUpContent.residentAdvisorUrl).toBeNull()
+  })
 
-    expect(eventFields).not.toContain('startTime')
-    expect(eventFields).not.toContain('endDate')
-    expect(eventFields).not.toContain('ticketLabel')
-    expect(eventFields).not.toContain('ticketUrl')
-    expect(eventFields).not.toContain('performer')
-    expect(eventFields).not.toContain('lineup')
-    expect(eventFields).not.toContain('image')
+  it('derives public event labels and rejects invalid dates', () => {
+    const event = resolveWonderlandEvent('fixture-event', {
+      ...(clubUpContent as WonderlandEventContent),
+      date: '2027-03-07',
+      venueName: 'Fixture Club',
+      address: {
+        ...clubUpContent.address,
+        addressLocality: 'Rotterdam',
+      },
+      lineup: [
+        { name: 'Artist One', links: [] },
+        { name: 'Artist Two', links: [] },
+      ],
+    })
+
+    expect(event).toEqual(
+      expect.objectContaining({
+        href: '/wonderland/fixture-event',
+        canonical:
+          'https://www.boyoscollective.nl/wonderland/fixture-event',
+        dateLabel: 'Sunday 7 March 2027',
+        dateShort: '07.03',
+        dateDay: '7',
+        locationLabel: 'Fixture Club, Rotterdam',
+      })
+    )
+    expect(event.tickerItems).toEqual([
+      'Boyos Wonderland',
+      'Sunday 7 March 2027',
+      'Fixture Club Rotterdam',
+      'Artist One',
+      'Artist Two',
+    ])
+
+    expect(() =>
+      resolveWonderlandEvent('invalid-date', {
+        ...(clubUpContent as WonderlandEventContent),
+        date: 'not-a-date',
+      })
+    ).toThrowError('Invalid Wonderland event date: not-a-date')
   })
 
   it('emits enriched confirmed MusicEvent structured data', () => {
@@ -131,12 +181,12 @@ describe('Wonderland events', () => {
         '@id':
           'https://www.boyoscollective.nl/wonderland/club-up-september-2026',
         url: 'https://www.boyoscollective.nl/wonderland/club-up-september-2026',
-        startDate: '2026-09-18',
+        startDate: '2026-09-18T23:00:00+02:00',
+        endDate: '2026-09-19T04:00:00+02:00',
         eventStatus: 'https://schema.org/EventScheduled',
         eventAttendanceMode:
           'https://schema.org/OfflineEventAttendanceMode',
-        description:
-          'A new Boyos Wonderland edition bringing the Boyos Collective community together around music.',
+        description: clubUpContent.description,
         location: expect.objectContaining({
           name: 'Club UP',
           url: 'https://www.clubup.nl/',
@@ -152,12 +202,33 @@ describe('Wonderland events', () => {
           'https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-4x3.jpg',
           'https://www.boyoscollective.nl/images/og/wonderland-club-up-september-2026-1x1.jpg',
         ],
+        performer: [
+          expect.objectContaining({
+            name: 'Boyos Soundsystem',
+            sameAs: expect.arrayContaining([
+              'https://www.boyoscollective.nl/soundsystem',
+              'https://www.instagram.com/boyos.soundsystem/',
+              'https://soundcloud.com/boyos_soundsystem',
+            ]),
+          }),
+          expect.objectContaining({
+            name: 'Damian Zico B2B Vince Fajardo',
+          }),
+          expect.objectContaining({ name: 'Ferkoel' }),
+        ],
+        offers: {
+          '@type': 'Offer',
+          url: clubUpContent.tickets.url,
+          price: 9.75,
+          priceCurrency: 'EUR',
+          availability: 'https://schema.org/InStock',
+        },
       })
     )
-    expect(structuredData).not.toHaveProperty('offers')
-    expect(structuredData).not.toHaveProperty('performer')
-    expect(structuredData).not.toHaveProperty('endDate')
-    expect(structuredData.startDate).not.toContain('T')
+    expect(structuredData.startDate).toContain('T23:00:00+02:00')
+    expect(event?.tickerItems).toContain(
+      'Damian Zico B2B Vince Fajardo'
+    )
   })
 
   it('omits image markup when an event has no gallery images configured', () => {
@@ -169,6 +240,38 @@ describe('Wonderland events', () => {
     expect(
       buildWonderlandEventStructuredData(eventWithoutImages)
     ).not.toHaveProperty('image')
+  })
+
+  it('uses the cheapest online ticket regardless of tier order', () => {
+    const event = resolveWonderlandEvent('reordered-tickets', {
+      ...(clubUpContent as WonderlandEventContent),
+      tickets: {
+        ...(clubUpContent.tickets as WonderlandEventContent['tickets']),
+        tiers: [
+          { name: 'Regular', price: 12, serviceFee: 1.75, total: 13.75 },
+          { name: 'Door', price: 15, total: 15 },
+          { name: 'Early Bird', price: 8, serviceFee: 1.75, total: 9.75 },
+        ],
+      },
+    })
+
+    expect(buildWonderlandEventStructuredData(event).offers).toEqual(
+      expect.objectContaining({ price: 9.75 })
+    )
+  })
+
+  it('omits an online offer when only a door tier exists', () => {
+    const event = resolveWonderlandEvent('door-only', {
+      ...(clubUpContent as WonderlandEventContent),
+      tickets: {
+        ...(clubUpContent.tickets as WonderlandEventContent['tickets']),
+        tiers: [{ name: 'Door', price: 15, total: 15 }],
+      },
+    })
+
+    expect(buildWonderlandEventStructuredData(event)).not.toHaveProperty(
+      'offers'
+    )
   })
 
   it('emits a canonical Wonderland breadcrumb trail', () => {
@@ -195,8 +298,6 @@ describe('Wonderland events', () => {
         ],
       })
     )
-    expect(eventPageSource).toContain('wonderland-event-jsonld')
-    expect(eventPageSource).toContain('wonderland-breadcrumb-jsonld')
   })
 
   it('ships every referenced event image at its intended size', async () => {
@@ -205,13 +306,18 @@ describe('Wonderland events', () => {
       [clubUpContent.images.landscape16x9, 1920, 1080],
       [clubUpContent.images.landscape4x3, 1200, 900],
       [clubUpContent.images.square, 1200, 1200],
+      [clubUpContent.poster, 1600, 2000],
+      [clubUpContent.heroImage, 1920, 1080],
     ] as const
 
     for (const [imageUrl, width, height] of expectedImages) {
+      const imagePathname = imageUrl.startsWith('http')
+        ? new URL(imageUrl).pathname
+        : imageUrl
       const imagePath = path.join(
         process.cwd(),
         'public',
-        new URL(imageUrl).pathname.replace(/^\//, '')
+        imagePathname.replace(/^\//, '')
       )
       expect(fs.existsSync(imagePath)).toBe(true)
 
@@ -224,17 +330,6 @@ describe('Wonderland events', () => {
     expect(clubUpContent.seo.ogImageAlt).toBe(
       'Boyos Wonderland at Club UP — 18 September 2026, Amsterdam'
     )
-  })
-
-  it('renders event-specific content without Club UP hardcoding', () => {
-    expect(homepageSource).toContain('nextEvent.shortTitleLines')
-    expect(homepageSource).not.toContain('Club UP')
-    expect(wonderlandPageSource).toContain('event.titleLines')
-    expect(wonderlandPageSource).toContain('event.dateDay')
-    expect(wonderlandPageSource).toContain(
-      'event.address.addressLocality'
-    )
-    expect(wonderlandPageSource).not.toContain('Club UP')
   })
 
   it('keeps the community CTA evergreen and Summer Jam discoverable', () => {

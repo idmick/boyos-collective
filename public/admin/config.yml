@@ -32,6 +32,8 @@ collections:
         widget: list
         field: { label: Line, name: line, widget: string }
       - { label: Date, name: date, widget: datetime, date_format: YYYY-MM-DD, time_format: false, picker_utc: true }
+      - { label: Start Date and Time, name: startDateTime, widget: datetime, date_format: YYYY-MM-DD, time_format: HH:mm, picker_utc: false }
+      - { label: End Date and Time, name: endDateTime, widget: datetime, date_format: YYYY-MM-DD, time_format: HH:mm, picker_utc: false }
       - { label: Venue Name, name: venueName, widget: string }
       - { label: Venue Website, name: venueUrl, widget: string }
       - label: Address
@@ -44,6 +46,58 @@ collections:
           - { label: Country, name: addressCountry, widget: string }
       - { label: Description, name: description, widget: text }
       - { label: Details Label, name: detailsLabel, widget: string }
+      - label: Short Introduction
+        name: intro
+        widget: list
+        field: { label: Paragraph, name: paragraph, widget: text }
+      - label: Main Story
+        name: body
+        widget: list
+        field: { label: Paragraph, name: paragraph, widget: text }
+      - { label: Portrait Poster, name: poster, widget: image }
+      - { label: Landscape Hero, name: heroImage, widget: image }
+      - label: Line-up
+        name: lineup
+        widget: list
+        summary: "{{fields.name}}"
+        fields:
+          - { label: Billing Name, name: name, widget: string }
+          - label: Artist Links
+            name: links
+            widget: list
+            summary: "{{fields.label}}"
+            fields:
+              - { label: Label, name: label, widget: string }
+              - { label: URL, name: url, widget: string }
+      - label: Tickets
+        name: tickets
+        widget: object
+        fields:
+          - { label: Ticket URL, name: url, widget: string }
+          - { label: Currency, name: currency, widget: select, options: [EUR] }
+          - { label: Availability, name: availability, widget: select, options: [InStock, SoldOut, PreOrder] }
+          - { label: Status Label, name: statusLabel, widget: string }
+          - label: Ticket Tiers
+            name: tiers
+            widget: list
+            summary: "{{fields.name}} · €{{fields.total}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Base Price, name: price, widget: number, value_type: float, min: 0 }
+              - { label: Service Fee, name: serviceFee, widget: number, value_type: float, min: 0, required: false }
+              - { label: Total, name: total, widget: number, value_type: float, min: 0 }
+      - label: Practical Information
+        name: practical
+        widget: object
+        fields:
+          - { label: Minimum Age, name: minimumAge, widget: string }
+          - { label: Doors, name: doors, widget: string }
+          - { label: End, name: end, widget: string }
+          - { label: Re-entry, name: reentry, widget: string }
+          - { label: Lockers, name: lockers, widget: string }
+          - { label: Last Entry, name: lastEntry, widget: string }
+      - { label: Instagram URL, name: instagramUrl, widget: string }
+      - { label: Resident Advisor URL, name: residentAdvisorUrl, widget: string, required: false }
       - label: Event Images
         name: images
         widget: object
