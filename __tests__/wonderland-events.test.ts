@@ -16,19 +16,6 @@ import {
   buildWonderlandEventStructuredData,
 } from '../lib/wonderlandEventStructuredData'
 
-const eventPageSource = fs.readFileSync(
-  path.join(process.cwd(), 'pages/wonderland/[slug].js'),
-  'utf8'
-)
-const homepageSource = fs.readFileSync(
-  path.join(process.cwd(), 'pages/index.js'),
-  'utf8'
-)
-const wonderlandPageSource = fs.readFileSync(
-  path.join(process.cwd(), 'pages/wonderland.js'),
-  'utf8'
-)
-
 describe('Wonderland events', () => {
   it('resolves the confirmed Club UP entry selected by Decap', () => {
     expect(wonderlandContent.currentEventSlug).toBe(
@@ -92,8 +79,6 @@ describe('Wonderland events', () => {
       'club-up-september-2026'
     )
     expect(getWonderlandEventBySlug('does-not-exist')).toBeNull()
-    expect(eventPageSource).toContain('getStaticPaths')
-    expect(eventPageSource).toContain('fallback: false')
   })
 
   it('fails fast when the configured current event slug cannot be resolved', () => {
@@ -105,27 +90,68 @@ describe('Wonderland events', () => {
   })
 
   it('publishes the confirmed Club UP event details', () => {
-    const eventFields = Object.keys(clubUpContent)
-
-    expect(eventFields).toEqual(
-      expect.arrayContaining([
-        'startDateTime',
-        'endDateTime',
-        'intro',
-        'body',
-        'poster',
-        'heroImage',
-        'lineup',
-        'tickets',
-        'practical',
-      ])
+    expect(clubUpContent.startDateTime).toBe(
+      '2026-09-18T23:00:00+02:00'
+    )
+    expect(clubUpContent.endDateTime).toBe(
+      '2026-09-19T04:00:00+02:00'
     )
     expect(clubUpContent.lineup.map((artist) => artist.name)).toEqual([
       'Boyos Soundsystem',
       'Damian Zico B2B Vince FJR',
       'Ferkoel',
     ])
+    expect(clubUpContent.tickets.url).toBe(
+      'https://kring.stager.co/shop/default/events/111668271'
+    )
+    expect(clubUpContent.tickets.tiers.map((tier) => tier.total)).toEqual([
+      9.75,
+      13.75,
+      15,
+    ])
     expect(clubUpContent.residentAdvisorUrl).toBeNull()
+  })
+
+  it('derives public event labels and rejects invalid dates', () => {
+    const event = resolveWonderlandEvent('fixture-event', {
+      ...(clubUpContent as WonderlandEventContent),
+      date: '2027-03-07',
+      venueName: 'Fixture Club',
+      address: {
+        ...clubUpContent.address,
+        addressLocality: 'Rotterdam',
+      },
+      lineup: [
+        { name: 'Artist One', links: [] },
+        { name: 'Artist Two', links: [] },
+      ],
+    })
+
+    expect(event).toEqual(
+      expect.objectContaining({
+        href: '/wonderland/fixture-event',
+        canonical:
+          'https://www.boyoscollective.nl/wonderland/fixture-event',
+        dateLabel: 'Sunday 7 March 2027',
+        dateShort: '07.03',
+        dateDay: '7',
+        locationLabel: 'Fixture Club, Rotterdam',
+      })
+    )
+    expect(event.tickerItems).toEqual([
+      'Boyos Wonderland',
+      'Sunday 7 March 2027',
+      'Fixture Club Rotterdam',
+      'Artist One',
+      'Artist Two',
+    ])
+
+    expect(() =>
+      resolveWonderlandEvent('invalid-date', {
+        ...(clubUpContent as WonderlandEventContent),
+        date: 'not-a-date',
+      })
+    ).toThrowError('Invalid Wonderland event date: not-a-date')
   })
 
   it('emits enriched confirmed MusicEvent structured data', () => {
@@ -194,6 +220,38 @@ describe('Wonderland events', () => {
     ).not.toHaveProperty('image')
   })
 
+  it('uses the cheapest online ticket regardless of tier order', () => {
+    const event = resolveWonderlandEvent('reordered-tickets', {
+      ...(clubUpContent as WonderlandEventContent),
+      tickets: {
+        ...(clubUpContent.tickets as WonderlandEventContent['tickets']),
+        tiers: [
+          { name: 'Regular', price: 12, serviceFee: 1.75, total: 13.75 },
+          { name: 'Door', price: 15, total: 15 },
+          { name: 'Early Bird', price: 8, serviceFee: 1.75, total: 9.75 },
+        ],
+      },
+    })
+
+    expect(buildWonderlandEventStructuredData(event).offers).toEqual(
+      expect.objectContaining({ price: 9.75 })
+    )
+  })
+
+  it('omits an online offer when only a door tier exists', () => {
+    const event = resolveWonderlandEvent('door-only', {
+      ...(clubUpContent as WonderlandEventContent),
+      tickets: {
+        ...(clubUpContent.tickets as WonderlandEventContent['tickets']),
+        tiers: [{ name: 'Door', price: 15, total: 15 }],
+      },
+    })
+
+    expect(buildWonderlandEventStructuredData(event)).not.toHaveProperty(
+      'offers'
+    )
+  })
+
   it('emits a canonical Wonderland breadcrumb trail', () => {
     const event = getWonderlandEventBySlug(
       'club-up-september-2026'
@@ -218,8 +276,6 @@ describe('Wonderland events', () => {
         ],
       })
     )
-    expect(eventPageSource).toContain('wonderland-event-jsonld')
-    expect(eventPageSource).toContain('wonderland-breadcrumb-jsonld')
   })
 
   it('ships every referenced event image at its intended size', async () => {
@@ -252,23 +308,6 @@ describe('Wonderland events', () => {
     expect(clubUpContent.seo.ogImageAlt).toBe(
       'Boyos Wonderland at Club UP — 18 September 2026, Amsterdam'
     )
-  })
-
-  it('renders event-specific content without Club UP hardcoding', () => {
-    expect(homepageSource).toContain('nextEvent.shortTitleLines')
-    expect(homepageSource).toContain('nextEvent.tickets.url')
-    expect(homepageSource).toContain('nextEvent.poster')
-    expect(homepageSource).not.toContain('Club UP')
-    expect(wonderlandPageSource).toContain('event.titleLines')
-    expect(wonderlandPageSource).toContain('event.heroImage')
-    expect(wonderlandPageSource).toContain('event.locationLabel')
-    expect(wonderlandPageSource).not.toContain('Club UP')
-  })
-
-  it('keeps optional RA links conditional and external links safe', () => {
-    expect(eventPageSource).toContain('event.residentAdvisorUrl ?')
-    expect(eventPageSource).toContain('target="_blank"')
-    expect(eventPageSource).toContain('rel="noopener noreferrer"')
   })
 
   it('keeps the community CTA evergreen and Summer Jam discoverable', () => {

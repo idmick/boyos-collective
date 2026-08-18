@@ -1,12 +1,12 @@
-import fs from 'node:fs'
-import path from 'node:path'
 import { describe, expect, it, vi } from 'vitest'
+import pastGigsJson from '../data/PastGigs.json'
+import type { PastGig } from '../data/contentTypes'
 import { homePage } from '../data/home'
 import {
   getPastGigVenues,
   getVisiblePastGigs,
-  pastGigs,
 } from '../data/pastGigs'
+import { getStaticProps } from '../pages/soundsystem'
 
 vi.mock('next/head', () => ({
   default: ({ children }: { children: unknown }) => children,
@@ -24,88 +24,65 @@ vi.mock('next-seo/pages', () => ({
   generateNextSeo: () => null,
 }))
 
+const makeGigs = (count: number): PastGig[] =>
+  Array.from({ length: count }, (_, index) => ({
+    title: `Gig ${index + 1}`,
+    venue: `Venue ${index + 1}`,
+    monthYear: 'Jan 2026',
+  }))
+
 describe('Past gigs data flow', () => {
-  it('keeps the newest confirmed gigs at the top of the source data', () => {
-    expect(pastGigs.slice(0, 8)).toEqual([
+  it('builds a trimmed, unique venue list in source order', () => {
+    const gigs: PastGig[] = [
       {
-        title: 'Woodstock 69: All Day Set',
-        venue: 'Woodstock 69, Bloemendaal aan Zee',
+        title: 'Newly added gig',
+        venue: 'Newest Venue, Amsterdam',
+        monthYear: 'Sep 2026',
+      },
+      {
+        title: 'First return',
+        venue: '  First Venue, Haarlem  ',
+        monthYear: 'Aug 2026',
+      },
+      {
+        title: 'Blank venue',
+        venue: '   ',
+        monthYear: 'Aug 2026',
+      },
+      {
+        title: 'Duplicate return',
+        venue: 'First Venue, Haarlem',
         monthYear: 'Jul 2026',
       },
       {
-        title: 'Boyos Wonderland & INI Movement Present: SUMMER JAM',
-        venue: 'Houtbaar, Haarlem',
-        monthYear: 'Jul 2026',
+        title: 'Second return',
+        venue: 'Second Venue, The Hague',
+        monthYear: 'Jun 2026',
       },
-      {
-        title: 'Woodstock 69: All Day Set',
-        venue: 'Woodstock 69, Bloemendaal aan Zee',
-        monthYear: 'May 2026',
-      },
-      {
-        title: 'Woodstock 69: All Day Set',
-        venue: 'Woodstock 69, Bloemendaal aan Zee',
-        monthYear: 'May 2026',
-      },
-      {
-        title: 'Lepeltje Lepeltje Amsterdam',
-        venue: 'NDSM Werf, Amsterdam',
-        monthYear: 'May 2026',
-      },
-      {
-        title:
-          'Studio Houtbaar Boyos Soundsystem invites Carlo Alberto & we.amps',
-        venue: 'Houtbaar, Haarlem',
-        monthYear: 'May 2026',
-      },
-      {
-        title: 'EP Release DGKM - DIGI-TAAL',
-        venue: 'Volta, Amsterdam',
-        monthYear: 'May 2026',
-      },
-      {
-        title: 'King Vinyldici',
-        venue: 'Docici, Haarlem',
-        monthYear: 'Apr 2026',
-      },
+    ]
+
+    expect(getPastGigVenues(gigs)).toEqual([
+      'Newest Venue, Amsterdam',
+      'First Venue, Haarlem',
+      'Second Venue, The Hague',
     ])
   })
 
-  it('builds the homepage venue ticker as a latest-first unique list', () => {
-    expect(getPastGigVenues().slice(0, 6)).toEqual([
-      'Woodstock 69, Bloemendaal aan Zee',
-      'Houtbaar, Haarlem',
-      'NDSM Werf, Amsterdam',
-      'Volta, Amsterdam',
-      'Docici, Haarlem',
-      'De Nada, Amsterdam',
-    ])
+  it('keeps the homepage ticker wired to the default venue result', () => {
     expect(homePage.playedAt).toEqual(getPastGigVenues())
   })
 
-  it('keeps the Soundsystem page collapsed by default', () => {
-    expect(getVisiblePastGigs(pastGigs)).toHaveLength(18)
-    expect(getVisiblePastGigs(pastGigs, true)).toHaveLength(pastGigs.length)
-    expect(getVisiblePastGigs(pastGigs)).not.toContainEqual(pastGigs[18])
-    expect(getVisiblePastGigs(pastGigs, true)).toContainEqual(pastGigs[18])
+  it('returns the default, expanded and custom visible ranges', () => {
+    const gigs = makeGigs(21)
+
+    expect(getVisiblePastGigs(gigs)).toEqual(gigs.slice(0, 18))
+    expect(getVisiblePastGigs(gigs, true)).toEqual(gigs)
+    expect(getVisiblePastGigs(gigs, false, 3)).toEqual(gigs.slice(0, 3))
   })
 
-  it('keeps soundsystem static props wired to the updated JSON source', () => {
-    const soundsystemSource = fs.readFileSync(
-      path.join(process.cwd(), 'pages/soundsystem.js'),
-      'utf8'
-    )
-
-    expect(soundsystemSource).toContain("path.join(process.cwd(), 'data', 'PastGigs.json')")
-    expect(soundsystemSource).toContain('const { pastGigs = [] } = JSON.parse')
-    expect(soundsystemSource).toContain('props: { pastGigs }')
-    expect(pastGigs).toHaveLength(
-      JSON.parse(
-        fs.readFileSync(
-          path.join(process.cwd(), 'data/PastGigs.json'),
-          'utf8'
-        )
-      ).pastGigs.length
-    )
+  it('loads the stored gigs through the Soundsystem page contract', async () => {
+    await expect(getStaticProps()).resolves.toEqual({
+      props: { pastGigs: pastGigsJson.pastGigs },
+    })
   })
 })

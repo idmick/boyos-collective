@@ -3,10 +3,10 @@ import type { PastGig } from './contentTypes'
 
 export const pastGigs = (pastGigsJson.pastGigs ?? []) as PastGig[]
 
-export const getPastGigVenues = () => {
+export const getPastGigVenues = (gigs: PastGig[] = pastGigs) => {
   const seen = new Set<string>()
 
-  return pastGigs
+  return gigs
     .map((gig) => gig.venue?.trim())
     .filter((venue): venue is string => Boolean(venue))
     .filter((venue) => {

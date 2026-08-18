@@ -14,7 +14,13 @@ vi.mock('next/router', () => ({
 
 vi.mock('next/image', () => ({
   default: (props: any) => {
-    return React.createElement('img', props)
+    const { priority, fill, sizes, ...imageProps } = props
+
+    void priority
+    void fill
+    void sizes
+
+    return React.createElement('img', imageProps)
   },
 }))
 

@@ -12,9 +12,13 @@ export const buildWonderlandEventStructuredData = (
         event.images.square,
       ].filter((image): image is string => Boolean(image))
     : []
-  const lowestOnlineTier = event.tickets.tiers.find(
-    (tier) => tier.name !== 'Door'
-  )
+  const lowestOnlineTier = event.tickets.tiers
+    .filter((tier) => tier.name !== 'Door')
+    .reduce<(typeof event.tickets.tiers)[number] | undefined>(
+      (lowest, tier) =>
+        !lowest || tier.total < lowest.total ? tier : lowest,
+      undefined
+    )
 
   return {
     '@context': 'https://schema.org',
