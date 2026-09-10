@@ -1,6 +1,11 @@
 {
   "pastGigs": [
     {
+      "title": "Private Event - Wedding",
+      "venue": "Bij Tante Hanneke, Maasbommel",
+      "monthYear": "Aug 2026"
+    },
+    {
       "title": "Heineken F1 Hospitality After Party",
       "venue": "Woodstock 69, Bloemendaal aan Zee",
       "monthYear": "Aug 2026"
@@ -8,11 +13,6 @@
     {
       "title": "Bleyenberg",
       "venue": "Bleyenberg, The Hague",
-      "monthYear": "Aug 2026"
-    },
-    {
-      "title": "Private Event - Wedding",
-      "venue": "Bij Tante Hanneke, Maasbommel",
       "monthYear": "Aug 2026"
     },
     {
